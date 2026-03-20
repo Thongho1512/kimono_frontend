@@ -1,0 +1,257 @@
+{
+  "metadata": {
+    "title": "Ticktoc Kimono Rental - Thuê Kimono Đẹp Tại Sài Gòn",
+    "description": "Dịch vụ cho thuê kimono cao cấp tại TP. Hồ Chí Minh. Đa dạng mẫu mã, giá tốt, phục vụ nhanh chóng. Đặt lịch ngay!"
+  },
+  "nav": {
+    "home": "Trang Chủ",
+    "plans": "Gói Thuê",
+    "pricing": "Bảng Giá",
+    "booking": "Đặt Lịch",
+    "hairstyle": "Mẫu Tóc",
+    "faq": "Hỏi Đáp",
+    "gallery": "Album Ảnh",
+    "contact": "Liên Hệ",
+    "women": "Kimono Nữ",
+    "men": "Kimono Nam",
+    "kids": "Trẻ Em",
+    "womenBasic": "Cơ Bản",
+    "womenLace": "Ren",
+    "womenHoumongi": "Houmongi",
+    "womenFurisode": "Furisode",
+    "menBasic": "Cơ Bản",
+    "menHakama": "Lễ Phục / Hakama",
+    "kids35": "3-5 Tuổi",
+    "kids7": "7 Tuổi"
+  },
+  "hero": {
+    "title": "Thuê Kimono Đẹp Tại Sài Gòn",
+    "subtitle": "Trải nghiệm vẻ đẹp truyền thống Nhật Bản ngay tại TP. Hồ Chí Minh với bộ sưu tập kimono đa dạng và dịch vụ chuyên nghiệp.",
+    "cta": "Đặt Lịch Ngay",
+    "viewPlans": "Xem Gói Thuê"
+  },
+  "featured": {
+    "title": "Gói Thuê Nổi Bật",
+    "subtitle": "Khám phá các gói thuê kimono phổ biến nhất của chúng tôi",
+    "from": "Từ",
+    "perDay": "/ngày",
+    "details": "Chi Tiết",
+    "noDescription": "Chưa có mô tả cho gói thuê này"
+  },
+  "whyUs": {
+    "title": "Tại Sao Chọn Ticktoc?",
+    "subtitle": "Chúng tôi mang đến trải nghiệm thuê kimono tốt nhất tại Sài Gòn",
+    "price": "Giá Tốt Nhất",
+    "priceDesc": "Cam kết giá thuê kimono cạnh tranh nhất thị trường với chất lượng cao cấp.",
+    "variety": "Đa Dạng Mẫu Mã",
+    "varietyDesc": "Hơn 200+ bộ kimono từ truyền thống đến hiện đại, phù hợp mọi phong cách.",
+    "service": "Dịch Vụ Nhanh",
+    "serviceDesc": "Đội ngũ chuyên nghiệp hỗ trợ mặc và làm tóc chỉ trong 30 phút.",
+    "quality": "Chất Lượng Cao",
+    "qualityDesc": "Kimono được nhập trực tiếp từ Nhật Bản, luôn sạch sẽ và được bảo quản cẩn thận."
+  },
+  "testimonials": {
+    "title": "Khách Hàng Nói Gì",
+    "subtitle": "Hơn 5,000+ khách hàng hài lòng với dịch vụ của chúng tôi"
+  },
+  "plans": {
+    "title": "Gói Thuê Kimono",
+    "subtitle": "Chọn gói thuê phù hợp với phong cách và ngân sách của bạn",
+    "women": "Kimono Nữ",
+    "men": "Kimono Nam",
+    "kids": "Trẻ Em",
+    "bookNow": "Đặt Ngay",
+    "includes": "Bao gồm",
+    "subCategories": {
+      "women-basic": "Kimono Cơ Bản",
+      "women-lace": "Kimono Ren",
+      "houmongi": "Houmongi",
+      "furisode": "Furisode",
+      "men-basic": "Kimono Nam Cơ Bản",
+      "men-hakama": "Lễ Phục, Hakama",
+      "kids-35": "3-5 Tuổi Nam Nữ",
+      "kids-7": "7 Tuổi"
+    },
+    "womenBasic": {
+      "title": "Kimono Nữ Cơ Bản",
+      "desc": "Bộ kimono truyền thống với họa tiết đơn giản, phù hợp cho dạo phố và chụp ảnh.",
+      "price": "500.000 ¥",
+      "includes": "Kimono, Obi, Geta, Phụ kiện cơ bản"
+    },
+    "womenLace": {
+      "title": "Kimono Ren",
+      "desc": "Kimono phong cách hiện đại kết hợp ren tinh tế, lãng mạn và nữ tính.",
+      "price": "700.000 ¥",
+      "includes": "Kimono ren, Obi, Geta, Phụ kiện, Làm tóc cơ bản"
+    },
+    "houmongi": {
+      "title": "Houmongi",
+      "desc": "Kimono bán trang trọng với họa tiết chạy liền, sang trọng and quý phái.",
+      "price": "900.000 ¥",
+      "includes": "Kimono Houmongi, Obi cao cấp, Zori, Phụ kiện, Làm tóc"
+    },
+    "furisode": {
+      "title": "Furisode",
+      "desc": "Kimono tay dài lộng lẫy, được yêu thích nhất cho chụp ảnh và sự kiện đặc biệt.",
+      "price": "1.200.000 ¥",
+      "includes": "Kimono Furisode, Obi cao cấp, Zori, Bộ phụ kiện đầy đủ, Làm tóc chuyên nghiệp"
+    },
+    "menBasic": {
+      "title": "Kimono Nam Cơ Bản",
+      "desc": "Bộ kimono nam truyền thống lịch lãm, phù hợp cho dạo phố và chụp ảnh cặp đôi.",
+      "price": "500.000 ¥",
+      "includes": "Kimono nam, Obi, Geta, Phụ kiện"
+    },
+    "menHakama": {
+      "title": "Lễ Phục / Hakama",
+      "desc": "Bộ hakama trang trọng phong cách samurai, hoàn hảo cho sự kiện đặc biệt.",
+      "price": "800.000 ¥",
+      "includes": "Kimono, Hakama, Obi, Zori, Phụ kiện đầy đủ"
+    },
+    "kids35": {
+      "title": "Kimono Trẻ Em (3-5 Tuổi)",
+      "desc": "Bộ kimono mini dễ thương cho bé, nhiều màu sắc tươi sáng.",
+      "price": "350.000 ¥",
+      "includes": "Kimono bé, Obi, Phụ kiện"
+    },
+    "kids7": {
+      "title": "Kimono Trẻ Em (7 Tuổi)",
+      "desc": "Kimono phong cách Shichi-Go-San cho bé 7 tuổi, thanh lịch và đáng yêu.",
+      "price": "400.000 ¥",
+      "includes": "Kimono, Obi, Phụ kiện, Kẹp tóc"
+    }
+  },
+  "pricing": {
+    "title": "Bảng Giá Thuê Kimono",
+    "subtitle": "Giá rõ ràng, minh bạch - không phát sinh chi phí ẩn",
+    "package": "Gói",
+    "price": "Giá",
+    "duration": "Thời gian",
+    "included": "Bao gồm",
+    "halfDay": "Nửa ngày (4 giờ)",
+    "fullDay": "Cả ngày (8 giờ)",
+    "extras": "Dịch Vụ Thêm",
+    "hairStyling": "Làm tóc cơ bản",
+    "hairStylingPro": "Làm tóc chuyên nghiệp",
+    "photoPackage": "Gói chụp ảnh (20 ảnh)",
+    "extraHour": "Thêm giờ",
+    "photoPackageInclude": "Gói chụp bao gồm: toàn bộ ảnh gốc và chỉnh sửa 10 ảnh",
+    "extraPhotoEdit": "Chỉnh sửa thêm ảnh: vui lòng trao đổi trực tiếp với thợ chụp (có phụ phí)",
+    "photoIssues": "Mọi vấn đề liên quan đến hình ảnh: vui lòng phản ánh trực tiếp với thợ chụp"
+  },
+  "booking": {
+    "title": "Đặt Lịch Thuê Kimono",
+    "subtitle": "Điền thông tin bên dưới, chúng tôi sẽ xác nhận trong vòng 1 giờ",
+    "date": "Ngày thuê",
+    "plan": "Gói thuê",
+    "selectPlan": "Chọn gói thuê",
+    "people": "Số người",
+    "name": "Họ và tên",
+    "phone": "Số điện thoại",
+    "email": "Email",
+    "note": "Nội dung thuê / Ghi chú",
+    "notePlaceholder": "Mô tả yêu cầu đặc biệt, số lượng từng loại kimono...",
+    "submit": "Gửi Đặt Lịch",
+    "zaloChat": "Chat Zalo",
+    "success": "Đã gửi đặt lịch thành công! Chúng tôi sẽ liên hệ bạn sớm."
+  },
+  "hairstyle": {
+    "title": "Mẫu Làm Tóc Cơ Bản",
+    "subtitle": "Tham khảo các kiểu tóc phổ biến khi mặc kimono"
+  },
+  "faq": {
+    "title": "Câu Hỏi Thường Gặp",
+    "subtitle": "Giải đáp những thắc mắc phổ biến về dịch vụ thuê kimono",
+    "q1": "Thời gian thuê kimono là bao lâu?",
+    "a1": "Chúng tôi có gói nửa ngày (4 giờ) và cả ngày (8 giờ). Bạn có thể thuê thêm giờ với phí 100.000 ¥/giờ.",
+    "q2": "Tôi cần đặt lịch trước bao lâu?",
+    "a2": "Chúng tôi khuyến khích đặt trước ít nhất 1-2 ngày, đặc biệt vào cuối tuần và ngày lễ. Tuy nhiên, bạn cũng có thể đến trực tiếp nếu còn kimono trống.",
+    "q3": "Giá thuê đã bao gồm làm tóc chưa?",
+    "a3": "Làm tóc cơ bản được bao gồm trong các gói từ Kimono Ren trở lên. Các gói cơ bản có thể đặt thêm dịch vụ làm tóc với phí 100.000 ¥ - 200.000 ¥.",
+    "q4": "Tôi có thể mang kimono đi chụp ảnh ngoài trời không?",
+    "a4": "Có! Bạn hoàn toàn có thể mặc kimono đi dạo phố, chụp ảnh tại các điểm tham quan. Chúng tôi sẽ hướng dẫn cách di chuyển thoải mái.",
+    "q5": "Có dịch vụ chụp ảnh chuyên nghiệp không?",
+    "a5": "Có, chúng tôi có gói chụp ảnh chuyên nghiệp với 20 ảnh đã chỉnh sửa, giá 500.000 ¥. Vui lòng đặt trước khi book lịch.",
+    "q6": "Chính sách hủy lịch như thế nào?",
+    "a6": "Bạn có thể hủy miễn phí trước 24 giờ. Hủy trong vòng 24 giờ sẽ mất phí 50% giá trị gói thuê.",
+    "q7": "Có kimono cho người ngoại cỡ không?",
+    "a7": "Có, chúng tôi có kimono size đặc biệt phù hợp cho nhiều vóc dáng. Vui lòng thông báo trước để chúng tôi chuẩn bị.",
+    "q8": "Cửa hàng ở đâu?",
+    "a8": "Ticktoc Kimono Rental tọa lạc tại Gion, Kyoto - trung tâm văn hóa truyền thống của Nhật Bản, gần các điểm tham quan nổi tiếng như Chùa Thanh Thủy (Kiyomizu-dera) và Đền Yasaka."
+  },
+  "gallery": {
+    "title": "Album Ảnh",
+    "subtitle": "Những khoảnh khắc đẹp của khách hàng tại Ticktoc Kimono Rental",
+    "note": "Hiện tại static placeholders; để admin upload ảnh mới hàng tuần, tích hợp headless CMS hoặc Cloudinary sau."
+  },
+  "contact": {
+    "title": "Liên Hệ",
+    "subtitle": "Liên hệ với chúng tôi qua các kênh dưới đây",
+    "address": "Địa chỉ",
+    "addressValue": "京都市東山区祇園町北側 347-25  3階",
+    "phone": "Điện thoại",
+    "phoneValue": "0901 234 567",
+    "email": "Email",
+    "emailValue": "hello@ticktockimono.vn",
+    "zalo": "Zalo",
+    "zaloValue": "0901 234 567",
+    "hours": "Giờ mở cửa",
+    "hoursValue": "9:00 - 19:00 (Thứ 2 - Chủ Nhật)",
+    "nearby": "Điểm Tham Quan Gần Đây",
+    "nearbyPlaces": "Chùa Thanh Thủy (Kiyomizu-dera), Đền Yasaka, Phố Hanamikoji, Sông Kamo, Chùa Kennin-ji, Gion Corner",
+    "shopTour": "Tham Quan Cửa Hàng"
+  },
+  "footer": {
+    "description": "Dịch vụ cho thuê kimono cao cấp tại TP. Hồ Chí Minh. Trải nghiệm vẻ đẹp truyền thống Nhật Bản ngay tại Sài Gòn.",
+    "quickLinks": "Liên Kết Nhanh",
+    "services": "Dịch Vụ",
+    "contactUs": "Liên Hệ",
+    "followUs": "Theo Dõi Chúng Tôi",
+    "rights": "Bản quyền thuộc về Ticktoc Kimono Rental. Bảo lưu mọi quyền.",
+    "nearby": "Gần điểm tham quan"
+  },
+  "videos": {
+    "badge": "Video Giới Thiệu",
+    "title": "Khám Phá Ticktoc Kimono Rental",
+    "subtitle": "Xem các video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Ticktoc Kimono Rental Sài Gòn"
+  },
+  "video": {
+    "badge": "Video Giới Thiệu",
+    "title": "Khám Phá Ticktoc Kimono Rental",
+    "subtitle": "Xem video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Ticktoc Kimono Rental Sài Gòn",
+    "thumbnailAlt": "Video giới thiệu Ticktoc Kimono Rental",
+    "caption": "Ticktoc Kimono Rental - Trải nghiệm thuê kimono cao cấp tại Sài Gòn"
+  },
+  "about": {
+    "badge": "Về Chúng Tôi",
+    "title": "Dịch Vụ Cho Thuê Kimono Cao Cấp Tại Sài Gòn",
+    "p1": "Ticktoc Kimono Rental là cửa hàng cho thuê kimono hàng đầu tại TP. Hồ Chí Minh, mang đến trải nghiệm văn hóa Nhật Bản đích thực ngay giữa lòng Sài Gòn. Với hơn 200 bộ kimono chính hãng nhập trực tiếp từ Nhật Bản, chúng tôi cung cấp đa dạng mẫu mã từ kimono truyền thống đến phong cách hiện đại - phù hợp cho nữ, nam và trẻ em.",
+    "p2": "Đội ngũ chuyên nghiệp của chúng tôi sẽ hỗ trợ bạn mặc kimono đúng cách, làm tóc kiểu Nhật, và tư vấn phụ kiện phù hợp chỉ trong 30 phút. Dù bạn muốn chụp ảnh kỷ niệm, dạo phố Sài Gòn, hay tham gia sự kiện đặc biệt - Ticktoc Kimono luôn sẵn sàng đồng hành cùng bạn tạo nên những khoảnh khắc đáng nhớ.",
+    "imageAlt": "Không gian cửa hàng Ticktoc Kimono Rental tại Sài Gòn",
+    "happyCustomers": "Khách hàng hài lòng",
+    "locationLabel": "Vị trí thuận tiện tại Gion, Kyoto",
+    "locationValue": "京都市東山区祇園町北側 347-25  3階 - Gần Chùa Thanh Thủy, Đền Yasaka và phố đi bộ Gion.",
+    "explorePlans": "Xem Gói Thuê",
+    "viewGallery": "Album Ảnh"
+  },
+  "process": {
+    "title": "Quy Trình Thuê Kimono Tại Ticktoc",
+    "subtitle": "Chỉ 4 bước đơn giản để c trải nghiệm kimono tuyệt vời",
+    "step1Title": "Đặt Lịch",
+    "step1Desc": "Đặt lịch qua website, Zalo hoặc điện thoại. Chọn gói thuê và ngày phù hợp với bạn.",
+    "step2Title": "Chọn Kimono",
+    "step2Desc": "Đến cửa hàng và chọn bộ kimono yêu thích từ bộ sưu tập hơn 200 mẫu đa dạng.",
+    "step3Title": "Mặc & Làm Tóc",
+    "step3Desc": "Đội ngũ chuyên nghiệp hỗ trợ mặc kimono đúng cách và làm tóc kiểu Nhật chỉ trong 30 phút.",
+    "step4Title": "Tận Hưởng & Chụp Ảnh",
+    "step4Desc": "Dạo phố Sài Gòn, chụp ảnh tại các điểm tham quan, lưu giữ những khoảnh khắc đáng nhớ."
+  },
+  "common": {
+    "bookNow": "Đặt Ngay",
+    "learnMore": "Tìm Hiểu Thêm",
+    "viewAll": "Xem Tất Cả",
+    "back": "Quay lại",
+    "home": "Trang chủ",
+    "addedToCart": "Đã thêm vào giỏ hàng"
+  }
+}

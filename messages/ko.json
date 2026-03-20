@@ -1,0 +1,242 @@
+{
+  "metadata": {
+    "title": "Ticktoc Kimono Rental - 사이공에서 아름다운 기모노 대여",
+    "description": "호치민시 프리미엄 기모노 대여 서비스. 다양한 종류, 합리적인 가격, 빠른 서비스. 지금 예약하세요!"
+  },
+  "nav": {
+    "home": "홈",
+    "plans": "대여 플랜",
+    "pricing": "가격표",
+    "booking": "예약하기",
+    "hairstyle": "헤어스타일",
+    "faq": "자주 묻는 질문",
+    "gallery": "갤러리",
+    "contact": "문의",
+    "women": "여성용 기모노",
+    "men": "남성용 기모노",
+    "kids": "아동용",
+    "womenBasic": "기본",
+    "womenLace": "레이스",
+    "womenHoumongi": "호몬기",
+    "womenFurisode": "후리소데",
+    "menBasic": "기본",
+    "menHakama": "하카마",
+    "kids35": "3-5세",
+    "kids7": "7세"
+  },
+  "hero": {
+    "title": "사이공에서 아름다운 기모노 대여",
+    "subtitle": "호치민시에서 일본 전통 문화의 아름다움을 경험하세요.",
+    "cta": "지금 예약",
+    "viewPlans": "플랜 보기"
+  },
+  "featured": {
+    "title": "추천 플랜",
+    "subtitle": "인기 기모노 대여 패키지",
+    "from": "부터",
+    "perDay": "/일",
+    "details": "상세"
+  },
+  "whyUs": {
+    "title": "Ticktoc을 선택하는 이유",
+    "subtitle": "사이공 최고의 기모노 대여 서비스",
+    "price": "합리적인 가격",
+    "priceDesc": "프리미엄 품질의 기모노를 경쟁력 있는 가격으로.",
+    "variety": "다양한 종류",
+    "varietyDesc": "전통부터 모던까지 200벌 이상.",
+    "service": "빠른 서비스",
+    "serviceDesc": "30분 안에 착용과 헤어스타일링 완료.",
+    "quality": "최고 품질",
+    "qualityDesc": "일본에서 직수입한 기모노."
+  },
+  "testimonials": {
+    "title": "고객 후기",
+    "subtitle": "5,000명 이상의 만족한 고객"
+  },
+  "plans": {
+    "title": "기모노 대여 플랜",
+    "subtitle": "스타일과 예산에 맞는 플랜을 선택하세요",
+    "women": "여성용 기모노",
+    "men": "남성용 기모노",
+    "kids": "아동용",
+    "bookNow": "예약하기",
+    "includes": "포함 사항",
+    "womenBasic": {
+      "title": "여성용 기본 기모노",
+      "desc": "심플한 전통 기모노.",
+      "price": "500,000 JPY",
+      "includes": "기모노, 오비, 게타, 기본 액세서리"
+    },
+    "womenLace": {
+      "title": "레이스 기모노",
+      "desc": "레이스 디테일의 모던 기모노.",
+      "price": "700,000 JPY",
+      "includes": "레이스 기모노, 오비, 게타, 액세서리, 기본 헤어"
+    },
+    "houmongi": {
+      "title": "호몬기",
+      "desc": "세미포멀 기모노.",
+      "price": "900,000 JPY",
+      "includes": "호몬기, 프리미엄 오비, 조리, 액세서리, 헤어"
+    },
+    "furisode": {
+      "title": "후리소데",
+      "desc": "화려한 긴소매 기모노.",
+      "price": "1,200,000 JPY",
+      "includes": "후리소데, 프리미엄 오비, 조리, 풀 액세서리, 프로 헤어"
+    },
+    "menBasic": {
+      "title": "남성용 기본 기모노",
+      "desc": "전통 남성 기모노.",
+      "price": "500,000 JPY",
+      "includes": "남성 기모노, 오비, 게타, 액세서리"
+    },
+    "menHakama": {
+      "title": "하카마",
+      "desc": "포멀 하카마 세트.",
+      "price": "800,000 JPY",
+      "includes": "기모노, 하카마, 오비, 조리, 풀 액세서리"
+    },
+    "kids35": {
+      "title": "아동 기모노 (3-5세)",
+      "desc": "귀여운 미니 기모노.",
+      "price": "350,000 JPY",
+      "includes": "아동 기모노, 오비, 액세서리"
+    },
+    "kids7": {
+      "title": "아동 기모노 (7세)",
+      "desc": "시치고산 스타일 기모노.",
+      "price": "400,000 JPY",
+      "includes": "기모노, 오비, 액세서리, 헤어핀"
+    }
+  },
+  "pricing": {
+    "title": "기모노 대여 가격",
+    "subtitle": "투명한 가격 - 숨겨진 비용 없음",
+    "package": "패키지",
+    "price": "가격",
+    "duration": "시간",
+    "included": "포함",
+    "halfDay": "반나절 (4시간)",
+    "fullDay": "하루 (8시간)",
+    "extras": "추가 서비스",
+    "hairStyling": "기본 헤어스타일링",
+    "hairStylingPro": "프로 헤어스타일링",
+    "photoPackage": "포토 패키지 (20장)",
+    "extraHour": "추가 1시간"
+  },
+  "booking": {
+    "title": "기모노 대여 예약",
+    "subtitle": "아래 양식을 작성하세요. 1시간 내 확인해 드립니다",
+    "date": "대여 날짜",
+    "plan": "대여 플랜",
+    "selectPlan": "플랜 선택",
+    "people": "인원수",
+    "name": "이름",
+    "phone": "전화번호",
+    "email": "이메일",
+    "note": "대여 내용 / 메모",
+    "notePlaceholder": "특별 요청사항...",
+    "submit": "예약 제출",
+    "zaloChat": "Zalo 채팅",
+    "success": "예약이 접수되었습니다!"
+  },
+  "hairstyle": {
+    "title": "기본 헤어스타일 갤러리",
+    "subtitle": "기모노 착용 시 인기 헤어스타일"
+  },
+  "faq": {
+    "title": "자주 묻는 질문",
+    "subtitle": "기모노 대여 서비스 FAQ",
+    "q1": "대여 시간은?",
+    "a1": "반나절(4시간), 하루(8시간) 패키지. 추가 100,000 JPY/시간.",
+    "q2": "얼마나 미리 예약해야 하나요?",
+    "a2": "1-2일 전 예약 권장. 당일 방문도 가능.",
+    "q3": "헤어스타일링 포함인가요?",
+    "a3": "레이스 기모노 이상 패키지에 포함.",
+    "q4": "기모노를 입고 외출할 수 있나요?",
+    "a4": "네! 거리 산책과 관광지 사진 촬영 가능.",
+    "q5": "프로 사진 촬영 서비스가 있나요?",
+    "a5": "네, 20장 편집 사진 500,000 JPY.",
+    "q6": "취소 정책은?",
+    "a6": "24시간 전 무료 취소. 24시간 내 50% 수수료.",
+    "q7": "큰 사이즈 기모노가 있나요?",
+    "a7": "네, 다양한 체형에 맞는 특수 사이즈 보유.",
+    "q8": "매장 위치는?",
+    "a8": "Ticktoc Kimono Rental은 교토 기온에 위치하며 기요미즈데라와 야사카 신사 근처에 있습니다."
+  },
+  "gallery": {
+    "title": "포토 갤러리",
+    "subtitle": "Ticktoc에서의 아름다운 순간들",
+    "note": "현재 정적 플레이스홀더."
+  },
+  "contact": {
+    "title": "문의하기",
+    "subtitle": "아래 채널로 연락주세요",
+    "address": "주소",
+    "addressValue": "京都市東山区祇園町北側 347-25  3階",
+    "phone": "전화",
+    "phoneValue": "0901 234 567",
+    "email": "이메일",
+    "emailValue": "hello@ticktockimono.vn",
+    "zalo": "Zalo",
+    "zaloValue": "0901 234 567",
+    "hours": "영업시간",
+    "hoursValue": "9:00 - 19:00 (매일)",
+    "nearby": "주변 관광지",
+    "nearbyPlaces": "기요미즈데라, 야사카 신사, 하나미코지 거리, 카모 강, 켄닌지 사원, 기온 코너",
+    "shopTour": "매장 투어"
+  },
+  "footer": {
+    "description": "호치민시 프리미엄 기모노 대여 서비스.",
+    "quickLinks": "빠른 링크",
+    "services": "서비스",
+    "contactUs": "문의",
+    "followUs": "팔로우",
+    "rights": "Ticktoc Kimono Rental. All rights reserved.",
+    "nearby": "관광지 인근"
+  },
+  "videos": {
+    "badge": "비디오 소개",
+    "title": "Ticktoc 기모노 대여 발견",
+    "subtitle": "매장 투어와 대여 체험 영상을 확인하세요"
+  },
+  "video": {
+    "badge": "매장 투어",
+    "title": "Ticktoc 기모노 대여점 소개",
+    "subtitle": "매장 투어 영상을 확인하세요",
+    "thumbnailAlt": "Ticktoc 기모노 대여 비디오 투어",
+    "caption": "Ticktoc Kimono Rental - 사이공 프리미엄 기모노 대여"
+  },
+  "about": {
+    "badge": "소개",
+    "title": "사이공 프리미엄 기모노 대여 서비스",
+    "p1": "Ticktoc Kimono Rental은 호치민시 최고의 기모노 대여점입니다. 일본에서 직수입한 200벌 이상의 정통 기모노를 보유하고 있습니다.",
+    "p2": "전문 스타일리스트가 30분 내에 기모노 착용과 일본식 헤��스타일링을 도와드립니다.",
+    "imageAlt": "Ticktoc 기모노 매장 내부",
+    "happyCustomers": "만족 고객",
+    "locationLabel": "교토 기온 중심부의 편리한 위치",
+    "locationValue": "京都市東山区祇園町北側 347-25  3階 - 기요미즈데라, 야사카 신사, 기온 산책로 근처.",
+    "explorePlans": "플랜 보기",
+    "viewGallery": "포토 갤러리"
+  },
+  "process": {
+    "title": "Ticktoc 기모노 대여 절차",
+    "subtitle": "4단계로 멋진 기모노 체험",
+    "step1Title": "예약",
+    "step1Desc": "웹사이트, Zalo, 전화로 예약하세요.",
+    "step2Title": "기모노 선택",
+    "step2Desc": "200벌 이상의 컬렉션에서 선택하세요.",
+    "step3Title": "착용 & 헤어",
+    "step3Desc": "전문 스타일리스트가 30분 내 지원.",
+    "step4Title": "즐기기 & 촬영",
+    "step4Desc": "사이공 거리를 산책하며 사진을 찍어보세요."
+  },
+  "common": {
+    "bookNow": "예약하기",
+    "learnMore": "더 알아보기",
+    "viewAll": "모두 보기",
+    "back": "뒤로",
+    "home": "홈"
+  }
+}

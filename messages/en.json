@@ -1,0 +1,247 @@
+{
+  "metadata": {
+    "title": "Ticktoc Kimono Rental - Beautiful Kimono Rental in Saigon",
+    "description": "Premium kimono rental service in Ho Chi Minh City. Wide variety, great prices, fast service. Book now!"
+  },
+  "nav": {
+    "home": "Home",
+    "plans": "Rental Plans",
+    "pricing": "Pricing",
+    "booking": "Book Now",
+    "hairstyle": "Hairstyles",
+    "faq": "FAQ",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "women": "Women's Kimono",
+    "men": "Men's Kimono",
+    "kids": "Kids",
+    "womenBasic": "Basic",
+    "womenLace": "Lace",
+    "womenHoumongi": "Houmongi",
+    "womenFurisode": "Furisode",
+    "menBasic": "Basic",
+    "menHakama": "Formal / Hakama",
+    "kids35": "Age 3-5",
+    "kids7": "Age 7"
+  },
+  "hero": {
+    "title": "Beautiful Kimono Rental in Saigon",
+    "subtitle": "Experience the beauty of traditional Japanese culture right in Ho Chi Minh City with our diverse kimono collection and professional service.",
+    "cta": "Book Now",
+    "viewPlans": "View Plans"
+  },
+  "featured": {
+    "title": "Featured Plans",
+    "subtitle": "Discover our most popular kimono rental packages",
+    "from": "From",
+    "perDay": "/day",
+    "details": "Details",
+    "noDescription": "No description available for this plan"
+  },
+  "whyUs": {
+    "title": "Why Choose Ticktoc?",
+    "subtitle": "We offer the best kimono rental experience in Saigon",
+    "price": "Best Prices",
+    "priceDesc": "Competitive pricing with premium quality kimonos guaranteed.",
+    "variety": "Wide Variety",
+    "varietyDesc": "Over 200+ kimonos from traditional to modern styles for every taste.",
+    "service": "Fast Service",
+    "serviceDesc": "Professional team helps you dress and style hair in just 30 minutes.",
+    "quality": "Premium Quality",
+    "qualityDesc": "Kimonos imported directly from Japan, always clean and well-maintained."
+  },
+  "testimonials": {
+    "title": "What Customers Say",
+    "subtitle": "Over 5,000+ satisfied customers trust our service"
+  },
+  "plans": {
+    "title": "Kimono Rental Plans",
+    "subtitle": "Choose the plan that fits your style and budget",
+    "women": "Women's Kimono",
+    "men": "Men's Kimono",
+    "kids": "Kids",
+    "bookNow": "Book Now",
+    "includes": "Includes",
+    "womenBasic": {
+      "title": "Women's Basic Kimono",
+      "desc": "Traditional kimono with simple patterns, perfect for strolling and photo shoots.",
+      "price": "500,000 JPY",
+      "includes": "Kimono, Obi, Geta, Basic accessories"
+    },
+    "womenLace": {
+      "title": "Lace Kimono",
+      "desc": "Modern kimono with delicate lace details, romantic and feminine.",
+      "price": "700,000 JPY",
+      "includes": "Lace Kimono, Obi, Geta, Accessories, Basic hair styling"
+    },
+    "houmongi": {
+      "title": "Houmongi",
+      "desc": "Semi-formal kimono with flowing painted designs, elegant and refined.",
+      "price": "900,000 JPY",
+      "includes": "Houmongi Kimono, Premium Obi, Zori, Accessories, Hair styling"
+    },
+    "furisode": {
+      "title": "Furisode",
+      "desc": "Stunning long-sleeve kimono, the most popular choice for photos and special events.",
+      "price": "1,200,000 JPY",
+      "includes": "Furisode Kimono, Premium Obi, Zori, Full accessories, Professional hair styling"
+    },
+    "menBasic": {
+      "title": "Men's Basic Kimono",
+      "desc": "Traditional men's kimono, perfect for strolling and couple photo shoots.",
+      "price": "500,000 JPY",
+      "includes": "Men's Kimono, Obi, Geta, Accessories"
+    },
+    "menHakama": {
+      "title": "Formal / Hakama",
+      "desc": "Formal hakama outfit samurai style, perfect for special occasions.",
+      "price": "800,000 JPY",
+      "includes": "Kimono, Hakama, Obi, Zori, Full accessories"
+    },
+    "kids35": {
+      "title": "Kids Kimono (Age 3-5)",
+      "desc": "Cute mini kimono for little ones, bright colors and fun patterns.",
+      "price": "350,000 JPY",
+      "includes": "Kids Kimono, Obi, Accessories"
+    },
+    "kids7": {
+      "title": "Kids Kimono (Age 7)",
+      "desc": "Shichi-Go-San style kimono for 7-year-olds, elegant and adorable.",
+      "price": "400,000 JPY",
+      "includes": "Kimono, Obi, Accessories, Hair clips"
+    }
+  },
+  "pricing": {
+    "title": "Kimono Rental Pricing",
+    "subtitle": "Clear, transparent pricing - no hidden fees",
+    "package": "Package",
+    "price": "Price",
+    "duration": "Duration",
+    "included": "Included",
+    "halfDay": "Half day (4 hours)",
+    "fullDay": "Full day (8 hours)",
+    "extras": "Extra Services",
+    "hairStyling": "Basic hair styling",
+    "hairStylingPro": "Professional hair styling",
+    "photoPackage": "Photo package (20 photos)",
+    "extraHour": "Extra hour",
+    "photoPackageInclude": "Photo package includes: all original photos and 10 edited photos",
+    "extraPhotoEdit": "Additional photo editing: please discuss directly with the photographer (extra fee applies)",
+    "photoIssues": "All image-related issues: please report directly to the photographer"
+  },
+  "booking": {
+    "title": "Book Kimono Rental",
+    "subtitle": "Fill in the form below, we'll confirm within 1 hour",
+    "date": "Rental date",
+    "plan": "Rental plan",
+    "selectPlan": "Select a plan",
+    "people": "Number of people",
+    "name": "Full name",
+    "phone": "Phone number",
+    "email": "Email",
+    "note": "Rental details / Notes",
+    "notePlaceholder": "Describe special requirements, quantity of each kimono type...",
+    "submit": "Submit Booking",
+    "zaloChat": "Chat on Zalo",
+    "success": "Booking submitted successfully! We'll contact you soon."
+  },
+  "hairstyle": {
+    "title": "Basic Hairstyle Gallery",
+    "subtitle": "Browse popular hairstyles for kimono wearing"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Common questions about our kimono rental service",
+    "q1": "How long is the rental period?",
+    "a1": "We offer half-day (4 hours) and full-day (8 hours) packages. Extra hours are available at 100,000 JPY/hour.",
+    "q2": "How far in advance should I book?",
+    "a2": "We recommend booking 1-2 days in advance, especially on weekends and holidays. Walk-ins are also welcome if kimonos are available.",
+    "q3": "Is hair styling included in the price?",
+    "a3": "Basic hair styling is included in Lace Kimono packages and above. For basic packages, hair styling is available as an add-on for 100,000 - 200,000 JPY.",
+    "q4": "Can I wear the kimono outside?",
+    "a4": "Yes! You can wear the kimono to stroll the streets and take photos at tourist spots. We'll guide you on how to move comfortably.",
+    "q5": "Do you offer professional photography?",
+    "a5": "Yes, we offer a professional photo package with 20 edited photos for 500,000 JPY. Please book in advance.",
+    "q6": "What is the cancellation policy?",
+    "a6": "Free cancellation 24 hours before. Cancellation within 24 hours incurs a 50% fee.",
+    "q7": "Do you have plus-size kimonos?",
+    "a7": "Yes, we have special sizes for various body types. Please let us know in advance so we can prepare.",
+    "q8": "Where is the shop located?",
+    "a8": "Ticktoc Kimono Rental is located in Gion, Kyoto - the heart of Japan's traditional culture, near famous landmarks like Kiyomizu-dera Temple and Yasaka Shrine."
+  },
+  "gallery": {
+    "title": "Photo Gallery",
+    "subtitle": "Beautiful moments of our customers at Ticktoc Kimono Rental",
+    "note": "Currently static placeholders; integrate headless CMS or Cloudinary for weekly admin uploads."
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch through any of the channels below",
+    "address": "Address",
+    "addressValue": "京都市東山区祇園町北側 347-25  3階",
+    "phone": "Phone",
+    "phoneValue": "0901 234 567",
+    "email": "Email",
+    "emailValue": "hello@ticktockimono.vn",
+    "zalo": "Zalo",
+    "zaloValue": "0901 234 567",
+    "hours": "Opening Hours",
+    "hoursValue": "9:00 AM - 7:00 PM (Mon - Sun)",
+    "nearby": "Nearby Attractions",
+    "nearbyPlaces": "Kiyomizu-dera Temple, Yasaka Shrine, Hanamikoji Street, Kamo River, Kennin-ji Temple, Gion Corner",
+    "shopTour": "Shop Tour"
+  },
+  "footer": {
+    "description": "Premium kimono rental service in Ho Chi Minh City. Experience the beauty of traditional Japanese culture in Saigon.",
+    "quickLinks": "Quick Links",
+    "services": "Services",
+    "contactUs": "Contact Us",
+    "followUs": "Follow Us",
+    "rights": "All rights reserved by Ticktoc Kimono Rental.",
+    "nearby": "Near attractions"
+  },
+  "videos": {
+    "badge": "Video Introduction",
+    "title": "Discover Ticktoc Kimono Rental",
+    "subtitle": "Watch our shop tour and rental experience videos at Ticktoc Kimono Rental Saigon"
+  },
+  "video": {
+    "badge": "Shop Tour",
+    "title": "Discover Ticktoc Kimono Rental",
+    "subtitle": "Watch our shop tour video and see the kimono rental experience at Ticktoc Kimono Rental Saigon",
+    "thumbnailAlt": "Ticktoc Kimono Rental video tour",
+    "caption": "Ticktoc Kimono Rental - Premium kimono rental experience in Saigon"
+  },
+  "about": {
+    "badge": "About Us",
+    "title": "Premium Kimono Rental Service in Saigon",
+    "p1": "Ticktoc Kimono Rental is the premier kimono rental shop in Ho Chi Minh City, bringing an authentic Japanese cultural experience to the heart of Saigon. With over 200 genuine kimonos imported directly from Japan, we offer a diverse selection from traditional to modern styles - suitable for women, men, and children.",
+    "p2": "Our professional team will help you dress in a kimono properly, style your hair in a Japanese fashion, and recommend accessories - all within 30 minutes. Whether you want memorable photos, a stroll through Saigon, or attend a special event - Ticktoc Kimono is always ready to help you create unforgettable moments.",
+    "imageAlt": "Ticktoc Kimono Rental shop interior in Saigon",
+    "happyCustomers": "Happy customers",
+    "locationLabel": "Convenient location in Gion, Kyoto",
+    "locationValue": "京都市東山区祇園町北側 347-25  3階 - Near Kiyomizu-dera Temple, Yasaka Shrine, and Gion walking street.",
+    "explorePlans": "Explore Plans",
+    "viewGallery": "Photo Gallery"
+  },
+  "process": {
+    "title": "How Kimono Rental Works at Ticktoc",
+    "subtitle": "Just 4 simple steps for an amazing kimono experience",
+    "step1Title": "Book Appointment",
+    "step1Desc": "Book via website, Zalo, or phone. Choose a plan and date that works for you.",
+    "step2Title": "Choose Your Kimono",
+    "step2Desc": "Visit our store and pick your favorite kimono from our collection of 200+ styles.",
+    "step3Title": "Dress Up & Hair Styling",
+    "step3Desc": "Our professional team helps you dress properly and style your hair in just 30 minutes.",
+    "step4Title": "Enjoy & Take Photos",
+    "step4Desc": "Stroll through Saigon, take photos at popular spots, and create unforgettable memories."
+  },
+  "common": {
+    "bookNow": "Book Now",
+    "learnMore": "Learn More",
+    "viewAll": "View All",
+    "back": "Back",
+    "home": "Home",
+    "addedToCart": "Added to cart"
+  }
+}

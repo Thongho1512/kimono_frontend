@@ -1,0 +1,242 @@
+{
+  "metadata": {
+    "title": "Ticktoc Kimono Rental - 西贡美丽和服租赁",
+    "description": "胡志明市高端和服租赁服务。品种丰富，价格实惠，服务快捷。立即预约！"
+  },
+  "nav": {
+    "home": "首页",
+    "plans": "租赁方案",
+    "pricing": "价格表",
+    "booking": "预约",
+    "hairstyle": "发型",
+    "faq": "常见问题",
+    "gallery": "相册",
+    "contact": "联系我们",
+    "women": "女士和服",
+    "men": "男士和服",
+    "kids": "儿童",
+    "womenBasic": "基础款",
+    "womenLace": "蕾丝款",
+    "womenHoumongi": "访问着",
+    "womenFurisode": "振袖",
+    "menBasic": "基础款",
+    "menHakama": "袴",
+    "kids35": "3-5岁",
+    "kids7": "7岁"
+  },
+  "hero": {
+    "title": "在西贡租赁美丽和服",
+    "subtitle": "在胡志明市体验日本传统文化之美。",
+    "cta": "立即预约",
+    "viewPlans": "查看方案"
+  },
+  "featured": {
+    "title": "精选方案",
+    "subtitle": "最受欢迎的和服租赁套餐",
+    "from": "起",
+    "perDay": "/天",
+    "details": "详情"
+  },
+  "whyUs": {
+    "title": "为什么选择Ticktoc？",
+    "subtitle": "西贡最佳和服租赁体验",
+    "price": "实惠价格",
+    "priceDesc": "以有竞争力的价格提供高品质和服。",
+    "variety": "品种丰富",
+    "varietyDesc": "200+套从传统到现代的和服。",
+    "service": "快速服务",
+    "serviceDesc": "30分钟内完成穿着和发型。",
+    "quality": "高端品质",
+    "qualityDesc": "从日本直接进口的和服。"
+  },
+  "testimonials": {
+    "title": "客户评价",
+    "subtitle": "超过5000位满意的客户"
+  },
+  "plans": {
+    "title": "和服租赁方案",
+    "subtitle": "选择适合您风格和预算的方案",
+    "women": "女士和服",
+    "men": "男士和服",
+    "kids": "儿童",
+    "bookNow": "立即预约",
+    "includes": "包含",
+    "womenBasic": {
+      "title": "女士基础和服",
+      "desc": "简约传统和服。",
+      "price": "500,000 JPY",
+      "includes": "和服、腰带、木屐、基本配饰"
+    },
+    "womenLace": {
+      "title": "蕾丝和服",
+      "desc": "蕾丝元素的现代和服。",
+      "price": "700,000 JPY",
+      "includes": "蕾丝和服、腰带、木屐、配饰、基本发型"
+    },
+    "houmongi": {
+      "title": "访问着",
+      "desc": "半正式和服。",
+      "price": "900,000 JPY",
+      "includes": "访问着、高级腰带、草履、配饰、发型"
+    },
+    "furisode": {
+      "title": "振袖",
+      "desc": "华丽长袖和服。",
+      "price": "1,200,000 JPY",
+      "includes": "振袖、高级腰带、草履、全套配饰、专业发型"
+    },
+    "menBasic": {
+      "title": "男士基础和服",
+      "desc": "传统男士和服。",
+      "price": "500,000 JPY",
+      "includes": "男士和服、腰带、木屐、配饰"
+    },
+    "menHakama": {
+      "title": "袴",
+      "desc": "正式袴套装。",
+      "price": "800,000 JPY",
+      "includes": "和服、袴、腰带、草履、全套配饰"
+    },
+    "kids35": {
+      "title": "儿童和服（3-5岁）",
+      "desc": "可爱迷你和服。",
+      "price": "350,000 JPY",
+      "includes": "儿童和服、腰带、配饰"
+    },
+    "kids7": {
+      "title": "儿童和服（7岁）",
+      "desc": "七五三风格和服。",
+      "price": "400,000 JPY",
+      "includes": "和服、腰带、配饰、发夹"
+    }
+  },
+  "pricing": {
+    "title": "和服租赁价格",
+    "subtitle": "透明定价 - 无隐藏费用",
+    "package": "套餐",
+    "price": "价格",
+    "duration": "时长",
+    "included": "包含",
+    "halfDay": "半天（4小时）",
+    "fullDay": "全天（8小时）",
+    "extras": "附加服务",
+    "hairStyling": "基本发型",
+    "hairStylingPro": "专业发型",
+    "photoPackage": "摄影套餐（20张）",
+    "extraHour": "额外1小时"
+  },
+  "booking": {
+    "title": "预约和服租赁",
+    "subtitle": "填写以下表格，我们将在1小时内确认",
+    "date": "租赁日期",
+    "plan": "租赁方案",
+    "selectPlan": "选择方案",
+    "people": "人数",
+    "name": "姓名",
+    "phone": "电话",
+    "email": "邮箱",
+    "note": "租赁内容/备注",
+    "notePlaceholder": "描述特殊需求...",
+    "submit": "提交预约",
+    "zaloChat": "Zalo聊天",
+    "success": "预约已提交！我们会尽快联系您。"
+  },
+  "hairstyle": {
+    "title": "基本发型展示",
+    "subtitle": "穿和服时的热门发型参考"
+  },
+  "faq": {
+    "title": "常见问题",
+    "subtitle": "和服租赁服务FAQ",
+    "q1": "租赁时间多长？",
+    "a1": "半天(4小时)和全天(8小时)。额外100,000 JPY/小时。",
+    "q2": "需要提前多久预约？",
+    "a2": "建议提前1-2天。也接受现场预约。",
+    "q3": "包含发型服务吗？",
+    "a3": "蕾丝款以上包含基本发型。",
+    "q4": "可以穿和服外出吗？",
+    "a4": "可以！可以穿着逛街拍照。",
+    "q5": "有专业摄影服务吗？",
+    "a5": "有，20张精修照片500,000 JPY。",
+    "q6": "取消政策？",
+    "a6": "24小时前免费取消。24小时内收50%费用。",
+    "q7": "有大码和服吗？",
+    "a7": "有，多种体型可选。",
+    "q8": "店铺在哪里？",
+    "a8": "Ticktoc Kimono Rental 位于京都祇园 - 日本传统文化的中心，靠近清水寺和八坂神社等著名景点。"
+  },
+  "gallery": {
+    "title": "照片集",
+    "subtitle": "Ticktoc客户的美好瞬间",
+    "note": "当前为静态占位图。"
+  },
+  "contact": {
+    "title": "联系我们",
+    "subtitle": "通过以下方式联系",
+    "address": "地址",
+    "addressValue": "京都市東山区祇園町北側 347-25  3階",
+    "phone": "电话",
+    "phoneValue": "0901 234 567",
+    "email": "邮箱",
+    "emailValue": "hello@ticktockimono.vn",
+    "zalo": "Zalo",
+    "zaloValue": "0901 234 567",
+    "hours": "营业时间",
+    "hoursValue": "9:00 - 19:00（每天）",
+    "nearby": "附近景点",
+    "nearbyPlaces": "清水寺、八坂神社、花见小路、鸭川、建仁寺、祇园角",
+    "shopTour": "店铺参观"
+  },
+  "footer": {
+    "description": "胡志明市高端和服租赁服务。",
+    "quickLinks": "快速链接",
+    "services": "服务",
+    "contactUs": "联系我们",
+    "followUs": "关注我们",
+    "rights": "Ticktoc Kimono Rental. All rights reserved.",
+    "nearby": "景点附近"
+  },
+  "videos": {
+    "badge": "视频介绍",
+    "title": "探索Ticktoc和服租赁",
+    "subtitle": "观看我们的店铺参观和租赁体验视频"
+  },
+  "video": {
+    "badge": "店铺参观",
+    "title": "探索Ticktoc和服租赁",
+    "subtitle": "观看我们的店铺参观视频",
+    "thumbnailAlt": "Ticktoc和服租赁视频参观",
+    "caption": "Ticktoc Kimono Rental - 西贡高端和服租赁体验"
+  },
+  "about": {
+    "badge": "关于我们",
+    "title": "西贡高端和服租赁服务",
+    "p1": "Ticktoc Kimono Rental是胡志明市首屈一指的和服租赁店。拥有200多套从日本直接进口的正宗和服。",
+    "p2": "专业团队30分钟内为您完成和服穿着和日式发型。无论是纪念照、逛街还是特殊活动，我们都能帮您创造难忘回忆。",
+    "imageAlt": "Ticktoc和服店铺内部",
+    "happyCustomers": "满意客户",
+    "locationLabel": "京都祇园中心便利位置",
+    "locationValue": "京都市東山区祇園町北側 347-25  3階 - 近清水寺、八坂神社和祇园步行街。",
+    "explorePlans": "查看方案",
+    "viewGallery": "照片集"
+  },
+  "process": {
+    "title": "Ticktoc和服租赁流程",
+    "subtitle": "4个简单步骤享受和服体验",
+    "step1Title": "预约",
+    "step1Desc": "通过网站、Zalo或电话预约。",
+    "step2Title": "选择和服",
+    "step2Desc": "从200+套和服中挑选您喜欢的。",
+    "step3Title": "穿着 & 发型",
+    "step3Desc": "专业团队30分钟内完成。",
+    "step4Title": "享受 & 拍照",
+    "step4Desc": "漫步西贡，在热门景点拍照留念。"
+  },
+  "common": {
+    "bookNow": "立即预约",
+    "learnMore": "了解更多",
+    "viewAll": "查看全部",
+    "back": "返回",
+    "home": "首页"
+  }
+}
