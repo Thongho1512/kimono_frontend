@@ -12,8 +12,6 @@ import api from "@/lib/api";
 import { Metadata } from "next";
 import { getSeoContent } from "@/lib/seo-registry";
 
-export const runtime = "edge";
-
 interface ProductDto {
   id: string;
   name: string;

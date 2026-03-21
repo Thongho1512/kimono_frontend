@@ -9,8 +9,6 @@ import { PageBreadcrumb } from "@/components/ticktoc/page-breadcrumb";
 import { X, Loader2 } from "lucide-react";
 import api from "@/lib/api";
 
-export const runtime = 'edge';
-
 interface AlbumImageDto {
   id: string;
   url: string;

@@ -1,5 +1,4 @@
 'use client';
-export const runtime = 'edge';
 
 import { useAuth } from '@/lib/auth-context';
 import { useForm } from 'react-hook-form';

@@ -3,7 +3,6 @@ import PlanDetailContent from "./plan-detail-content";
 import { Metadata } from "next";
 import { getSeoContent } from "@/lib/seo-registry";
 
-export const runtime = "edge";
 
 interface Props {
   params: Promise<{ slug: string; locale: string }>;

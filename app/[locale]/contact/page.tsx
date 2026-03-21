@@ -7,7 +7,6 @@ import { FadeIn } from "@/components/ticktoc/fade-in";
 import { PageBreadcrumb } from "@/components/ticktoc/page-breadcrumb";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
-export const runtime = 'edge';
 import api from "@/lib/api";
 import {
   MapPin,
