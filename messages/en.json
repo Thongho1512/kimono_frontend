@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Ticktoc Kimono Rental - Beautiful Kimono Rental in Saigon",
-    "description": "Premium kimono rental service in Ho Chi Minh City. Wide variety, great prices, fast service. Book now!"
+    "title": "Kyo kimono rental &nail - Premium Kimono Rental in Kyoto",
+    "description": "Best kimono rental service in Gion, Kyoto. Wide variety of traditional kimonos, professional hair styling, and photo packages."
   },
   "nav": {
     "home": "Home",
@@ -25,8 +25,8 @@
     "kids7": "Age 7"
   },
   "hero": {
-    "title": "Beautiful Kimono Rental in Saigon",
-    "subtitle": "Experience the beauty of traditional Japanese culture right in Ho Chi Minh City with our diverse kimono collection and professional service.",
+    "title": "Premium Kimono Rental in Kyoto",
+    "subtitle": "Experience the beauty of traditional Japanese culture in the heart of Gion, Kyoto with our diverse kimono collection, professional hair styling, and photography services.",
     "cta": "Book Now",
     "viewPlans": "View Plans"
   },
@@ -39,8 +39,8 @@
     "noDescription": "No description available for this plan"
   },
   "whyUs": {
-    "title": "Why Choose Ticktoc?",
-    "subtitle": "We offer the best kimono rental experience in Saigon",
+    "title": "Why Choose Kyo kimono rental &nail?",
+    "subtitle": "We offer the best kimono rental experience in Kyoto",
     "price": "Best Prices",
     "priceDesc": "Competitive pricing with premium quality kimonos guaranteed.",
     "variety": "Wide Variety",
@@ -167,24 +167,24 @@
     "q7": "Do you have plus-size kimonos?",
     "a7": "Yes, we have special sizes for various body types. Please let us know in advance so we can prepare.",
     "q8": "Where is the shop located?",
-    "a8": "Ticktoc Kimono Rental is located in Gion, Kyoto - the heart of Japan's traditional culture, near famous landmarks like Kiyomizu-dera Temple and Yasaka Shrine."
+    "a8": "Kyo kimono rental &nail is located in Gion, Kyoto - the heart of Japan's traditional culture, near famous landmarks like Kiyomizu-dera Temple and Yasaka Shrine. Address: 京都市東山区祇園町北側 347-25 3階"
   },
   "gallery": {
     "title": "Photo Gallery",
-    "subtitle": "Beautiful moments of our customers at Ticktoc Kimono Rental",
+    "subtitle": "Beautiful moments of our customers at Kyo kimono rental &nail",
     "note": "Currently static placeholders; integrate headless CMS or Cloudinary for weekly admin uploads."
   },
   "contact": {
     "title": "Contact Us",
     "subtitle": "Get in touch through any of the channels below",
     "address": "Address",
-    "addressValue": "京都市東山区祇園町北側 347-25  3階",
+    "addressValue": "京都市東山区祇園町北側 347-25 3階",
     "phone": "Phone",
-    "phoneValue": "0901 234 567",
+    "phoneValue": "+81-000-000-000",
     "email": "Email",
-    "emailValue": "hello@ticktockimono.vn",
+    "emailValue": "contact@kyokimono.com",
     "zalo": "Zalo",
-    "zaloValue": "0901 234 567",
+    "zaloValue": "+81-000-000-000",
     "hours": "Opening Hours",
     "hoursValue": "9:00 AM - 7:00 PM (Mon - Sun)",
     "nearby": "Nearby Attractions",
@@ -192,32 +192,32 @@
     "shopTour": "Shop Tour"
   },
   "footer": {
-    "description": "Premium kimono rental service in Ho Chi Minh City. Experience the beauty of traditional Japanese culture in Saigon.",
+    "description": "Premium kimono rental service in Kyoto, Japan. Experience the beauty of traditional Japanese culture in Gion.",
     "quickLinks": "Quick Links",
     "services": "Services",
     "contactUs": "Contact Us",
     "followUs": "Follow Us",
-    "rights": "All rights reserved by Ticktoc Kimono Rental.",
+    "rights": "All rights reserved by Kyo kimono rental &nail.",
     "nearby": "Near attractions"
   },
   "videos": {
     "badge": "Video Introduction",
-    "title": "Discover Ticktoc Kimono Rental",
-    "subtitle": "Watch our shop tour and rental experience videos at Ticktoc Kimono Rental Saigon"
+    "title": "Discover Kyo kimono rental &nail",
+    "subtitle": "Watch our shop tour and rental experience videos at Kyo kimono rental &nail Kyoto"
   },
   "video": {
     "badge": "Shop Tour",
-    "title": "Discover Ticktoc Kimono Rental",
-    "subtitle": "Watch our shop tour video and see the kimono rental experience at Ticktoc Kimono Rental Saigon",
-    "thumbnailAlt": "Ticktoc Kimono Rental video tour",
-    "caption": "Ticktoc Kimono Rental - Premium kimono rental experience in Saigon"
+    "title": "Discover Kyo kimono rental &nail",
+    "subtitle": "Watch our shop tour video and see the kimono rental experience at Kyo kimono rental &nail Kyoto",
+    "thumbnailAlt": "Kyo kimono rental &nail video tour",
+    "caption": "Kyo kimono rental &nail - Premium kimono rental experience in Kyoto"
   },
   "about": {
     "badge": "About Us",
-    "title": "Premium Kimono Rental Service in Saigon",
-    "p1": "Ticktoc Kimono Rental is the premier kimono rental shop in Ho Chi Minh City, bringing an authentic Japanese cultural experience to the heart of Saigon. With over 200 genuine kimonos imported directly from Japan, we offer a diverse selection from traditional to modern styles - suitable for women, men, and children.",
-    "p2": "Our professional team will help you dress in a kimono properly, style your hair in a Japanese fashion, and recommend accessories - all within 30 minutes. Whether you want memorable photos, a stroll through Saigon, or attend a special event - Ticktoc Kimono is always ready to help you create unforgettable moments.",
-    "imageAlt": "Ticktoc Kimono Rental shop interior in Saigon",
+    "title": "Premium Kimono Rental Service in Gion, Kyoto",
+    "p1": "Kyo kimono rental &nail is a premier kimono rental shop located in Gion, Kyoto. With over 200 genuine kimonos, we offer a diverse selection from traditional to modern styles - suitable for women, men, and children.",
+    "p2": "Our professional team will help you dress properly, style your hair perfectly, and arrange photography. Whether you're strolling through Kyoto, visiting Kiyomizu-dera, or attending an event, Kyo kimono rental &nail is ready to help you create unforgettable moments.",
+    "imageAlt": "Kyo kimono rental &nail shop interior in Kyoto",
     "happyCustomers": "Happy customers",
     "locationLabel": "Convenient location in Gion, Kyoto",
     "locationValue": "京都市東山区祇園町北側 347-25  3階 - Near Kiyomizu-dera Temple, Yasaka Shrine, and Gion walking street.",
@@ -225,7 +225,7 @@
     "viewGallery": "Photo Gallery"
   },
   "process": {
-    "title": "How Kimono Rental Works at Ticktoc",
+    "title": "How Kimono Rental Works at Kyo kimono rental &nail",
     "subtitle": "Just 4 simple steps for an amazing kimono experience",
     "step1Title": "Book Appointment",
     "step1Desc": "Book via website, Zalo, or phone. Choose a plan and date that works for you.",
@@ -234,7 +234,7 @@
     "step3Title": "Dress Up & Hair Styling",
     "step3Desc": "Our professional team helps you dress properly and style your hair in just 30 minutes.",
     "step4Title": "Enjoy & Take Photos",
-    "step4Desc": "Stroll through Saigon, take photos at popular spots, and create unforgettable memories."
+    "step4Desc": "Stroll through Kyoto, take photos at popular spots, and create unforgettable memories."
   },
   "common": {
     "bookNow": "Book Now",

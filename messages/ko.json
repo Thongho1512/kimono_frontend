@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Ticktoc Kimono Rental - 사이공에서 아름다운 기모노 대여",
-    "description": "호치민시 프리미엄 기모노 대여 서비스. 다양한 종류, 합리적인 가격, 빠른 서비스. 지금 예약하세요!"
+    "title": "Kyo kimono rental &nail - 교토 기온 기모노 대여",
+    "description": "교토 기온 최고의 기모노 대여 서비스. 다양한 전통 기모노, 전문 헤어 스타일링 및 사진 촬영 패키지를 제공합니다."
   },
   "nav": {
     "home": "홈",
@@ -25,8 +25,8 @@
     "kids7": "7세"
   },
   "hero": {
-    "title": "사이공에서 아름다운 기모노 대여",
-    "subtitle": "호치민시에서 일본 전통 문화의 아름다움을 경험하세요.",
+    "title": "교토 프리미엄 기모노 대여",
+    "subtitle": "다양한 기모노 컬렉션, 전문 헤어 스타일링, 사진 촬영 서비스로 교토 기온 한가운데서 일본 전통 문화의 아름다움을 경험하세요.",
     "cta": "지금 예약",
     "viewPlans": "플랜 보기"
   },
@@ -38,8 +38,8 @@
     "details": "상세"
   },
   "whyUs": {
-    "title": "Ticktoc을 선택하는 이유",
-    "subtitle": "사이공 최고의 기모노 대여 서비스",
+    "title": "Kyo kimono rental &nail을 선택하는 이유",
+    "subtitle": "교토 최고의 기모노 대여 서비스",
     "price": "합리적인 가격",
     "priceDesc": "프리미엄 품질의 기모노를 경쟁력 있는 가격으로.",
     "variety": "다양한 종류",
@@ -163,24 +163,24 @@
     "q7": "큰 사이즈 기모노가 있나요?",
     "a7": "네, 다양한 체형에 맞는 특수 사이즈 보유.",
     "q8": "매장 위치는?",
-    "a8": "Ticktoc Kimono Rental은 교토 기온에 위치하며 기요미즈데라와 야사카 신사 근처에 있습니다."
+    "a8": "Kyo kimono rental &nail은 기요미즈데라, 야사카 신사 등 유명 관광지와 가까운 교토 기온에 위치하고 있습니다. 주소: 京都市東山区祇園町北側 347-25 3階"
   },
   "gallery": {
     "title": "포토 갤러리",
-    "subtitle": "Ticktoc에서의 아름다운 순간들",
+    "subtitle": "Kyo kimono rental &nail에서의 아름다운 순간들",
     "note": "현재 정적 플레이스홀더."
   },
   "contact": {
     "title": "문의하기",
     "subtitle": "아래 채널로 연락주세요",
     "address": "주소",
-    "addressValue": "京都市東山区祇園町北側 347-25  3階",
+    "addressValue": "京都市東山区祇園町北側 347-25 3階",
     "phone": "전화",
-    "phoneValue": "0901 234 567",
+    "phoneValue": "+81-000-000-000",
     "email": "이메일",
-    "emailValue": "hello@ticktockimono.vn",
+    "emailValue": "contact@kyokimono.com",
     "zalo": "Zalo",
-    "zaloValue": "0901 234 567",
+    "zaloValue": "+81-000-000-000",
     "hours": "영업시간",
     "hoursValue": "9:00 - 19:00 (매일)",
     "nearby": "주변 관광지",
@@ -188,32 +188,32 @@
     "shopTour": "매장 투어"
   },
   "footer": {
-    "description": "호치민시 프리미엄 기모노 대여 서비스.",
+    "description": "일본 교토의 프리미엄 기모노 대여 서비스. 기온에서 일본 전통 문화의 아름다움을 경험하세요.",
     "quickLinks": "빠른 링크",
     "services": "서비스",
     "contactUs": "문의",
     "followUs": "팔로우",
-    "rights": "Ticktoc Kimono Rental. All rights reserved.",
+    "rights": "Kyo kimono rental &nail. All rights reserved.",
     "nearby": "관광지 인근"
   },
   "videos": {
     "badge": "비디오 소개",
-    "title": "Ticktoc 기모노 대여 발견",
+    "title": "Kyo kimono rental &nail 기모노 대여 발견",
     "subtitle": "매장 투어와 대여 체험 영상을 확인하세요"
   },
   "video": {
     "badge": "매장 투어",
-    "title": "Ticktoc 기모노 대여점 소개",
+    "title": "Kyo kimono rental &nail 기모노 대여점 소개",
     "subtitle": "매장 투어 영상을 확인하세요",
-    "thumbnailAlt": "Ticktoc 기모노 대여 비디오 투어",
-    "caption": "Ticktoc Kimono Rental - 사이공 프리미엄 기모노 대여"
+    "thumbnailAlt": "Kyo kimono rental &nail 기모노 대여 비디오 투어",
+    "caption": "Kyo kimono rental &nail - 교토 프리미엄 기모노 대여"
   },
   "about": {
     "badge": "소개",
-    "title": "사이공 프리미엄 기모노 대여 서비스",
-    "p1": "Ticktoc Kimono Rental은 호치민시 최고의 기모노 대여점입니다. 일본에서 직수입한 200벌 이상의 정통 기모노를 보유하고 있습니다.",
-    "p2": "전문 스타일리스트가 30분 내에 기모노 착용과 일본식 헤��스타일링을 도와드립니다.",
-    "imageAlt": "Ticktoc 기모노 매장 내부",
+    "title": "교토 기온 프리미엄 기모노 대여 서비스",
+    "p1": "Kyo kimono rental &nail은 교토 기온에 위치한 프리미엄 기모노 대여점입니다. 200여 벌의 정품 기모노를 보유하고 있으며 여성, 남성, 어린이를 위한 전통 스타일부터 모던 스타일까지 다양하게 제공합니다.",
+    "p2": "전문 팀이 올바른 기모노 착용, 완벽한 헤어 스타일링 및 사진 촬영을 도와드립니다. 교토의 역사적인 거리를 산책하든 특별한 이벤트에 참석하든 잊지 못할 추억을 만들어 드립니다.",
+    "imageAlt": "Kyo kimono rental &nail 기모노 매장 내부",
     "happyCustomers": "만족 고객",
     "locationLabel": "교토 기온 중심부의 편리한 위치",
     "locationValue": "京都市東山区祇園町北側 347-25  3階 - 기요미즈데라, 야사카 신사, 기온 산책로 근처.",
@@ -221,7 +221,7 @@
     "viewGallery": "포토 갤러리"
   },
   "process": {
-    "title": "Ticktoc 기모노 대여 절차",
+    "title": "Kyo kimono rental &nail 기모노 대여 절차",
     "subtitle": "4단계로 멋진 기모노 체험",
     "step1Title": "예약",
     "step1Desc": "웹사이트, Zalo, 전화로 예약하세요.",
@@ -230,7 +230,7 @@
     "step3Title": "착용 & 헤어",
     "step3Desc": "전문 스타일리스트가 30분 내 지원.",
     "step4Title": "즐기기 & 촬영",
-    "step4Desc": "사이공 거리를 산책하며 사진을 찍어보세요."
+    "step4Desc": "교토 거리를 산책하며 사진을 찍어보세요."
   },
   "common": {
     "bookNow": "예약하기",

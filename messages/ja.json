@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Ticktoc Kimono Rental - サイゴンで美しい着物レンタル",
-    "description": "ホーチミン市のプレミアム着物レンタルサービス。豊富な品揃え、お手頃価格、迅速なサービス。今すぐご予約を！"
+    "title": "Kyo kimono rental &nail - 京都・祇園の着物レンタル",
+    "description": "京都祇園の本格着物レンタル店。伝統的な着物からモダンな柄まで豊富にご用意。プロによるヘアセットや写真撮影サービスも承ります。"
   },
   "nav": {
     "home": "ホーム",
@@ -25,8 +25,8 @@
     "kids7": "7歳"
   },
   "hero": {
-    "title": "サイゴンで美しい着物レンタル",
-    "subtitle": "ホーチミン市で日本の伝統的な美しさを体験。豊富な着物コレクションとプロフェッショナルなサービスをご提供します。",
+    "title": "京都・祇園で本格着物レンタル",
+    "subtitle": "100種類以上の豊富な着物とプロのヘアセット、写真撮影サービスで、京都での特別な思い出作りをサポートします。",
     "cta": "今すぐ予約",
     "viewPlans": "プランを見る"
   },
@@ -38,8 +38,8 @@
     "details": "詳細"
   },
   "whyUs": {
-    "title": "Ticktocが選ばれる理由",
-    "subtitle": "サイゴンで最高の着物レンタル体験をご提供します",
+    "title": "Kyo kimono rental &nailが選ばれる理由",
+    "subtitle": "京都で最高の着物レンタル体験をご提供します",
     "price": "お手頃価格",
     "priceDesc": "高品質な着物を競争力のある価格でご提供します。",
     "variety": "豊富な品揃え",
@@ -163,24 +163,24 @@
     "q7": "大きいサイズの着物はありますか？",
     "a7": "はい、さまざまな体型に対応する特別サイズをご用意しています。事前にお知らせください。",
     "q8": "お店の場所は？",
-    "a8": "Ticktoc Kimono Rentalは京都の祇園にあり、清水寺や八坂神社の近くです。"
+    "a8": "Kyo kimono rental &nailは、清水寺や八坂神社など京都の有名な観光地に近い祇園に位置しています。住所：京都市東山区祇園町北側 347-25 3階"
   },
   "gallery": {
     "title": "フォトギャラリー",
-    "subtitle": "Ticktoc Kimono Rentalでのお客様の美しい瞬間",
+    "subtitle": "Kyo kimono rental &nailでのお客様の美しい瞬間",
     "note": "現在は静的プレースホルダー。ヘッドレスCMSまたはCloudinaryを統合予定。"
   },
   "contact": {
     "title": "お問い合わせ",
     "subtitle": "以下のチャネルからお気軽にお問い合わせください",
     "address": "住所",
-    "addressValue": "京都市東山区祇園町北側 347-25  3階",
+    "addressValue": "京都市東山区祇園町北側 347-25 3階",
     "phone": "電話",
-    "phoneValue": "0901 234 567",
+    "phoneValue": "+81-000-000-000",
     "email": "メール",
-    "emailValue": "hello@ticktockimono.vn",
+    "emailValue": "contact@kyokimono.com",
     "zalo": "Zalo",
-    "zaloValue": "0901 234 567",
+    "zaloValue": "+81-000-000-000",
     "hours": "営業時間",
     "hoursValue": "9:00 - 19:00（月〜日）",
     "nearby": "近くの観光スポット",
@@ -188,32 +188,32 @@
     "shopTour": "ショップツアー"
   },
   "footer": {
-    "description": "ホーチミン市のプレミアム着物レンタルサービス。サイゴンで日本の伝統的な美しさを体験。",
+    "description": "京都・祇園のプレミアム着物レンタルサービス。日本の伝統美をご体験ください。",
     "quickLinks": "クイックリンク",
     "services": "サービス",
     "contactUs": "お問い合わせ",
     "followUs": "フォロー",
-    "rights": "Ticktoc Kimono Rental. All rights reserved.",
+    "rights": "Kyo kimono rental &nail. All rights reserved.",
     "nearby": "観光スポット近く"
   },
   "videos": {
     "badge": "ビデオ紹介",
-    "title": "Ticktoc Kimono Rentalを発見",
+    "title": "Kyo kimono rental &nailを発見",
     "subtitle": "ショップツアーとレンタル体験動画をご覧ください"
   },
   "video": {
     "badge": "ショップツアー",
-    "title": "Ticktoc Kimono Rentalを発見",
-    "subtitle": "ショップツアー動画をご覧ください。サイゴンでの着物レンタル体験をご紹介します",
-    "thumbnailAlt": "Ticktoc Kimono Rentalのビデオツアー",
-    "caption": "Ticktoc Kimono Rental - サイゴンのプレミアム着物レンタル体験"
+    "title": "Kyo kimono rental &nailを発見",
+    "subtitle": "ショップツアー動画をご覧ください。京都での着物レンタル体験をご紹介します",
+    "thumbnailAlt": "Kyo kimono rental &nailのビデオツアー",
+    "caption": "Kyo kimono rental &nail - 京都のプレミアム着物レンタル体験"
   },
   "about": {
     "badge": "私たちについて",
-    "title": "サイゴンのプレミアム着物レンタルサービス",
-    "p1": "Ticktoc Kimono Rentalは、ホーチミン市でNo.1の着物レンタルショップです。日本から直輸入した200着以上の本格的な着物をご用意し、女性用、男性用、お子様用まで幅広いスタイルを取り揃えています。",
-    "p2": "プロのスタッフが着付け、日本式ヘアスタイリング、アクセサリーのコーディネートまで、わずか30分でサポートいたします。記念撮影、サイゴン散策、特別なイベントなど、忘れられない思い出作りをお手伝いします。",
-    "imageAlt": "サイゴンのTicktoc Kimono Rentalの店内",
+    "title": "京都・祇園のプレミアム着物レンタル",
+    "p1": "Kyo kimono rental &nailは、京都祇園にあるプレミアムな着物レンタルショップです。200着以上の本格的な着物を取り揃え、伝統的なスタイルからモダンなデザインまで、女性、男性、お子様向けに豊富にご用意しています。",
+    "p2": "プロのスタッフが着付け、ヘアセット、そして写真撮影を行います。京都の歴史ある街並みを散策したり、特別なイベントに参加したり、皆様の忘れられない思い出作りを全力でサポートいたします。",
+    "imageAlt": "京都のKyo kimono rental &nailの店内",
     "happyCustomers": "満足のお客様",
     "locationLabel": "京都・祇園の中心部の便利な立地",
     "locationValue": "京都市東山区祇園町北側 347-25  3階 - 清水寺、八坂神社、祇園の散策路の近く。",
@@ -221,7 +221,7 @@
     "viewGallery": "フォトギャラリー"
   },
   "process": {
-    "title": "Ticktocでの着物レンタルの流れ",
+    "title": "Kyo kimono rental &nailでの着物レンタルの流れ",
     "subtitle": "4つの簡単なステップで素敵な着物体験を",
     "step1Title": "予約",
     "step1Desc": "ウェブサイト、Zalo、または電話でご予約。お好みのプランと日��をお選びください。",
@@ -230,7 +230,7 @@
     "step3Title": "着付け＆ヘアスタイリング",
     "step3Desc": "プロのスタッフが30分で着付けとヘアスタイリングをサポートします。",
     "step4Title": "楽しむ＆撮影",
-    "step4Desc": "サイゴンの街を散策し、人気スポットで写真を撮り、忘れられない思い出を。"
+    "step4Desc": "京都の街を散策し、人気スポットで写真を撮り、忘れられない思い出を。"
   },
   "common": {
     "bookNow": "予約する",

@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Ticktoc Kimono Rental - Thuê Kimono Đẹp Tại Sài Gòn",
-    "description": "Dịch vụ cho thuê kimono cao cấp tại TP. Hồ Chí Minh. Đa dạng mẫu mã, giá tốt, phục vụ nhanh chóng. Đặt lịch ngay!"
+    "title": "Kyo kimono rental &nail - Cho Thuê Kimono Đẹp Tại Kyoto",
+    "description": "Dịch vụ cho thuê kimono uy tín tại Gion, Kyoto. Đa dạng mẫu mã truyền thống, dịch vụ làm tóc chỉnh chu và nhiếp ảnh chuyên nghiệp."
   },
   "nav": {
     "home": "Trang Chủ",
@@ -25,8 +25,8 @@
     "kids7": "7 Tuổi"
   },
   "hero": {
-    "title": "Thuê Kimono Đẹp Tại Sài Gòn",
-    "subtitle": "Trải nghiệm vẻ đẹp truyền thống Nhật Bản ngay tại TP. Hồ Chí Minh với bộ sưu tập kimono đa dạng và dịch vụ chuyên nghiệp.",
+    "title": "Thuê Kimono & Làm Tóc Tại Kyoto",
+    "subtitle": "Trải nghiệm vẻ đẹp văn hóa truyền thống Nhật Bản ngay giữa lòng Gion, Kyoto với bộ sưu tập kimono đa dạng, dịch vụ làm tóc và chụp ảnh chuyên nghiệp.",
     "cta": "Đặt Lịch Ngay",
     "viewPlans": "Xem Gói Thuê"
   },
@@ -39,8 +39,8 @@
     "noDescription": "Chưa có mô tả cho gói thuê này"
   },
   "whyUs": {
-    "title": "Tại Sao Chọn Ticktoc?",
-    "subtitle": "Chúng tôi mang đến trải nghiệm thuê kimono tốt nhất tại Sài Gòn",
+    "title": "Tại Sao Chọn Kyo kimono rental &nail?",
+    "subtitle": "Chúng tôi mang đến trải nghiệm thuê kimono tốt nhất tại Kyoto",
     "price": "Giá Tốt Nhất",
     "priceDesc": "Cam kết giá thuê kimono cạnh tranh nhất thị trường với chất lượng cao cấp.",
     "variety": "Đa Dạng Mẫu Mã",
@@ -177,24 +177,24 @@
     "q7": "Có kimono cho người ngoại cỡ không?",
     "a7": "Có, chúng tôi có kimono size đặc biệt phù hợp cho nhiều vóc dáng. Vui lòng thông báo trước để chúng tôi chuẩn bị.",
     "q8": "Cửa hàng ở đâu?",
-    "a8": "Ticktoc Kimono Rental tọa lạc tại Gion, Kyoto - trung tâm văn hóa truyền thống của Nhật Bản, gần các điểm tham quan nổi tiếng như Chùa Thanh Thủy (Kiyomizu-dera) và Đền Yasaka."
+    "a8": "Kyo kimono rental &nail tọa lạc tại Gion, Kyoto - trung tâm văn hóa Nhật Bản, gần Chùa Thanh Thủy (Kiyomizu-dera) và Đền Yasaka. Địa chỉ: 京都市東山区祇園町北側 347-25 3階."
   },
   "gallery": {
     "title": "Album Ảnh",
-    "subtitle": "Những khoảnh khắc đẹp của khách hàng tại Ticktoc Kimono Rental",
+    "subtitle": "Những khoảnh khắc đẹp của khách hàng tại Kyo kimono rental &nail",
     "note": "Hiện tại static placeholders; để admin upload ảnh mới hàng tuần, tích hợp headless CMS hoặc Cloudinary sau."
   },
   "contact": {
     "title": "Liên Hệ",
     "subtitle": "Liên hệ với chúng tôi qua các kênh dưới đây",
     "address": "Địa chỉ",
-    "addressValue": "京都市東山区祇園町北側 347-25  3階",
+    "addressValue": "京都市東山区祇園町北側 347-25 3階",
     "phone": "Điện thoại",
-    "phoneValue": "0901 234 567",
+    "phoneValue": "+81-000-000-000",
     "email": "Email",
-    "emailValue": "hello@ticktockimono.vn",
+    "emailValue": "contact@kyokimono.com",
     "zalo": "Zalo",
-    "zaloValue": "0901 234 567",
+    "zaloValue": "+81-000-000-000",
     "hours": "Giờ mở cửa",
     "hoursValue": "9:00 - 19:00 (Thứ 2 - Chủ Nhật)",
     "nearby": "Điểm Tham Quan Gần Đây",
@@ -202,32 +202,32 @@
     "shopTour": "Tham Quan Cửa Hàng"
   },
   "footer": {
-    "description": "Dịch vụ cho thuê kimono cao cấp tại TP. Hồ Chí Minh. Trải nghiệm vẻ đẹp truyền thống Nhật Bản ngay tại Sài Gòn.",
+    "description": "Dịch vụ cho thuê kimono chuyên nghiệp tại Kyoto, Nhật Bản. Trải nghiệm vẻ đẹp Nhật Bản đích thực tại Gion.",
     "quickLinks": "Liên Kết Nhanh",
     "services": "Dịch Vụ",
     "contactUs": "Liên Hệ",
     "followUs": "Theo Dõi Chúng Tôi",
-    "rights": "Bản quyền thuộc về Ticktoc Kimono Rental. Bảo lưu mọi quyền.",
+    "rights": "Bản quyền thuộc về Kyo kimono rental &nail. Bảo lưu mọi quyền.",
     "nearby": "Gần điểm tham quan"
   },
   "videos": {
     "badge": "Video Giới Thiệu",
-    "title": "Khám Phá Ticktoc Kimono Rental",
-    "subtitle": "Xem các video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Ticktoc Kimono Rental Sài Gòn"
+    "title": "Khám Phá Kyo kimono rental &nail",
+    "subtitle": "Xem các video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Kyo kimono rental &nail Kyoto"
   },
   "video": {
     "badge": "Video Giới Thiệu",
-    "title": "Khám Phá Ticktoc Kimono Rental",
-    "subtitle": "Xem video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Ticktoc Kimono Rental Sài Gòn",
-    "thumbnailAlt": "Video giới thiệu Ticktoc Kimono Rental",
-    "caption": "Ticktoc Kimono Rental - Trải nghiệm thuê kimono cao cấp tại Sài Gòn"
+    "title": "Khám Phá Kyo kimono rental &nail",
+    "subtitle": "Xem video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Kyo kimono rental &nail Kyoto",
+    "thumbnailAlt": "Video giới thiệu Kyo kimono rental &nail",
+    "caption": "Kyo kimono rental &nail - Trải nghiệm thuê kimono cao cấp tại Kyoto"
   },
   "about": {
     "badge": "Về Chúng Tôi",
-    "title": "Dịch Vụ Cho Thuê Kimono Cao Cấp Tại Sài Gòn",
-    "p1": "Ticktoc Kimono Rental là cửa hàng cho thuê kimono hàng đầu tại TP. Hồ Chí Minh, mang đến trải nghiệm văn hóa Nhật Bản đích thực ngay giữa lòng Sài Gòn. Với hơn 200 bộ kimono chính hãng nhập trực tiếp từ Nhật Bản, chúng tôi cung cấp đa dạng mẫu mã từ kimono truyền thống đến phong cách hiện đại - phù hợp cho nữ, nam và trẻ em.",
-    "p2": "Đội ngũ chuyên nghiệp của chúng tôi sẽ hỗ trợ bạn mặc kimono đúng cách, làm tóc kiểu Nhật, và tư vấn phụ kiện phù hợp chỉ trong 30 phút. Dù bạn muốn chụp ảnh kỷ niệm, dạo phố Sài Gòn, hay tham gia sự kiện đặc biệt - Ticktoc Kimono luôn sẵn sàng đồng hành cùng bạn tạo nên những khoảnh khắc đáng nhớ.",
-    "imageAlt": "Không gian cửa hàng Ticktoc Kimono Rental tại Sài Gòn",
+    "title": "Dịch Vụ Cho Thuê Kimono Cao Cấp Tại Kyoto",
+    "p1": "Kyo kimono rental &nail là cửa hàng cho thuê kimono cao cấp tại Gion, Kyoto. Với hơn 200 bộ kimono chính hãng, chúng tôi cung cấp các mẫu mã đa dạng từ truyền thống đến hiện đại - dành cho cả nam, nữ và trẻ em.",
+    "p2": "Đội ngũ chuyên nghiệp của chúng tôi sẽ hỗ trợ bạn mặc kimono đúng chuẩn, làm tóc đẹp mắt và các gói chụp hình lưu niệm. Dù dạo phố Kyoto hay dự sự kiện đặc biệt, Kyo kimono rental &nail luôn sẵn sàng đồng hành cùng bạn.",
+    "imageAlt": "Không gian cửa hàng Kyo kimono rental &nail tại Kyoto",
     "happyCustomers": "Khách hàng hài lòng",
     "locationLabel": "Vị trí thuận tiện tại Gion, Kyoto",
     "locationValue": "京都市東山区祇園町北側 347-25  3階 - Gần Chùa Thanh Thủy, Đền Yasaka và phố đi bộ Gion.",
@@ -235,7 +235,7 @@
     "viewGallery": "Album Ảnh"
   },
   "process": {
-    "title": "Quy Trình Thuê Kimono Tại Ticktoc",
+    "title": "Quy Trình Thuê Kimono Tại Kyo kimono rental &nail",
     "subtitle": "Chỉ 4 bước đơn giản để c trải nghiệm kimono tuyệt vời",
     "step1Title": "Đặt Lịch",
     "step1Desc": "Đặt lịch qua website, Zalo hoặc điện thoại. Chọn gói thuê và ngày phù hợp với bạn.",
@@ -244,7 +244,7 @@
     "step3Title": "Mặc & Làm Tóc",
     "step3Desc": "Đội ngũ chuyên nghiệp hỗ trợ mặc kimono đúng cách và làm tóc kiểu Nhật chỉ trong 30 phút.",
     "step4Title": "Tận Hưởng & Chụp Ảnh",
-    "step4Desc": "Dạo phố Sài Gòn, chụp ảnh tại các điểm tham quan, lưu giữ những khoảnh khắc đáng nhớ."
+    "step4Desc": "Dạo phố Kyoto, chụp ảnh tại các điểm tham quan, lưu giữ những khoảnh khắc đáng nhớ."
   },
   "common": {
     "bookNow": "Đặt Ngay",
