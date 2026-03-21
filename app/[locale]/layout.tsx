@@ -16,6 +16,8 @@ import LayoutWrapper from "./layout-wrapper";
 import { Toaster } from "sonner";
 import "../globals.css";
 
+export const runtime = "edge";
+
 const inter = Inter({
   subsets: ["latin", "vietnamese"],
   variable: "--font-inter",

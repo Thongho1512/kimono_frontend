@@ -13,6 +13,8 @@ import { Label } from "@/components/ui/label";
 import { Calendar, MessageCircle, CheckCircle2, Phone, ShoppingBag, Trash2, Plus, Minus } from "lucide-react";
 import api from "@/lib/api";
 import { formatJPY } from "@/lib/data";
+
+export const runtime = 'edge';
 import { toast } from "sonner"; // Assuming sonner is available or use standard alert
 
 interface ProductDto {

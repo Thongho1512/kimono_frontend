@@ -9,6 +9,10 @@ import { PageBreadcrumb } from "@/components/ticktoc/page-breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Loader2 } from "lucide-react";
 import api from "@/lib/api";
+import { Metadata } from "next";
+import { getSeoContent } from "@/lib/seo-registry";
+
+export const runtime = "edge";
 
 interface HairStyleDto {
   id: string;

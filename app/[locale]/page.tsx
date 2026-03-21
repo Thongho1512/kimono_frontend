@@ -9,6 +9,8 @@ import { VideosSection } from "@/components/ticktoc/videos-section";
 import { Metadata } from "next";
 import { getSeoContent } from "@/lib/seo-registry";
 
+export const runtime = "edge";
+
 interface Props {
   params: Promise<{ locale: string }>;
 }
