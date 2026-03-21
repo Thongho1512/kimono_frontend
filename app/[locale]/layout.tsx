@@ -2,18 +2,16 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter, Noto_Serif_JP } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { routing } from "@/i18n/routing";
-import { Analytics } from "@vercel/analytics/next";
-import { Header } from "@/components/ticktoc/header";
-import { Footer } from "@/components/ticktoc/footer";
-import { CherryBlossoms } from "@/components/ticktoc/cherry-blossoms";
-import { ScrollToTop } from "@/components/ticktoc/scroll-to-top";
-import { SocialFloat } from "@/components/ticktoc/social-float";
 import { AuthProvider } from "@/lib/auth-context";
 import LayoutWrapper from "./layout-wrapper";
-import { Toaster } from "sonner";
+import dynamic from "next/dynamic";
+
+const Toaster = dynamic(() => import("sonner").then(m => m.Toaster), { ssr: false });
+const Analytics = dynamic(() => import("@vercel/analytics/next").then(m => m.Analytics), { ssr: false });
+
 import "../globals.css";
 
 
