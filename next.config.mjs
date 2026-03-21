@@ -10,6 +10,9 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'recharts', 'framer-motion', 'date-fns', '@radix-ui/react-icons'],
+  },
 };
 
 export default withNextIntl(nextConfig);
