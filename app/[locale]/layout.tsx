@@ -7,10 +7,8 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import { routing } from "@/i18n/routing";
 import { AuthProvider } from "@/lib/auth-context";
 import LayoutWrapper from "./layout-wrapper";
-import dynamic from "next/dynamic";
-
-const Toaster = dynamic(() => import("sonner").then(m => m.Toaster), { ssr: false });
-const Analytics = dynamic(() => import("@vercel/analytics/next").then(m => m.Analytics), { ssr: false });
+import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next";
 
 import "../globals.css";
 
