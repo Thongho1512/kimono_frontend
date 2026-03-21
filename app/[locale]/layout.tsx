@@ -2,7 +2,7 @@ import React from "react";
 import type { Metadata } from "next";
 import { Inter, Noto_Serif_JP } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
-import { getMessages, getTranslations } from "next-intl/server";
+import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { Analytics } from "@vercel/analytics/next";
@@ -16,7 +16,7 @@ import LayoutWrapper from "./layout-wrapper";
 import { Toaster } from "sonner";
 import "../globals.css";
 
-export const runtime = "edge";
+
 
 const inter = Inter({
   subsets: ["latin", "vietnamese"],
@@ -60,13 +60,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 
-// generateStaticParams is removed to support dynamic Edge runtime on Cloudflare Pages
-// export function generateStaticParams() {
-//   return routing.locales.map((locale) => ({ locale }));
-// }
+export function generateStaticParams() {
+  return routing.locales.map((locale) => ({ locale }));
+}
+
 
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
 
   if (!routing.locales.includes(locale as (typeof routing.locales)[number])) {
     notFound();

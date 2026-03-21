@@ -15,6 +15,7 @@ interface Props {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
+  setRequestLocale(locale);
   // Manual override for home page SEO if defined in registry
   const seo = getSeoContent("home", locale, {
     title: "Ticktoc Kimono | Kimono Rental & Photography in Ho Chi Minh City",
@@ -27,9 +28,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+import { setRequestLocale } from "next-intl/server";
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
+  setRequestLocale(locale);
   return (
+
     <main>
       <Hero />
       <AboutSection />
