@@ -195,14 +195,14 @@ export default function ContactPage() {
               {/* Embedded Google Map */}
               <div className="relative aspect-[4/3] rounded-2xl overflow-hidden ticktoc-shadow border border-border">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3268.085587083775!2d135.77678129999998!3d35.0045626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x600108c239c3fe6f%3A0xa258874bb56a25ef!2zSmFwYW4sIOOAkjYwNS0wMDczIEt5b3RvLCBIaWdhc2hpeWFtYSBXYXJkLCBHaW9ubWFjaGkgS2l0YWdhd2EsIDM0Ny0yNSDnrKzvvJLjgqvjgrjjgr_jg5Pjg6s!5e0!3m2!1sen!2s!4v1774015594349!5m2!1sen!2s"
+                  src="https://maps.google.com/maps?q=京都市東山区祇園町北側347-25&t=&z=16&ie=UTF8&iwloc=&output=embed"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Ticktoc Kimono Rental Location"
+                  title="Kyo kimono rental &nail Location"
                   className="absolute inset-0"
                 />
               </div>
