@@ -7,7 +7,7 @@ import { MessageCircle, X } from "lucide-react";
 const socials = [
   {
     label: "Zalo",
-    href: "https://zalo.me/0901234567",
+    href: "https://zalo.me/07091500677",
     color: "#0068FF",
     icon: (
       <svg viewBox="0 0 48 48" className="h-6 w-6" fill="currentColor">

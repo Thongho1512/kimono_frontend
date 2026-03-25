@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Kyo Kimono Rental - Premium Kimono Rental in Kyoto",
-    "description": "Best kimono rental service in Gion, Kyoto. Wide variety of traditional kimonos, professional hair styling, and photo packages."
+    "title": "Kimono Rental Kyoto Japan | Authentic Kimono Experience in Gion",
+    "description": "Rent authentic kimono in Kyoto, Japan. 200+ styles for men, women, and kids. Affordable prices, professional dressing, hairstyling, and photography in Gion."
   },
   "nav": {
     "home": "Home",
@@ -139,8 +139,8 @@
     "name": "Full name",
     "phone": "Phone number",
     "email": "Email",
-    "note": "Rental details / Notes",
-    "notePlaceholder": "Describe special requirements, quantity of each kimono type...",
+    "note": "Note",
+    "notePlaceholder": "Special requests, Kimono quantities... If arriving before opening or after closing time, please specify here.",
     "submit": "Submit Booking",
     "zaloChat": "Chat on Zalo",
     "success": "Booking submitted successfully! We'll contact you soon."
@@ -167,7 +167,7 @@
     "q7": "Do you have plus-size kimonos?",
     "a7": "Yes, we have special sizes for various body types. Please let us know in advance so we can prepare.",
     "q8": "Where is the shop located?",
-    "a8": "Kyo Kimono Rental is located in Gion, Kyoto - the heart of Japan's traditional culture, near famous landmarks like Kiyomizu-dera Temple and Yasaka Shrine. Address: 京都市東山区祇園町北側 347-25 3階"
+    "a8": "Kyo Kimono Rental is located in Gion, Kyoto - the heart of Japan's traditional culture, near famous landmarks like Kiyomizu-dera Temple and Yasaka Shrine. Address: 347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan"
   },
   "gallery": {
     "title": "Photo Gallery",
@@ -178,13 +178,13 @@
     "title": "Contact Us",
     "subtitle": "Get in touch through any of the channels below",
     "address": "Address",
-    "addressValue": "京都市東山区祇園町北側 347-25 3階",
+    "addressValue": "347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan",
     "phone": "Phone",
-    "phoneValue": "+81-000-000-000",
+    "phoneValue": "070-9150-0677",
     "email": "Email",
-    "emailValue": "contact@kyokimono.com",
+    "emailValue": "kyokimononail.gc@gmail.com",
     "zalo": "Zalo",
-    "zaloValue": "+81-000-000-000",
+    "zaloValue": "070-9150-0677",
     "hours": "Opening Hours",
     "hoursValue": "9:00 AM - 7:00 PM (Mon - Sun)",
     "nearby": "Nearby Attractions",
@@ -214,13 +214,16 @@
   },
   "about": {
     "badge": "About Us",
-    "title": "Premium Kimono Rental Service in Gion, Kyoto",
-    "p1": "Kyo Kimono Rental is a premier kimono rental shop located in Gion, Kyoto. With over 200 genuine kimonos, we offer a diverse selection from traditional to modern styles - suitable for women, men, and children.",
-    "p2": "Our professional team will help you dress properly, style your hair perfectly, and arrange photography. Whether you're strolling through Kyoto, visiting Kiyomizu-dera, or attending an event, Kyo Kimono Rental is ready to help you create unforgettable moments.",
+    "title": "Kimono Rental in Kyoto, Japan – Authentic Experience in Gion",
+    "p1": "Kyo Kimono Rental is a premier kimono rental in Kyoto, Japan, located in the heart of Gion. We specialize in authentic Japanese kimono experiences, offering over 200 high-quality styles ranging from traditional elegance to modern fashion.",
+    "p2": "Our kimono rental service provides a wide selection for everyone, including kimono for men, women, boys, and girls, making it perfect for couples, families, and groups. Whether you are looking for a luxurious outfit or an affordable kimono rental in Kyoto, we ensure both quality and value.",
+    "p3": "At Kyo Kimono Rental, our professional team will assist you with proper kimono dressing, elegant hairstyling, and optional professional photography services. As a trusted kimono rental shop in Kyoto, we help you capture unforgettable moments while exploring famous attractions such as Kiyomizu-dera and the historic streets of Gion.",
+    "p4": "Whether you're sightseeing, taking photos, or attending a special event, our service guarantees a seamless and memorable experience.",
+    "ctaText": "Book your kimono rental in Kyoto today and create unforgettable memories with Kyo Kimono Rental.",
     "imageAlt": "Kyo Kimono Rental shop interior in Kyoto",
     "happyCustomers": "Happy customers",
     "locationLabel": "Convenient location in Gion, Kyoto",
-    "locationValue": "京都市東山区祇園町北側 347-25  3階 - Near Kiyomizu-dera Temple, Yasaka Shrine, and Gion walking street.",
+    "locationValue": "347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan - Near Kiyomizu-dera Temple, Yasaka Shrine, and Gion walking street.",
     "explorePlans": "Explore Plans",
     "viewGallery": "Photo Gallery"
   },

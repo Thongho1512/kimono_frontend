@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "title": "Kyo Kimono Rental - 京都祇园高级和服租赁",
-    "description": "京都祇园提供最优质的和服租赁服务。我们拥有各种传统和服、专业的发型设计和摄影套餐。"
+    "title": "京都和服出租 | 在祇园体验正宗日本和服",
+    "description": "在日本京都租赁正宗和服。提供 200 多种款式（男士、女士及儿童）。祇园内的专业着装、发型设计和摄影服务，价格实惠。"
   },
   "nav": {
     "home": "首页",
@@ -135,8 +135,8 @@
     "name": "姓名",
     "phone": "电话",
     "email": "邮箱",
-    "note": "租赁内容/备注",
-    "notePlaceholder": "描述特殊需求...",
+    "note": "备注",
+    "notePlaceholder": "特殊要求、和服数量等... 如果您在营业时间外到达，请在此注明。",
     "submit": "提交预约",
     "zaloChat": "Zalo聊天",
     "success": "预约已提交！我们会尽快联系您。"
@@ -163,7 +163,7 @@
     "q7": "有大码和服吗？",
     "a7": "有，多种体型可选。",
     "q8": "店铺在哪里？",
-    "a8": "Kyo Kimono Rental 位于京都祇园，邻近清水寺和八坂神社等著名景点。地址：京都市東山区祇園町北側 347-25 3階"
+    "a8": "Kyo Kimono Rental 位于京都祇园，邻近清水寺和八坂神社等著名景点。地址：347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan"
   },
   "gallery": {
     "title": "照片集",
@@ -174,13 +174,13 @@
     "title": "联系我们",
     "subtitle": "通过以下方式联系",
     "address": "地址",
-    "addressValue": "京都市東山区祇園町北側 347-25 3階",
+    "addressValue": "347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan",
     "phone": "电话",
-    "phoneValue": "+81-000-000-000",
+    "phoneValue": "070-9150-0677",
     "email": "邮箱",
-    "emailValue": "contact@kyokimono.com",
+    "emailValue": "kyokimononail.gc@gmail.com",
     "zalo": "Zalo",
-    "zaloValue": "+81-000-000-000",
+    "zaloValue": "070-9150-0677",
     "hours": "营业时间",
     "hoursValue": "9:00 - 19:00（每天）",
     "nearby": "附近景点",
@@ -210,13 +210,16 @@
   },
   "about": {
     "badge": "关于我们",
-    "title": "京都祇园高级和服租赁服务",
-    "p1": "Kyo Kimono Rental 是一家位于京都祇园的高级和服租赁店。我们拥有200多套正宗和服，从传统到现代风格应有尽有，适合女性、男性和儿童。",
-    "p2": "我们的专业团队将帮助您正确穿着和服、设计发型，并安排摄影服务。无论您是在京都漫步还是参加特别活动，我们都准备好帮助您创造难忘的回忆。",
+    "title": "日本京都和服出租 – 祇园的正宗体验",
+    "p1": "Kyo Kimono Rental 是位于京都祇园中心地带的卓越和服出租店。我们专注于提供正宗的日本和服体验，拥有 200 多种高品质款式，涵盖从传统优雅到现代时尚的各种风格。",
+    "p2": "我们的和服出租服务为每个人提供广泛的选择，包括男士、女士、男孩和女孩的和服，非常适合情侣、家庭和团体。无论您是寻找奢华的装扮还是在京都寻找实惠的和服租赁，我们都能确保品质与价值并存。",
+    "p3": "在 Kyo Kimono Rental，我们的专业团队将协助您进行正确的和服着装、优雅的发型设计以及可选的专业摄影服务。作为京都值得信赖的和服出租店，我们帮助您在游览清水寺和祇园历史街道等著名景点时捕捉难忘时刻。",
+    "p4": "无论您是观光、拍照还是参加特别活动，我们的服务都能确保您拥有顺畅且难忘的体验。",
+    "ctaText": "立即预订您的京都和服出租，与 Kyo Kimono Rental 一起创造难忘的回忆。",
     "imageAlt": "Kyo Kimono Rental和服店铺内部",
     "happyCustomers": "满意客户",
     "locationLabel": "京都祇园中心便利位置",
-    "locationValue": "京都市東山区祇園町北側 347-25  3階 - 近清水寺、八坂神社和祇园步行街。",
+    "locationValue": "347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan - 近清水寺、八坂神社和祇园步行街。",
     "explorePlans": "查看方案",
     "viewGallery": "照片集"
   },

@@ -73,9 +73,31 @@ export function AboutSection() {
                 {t("p1")}
               </p>
 
-              <p className="text-muted-foreground leading-relaxed text-pretty">
-                {t("p2")}
-              </p>
+              {t.has("p2") && (
+                <p className="text-muted-foreground leading-relaxed text-pretty">
+                  {t("p2")}
+                </p>
+              )}
+
+              {t.has("p3") && (
+                <p className="text-muted-foreground leading-relaxed text-pretty">
+                  {t("p3")}
+                </p>
+              )}
+
+              {t.has("p4") && (
+                <p className="text-muted-foreground leading-relaxed text-pretty">
+                  {t("p4")}
+                </p>
+              )}
+
+              {t.has("ctaText") && (
+                <div className="pt-4 border-t border-border/50">
+                  <p className="text-primary font-medium leading-relaxed text-pretty italic">
+                    {t("ctaText")}
+                  </p>
+                </div>
+              )}
 
               <div className="flex items-start gap-3 p-4 bg-card rounded-xl border border-border">
                 <MapPin className="h-5 w-5 text-primary mt-0.5 shrink-0" />

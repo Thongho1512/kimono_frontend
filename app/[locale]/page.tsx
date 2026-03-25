@@ -7,7 +7,7 @@ import { AboutSection } from "@/components/ticktoc/about-section";
 import { ProcessSection } from "@/components/ticktoc/process-section";
 import { VideosSection } from "@/components/ticktoc/videos-section";
 import { Metadata } from "next";
-import { getSeoContent } from "@/lib/seo-registry";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 
 interface Props {
   params: Promise<{ locale: string }>;
@@ -16,19 +16,14 @@ interface Props {
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale } = await params;
   setRequestLocale(locale);
-  // Manual override for home page SEO if defined in registry
-  const seo = getSeoContent("home", locale, {
-    title: "Ticktoc Kimono | Kimono Rental & Photography in Ho Chi Minh City",
-    description: "Discover the beauty of traditional Japanese culture with our premium kimono rental and professional photography services."
-  });
+  const t = await getTranslations({ locale, namespace: "metadata" });
 
   return {
-    title: seo.title,
-    description: seo.description,
+    title: t("title"),
+    description: t("description"),
   };
 }
 
-import { setRequestLocale } from "next-intl/server";
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);

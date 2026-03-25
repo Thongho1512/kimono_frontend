@@ -276,39 +276,39 @@ function BookingForm() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">Name</Label>
-                      <Input id="name" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder="Your Name" />
+                      <Label htmlFor="name">{t("name")}</Label>
+                      <Input id="name" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder={t("name") + "..."} />
                     </div>
                     <div>
-                      <Label htmlFor="phone">Phone</Label>
+                      <Label htmlFor="phone">{t("phone")}</Label>
                       <Input id="phone" required type="tel" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} placeholder="090..." />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="email">Email</Label>
-                    <Input id="email" type="email" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} placeholder="name@example.com" />
+                    <Label htmlFor="email">{t("email")}</Label>
+                    <Input id="email" required type="email" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} placeholder="name@example.com" />
                   </div>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="col-span-1">
-                      <Label htmlFor="people">People</Label>
+                      <Label htmlFor="people">{t("people")}</Label>
                       <Input id="people" type="number" min="1" value={formData.people} onChange={e => setFormData({ ...formData, people: e.target.value })} />
                     </div>
                     <div className="col-span-2">
-                      <Label htmlFor="date">Date</Label>
+                      <Label htmlFor="date">{t("date")}</Label>
                       <Input id="date" type="date" required value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="time">Approx. Arrival Time</Label>
+                    <Label htmlFor="time">{tCommon("arrivalTime") || "Approx. Arrival Time"}</Label>
                     <Input id="time" type="time" required value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />
                   </div>
                   <div>
-                    <Label htmlFor="note">Note (Optional)</Label>
+                    <Label htmlFor="note">{t("note")}</Label>
                     <textarea
                       id="note"
                       rows={3}
                       className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
-                      placeholder="Special requests..."
+                      placeholder={t("notePlaceholder")}
                       value={formData.note}
                       onChange={e => setFormData({ ...formData, note: e.target.value })}
                     />

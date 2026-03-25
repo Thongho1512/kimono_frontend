@@ -226,8 +226,8 @@ export function Footer() {
             name: "Kyo Kimono Rental",
             description: "Premium kimono rental service in Gion, Kyoto",
             url: "https://kyokimonorental.com",
-            telephone: "+81-000-000-000",
-            email: "contact@kyokimono.com",
+            telephone: "070-9150-0677",
+            email: "kyokimononail.gc@gmail.com",
             address: {
               "@type": "PostalAddress",
               streetAddress: "京都市東山区祇園町北側 347-25  3階",

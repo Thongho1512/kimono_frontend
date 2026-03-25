@@ -62,19 +62,19 @@ export default function ContactPage() {
       icon: Phone,
       label: t("phone"),
       value: storeInfo?.sdt || t("phoneValue"),
-      href: `tel:${storeInfo?.sdt || "0901234567"}`,
+      href: `tel:${storeInfo?.sdt || "070-9150-0677"}`,
     },
     {
       icon: Mail,
       label: t("email"),
       value: storeInfo?.email || t("emailValue"),
-      href: `mailto:${storeInfo?.email || "hello@ticktockimono.vn"}`,
+      href: `mailto:${storeInfo?.email || "kyokimononail.gc@gmail.com"}`,
     },
     {
       icon: MessageCircle,
       label: t("zalo"),
       value: storeInfo?.zalo ? `Zalo: ${storeInfo.zalo}` : t("zaloValue"),
-      href: storeInfo?.zalo ? `https://zalo.me/${storeInfo.zalo}` : "https://zalo.me/0901234567",
+      href: storeInfo?.zalo ? `https://zalo.me/${storeInfo.zalo}` : "https://zalo.me/07091500677",
     },
     {
       icon: Clock,
@@ -161,7 +161,7 @@ export default function ContactPage() {
                 </Button>
                 <Button asChild variant="outline" size="lg" className="flex-1 bg-transparent">
                   <a
-                    href={storeInfo?.zalo ? `https://zalo.me/${storeInfo.zalo}` : "https://zalo.me/0901234567"}
+                    href={storeInfo?.zalo ? `https://zalo.me/${storeInfo.zalo}` : "https://zalo.me/07091500677"}
                     target="_blank"
                     rel="noopener noreferrer"
                   >
@@ -221,18 +221,18 @@ export default function ContactPage() {
             "@type": "LocalBusiness",
             name: storeInfo?.name || "Ticktoc Kimono Rental",
             description:
-              "Premium kimono rental service in Ho Chi Minh City",
+              "Premium kimono rental service in Gion, Kyoto",
             address: {
               "@type": "PostalAddress",
-              streetAddress: storeInfo?.address || "123 Nguyen Hue Street",
-              addressLocality: "Ho Chi Minh City",
-              addressRegion: "District 1",
-              addressCountry: "VN",
+              streetAddress: storeInfo?.address || "347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan",
+              addressLocality: "Kyoto",
+              addressRegion: "Higashiyama Ward",
+              addressCountry: "JP",
             },
-            telephone: storeInfo?.sdt || "+84901234567",
-            email: storeInfo?.email || "hello@ticktockimono.vn",
+            telephone: storeInfo?.sdt || "070-9150-0677",
+            email: storeInfo?.email || "kyokimononail.gc@gmail.com",
             openingHours: storeInfo ? `${storeInfo.openTime}-${storeInfo.closeTime}` : "Mo-Su 09:00-19:00",
-            url: "https://ticktockimono.vn",
+            url: "https://kyokimonorental.com",
           }),
         }}
       />
