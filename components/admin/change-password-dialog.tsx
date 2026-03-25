@@ -5,16 +5,17 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, Dialog
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Lock } from "lucide-react";
+import { Lock, Loader2 } from "lucide-react";
 import api from "@/lib/api";
-import { useToast } from "@/components/ui/use-toast";
+import { toast } from "sonner";
+import { useAuth } from "@/lib/auth-context";
 
 export function ChangePasswordDialog() {
     const [open, setOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     const [currentPassword, setCurrentPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
-    const { toast } = useToast();
+    const { logout } = useAuth();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -26,21 +27,18 @@ export function ChangePasswordDialog() {
                 newPassword
             });
 
-            toast({
-                title: "Thành công",
-                description: "Đổi mật khẩu thành công!",
-                variant: "default", // or success if available
-            });
+            toast.success("Đổi mật khẩu thành công! Bạn sẽ đăng xuất sau 2 giây.");
+            
+            setTimeout(() => {
+                logout();
+            }, 2000);
+            
             setOpen(false);
             setCurrentPassword("");
             setNewPassword("");
         } catch (error: any) {
             console.error(error);
-            toast({
-                title: "Lỗi",
-                description: error.response?.data || "Đã có lỗi xảy ra",
-                variant: "destructive",
-            });
+            toast.error(error.response?.data || "Mật khẩu hiện tại không đúng hoặc đã có lỗi xảy ra");
         } finally {
             setLoading(false);
         }
@@ -49,8 +47,11 @@ export function ChangePasswordDialog() {
     return (
         <Dialog open={open} onOpenChange={setOpen}>
             <DialogTrigger asChild>
-                <Button variant="outline" className="w-full justify-start gap-3">
-                    <Lock className="h-4 w-4" />
+                <Button 
+                    variant="ghost" 
+                    className="w-full justify-start gap-3 text-slate-400 hover:text-white hover:bg-slate-800 px-4 py-2.5 h-auto transition-all duration-200"
+                >
+                    <Lock className="h-5 w-5" />
                     Đổi mật khẩu
                 </Button>
             </DialogTrigger>
