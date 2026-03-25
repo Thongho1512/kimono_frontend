@@ -48,7 +48,7 @@ export function Header() {
         <Link href={prefix} className="flex items-center gap-2">
           <SakuraIcon className="h-7 w-7 text-primary" />
           <span className="font-serif text-lg font-semibold tracking-tight text-foreground uppercase">
-            {storeInfo?.name || "Ticktoc Kimono"}
+            {storeInfo?.name || "Kyo Kimono Rental"}
           </span>
         </Link>
 

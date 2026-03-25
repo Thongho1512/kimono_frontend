@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Kyo kimono rental &nail - Premium Kimono Rental in Kyoto",
+    "title": "Kyo Kimono Rental - Premium Kimono Rental in Kyoto",
     "description": "Best kimono rental service in Gion, Kyoto. Wide variety of traditional kimonos, professional hair styling, and photo packages."
   },
   "nav": {
@@ -39,7 +39,7 @@
     "noDescription": "No description available for this plan"
   },
   "whyUs": {
-    "title": "Why Choose Kyo kimono rental &nail?",
+    "title": "Why Choose Kyo Kimono Rental?",
     "subtitle": "We offer the best kimono rental experience in Kyoto",
     "price": "Best Prices",
     "priceDesc": "Competitive pricing with premium quality kimonos guaranteed.",
@@ -167,11 +167,11 @@
     "q7": "Do you have plus-size kimonos?",
     "a7": "Yes, we have special sizes for various body types. Please let us know in advance so we can prepare.",
     "q8": "Where is the shop located?",
-    "a8": "Kyo kimono rental &nail is located in Gion, Kyoto - the heart of Japan's traditional culture, near famous landmarks like Kiyomizu-dera Temple and Yasaka Shrine. Address: 京都市東山区祇園町北側 347-25 3階"
+    "a8": "Kyo Kimono Rental is located in Gion, Kyoto - the heart of Japan's traditional culture, near famous landmarks like Kiyomizu-dera Temple and Yasaka Shrine. Address: 京都市東山区祇園町北側 347-25 3階"
   },
   "gallery": {
     "title": "Photo Gallery",
-    "subtitle": "Beautiful moments of our customers at Kyo kimono rental &nail",
+    "subtitle": "Beautiful moments of our customers at Kyo Kimono Rental",
     "note": "Currently static placeholders; integrate headless CMS or Cloudinary for weekly admin uploads."
   },
   "contact": {
@@ -197,27 +197,27 @@
     "services": "Services",
     "contactUs": "Contact Us",
     "followUs": "Follow Us",
-    "rights": "All rights reserved by Kyo kimono rental &nail.",
+    "rights": "All rights reserved by Kyo Kimono Rental.",
     "nearby": "Near attractions"
   },
   "videos": {
     "badge": "Video Introduction",
-    "title": "Discover Kyo kimono rental &nail",
-    "subtitle": "Watch our shop tour and rental experience videos at Kyo kimono rental &nail Kyoto"
+    "title": "Discover Kyo Kimono Rental",
+    "subtitle": "Watch our shop tour and rental experience videos at Kyo Kimono Rental Kyoto"
   },
   "video": {
     "badge": "Shop Tour",
-    "title": "Discover Kyo kimono rental &nail",
-    "subtitle": "Watch our shop tour video and see the kimono rental experience at Kyo kimono rental &nail Kyoto",
-    "thumbnailAlt": "Kyo kimono rental &nail video tour",
-    "caption": "Kyo kimono rental &nail - Premium kimono rental experience in Kyoto"
+    "title": "Discover Kyo Kimono Rental",
+    "subtitle": "Watch our shop tour video and see the kimono rental experience at Kyo Kimono Rental Kyoto",
+    "thumbnailAlt": "Kyo Kimono Rental video tour",
+    "caption": "Kyo Kimono Rental - Premium kimono rental experience in Kyoto"
   },
   "about": {
     "badge": "About Us",
     "title": "Premium Kimono Rental Service in Gion, Kyoto",
-    "p1": "Kyo kimono rental &nail is a premier kimono rental shop located in Gion, Kyoto. With over 200 genuine kimonos, we offer a diverse selection from traditional to modern styles - suitable for women, men, and children.",
-    "p2": "Our professional team will help you dress properly, style your hair perfectly, and arrange photography. Whether you're strolling through Kyoto, visiting Kiyomizu-dera, or attending an event, Kyo kimono rental &nail is ready to help you create unforgettable moments.",
-    "imageAlt": "Kyo kimono rental &nail shop interior in Kyoto",
+    "p1": "Kyo Kimono Rental is a premier kimono rental shop located in Gion, Kyoto. With over 200 genuine kimonos, we offer a diverse selection from traditional to modern styles - suitable for women, men, and children.",
+    "p2": "Our professional team will help you dress properly, style your hair perfectly, and arrange photography. Whether you're strolling through Kyoto, visiting Kiyomizu-dera, or attending an event, Kyo Kimono Rental is ready to help you create unforgettable moments.",
+    "imageAlt": "Kyo Kimono Rental shop interior in Kyoto",
     "happyCustomers": "Happy customers",
     "locationLabel": "Convenient location in Gion, Kyoto",
     "locationValue": "京都市東山区祇園町北側 347-25  3階 - Near Kiyomizu-dera Temple, Yasaka Shrine, and Gion walking street.",
@@ -225,7 +225,7 @@
     "viewGallery": "Photo Gallery"
   },
   "process": {
-    "title": "How Kimono Rental Works at Kyo kimono rental &nail",
+    "title": "How Kimono Rental Works at Kyo Kimono Rental",
     "subtitle": "Just 4 simple steps for an amazing kimono experience",
     "step1Title": "Book Appointment",
     "step1Desc": "Book via website, Zalo, or phone. Choose a plan and date that works for you.",

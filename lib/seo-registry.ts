@@ -10,23 +10,23 @@ export const SEO_OVERRIDES: Record<string, any> = {
     // Example for a specific product/plan slug
     "kimono-premium-01": {
         vi: {
-            title: "Thuê Kimono Cao Cấp TP.HCM - Mẫu Đẹp 2024",
-            description: "Dịch vụ cho thuê Kimono cao cấp nhất Sài Gòn. Nhiều mẫu mã đa dạng, hỗ trợ chụp ảnh chuyên nghiệp."
+            title: "Thuê Kimono Cao Cấp Kyoto - Mẫu Đẹp 2024",
+            description: "Dịch vụ cho thuê Kimono cao cấp nhất Kyoto. Nhiều mẫu mã đa dạng, hỗ trợ chụp ảnh chuyên nghiệp."
         },
         en: {
-            title: "Rent Premium Kimono in HCMC | Top Styles 2024",
-            description: "Experience authentic Japanese Kimono in the heart of Saigon. Wide range of authentic styles and professional photography."
+            title: "Rent Premium Kimono in Kyoto | Top Styles 2024",
+            description: "Experience authentic Japanese Kimono in the heart of Gion, Kyoto. Wide range of authentic styles and professional photography."
         }
     },
 
     // Example for a specific category
     "wedding-kimono": {
         vi: {
-            title: "Thuê Kimono Cưới Truyền Thống | Ticktoc Kimono",
+            title: "Thuê Kimono Cưới Truyền Thống | Kyo Kimono Rental",
             description: "Bộ sưu tập Kimono cưới lộng lẫy và trang trọng nhất."
         },
         en: {
-            title: "Traditional Wedding Kimono Rental | Ticktoc Kimono",
+            title: "Traditional Wedding Kimono Rental | Kyo Kimono Rental",
             description: "The most elegant and formal collection of wedding Kimonos for your special day."
         }
     }
@@ -42,7 +42,7 @@ export function getSeoContent(key: string, locale: string, fallback: { title?: s
     const override = SEO_OVERRIDES[key]?.[locale];
 
     return {
-        title: override?.title || fallback.title || "Ticktoc Kimono",
-        description: override?.description || fallback.description || "Dịch vụ cho thuê Kimono chuyên nghiệp"
+        title: override?.title || fallback.title || "Kyo Kimono Rental",
+        description: override?.description || fallback.description || "Dịch vụ cho thuê Kimono chuyên nghiệp tại Kyoto"
     };
 }

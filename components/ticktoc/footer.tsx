@@ -54,7 +54,7 @@ export function Footer() {
             <Link href={prefix} className="flex items-center gap-2">
               <SakuraIcon className="h-7 w-7 text-primary" />
               <span className="font-serif text-lg font-semibold uppercase">
-                {storeInfo?.name || "Ticktoc Kimono"}
+                {storeInfo?.name || "Kyo Kimono Rental"}
               </span>
             </Link>
             <p className="text-sm leading-relaxed opacity-70">
@@ -211,7 +211,7 @@ export function Footer() {
             <p>&copy; 2026 {t("footer.rights")}</p>
             <Link href="/admin" className="hover:text-primary transition-colors">Admin</Link>
           </div>
-          <p>Ticktoc Kimono Rental - Kyoto</p>
+          <p>Kyo Kimono Rental - Kyoto</p>
         </div>
       </div>
 
@@ -223,12 +223,11 @@ export function Footer() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "LocalBusiness",
-            name: "Ticktoc Kimono Rental",
-            description:
-              "Premium kimono rental service in Gion, Kyoto",
-            url: "https://ticktockimono.vn",
-            telephone: "+81 90-1234-567",
-            email: "hello@ticktockimono.vn",
+            name: "Kyo Kimono Rental",
+            description: "Premium kimono rental service in Gion, Kyoto",
+            url: "https://kyokimonorental.com",
+            telephone: "+81-000-000-000",
+            email: "contact@kyokimono.com",
             address: {
               "@type": "PostalAddress",
               streetAddress: "京都市東山区祇園町北側 347-25  3階",

@@ -68,7 +68,7 @@ export function Hero() {
           className="mb-4"
         >
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/20 backdrop-blur-sm text-background text-xs sm:text-sm font-medium tracking-wider uppercase border border-primary/30">
-            Ticktoc Kimono Rental
+            Kyo Kimono Rental
           </span>
         </motion.div>
 

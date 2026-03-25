@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Kyo kimono rental &nail - Cho Thuê Kimono Đẹp Tại Kyoto",
+    "title": "Kyo Kimono Rental - Cho Thuê Kimono Đẹp Tại Kyoto",
     "description": "Dịch vụ cho thuê kimono uy tín tại Gion, Kyoto. Đa dạng mẫu mã truyền thống, dịch vụ làm tóc chỉnh chu và nhiếp ảnh chuyên nghiệp."
   },
   "nav": {
@@ -39,7 +39,7 @@
     "noDescription": "Chưa có mô tả cho gói thuê này"
   },
   "whyUs": {
-    "title": "Tại Sao Chọn Kyo kimono rental &nail?",
+    "title": "Tại Sao Chọn Kyo Kimono Rental?",
     "subtitle": "Chúng tôi mang đến trải nghiệm thuê kimono tốt nhất tại Kyoto",
     "price": "Giá Tốt Nhất",
     "priceDesc": "Cam kết giá thuê kimono cạnh tranh nhất thị trường với chất lượng cao cấp.",
@@ -177,11 +177,11 @@
     "q7": "Có kimono cho người ngoại cỡ không?",
     "a7": "Có, chúng tôi có kimono size đặc biệt phù hợp cho nhiều vóc dáng. Vui lòng thông báo trước để chúng tôi chuẩn bị.",
     "q8": "Cửa hàng ở đâu?",
-    "a8": "Kyo kimono rental &nail tọa lạc tại Gion, Kyoto - trung tâm văn hóa Nhật Bản, gần Chùa Thanh Thủy (Kiyomizu-dera) và Đền Yasaka. Địa chỉ: 京都市東山区祇園町北側 347-25 3階."
+    "a8": "Kyo Kimono Rental tọa lạc tại Gion, Kyoto - trung tâm văn hóa Nhật Bản, gần Chùa Thanh Thủy (Kiyomizu-dera) và Đền Yasaka. Địa chỉ: 京都市東山区祇園町北側 347-25 3階."
   },
   "gallery": {
     "title": "Album Ảnh",
-    "subtitle": "Những khoảnh khắc đẹp của khách hàng tại Kyo kimono rental &nail",
+    "subtitle": "Những khoảnh khắc đẹp của khách hàng tại Kyo Kimono Rental",
     "note": "Hiện tại static placeholders; để admin upload ảnh mới hàng tuần, tích hợp headless CMS hoặc Cloudinary sau."
   },
   "contact": {
@@ -207,27 +207,27 @@
     "services": "Dịch Vụ",
     "contactUs": "Liên Hệ",
     "followUs": "Theo Dõi Chúng Tôi",
-    "rights": "Bản quyền thuộc về Kyo kimono rental &nail. Bảo lưu mọi quyền.",
+    "rights": "Bản quyền thuộc về Kyo Kimono Rental. Bảo lưu mọi quyền.",
     "nearby": "Gần điểm tham quan"
   },
   "videos": {
     "badge": "Video Giới Thiệu",
-    "title": "Khám Phá Kyo kimono rental &nail",
-    "subtitle": "Xem các video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Kyo kimono rental &nail Kyoto"
+    "title": "Khám Phá Kyo Kimono Rental",
+    "subtitle": "Xem các video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Kyo Kimono Rental Kyoto"
   },
   "video": {
     "badge": "Video Giới Thiệu",
-    "title": "Khám Phá Kyo kimono rental &nail",
-    "subtitle": "Xem video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Kyo kimono rental &nail Kyoto",
-    "thumbnailAlt": "Video giới thiệu Kyo kimono rental &nail",
-    "caption": "Kyo kimono rental &nail - Trải nghiệm thuê kimono cao cấp tại Kyoto"
+    "title": "Khám Phá Kyo Kimono Rental",
+    "subtitle": "Xem video giới thiệu cửa hàng và trải nghiệm thuê kimono tại Kyo Kimono Rental Kyoto",
+    "thumbnailAlt": "Video giới thiệu Kyo Kimono Rental",
+    "caption": "Kyo Kimono Rental - Trải nghiệm thuê kimono cao cấp tại Kyoto"
   },
   "about": {
     "badge": "Về Chúng Tôi",
     "title": "Dịch Vụ Cho Thuê Kimono Cao Cấp Tại Kyoto",
-    "p1": "Kyo kimono rental &nail là cửa hàng cho thuê kimono cao cấp tại Gion, Kyoto. Với hơn 200 bộ kimono chính hãng, chúng tôi cung cấp các mẫu mã đa dạng từ truyền thống đến hiện đại - dành cho cả nam, nữ và trẻ em.",
-    "p2": "Đội ngũ chuyên nghiệp của chúng tôi sẽ hỗ trợ bạn mặc kimono đúng chuẩn, làm tóc đẹp mắt và các gói chụp hình lưu niệm. Dù dạo phố Kyoto hay dự sự kiện đặc biệt, Kyo kimono rental &nail luôn sẵn sàng đồng hành cùng bạn.",
-    "imageAlt": "Không gian cửa hàng Kyo kimono rental &nail tại Kyoto",
+    "p1": "Kyo Kimono Rental là cửa hàng cho thuê kimono cao cấp tại Gion, Kyoto. Với hơn 200 bộ kimono chính hãng, chúng tôi cung cấp các mẫu mã đa dạng từ truyền thống đến hiện đại - dành cho cả nam, nữ và trẻ em.",
+    "p2": "Đội ngũ chuyên nghiệp của chúng tôi sẽ hỗ trợ bạn mặc kimono đúng chuẩn, làm tóc đẹp mắt và các gói chụp hình lưu niệm. Dù dạo phố Kyoto hay dự sự kiện đặc biệt, Kyo Kimono Rental luôn sẵn sàng đồng hành cùng bạn.",
+    "imageAlt": "Không gian cửa hàng Kyo Kimono Rental tại Kyoto",
     "happyCustomers": "Khách hàng hài lòng",
     "locationLabel": "Vị trí thuận tiện tại Gion, Kyoto",
     "locationValue": "京都市東山区祇園町北側 347-25  3階 - Gần Chùa Thanh Thủy, Đền Yasaka và phố đi bộ Gion.",
@@ -235,7 +235,7 @@
     "viewGallery": "Album Ảnh"
   },
   "process": {
-    "title": "Quy Trình Thuê Kimono Tại Kyo kimono rental &nail",
+    "title": "Quy Trình Thuê Kimono Tại Kyo Kimono Rental",
     "subtitle": "Chỉ 4 bước đơn giản để trải nghiệm kimono tuyệt vời",
     "step1Title": "Đặt Lịch",
     "step1Desc": "Đặt lịch qua website, Zalo hoặc điện thoại. Chọn gói thuê và ngày phù hợp với bạn.",

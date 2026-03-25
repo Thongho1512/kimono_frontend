@@ -1,6 +1,6 @@
 {
   "metadata": {
-    "title": "Kyo kimono rental &nail - 京都・祇園の着物レンタル",
+    "title": "Kyo Kimono Rental - 京都・祇園の着物レンタル",
     "description": "京都祇園の本格着物レンタル店。伝統的な着物からモダンな柄まで豊富にご用意。プロによるヘアセットや写真撮影サービスも承ります。"
   },
   "nav": {
@@ -38,7 +38,7 @@
     "details": "詳細"
   },
   "whyUs": {
-    "title": "Kyo kimono rental &nailが選ばれる理由",
+    "title": "Kyo Kimono Rentalが選ばれる理由",
     "subtitle": "京都で最高の着物レンタル体験をご提供します",
     "price": "お手頃価格",
     "priceDesc": "高品質な着物を競争力のある価格でご提供します。",
@@ -163,11 +163,11 @@
     "q7": "大きいサイズの着物はありますか？",
     "a7": "はい、さまざまな体型に対応する特別サイズをご用意しています。事前にお知らせください。",
     "q8": "お店の場所は？",
-    "a8": "Kyo kimono rental &nailは、清水寺や八坂神社など京都の有名な観光地に近い祇園に位置しています。住所：京都市東山区祇園町北側 347-25 3階"
+    "a8": "Kyo Kimono Rentalは、清水寺や八坂神社など京都の有名な観光地に近い祇園に位置しています。住所：京都市東山区祇園町北側 347-25 3階"
   },
   "gallery": {
     "title": "フォトギャラリー",
-    "subtitle": "Kyo kimono rental &nailでのお客様の美しい瞬間",
+    "subtitle": "Kyo Kimono Rentalでのお客様の美しい瞬間",
     "note": "現在は静的プレースホルダー。ヘッドレスCMSまたはCloudinaryを統合予定。"
   },
   "contact": {
@@ -193,27 +193,27 @@
     "services": "サービス",
     "contactUs": "お問い合わせ",
     "followUs": "フォロー",
-    "rights": "Kyo kimono rental &nail. All rights reserved.",
+    "rights": "Kyo Kimono Rental. All rights reserved.",
     "nearby": "観光スポット近く"
   },
   "videos": {
     "badge": "ビデオ紹介",
-    "title": "Kyo kimono rental &nailを発見",
+    "title": "Kyo Kimono Rentalを発見",
     "subtitle": "ショップツアーとレンタル体験動画をご覧ください"
   },
   "video": {
     "badge": "ショップツアー",
-    "title": "Kyo kimono rental &nailを発見",
+    "title": "Kyo Kimono Rentalを発見",
     "subtitle": "ショップツアー動画をご覧ください。京都での着物レンタル体験をご紹介します",
-    "thumbnailAlt": "Kyo kimono rental &nailのビデオツアー",
-    "caption": "Kyo kimono rental &nail - 京都のプレミアム着物レンタル体験"
+    "thumbnailAlt": "Kyo Kimono Rentalのビデオツアー",
+    "caption": "Kyo Kimono Rental - 京都のプレミアム着物レンタル体験"
   },
   "about": {
     "badge": "私たちについて",
     "title": "京都・祇園のプレミアム着物レンタル",
-    "p1": "Kyo kimono rental &nailは、京都祇園にあるプレミアムな着物レンタルショップです。200着以上の本格的な着物を取り揃え、伝統的なスタイルからモダンなデザインまで、女性、男性、お子様向けに豊富にご用意しています。",
+    "p1": "Kyo Kimono Rentalは、京都祇園にあるプレミアムな着物レンタルショップです。200着以上の本格的な着物を取り揃え、伝統的なスタイルからモダンなデザインまで、女性, 男性, お子様向けに豊富にご用意しています。",
     "p2": "プロのスタッフが着付け、ヘアセット、そして写真撮影を行います。京都の歴史ある街並みを散策したり、特別なイベントに参加したり、皆様の忘れられない思い出作りを全力でサポートいたします。",
-    "imageAlt": "京都のKyo kimono rental &nailの店内",
+    "imageAlt": "京都のKyo Kimono Rentalの店内",
     "happyCustomers": "満足のお客様",
     "locationLabel": "京都・祇園の中心部の便利な立地",
     "locationValue": "京都市東山区祇園町北側 347-25  3階 - 清水寺、八坂神社、祇園の散策路の近く。",
@@ -221,7 +221,7 @@
     "viewGallery": "フォトギャラリー"
   },
   "process": {
-    "title": "Kyo kimono rental &nailでの着物レンタルの流れ",
+    "title": "Kyo Kimono Rentalでの着物レンタルの流れ",
     "subtitle": "4つの簡単なステップで素敵な着物体験を",
     "step1Title": "予約",
     "step1Desc": "ウェブサイト、Zalo、または電話でご予約。お好みのプランと日��をお選びください。",
