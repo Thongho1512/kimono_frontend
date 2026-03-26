@@ -120,10 +120,23 @@ export function ProductModal({ isOpen, onClose, initialData, categories, onSucce
             onSuccess();
             onClose();
         } catch (error: any) {
-            console.error('Save error:', error);
-            const errorMessage = typeof error.response?.data === 'string'
-                ? error.response.data
-                : error.response?.data?.message || 'Có lỗi xảy ra khi lưu sản phẩm';
+            console.error('Save error detailed:', error.response?.data);
+            let errorMessage = 'Có lỗi xảy ra khi lưu sản phẩm';
+            
+            if (error.response?.data) {
+                if (typeof error.response.data === 'string') {
+                    errorMessage = error.response.data;
+                } else if (error.response.data.errors) {
+                    // Handle ASP.NET Core Validation Errors
+                    const validationErrors = error.response.data.errors;
+                    const messages = Object.keys(validationErrors)
+                        .map(key => `${key}: ${validationErrors[key].join(', ')}`);
+                    errorMessage = messages.join('\n') || error.response.data.title || errorMessage;
+                } else if (error.response.data.message) {
+                    errorMessage = error.response.data.message;
+                }
+            }
+            
             toast.error(errorMessage);
         } finally {
             setLoading(false);

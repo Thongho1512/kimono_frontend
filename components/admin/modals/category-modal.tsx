@@ -51,8 +51,23 @@ export function CategoryModal({ isOpen, onClose, initialData, onSuccess }: Categ
             }
             onSuccess();
             onClose();
-        } catch (error) {
-            toast.error('Không thể lưu danh mục');
+        } catch (error: any) {
+            console.error('Save category error detailed:', error.response?.data);
+            let errorMessage = 'Không thể lưu danh mục';
+            
+            if (error.response?.data) {
+                if (typeof error.response.data === 'string') {
+                    errorMessage = error.response.data;
+                } else if (error.response.data.errors) {
+                    const validationErrors = error.response.data.errors;
+                    const messages = Object.keys(validationErrors)
+                        .map(key => `${key}: ${validationErrors[key].join(', ')}`);
+                    errorMessage = messages.join('\n') || error.response.data.title || errorMessage;
+                } else if (error.response.data.message) {
+                    errorMessage = error.response.data.message;
+                }
+            }
+            toast.error(errorMessage);
         } finally {
             setLoading(false);
         }
