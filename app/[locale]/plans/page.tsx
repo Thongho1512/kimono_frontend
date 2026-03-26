@@ -144,7 +144,13 @@ export default function PlansPage() {
         {/* Dynamic Categories Sections */}
         <div className="space-y-20 pb-20">
           {categories.map((cat, idx) => {
-            const catProducts = products.filter(p => p.categoryId === cat.id);
+            const catProducts = products
+              .filter(p => p.categoryId === cat.id)
+              .sort((a, b) => {
+                const priceA = a.rentalPriceMin > 0 ? a.rentalPriceMin : a.rentalPricePerDay;
+                const priceB = b.rentalPriceMin > 0 ? b.rentalPriceMin : b.rentalPricePerDay;
+                return priceB - priceA;
+              });
             if (catProducts.length === 0) return null;
 
             return (

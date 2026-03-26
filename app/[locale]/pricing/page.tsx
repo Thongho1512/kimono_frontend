@@ -70,7 +70,13 @@ export default function PricingPage() {
 
   const renderTable = (category: CategoryDto | undefined, icon: React.ReactNode) => {
     if (!category) return null;
-    const catProducts = products.filter(p => p.categoryId === category.id);
+    const catProducts = products
+      .filter(p => p.categoryId === category.id)
+      .sort((a, b) => {
+        const priceA = a.rentalPriceMin > 0 ? a.rentalPriceMin : a.rentalPricePerDay;
+        const priceB = b.rentalPriceMin > 0 ? b.rentalPriceMin : b.rentalPricePerDay;
+        return priceB - priceA;
+      });
     if (catProducts.length === 0) return null;
 
     return (
