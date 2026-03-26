@@ -52,6 +52,7 @@ export function Header() {
               src="/images/logo.jpg"
               alt="Kyo Kimono Logo"
               fill
+              unoptimized
               className="object-cover"
             />
           </div>

@@ -58,6 +58,7 @@ export function Footer() {
                   src="/images/logo.jpg"
                   alt="Kyo Kimono Logo"
                   fill
+                  unoptimized
                   className="object-cover"
                 />
               </div>
