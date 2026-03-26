@@ -152,79 +152,58 @@ export default function PlansPage() {
                 className="scroll-mt-24"
               >
                 <FadeIn delay={0.1}>
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="h-px flex-1 bg-border" />
-                    <h2 className="font-serif text-2xl sm:text-3xl font-semibold text-foreground text-center px-4">
+                  <div className="flex flex-col items-center mb-12">
+                    <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground text-center">
                       {cat.name}
                     </h2>
-                    <div className="h-px flex-1 bg-border" />
+                    <div className="sakura-line mt-4 w-24 mx-auto" />
                   </div>
                 </FadeIn>
 
-                {/* Price Table for the Category */}
-                <FadeIn delay={0.2}>
-                  <div className="mb-12 overflow-hidden rounded-xl border border-border ticktoc-shadow bg-card">
-                    <table className="w-full text-left border-collapse">
-                      <thead>
-                        <tr className="bg-secondary/50">
-                          <th className="px-6 py-4 font-serif text-lg font-bold border-b border-border">Các loại kimono</th>
-                          <th className="px-6 py-4 font-serif text-lg font-bold border-b border-border text-right">Giá cho thuê</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {catProducts.map((plan) => (
-                          <tr key={plan.id} className="hover:bg-secondary/30 ticktoc-transition group">
-                            <td className="px-6 py-4 border-b border-border font-medium group-hover:text-primary">
-                              {plan.name}
-                            </td>
-                            <td className="px-6 py-4 border-b border-border text-right font-bold text-primary">
-                              {formatPrice(plan)}
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                    <div className="p-4 bg-secondary/10 italic text-[13px] text-muted-foreground space-y-1">
-                       <p>※ Giá đã bao gồm: làm tóc, túi, dép</p>
-                       <p>※ Make-up cơ bản: +3500JPY</p>
-                    </div>
-                  </div>
-                </FadeIn>
-
-                {/* Visual Samples Section Header (Optional) */}
-                <FadeIn delay={0.3}>
-                  <div className="mb-6 flex items-center gap-4">
-                    <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground whitespace-nowrap">Hình ảnh mẫu</h3>
-                    <div className="h-px w-full bg-border" />
-                  </div>
-                </FadeIn>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                {/* Products for the Category */}
+                <div className="space-y-16">
                   {catProducts.map((plan, pIdx) => (
-                    <FadeIn key={plan.id} delay={0.1 + pIdx * 0.05}>
-                      <div className="space-y-4">
-                        <Link
-                          href={`/${locale}/plans/${plan.slug || plan.id}`}
-                          className="group block"
-                        >
-                          <div className="bg-card rounded-xl overflow-hidden ticktoc-shadow border border-border hover:border-primary/30 ticktoc-transition aspect-[3/4] relative">
-                            <Image
-                              src={plan.images?.[0]?.url || "/placeholder.svg"}
-                              alt={plan.name}
-                              fill
-                              className="object-cover group-hover:scale-105 ticktoc-transition"
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                            />
-                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                               <p className="text-white font-serif text-lg font-bold">{plan.name}</p>
-                               <p className="text-primary-foreground/90 font-bold">{formatPrice(plan)}</p>
-                            </div>
+                    <FadeIn key={plan.id} delay={0.2 + pIdx * 0.1}>
+                      <div className="space-y-6">
+                        {/* Product Header: Name and Price */}
+                        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border pb-3">
+                          <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground">
+                            {plan.name}
+                          </h3>
+                          <div className="flex items-center gap-2">
+                             <span className="text-lg sm:text-xl font-bold text-primary">
+                                {formatPrice(plan)}
+                             </span>
                           </div>
-                        </Link>
-                        <div className="text-center">
-                          <h4 className="font-serif text-lg font-semibold">{plan.name}</h4>
-                          <p className="text-primary font-bold text-sm">{formatPrice(plan)}</p>
                         </div>
+
+                        {/* Product Images Grid */}
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                          {(plan.images && plan.images.length > 0) ? (
+                            plan.images.map((img, iIdx) => (
+                              <div key={iIdx} className="group relative aspect-[3/4] rounded-xl overflow-hidden border border-border ticktoc-shadow">
+                                <Image
+                                  src={img.url || "/placeholder.svg"}
+                                  alt={`${plan.name} - ${iIdx + 1}`}
+                                  fill
+                                  className="object-cover group-hover:scale-105 ticktoc-transition"
+                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                />
+                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                              </div>
+                            ))
+                          ) : (
+                            <div className="col-span-full py-12 border-2 border-dashed border-border rounded-xl flex items-center justify-center text-muted-foreground italic">
+                              Đang cập nhật hình ảnh mẫu...
+                            </div>
+                          )}
+                        </div>
+                        
+                        {plan.description && (
+                           <p className="text-sm text-muted-foreground max-w-3xl leading-relaxed">
+                              {plan.description}
+                           </p>
+                        )}
                       </div>
                     </FadeIn>
                   ))}
