@@ -1,8 +1,12 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "kimono-frontend"
+main = ".open-next/worker.js"
 compatibility_date = "2024-09-23"
-compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".open-next"
+compatibility_flags = ["nodejs_compat", "global_fetch_strictly_public"]
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
 
 [vars]
 NEXT_PUBLIC_API_URL = "https://api.kyokimonorental.com"
