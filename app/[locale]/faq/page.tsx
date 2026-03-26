@@ -21,6 +21,9 @@ const faqItems = [
   { q: "q6", a: "a6" },
   { q: "q7", a: "a7" },
   { q: "q8", a: "a8" },
+  { q: "q9", a: "a9" },
+  { q: "q10", a: "a10" },
+  { q: "q11", a: "a11" },
 ];
 
 export default function FAQPage() {
@@ -54,7 +57,7 @@ export default function FAQPage() {
                   <AccordionTrigger className="text-left font-serif text-foreground hover:text-primary hover:no-underline py-5">
                     {t(item.q)}
                   </AccordionTrigger>
-                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5">
+                  <AccordionContent className="text-muted-foreground leading-relaxed pb-5 whitespace-pre-line">
                     {t(item.a)}
                   </AccordionContent>
                 </AccordionItem>
