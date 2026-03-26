@@ -7,7 +7,7 @@ import { formatJPY } from "@/lib/data";
 import { FadeIn } from "@/components/ticktoc/fade-in";
 import { PageBreadcrumb } from "@/components/ticktoc/page-breadcrumb";
 import { Button } from "@/components/ui/button";
-import { Loader2, Baby, User, Users } from "lucide-react";
+import { Loader2, Baby, User, Sparkles } from "lucide-react";
 import api from "@/lib/api";
 
 interface CategoryDto {
@@ -83,10 +83,10 @@ export default function PricingPage() {
           <thead>
             <tr className="border-b border-foreground/10">
               <th className="px-6 py-3 font-serif font-semibold text-foreground border-r border-foreground/10">
-                {t("package") || "Các loại kimono"}
+                Các loại kimono
               </th>
               <th className="px-6 py-3 font-serif font-semibold text-foreground text-center">
-                {t("rentalPrice") || "Giá cho thuê"}
+                Giá cho thuê
               </th>
             </tr>
           </thead>
@@ -125,8 +125,8 @@ export default function PricingPage() {
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
               {t("title")}
             </h1>
-            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto text-pretty italic">
-              Experience authentic Japanese culture with our premium collection.
+            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto text-pretty">
+              {t("subtitle")}
             </p>
             <div className="sakura-line mt-6 mx-auto w-32" />
           </div>
@@ -136,7 +136,7 @@ export default function PricingPage() {
            {/* Left Column: Women */}
            <div className="lg:col-span-1">
               <FadeIn delay={0.1}>
-                 {renderTable(womenCat, <Users className="h-6 w-6 text-primary" />)}
+                 {renderTable(womenCat, <Sparkles className="h-6 w-6 text-primary" />)}
                  
                  {/* Footnotes */}
                  <div className="mt-8 space-y-4 text-base sm:text-lg text-foreground font-medium px-2">
@@ -167,10 +167,7 @@ export default function PricingPage() {
 
               {/* Booking CTA */}
               <FadeIn delay={0.4}>
-                <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20 text-center mt-12">
-                   <h3 className="font-serif text-xl font-bold text-foreground mb-4">
-                      {t("readyToBook") || "Ready for your transformation?"}
-                   </h3>
+                <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20 text-center mt-4">
                    <Button asChild size="lg" className="px-12">
                       <Link href={`/${locale}/booking`}>{tCommon("bookNow")}</Link>
                    </Button>
