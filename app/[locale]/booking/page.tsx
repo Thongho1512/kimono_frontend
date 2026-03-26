@@ -63,7 +63,7 @@ function BookingForm() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await api.get('/api/public/products');
+        const res = await api.get(`/api/public/products?culture=${locale}`);
         setProducts(res.data);
 
         // Handle preselected plan
@@ -102,7 +102,7 @@ function BookingForm() {
         image: product.images?.[0]?.url || ""
       }];
     });
-    toast.success(tCommon("addedToCart") || "Added to cart");
+    toast.success(t("addedToCart"));
   };
 
   const removeFromCart = (productId: string) => {
@@ -130,27 +130,27 @@ function BookingForm() {
 
   const validateForm = () => {
     if (cart.length === 0) {
-      toast.error("Vui lòng chọn ít nhất một dịch vụ.");
+      toast.error(t("pleaseSelectService"));
       return false;
     }
     if (!formData.name.trim()) {
-      toast.error("Vui lòng nhập họ và tên.");
+      toast.error(t("pleaseEnterName"));
       return false;
     }
     if (!formData.email.trim()) {
-      toast.error("Vui lòng nhập địa chỉ email.");
+      toast.error(t("pleaseEnterEmail"));
       return false;
     }
     if (!formData.date) {
-      toast.error("Vui lòng chọn ngày thuê.");
+      toast.error(t("pleaseSelectDate"));
       return false;
     }
     if (!formData.time) {
-      toast.error("Vui lòng chọn giờ đến dự kiến.");
+      toast.error(t("pleaseSelectTime"));
       return false;
     }
     if (!formData.people || parseInt(formData.people) < 1) {
-      toast.error("Vui lòng nhập số người (tối thiểu 1).");
+      toast.error(t("pleaseEnterPeople"));
       return false;
     }
     return true;
@@ -215,7 +215,7 @@ function BookingForm() {
               {t("success")}
             </h2>
             <p className="text-muted-foreground mb-6">
-              Thank you for your request! We will contact you shortly to confirm your booking.
+              {t("thankYouMessage")}
             </p>
             <Button asChild className="mt-2">
               <Link href={`/${locale}`}>{tNav("home")}</Link>
@@ -248,7 +248,7 @@ function BookingForm() {
           <FadeIn delay={0.1}>
             <h2 className="font-serif text-xl font-bold mb-4 flex items-center gap-2">
               <ShoppingBag className="h-5 w-5 text-primary" />
-              Select Services
+              {t("selectServices")}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {products.map(product => (
@@ -273,7 +273,7 @@ function BookingForm() {
                       </p>
                     </div>
                     <Button size="sm" variant="secondary" onClick={() => addToCart(product)} className="w-full mt-2 h-8">
-                      <Plus className="h-3 w-3 mr-1" /> Add
+                      <Plus className="h-3 w-3 mr-1" /> {t("add")}
                     </Button>
                   </div>
                 </div>
@@ -288,12 +288,12 @@ function BookingForm() {
             {/* Cart Summary */}
             <FadeIn delay={0.2}>
               <div className="bg-card rounded-2xl p-6 ticktoc-shadow border border-border">
-                <h3 className="font-serif text-lg font-bold mb-4">Your Selection</h3>
+                <h3 className="font-serif text-lg font-bold mb-4">{t("yourSelection")}</h3>
                 {cart.length === 0 ? (
                   <div className="text-center py-8 text-muted-foreground bg-secondary/30 rounded-lg border border-dashed border-border">
                     <ShoppingBag className="h-8 w-8 mx-auto mb-2 opacity-50" />
-                    <p>No items selected yet.</p>
-                    <p className="text-xs">Select services from the list.</p>
+                    <p>{t("noItemsSelected")}</p>
+                    <p className="text-xs">{t("selectFromList")}</p>
                   </div>
                 ) : (
                   <div className="space-y-4">
@@ -319,7 +319,7 @@ function BookingForm() {
                       </div>
                     ))}
                     <div className="border-t border-border pt-3 mt-3 flex justify-between items-center font-bold text-lg">
-                      <span>Total Estimate:</span>
+                      <span>{t("totalEstimate")}</span>
                       <span className="text-primary">
                         {totalMin === totalMax ? formatJPY(totalMin) : `${formatJPY(totalMin)}-${formatJPY(totalMax)}`}
                       </span>
@@ -332,7 +332,7 @@ function BookingForm() {
             {/* Booking Form */}
             <FadeIn delay={0.3}>
               <form onSubmit={handleSubmit} className="bg-card rounded-2xl p-6 ticktoc-shadow border border-border">
-                <h3 className="font-serif text-lg font-bold mb-4">Contact Info</h3>
+                <h3 className="font-serif text-lg font-bold mb-4">{t("contactInfo")}</h3>
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
@@ -359,7 +359,7 @@ function BookingForm() {
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="time">{tCommon("arrivalTime") || "Approx. Arrival Time"} <span className="text-destructive">*</span></Label>
+                    <Label htmlFor="time">{t("arrivalTime")} <span className="text-destructive">*</span></Label>
                     <Input id="time" type="time" value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />
                   </div>
                   <div>
@@ -375,7 +375,7 @@ function BookingForm() {
                   </div>
 
                   <Button type="submit" size="lg" className="w-full" disabled={submitting}>
-                    {submitting ? "Sending..." : "Send Request & Quote"}
+                    {submitting ? t("sending") : t("submit")}
                   </Button>
                 </div>
               </form>
