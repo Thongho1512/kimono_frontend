@@ -20,13 +20,18 @@ interface ProductDto {
   id: string;
   name: string;
   rentalPricePerDay: number;
+  rentalPriceMin: number;
+  rentalPriceMax: number;
+  priceType: string;
   images: { url: string }[];
 }
 
 interface CartItem {
   productId: string;
   productName: string;
-  price: number;
+  priceMin: number;
+  priceMax: number;
+  priceType: string;
   quantity: number;
   image: string;
 }
@@ -84,10 +89,15 @@ function BookingForm() {
       if (existing) {
         return prev.map(item => item.productId === product.id ? { ...item, quantity: item.quantity + 1 } : item);
       }
+      
+      const isRange = product.priceType === "range" || product.priceType === "Khoảng";
+      
       return [...prev, {
         productId: product.id,
         productName: product.name,
-        price: product.rentalPricePerDay,
+        priceMin: isRange ? product.rentalPriceMin : (product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay),
+        priceMax: isRange ? product.rentalPriceMax : (product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay),
+        priceType: product.priceType,
         quantity: 1,
         image: product.images?.[0]?.url || ""
       }];
@@ -109,7 +119,14 @@ function BookingForm() {
     }));
   };
 
-  const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const totalMin = cart.reduce((sum, item) => sum + (item.priceMin * item.quantity), 0);
+  const totalMax = cart.reduce((sum, item) => sum + (item.priceMax * item.quantity), 0);
+  
+  const formatRange = (min: number, max: number, type: string) => {
+    const isRange = type === "range" || type === "Khoảng";
+    if (isRange) return `${formatJPY(min)}-${formatJPY(max)}`;
+    return formatJPY(min);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -126,7 +143,9 @@ function BookingForm() {
       items: cart.map(item => ({
         productId: item.productId,
         productName: item.productName,
-        price: item.price,
+        price: item.priceMin,
+        priceMin: item.priceMin,
+        priceMax: item.priceMax,
         quantity: item.quantity
       }))
     };
@@ -214,7 +233,13 @@ function BookingForm() {
                   <div className="flex-1 flex flex-col justify-between">
                     <div>
                       <h3 className="font-medium line-clamp-1" title={product.name}>{product.name}</h3>
-                      <p className="text-primary font-bold text-sm">{formatJPY(product.rentalPricePerDay)}</p>
+                      <p className="text-primary font-bold text-sm">
+                        {formatRange(
+                          product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay, 
+                          product.rentalPriceMax, 
+                          product.priceType
+                        )}
+                      </p>
                     </div>
                     <Button size="sm" variant="secondary" onClick={() => addToCart(product)} className="w-full mt-2 h-8">
                       <Plus className="h-3 w-3 mr-1" /> Add
@@ -248,7 +273,9 @@ function BookingForm() {
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-sm font-medium truncate">{item.productName}</p>
-                          <p className="text-xs text-muted-foreground">{formatJPY(item.price)}</p>
+                          <p className="text-xs text-muted-foreground">
+                            {formatRange(item.priceMin, item.priceMax, item.priceType)}
+                          </p>
                         </div>
                         <div className="flex items-center gap-2">
                           <button onClick={() => updateQuantity(item.productId, -1)} className="p-1 hover:bg-secondary rounded"><Minus className="h-3 w-3" /></button>
@@ -262,7 +289,9 @@ function BookingForm() {
                     ))}
                     <div className="border-t border-border pt-3 mt-3 flex justify-between items-center font-bold text-lg">
                       <span>Total Estimate:</span>
-                      <span className="text-primary">{formatJPY(totalAmount)}</span>
+                      <span className="text-primary">
+                        {totalMin === totalMax ? formatJPY(totalMin) : `${formatJPY(totalMin)}-${formatJPY(totalMax)}`}
+                      </span>
                     </div>
                   </div>
                 )}
