@@ -105,7 +105,12 @@ export default function ProductsPage() {
         },
         {
             header: 'Giá thuê (Ngày)',
-            accessorKey: (row: Product) => `¥ ${row.rentalPricePerDay.toLocaleString()}`
+            accessorKey: (row: Product) => {
+                if (row.priceType === 'Khoảng') {
+                    return `¥ ${row.rentalPriceMin.toLocaleString()} - ${row.rentalPriceMax.toLocaleString()}`;
+                }
+                return `¥ ${row.rentalPricePerDay.toLocaleString()}`;
+            }
         },
         {
             header: 'Thao tác',
