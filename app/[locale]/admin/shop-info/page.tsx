@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
-import { Loader2, Save, Info, Share2, Clock, Phone, Store, MapPin, Mail, Sparkles } from 'lucide-react';
+import { Loader2, Save, Info, Share2, Clock, Phone, Store, MapPin, Mail, Sparkles, Trash2, X } from 'lucide-react';
 
 import { useTranslations } from 'next-intl';
 import { useAdmin } from '@/lib/admin-context';
@@ -145,20 +145,77 @@ export default function ShopInfoPage() {
                                 </div>
                             </CardHeader>
                             <CardContent className="pt-6 space-y-6">
-                                <div className="grid gap-3">
-                                    <Label htmlFor="nearbyPlaces" className="text-sm font-semibold">Danh sách địa điểm</Label>
-                                    <div className="relative">
-                                        <Sparkles className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                                        <textarea
-                                            id="nearbyPlaces"
-                                            value={info.nearbyPlaces}
-                                            onChange={e => updateField('nearbyPlaces', e.target.value)}
-                                            placeholder="VD: Nhà Thờ Đức Bà, Bưu Điện Thành Phố, Chợ Bến Thành..."
-                                            className="w-full min-h-[200px] pl-10 pt-2 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all font-medium"
-                                        />
+                                <div className="grid gap-4">
+                                    <Label className="text-sm font-semibold">Danh sách địa điểm</Label>
+                                    
+                                    <div className="flex flex-wrap gap-2 p-3 min-h-[100px] rounded-md border border-input bg-neutral-50/50">
+                                        {info.nearbyPlaces ? info.nearbyPlaces.split(',').map(p => p.trim()).filter(p => p).map((place, idx) => (
+                                            <div key={idx} className="flex items-center gap-1.5 bg-white border border-blue-200 text-blue-700 px-3 py-1.5 rounded-full text-sm font-medium shadow-sm hover:border-blue-300 transition-all group">
+                                                {place}
+                                                <button 
+                                                    type="button"
+                                                    onClick={() => {
+                                                        const places = info.nearbyPlaces.split(',').map(p => p.trim()).filter(p => p);
+                                                        const newPlaces = places.filter((_, i) => i !== idx).join(', ');
+                                                        updateField('nearbyPlaces', newPlaces);
+                                                    }}
+                                                    className="text-blue-400 hover:text-red-500 transition-colors"
+                                                >
+                                                    <Trash2 className="h-3.5 w-3.5" />
+                                                </button>
+                                            </div>
+                                        )) : (
+                                            <p className="text-muted-foreground text-xs italic p-2">Chưa có địa điểm nào được thêm.</p>
+                                        )}
                                     </div>
+
+                                    <div className="flex gap-2">
+                                        <Input 
+                                            placeholder="Thêm địa điểm... (VD: Chợ Bến Thành, Nhà Thờ Đức Bà)" 
+                                            id="newPlaceInput"
+                                            className="flex-1"
+                                            onKeyDown={(e) => {
+                                                if (e.key === 'Enter') {
+                                                    e.preventDefault();
+                                                    const input = e.currentTarget;
+                                                    const values = input.value.split(',').map(p => p.trim()).filter(p => p);
+                                                    if (values.length > 0) {
+                                                        const current = info.nearbyPlaces ? info.nearbyPlaces.split(',').map(p => p.trim()).filter(p => p) : [];
+                                                        const newcomers = values.filter(v => !current.includes(v));
+                                                        if (newcomers.length > 0) {
+                                                            updateField('nearbyPlaces', [...current, ...newcomers].join(', '));
+                                                            input.value = '';
+                                                        } else if (values.length === 1) {
+                                                            toast.error('Địa điểm này đã có trong danh sách');
+                                                        }
+                                                    }
+                                                }
+                                            }}
+                                        />
+                                        <Button 
+                                            type="button" 
+                                            variant="secondary"
+                                            onClick={() => {
+                                                const input = document.getElementById('newPlaceInput') as HTMLInputElement;
+                                                const values = input.value.split(',').map(p => p.trim()).filter(p => p);
+                                                if (values.length > 0) {
+                                                    const current = info.nearbyPlaces ? info.nearbyPlaces.split(',').map(p => p.trim()).filter(p => p) : [];
+                                                    const newcomers = values.filter(v => !current.includes(v));
+                                                    if (newcomers.length > 0) {
+                                                        updateField('nearbyPlaces', [...current, ...newcomers].join(', '));
+                                                        input.value = '';
+                                                    } else if (values.length === 1) {
+                                                        toast.error('Địa điểm này đã có trong danh sách');
+                                                    }
+                                                }
+                                            }}
+                                        >
+                                            Thêm
+                                        </Button>
+                                    </div>
+
                                     <p className="text-[10px] text-muted-foreground italic flex items-center gap-1">
-                                        <Info className="h-3 w-3" /> Các địa điểm cách nhau bởi dấu phẩy (,)
+                                        <Info className="h-3 w-3" /> Nhấn Enter hoặc nút Thêm. Có thể nhập nhiều địa điểm ngăn cách bởi dấu phẩy (,).
                                     </p>
                                 </div>
                             </CardContent>
