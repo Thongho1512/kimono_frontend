@@ -17,20 +17,15 @@ interface ForgotPasswordModalProps {
 export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProps) {
     const [step, setStep] = useState(1); // 1: Email, 2: OTP, 3: New Password, 4: Success
     const [loading, setLoading] = useState(false);
-    const [email, setEmail] = useState('');
     const [otp, setOtp] = useState('');
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
     const handleSendOtp = async () => {
-        if (!email) {
-            toast.error('Vui lòng nhập email');
-            return;
-        }
         setLoading(true);
         try {
-            await api.post('/api/auth/forgot-password', { email });
-            toast.success('Mã OTP đã được gửi đến email của bạn');
+            await api.post('/api/auth/forgot-password', {});
+            toast.success('Mã OTP đã được gửi đến email quản trị');
             setStep(2);
         } catch (error: any) {
             toast.error(error.response?.data || 'Không thể gửi mã OTP');
@@ -46,7 +41,7 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
         }
         setLoading(true);
         try {
-            await api.post('/api/auth/verify-otp', { email, otp });
+            await api.post('/api/auth/verify-otp', { otp });
             toast.success('Xác thực thành công');
             setStep(3);
         } catch (error: any) {
@@ -67,7 +62,7 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
         }
         setLoading(true);
         try {
-            await api.post('/api/auth/reset-password', { email, otp, newPassword });
+            await api.post('/api/auth/reset-password', { otp, newPassword });
             toast.success('Đặt lại mật khẩu thành công');
             setStep(4);
         } catch (error: any) {
@@ -79,7 +74,6 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
 
     const resetAndClose = () => {
         setStep(1);
-        setEmail('');
         setOtp('');
         setNewPassword('');
         setConfirmPassword('');
@@ -97,8 +91,8 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
                         {step === 4 && <><CheckCircle2 className="h-5 w-5 text-green-500" /> Thành công</>}
                     </DialogTitle>
                     <DialogDescription>
-                        {step === 1 && "Nhập email quản trị để nhận mã OTP khôi phục mật khẩu."}
-                        {step === 2 && `Mã xác thực đã được gửi tới ${email}.`}
+                        {step === 1 && "Hệ thống sẽ gửi mã OTP đến email quản trị viên đã được cấu hình."}
+                        {step === 2 && `Mã xác thực đã được gửi tới email quản trị (kyok***@gmail.com).`}
                         {step === 3 && "Thiết lập mật khẩu mới cho tài khoản của bạn."}
                         {step === 4 && "Mật khẩu của bạn đã được cập nhật. Bạn có thể đăng nhập ngay bây giờ."}
                     </DialogDescription>
@@ -106,16 +100,11 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
 
                 <div className="space-y-4 py-2">
                     {step === 1 && (
-                        <div className="space-y-2">
-                            <Label htmlFor="reset-email">Email đăng ký</Label>
-                            <Input
-                                id="reset-email"
-                                type="email"
-                                placeholder="name@example.com"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                disabled={loading}
-                            />
+                        <div className="py-6 text-center space-y-4">
+                            <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <Mail className="h-8 w-8 text-primary" />
+                            </div>
+                            <p className="text-sm font-medium">Nhấn nút bên dưới để nhận mã xác thực OTP gửi về email quản trị viên.</p>
                         </div>
                     )}
 
@@ -182,7 +171,7 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
                                 {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Xác thực OTP'}
                             </Button>
                             <Button variant="ghost" size="sm" onClick={() => setStep(1)} disabled={loading}>
-                                Quay lại nhập email
+                                Quay lại
                             </Button>
                         </div>
                     )}
