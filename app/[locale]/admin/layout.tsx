@@ -163,7 +163,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 {/* Main Content Area */}
                 <main className="flex-1 overflow-x-hidden overflow-y-auto">
                     <div className="p-4 lg:p-8">
-                        <div className="max-w-[1600px] mx-auto animate-in fade-in slide-in-from-bottom-2 duration-500">
+                        <div className="max-w-[1600px] mx-auto animate-in fade-in slide-in-from-bottom-2 duration-300">
                             {children}
                         </div>
                     </div>

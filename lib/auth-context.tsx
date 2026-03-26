@@ -57,9 +57,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
 
     useEffect(() => {
-        // Try to load cached user first for faster UI, then verify
+        // Try to load cached user first for faster UI, then verify in background
         const cached = localStorage.getItem('user');
-        if (cached) setUser(JSON.parse(cached));
+        if (cached) {
+            setUser(JSON.parse(cached));
+            setLoading(false); // Render immediately if user is cached
+        }
 
         checkAuth();
     }, []);

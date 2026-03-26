@@ -217,7 +217,7 @@ export function Footer() {
         <div className="flex flex-col sm:flex-row items-center justify-between gap-2 text-xs opacity-50">
           <div className="flex gap-4">
             <p>&copy; 2026 {t("footer.rights")}</p>
-            <Link href="/admin" className="hover:text-primary transition-colors">Admin</Link>
+            <Link href={`${prefix}/admin`} className="hover:text-primary transition-colors">Admin</Link>
           </div>
           <p>Kyo Kimono Rental - Kyoto</p>
         </div>
