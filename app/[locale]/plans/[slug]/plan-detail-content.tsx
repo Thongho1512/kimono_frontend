@@ -39,6 +39,13 @@ export default function PlanDetailContent({
 
     const includesList = (plan.description || "").split(",").map((s) => s.trim());
 
+    const formatPrice = (p: ProductDto) => {
+        if (p.priceType === "range") {
+          return `${formatJPY(p.rentalPriceMin)} - ${formatJPY(p.rentalPriceMax)}`;
+        }
+        return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
+    };
+
     return (
         <div className="pb-16">
             {/* Breadcrumb */}
@@ -72,22 +79,13 @@ export default function PlanDetailContent({
                             {plan.name}
                         </h1>
 
-                        {/* Price */}
                         <div className="mt-6 p-4 bg-secondary rounded-xl">
                             <div className="flex items-baseline gap-2">
                                 <span className="text-3xl font-bold text-primary">
-                                    {formatJPY(plan.rentalPricePerDay)}
+                                    {formatPrice(plan)}
                                 </span>
                                 <span className="text-sm text-muted-foreground">
-                                    / {tPricing("halfDay")}
-                                </span>
-                            </div>
-                            <div className="flex items-baseline gap-2 mt-1">
-                                <span className="text-xl font-semibold text-foreground">
-                                    {plan.rentalPriceMin > 0 ? `${formatJPY(plan.rentalPriceMin)} - ${formatJPY(plan.rentalPriceMax)}` : formatJPY(plan.rentalPricePerDay * 1.5)}
-                                </span>
-                                <span className="text-sm text-muted-foreground">
-                                    / {tPricing("fullDay")}
+                                    / {tPricing("rentalPlan")}
                                 </span>
                             </div>
                         </div>
@@ -167,7 +165,7 @@ export default function PlanDetailContent({
                                                 {rp.name}
                                             </h3>
                                             <span className="text-primary font-bold mt-1 block">
-                                                {formatJPY(rp.rentalPricePerDay)}
+                                                {formatPrice(rp)}
                                             </span>
                                         </div>
                                     </div>

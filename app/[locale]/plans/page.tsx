@@ -22,6 +22,9 @@ interface ProductDto {
   name: string;
   slug: string;
   rentalPricePerDay: number;
+  rentalPriceMin: number;
+  rentalPriceMax: number;
+  priceType: string;
   images: { url: string }[];
   description?: string;
 }
@@ -111,6 +114,13 @@ export default function PlansPage() {
     );
   }
 
+  const formatPrice = (p: ProductDto) => {
+    if (p.priceType === "range") {
+      return `${formatJPY(p.rentalPriceMin)} - ${formatJPY(p.rentalPriceMax)}`;
+    }
+    return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
+  };
+
 
   return (
     <main className="min-h-screen">
@@ -151,39 +161,71 @@ export default function PlansPage() {
                   </div>
                 </FadeIn>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {/* Price Table for the Category */}
+                <FadeIn delay={0.2}>
+                  <div className="mb-12 overflow-hidden rounded-xl border border-border ticktoc-shadow bg-card">
+                    <table className="w-full text-left border-collapse">
+                      <thead>
+                        <tr className="bg-secondary/50">
+                          <th className="px-6 py-4 font-serif text-lg font-bold border-b border-border">Các loại kimono</th>
+                          <th className="px-6 py-4 font-serif text-lg font-bold border-b border-border text-right">Giá cho thuê</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {catProducts.map((plan) => (
+                          <tr key={plan.id} className="hover:bg-secondary/30 ticktoc-transition group">
+                            <td className="px-6 py-4 border-b border-border font-medium group-hover:text-primary">
+                              {plan.name}
+                            </td>
+                            <td className="px-6 py-4 border-b border-border text-right font-bold text-primary">
+                              {formatPrice(plan)}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    <div className="p-4 bg-secondary/10 italic text-[13px] text-muted-foreground space-y-1">
+                       <p>※ Giá đã bao gồm: làm tóc, túi, dép</p>
+                       <p>※ Make-up cơ bản: +3500JPY</p>
+                    </div>
+                  </div>
+                </FadeIn>
+
+                {/* Visual Samples Section Header (Optional) */}
+                <FadeIn delay={0.3}>
+                  <div className="mb-6 flex items-center gap-4">
+                    <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground whitespace-nowrap">Hình ảnh mẫu</h3>
+                    <div className="h-px w-full bg-border" />
+                  </div>
+                </FadeIn>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                   {catProducts.map((plan, pIdx) => (
                     <FadeIn key={plan.id} delay={0.1 + pIdx * 0.05}>
-                      <Link
-                        href={`/${locale}/plans/${plan.slug || plan.id}`}
-                        className="group block h-full"
-                      >
-                        <div className="bg-card rounded-xl overflow-hidden ticktoc-shadow border border-border hover:border-primary/30 ticktoc-transition h-full flex flex-col">
-                          <div className="relative aspect-[3/4] overflow-hidden">
+                      <div className="space-y-4">
+                        <Link
+                          href={`/${locale}/plans/${plan.slug || plan.id}`}
+                          className="group block"
+                        >
+                          <div className="bg-card rounded-xl overflow-hidden ticktoc-shadow border border-border hover:border-primary/30 ticktoc-transition aspect-[3/4] relative">
                             <Image
                               src={plan.images?.[0]?.url || "/placeholder.svg"}
                               alt={plan.name}
                               fill
                               className="object-cover group-hover:scale-105 ticktoc-transition"
-                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             />
-                          </div>
-                          <div className="p-4 flex-1 flex flex-col">
-                            <h3 className="font-serif text-lg font-semibold text-foreground group-hover:text-primary ticktoc-transition">
-                              {plan.name}
-                            </h3>
-                            <p className="mt-1.5 text-sm text-muted-foreground line-clamp-2 flex-1 leading-relaxed">
-                              {plan.description || "..."}
-                            </p>
-                            <div className="mt-3 flex items-center justify-between">
-                              <span className="text-primary font-bold text-lg">
-                                {formatJPY(plan.rentalPricePerDay)}
-                              </span>
-                              <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 ticktoc-transition" />
+                            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                               <p className="text-white font-serif text-lg font-bold">{plan.name}</p>
+                               <p className="text-primary-foreground/90 font-bold">{formatPrice(plan)}</p>
                             </div>
                           </div>
+                        </Link>
+                        <div className="text-center">
+                          <h4 className="font-serif text-lg font-semibold">{plan.name}</h4>
+                          <p className="text-primary font-bold text-sm">{formatPrice(plan)}</p>
                         </div>
-                      </Link>
+                      </div>
                     </FadeIn>
                   ))}
                 </div>

@@ -137,7 +137,8 @@
     "extraHour": "Thêm giờ",
     "photoPackageInclude": "Gói chụp bao gồm: toàn bộ ảnh gốc và chỉnh sửa 10 ảnh",
     "extraPhotoEdit": "Chỉnh sửa thêm ảnh: vui lòng trao đổi trực tiếp với thợ chụp (có phụ phí)",
-    "photoIssues": "Mọi vấn đề liên quan đến hình ảnh: vui lòng phản ánh trực tiếp với thợ chụp"
+    "photoIssues": "Mọi vấn đề liên quan đến hình ảnh: vui lòng phản ánh trực tiếp với thợ chụp",
+    "rentalPlan": "Gói thuê"
   },
   "booking": {
     "title": "Đặt Lịch Thuê Kimono",
