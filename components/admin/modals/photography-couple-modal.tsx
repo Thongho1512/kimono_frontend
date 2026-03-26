@@ -117,7 +117,7 @@ export function CouplePhotographyModal({ isOpen, onClose, initialData, onSuccess
                 </DialogHeader>
                 <form onSubmit={handleSubmit} className="space-y-4 py-4" autoComplete="off">
                     <div className="grid gap-2">
-                        <Label htmlFor="price">Giá thuê mỗi giờ (VNĐ)</Label>
+                        <Label htmlFor="price">Giá thuê mỗi giờ (¥)</Label>
                         <Input
                             id="price"
                             type="text"

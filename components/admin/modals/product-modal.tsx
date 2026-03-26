@@ -201,7 +201,7 @@ export function ProductModal({ isOpen, onClose, initialData, categories, onSucce
 
                         {formData.priceType === 'Cố định' ? (
                             <div className="grid gap-2 animate-in fade-in slide-in-from-top-1">
-                                <Label htmlFor="priceDay">Giá thuê cố định (VNĐ) <span className="text-destructive">*</span></Label>
+                                <Label htmlFor="priceDay">Giá thuê cố định (¥) <span className="text-destructive">*</span></Label>
                                 <Input
                                     id="priceDay"
                                     type="text"
@@ -214,7 +214,7 @@ export function ProductModal({ isOpen, onClose, initialData, categories, onSucce
                         ) : (
                             <div className="grid grid-cols-2 gap-4 animate-in fade-in slide-in-from-top-1">
                                 <div className="grid gap-2">
-                                    <Label htmlFor="priceMin">Giá thấp nhất (VNĐ) <span className="text-destructive">*</span></Label>
+                                    <Label htmlFor="priceMin">Giá thấp nhất (¥) <span className="text-destructive">*</span></Label>
                                     <Input
                                         id="priceMin"
                                         type="text"
@@ -224,7 +224,7 @@ export function ProductModal({ isOpen, onClose, initialData, categories, onSucce
                                     />
                                 </div>
                                 <div className="grid gap-2">
-                                    <Label htmlFor="priceMax">Giá cao nhất (VNĐ) <span className="text-destructive">*</span></Label>
+                                    <Label htmlFor="priceMax">Giá cao nhất (¥) <span className="text-destructive">*</span></Label>
                                     <Input
                                         id="priceMax"
                                         type="text"

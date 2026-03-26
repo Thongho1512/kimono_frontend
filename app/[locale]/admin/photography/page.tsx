@@ -81,11 +81,11 @@ export default function PhotographyPage() {
         { header: 'Số lượng', accessorKey: 'quantity' as keyof IndividualService },
         {
             header: 'Giờ đầu',
-            accessorKey: (row: IndividualService) => `${row.firstHour.toLocaleString()} VNĐ`
+            accessorKey: (row: IndividualService) => `¥ ${row.firstHour.toLocaleString()}`
         },
         {
             header: 'Giờ thứ 2',
-            accessorKey: (row: IndividualService) => `${row.secondHour.toLocaleString()} VNĐ`
+            accessorKey: (row: IndividualService) => `¥ ${row.secondHour.toLocaleString()}`
         },
         {
             header: 'Thao tác',
@@ -105,7 +105,7 @@ export default function PhotographyPage() {
     const coupleColumns = [
         {
             header: 'Giá/Giờ',
-            accessorKey: (row: CoupleService) => `${row.rentalPricePerHour.toLocaleString()} VNĐ`
+            accessorKey: (row: CoupleService) => `¥ ${row.rentalPricePerHour.toLocaleString()}`
         },
         { header: 'Trang phục Nữ', accessorKey: 'clothingOfWomen' as keyof CoupleService },
         { header: 'Trang phục Nam', accessorKey: 'clothingOfMan' as keyof CoupleService },

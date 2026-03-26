@@ -105,7 +105,7 @@ export default function ProductsPage() {
         },
         {
             header: 'Giá thuê (Ngày)',
-            accessorKey: (row: Product) => `${row.rentalPricePerDay.toLocaleString()} VNĐ`
+            accessorKey: (row: Product) => `¥ ${row.rentalPricePerDay.toLocaleString()}`
         },
         {
             header: 'Thao tác',

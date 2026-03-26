@@ -116,7 +116,7 @@ export function IndividualPhotographyModal({ isOpen, onClose, initialData, onSuc
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                         <div className="grid gap-2">
-                            <Label htmlFor="firstHour">Giờ đầu (VNĐ)</Label>
+                            <Label htmlFor="firstHour">Giờ đầu (¥)</Label>
                             <Input
                                 id="firstHour"
                                 type="text"
@@ -126,7 +126,7 @@ export function IndividualPhotographyModal({ isOpen, onClose, initialData, onSuc
                             />
                         </div>
                         <div className="grid gap-2">
-                            <Label htmlFor="secondHour">Giờ thứ 2 (VNĐ)</Label>
+                            <Label htmlFor="secondHour">Giờ thứ 2 (¥)</Label>
                             <Input
                                 id="secondHour"
                                 type="text"
