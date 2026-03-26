@@ -47,7 +47,7 @@ export function AboutSection() {
                     <Heart className="h-6 w-6 text-primary" />
                   </div>
                   <div>
-                    <p className="text-2xl font-bold text-foreground">5,000+</p>
+                    <p className="text-2xl font-bold text-foreground">100+</p>
                     <p className="text-xs text-muted-foreground">{t("happyCustomers")}</p>
                   </div>
                 </div>

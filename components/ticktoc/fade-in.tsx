@@ -1,6 +1,6 @@
 "use client";
 
-import type { ReactNode } from "react";
+import { useRef, useState, useEffect, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
 
 interface FadeInProps {
@@ -16,20 +16,45 @@ export function FadeIn({
   direction = "up",
   className,
 }: FadeInProps) {
-  // Using simple CSS animations instead of framer-motion to reduce Edge bundle size
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect(); // Animate only once
+        }
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  const translateMap: Record<string, string> = {
+    up: "translate-y-8",
+    down: "-translate-y-8",
+    left: "translate-x-8",
+    right: "-translate-x-8",
+  };
+
   return (
     <div
+      ref={ref}
       className={cn(
-        "animate-in fade-in duration-700 fill-mode-both",
-        direction === "up" && "slide-in-from-bottom-6",
-        direction === "down" && "slide-in-from-top-6",
-        direction === "left" && "slide-in-from-right-6",
-        direction === "right" && "slide-in-from-left-6",
+        "transition-all duration-700 ease-out",
+        visible
+          ? "opacity-100 translate-x-0 translate-y-0"
+          : `opacity-0 ${translateMap[direction]}`,
         className
       )}
-      style={{
-        animationDelay: `${delay}s`,
-      }}
+      style={{ transitionDelay: visible ? `${delay}s` : "0s" }}
     >
       {children}
     </div>
