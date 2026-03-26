@@ -40,8 +40,9 @@ export default function PlanDetailContent({
     const includesList = (plan.description || "").split(",").map((s) => s.trim());
 
     const formatPrice = (p: ProductDto) => {
-        if (p.priceType === "range") {
-          return `${formatJPY(p.rentalPriceMin)} - ${formatJPY(p.rentalPriceMax)}`;
+        const isRange = p.priceType === "range" || p.priceType === "Khoảng";
+        if (isRange) {
+          return `${formatJPY(p.rentalPriceMin)}-${formatJPY(p.rentalPriceMax)}`;
         }
         return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
     };
