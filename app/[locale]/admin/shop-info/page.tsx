@@ -56,13 +56,15 @@ export default function ShopInfoPage() {
     const [errors, setErrors] = useState<Partial<Record<keyof StoreInfo, string>>>({});
 
     useEffect(() => {
-        if (shopInfo) {
-            setInfo(shopInfo);
+        if (shopInfo && Object.keys(shopInfo).length > 0) {
+            setInfo({ ...initialData, ...shopInfo });
+        } else if (shopInfo && Object.keys(shopInfo).length === 0) {
+            // Already fetched but empty (404 handled by context)
+            setInfo(initialData);
         } else if (!isLoadingShopInfo) {
             refreshShopInfo();
         }
     }, [shopInfo, isLoadingShopInfo, refreshShopInfo]);
-
 
     const validate = (): boolean => {
         const newErrors: Partial<Record<keyof StoreInfo, string>> = {};
@@ -102,7 +104,7 @@ export default function ShopInfoPage() {
         }
     };
 
-    if (isLoadingShopInfo && !info.id) return <FormSkeleton />;
+    if (isLoadingShopInfo && !info.id && !shopInfo) return <FormSkeleton />;
 
     const updateField = (field: keyof StoreInfo, value: string) => {
         setInfo(prev => ({ ...prev, [field]: value }));

@@ -37,8 +37,13 @@ export function AdminProvider({ children }: { children: React.ReactNode }) {
     try {
       const res = await api.get('/api/admin/shop-info');
       setShopInfo(res.data);
-    } catch (err) {
-      console.error('Failed to fetch shop info', err);
+    } catch (err: any) {
+      if (err.response?.status === 404) {
+        // Set to empty object to indicate "no data" but "loading finished"
+        setShopInfo({});
+      } else {
+        console.error('Failed to fetch shop info', err);
+      }
     } finally {
       setIsLoadingShopInfo(false);
     }
