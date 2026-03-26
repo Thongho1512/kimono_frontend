@@ -116,7 +116,7 @@ export default function PlansPage() {
 
   const formatPrice = (p: ProductDto) => {
     if (p.priceType === "range") {
-      return `${formatJPY(p.rentalPriceMin)} - ${formatJPY(p.rentalPriceMax)}`;
+      return `${formatJPY(p.rentalPriceMin)}-${formatJPY(p.rentalPriceMax)}`;
     }
     return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
   };
@@ -178,19 +178,23 @@ export default function PlansPage() {
                         </div>
 
                         {/* Product Images Grid */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
                           {(plan.images && plan.images.length > 0) ? (
                             plan.images.map((img, iIdx) => (
-                              <div key={iIdx} className="group relative aspect-[3/4] rounded-xl overflow-hidden border border-border ticktoc-shadow">
+                              <Link 
+                                key={iIdx} 
+                                href={`/${locale}/plans/${plan.slug || plan.id}`}
+                                className="group relative aspect-[3/4] rounded-lg overflow-hidden border border-border ticktoc-shadow hover:border-primary/50 transition-all"
+                              >
                                 <Image
                                   src={img.url || "/placeholder.svg"}
                                   alt={`${plan.name} - ${iIdx + 1}`}
                                   fill
                                   className="object-cover group-hover:scale-105 ticktoc-transition"
-                                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                                 />
-                                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
-                              </div>
+                                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all pointer-events-none" />
+                              </Link>
                             ))
                           ) : (
                             <div className="col-span-full py-12 border-2 border-dashed border-border rounded-xl flex items-center justify-center text-muted-foreground italic">
