@@ -139,17 +139,17 @@ export default function PricingPage() {
                  {renderTable(womenCat, <Users className="h-6 w-6 text-primary" />)}
                  
                  {/* Footnotes */}
-                 <div className="mt-6 space-y-3 text-sm text-foreground/70 italic px-2">
-                    <p className="flex items-start gap-2">
-                       <span className="text-primary font-bold">※</span>
+                 <div className="mt-8 space-y-4 text-base sm:text-lg text-foreground font-medium px-2">
+                    <p className="flex items-start gap-3">
+                       <span className="text-primary font-bold text-xl">※</span>
                        <span>Bảng giá đã bao gồm: làm tóc, túi xách, dép đi kèm (zori/geta).</span>
                     </p>
-                    <p className="flex items-start gap-2">
-                       <span className="text-primary font-bold">※</span>
+                    <p className="flex items-start gap-3">
+                       <span className="text-primary font-bold text-xl">※</span>
                        <span>Dịch vụ Make-up cơ bản (tùy chọn): +3,500 JPY</span>
                     </p>
-                    <p className="flex items-start gap-2 mt-4 text-xs">
-                       * Giá thực tế có thể thay đổi nhẹ tùy theo mẫu mã đặc biệt. Vui lòng liên hệ để được tư vấn chi tiết.
+                    <p className="flex items-start gap-3 mt-6 text-sm sm:text-base text-muted-foreground font-normal">
+                       <span>* Giá thực tế có thể thay đổi nhẹ tùy theo mẫu mã đặc biệt. Vui lòng liên hệ để được tư vấn chi tiết.</span>
                     </p>
                  </div>
               </FadeIn>
