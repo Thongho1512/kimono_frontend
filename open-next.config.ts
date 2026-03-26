@@ -1,9 +1,18 @@
-import type { OpenNextConfig } from "@opennextjs/cloudflare";
-
-/** @type {import('@opennextjs/cloudflare').OpenNextConfig} */
-const config: OpenNextConfig = {
+const config = {
   default: {
-    runtime: "cloudflare",
+    override: {
+      wrapper: "cloudflare-node",
+      converter: "edge",
+      proxyExternalRequest: "fetch",
+    },
+  },
+  middleware: {
+    external: true,
+    override: {
+      wrapper: "cloudflare-edge",
+      converter: "edge",
+      proxyExternalRequest: "fetch",
+    },
   },
 };
 

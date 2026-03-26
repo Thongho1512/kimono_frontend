@@ -76,7 +76,7 @@ export default function ContactPage() {
     },
   ];
 
-  const nearbyPlaces = (storeInfo?.nearbyPlaces || t("nearbyPlaces")).split(",").map((s) => s.trim()).filter(Boolean);
+  const nearbyPlaces = (storeInfo !== null ? storeInfo.nearbyPlaces : t("nearbyPlaces")).split(",").map((s) => s.trim()).filter(Boolean);
 
   return (
     <main className="min-h-screen">

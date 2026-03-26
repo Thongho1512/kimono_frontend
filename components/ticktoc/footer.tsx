@@ -190,7 +190,7 @@ export function Footer() {
             <div className="mt-5">
               <p className="text-[10px] uppercase tracking-widest opacity-40 mb-3 font-bold">{t("footer.nearby")}</p>
               <div className="flex flex-wrap gap-2">
-                {(storeInfo?.nearbyPlaces || t("contact.nearbyPlaces") || "").split(',').map((place: string, idx: number) => {
+                {(storeInfo !== null ? storeInfo.nearbyPlaces : (t("contact.nearbyPlaces") || "")).split(',').map((place: string, idx: number) => {
                   const cleanedPlace = place.trim();
                   if (!cleanedPlace) return null;
                   return (
