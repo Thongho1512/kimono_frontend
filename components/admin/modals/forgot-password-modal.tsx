@@ -92,7 +92,7 @@ export function ForgotPasswordModal({ isOpen, onClose }: ForgotPasswordModalProp
                     </DialogTitle>
                     <DialogDescription>
                         {step === 1 && "Hệ thống sẽ gửi mã OTP đến email quản trị viên đã được cấu hình."}
-                        {step === 2 && `Mã xác thực đã được gửi tới email quản trị (kyok***@gmail.com).`}
+                        {step === 2 && `Mã xác thực đã được gửi tới email quản trị viên.`}
                         {step === 3 && "Thiết lập mật khẩu mới cho tài khoản của bạn."}
                         {step === 4 && "Mật khẩu của bạn đã được cập nhật. Bạn có thể đăng nhập ngay bây giờ."}
                     </DialogDescription>

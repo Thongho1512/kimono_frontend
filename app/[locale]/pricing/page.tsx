@@ -3,19 +3,26 @@
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
-import { extrasData, formatJPY } from "@/lib/data";
+import { formatJPY } from "@/lib/data";
 import { FadeIn } from "@/components/ticktoc/fade-in";
 import { PageBreadcrumb } from "@/components/ticktoc/page-breadcrumb";
 import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
+import { Loader2, Baby, User, Users } from "lucide-react";
 import api from "@/lib/api";
-import { Metadata } from "next";
-import { getSeoContent } from "@/lib/seo-registry";
+
+interface CategoryDto {
+  id: string;
+  name: string;
+}
 
 interface ProductDto {
   id: string;
+  categoryId: string;
   name: string;
   rentalPricePerDay: number;
+  rentalPriceMin: number;
+  rentalPriceMax: number;
+  priceType: string;
 }
 
 export default function PricingPage() {
@@ -24,22 +31,81 @@ export default function PricingPage() {
   const tCommon = useTranslations("common");
   const locale = useLocale();
 
+  const [categories, setCategories] = useState<CategoryDto[]>([]);
   const [products, setProducts] = useState<ProductDto[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchProducts = async () => {
+    const fetchData = async () => {
       try {
-        const res = await api.get(`/api/public/products?culture=${locale}`);
-        setProducts(res.data);
+        const [catsRes, prodsRes] = await Promise.all([
+          api.get(`/api/public/products/categories?culture=${locale}`),
+          api.get(`/api/public/products?culture=${locale}`)
+        ]);
+        setCategories(catsRes.data);
+        setProducts(prodsRes.data);
       } catch (error) {
-        console.error("Failed to fetch products for pricing", error);
+        console.error("Failed to fetch pricing data", error);
       } finally {
         setLoading(false);
       }
     };
-    fetchProducts();
-  }, []);
+    fetchData();
+  }, [locale]);
+
+  const formatPrice = (p: ProductDto) => {
+    const isRange = p.priceType === "range" || p.priceType === "Khoảng";
+    if (isRange) {
+      return `${formatJPY(p.rentalPriceMin)}-${formatJPY(p.rentalPriceMax)}`;
+    }
+    return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
+  };
+
+  // Grouping logic based on user request names
+  const womenCat = categories.find(c => c.name.toLowerCase().includes("nữ") || c.name.toLowerCase().includes("women"));
+  const menCat = categories.find(c => c.name.toLowerCase().includes("nam") || c.name.toLowerCase().includes("men"));
+  const kidsCat = categories.find(c => c.name.toLowerCase().includes("trẻ em") || c.name.toLowerCase().includes("kids") || c.name.toLowerCase().includes("bé"));
+
+  const renderTable = (category: CategoryDto | undefined, icon: React.ReactNode) => {
+    if (!category) return null;
+    const catProducts = products.filter(p => p.categoryId === category.id);
+    if (catProducts.length === 0) return null;
+
+    return (
+      <div className="bg-card rounded-xl ticktoc-shadow border-2 border-foreground/10 overflow-hidden mb-8">
+        <div className="bg-foreground/5 border-b-2 border-foreground/10 p-4 flex items-center justify-center gap-3">
+           {icon}
+           <h2 className="font-serif text-xl sm:text-2xl font-bold text-foreground uppercase tracking-widest">
+             {category.name}
+           </h2>
+        </div>
+        <table className="w-full text-left border-collapse">
+          <thead>
+            <tr className="border-b border-foreground/10">
+              <th className="px-6 py-3 font-serif font-semibold text-foreground border-r border-foreground/10">
+                {t("package") || "Các loại kimono"}
+              </th>
+              <th className="px-6 py-3 font-serif font-semibold text-foreground text-center">
+                {t("rentalPrice") || "Giá cho thuê"}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {catProducts.map((p, i) => (
+              <tr key={p.id} className="border-b border-foreground/5 hover:bg-secondary/30 transition-colors">
+                <td className="px-6 py-4 text-foreground/90 border-r border-foreground/10">
+                  {p.name}
+                </td>
+                <td className="px-6 py-4 text-center font-bold text-primary whitespace-nowrap">
+                  {formatPrice(p)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  };
 
   if (loading) {
     return (
@@ -55,121 +121,63 @@ export default function PricingPage() {
         <PageBreadcrumb items={[{ label: tNav("pricing") }]} />
 
         <FadeIn>
-          <div className="text-center mb-10">
+          <div className="text-center mb-16">
             <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
               {t("title")}
             </h1>
-            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto text-pretty">
-              {t("subtitle")}
+            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto text-pretty italic">
+              Experience authentic Japanese culture with our premium collection.
             </p>
             <div className="sakura-line mt-6 mx-auto w-32" />
           </div>
         </FadeIn>
 
-        {/* Pricing Table */}
-        <FadeIn delay={0.1}>
-          <div className="bg-card rounded-2xl ticktoc-shadow border border-border overflow-hidden mb-12">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left">
-                <thead>
-                  <tr className="bg-secondary">
-                    <th className="px-6 py-4 font-serif font-semibold text-foreground">
-                      {t("package")}
-                    </th>
-                    <th className="px-6 py-4 font-serif font-semibold text-foreground text-center">
-                      {t("fullDay")} {/* Using "Full Day" label for Rental Price Per Day */}
-                    </th>
-                    <th className="px-6 py-4 font-serif font-semibold text-foreground text-center hidden sm:table-cell">
-                      &nbsp;
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {products.map((product, i) => (
-                    <tr
-                      key={product.id}
-                      className={`border-t border-border ${i % 2 === 1 ? "bg-secondary/40" : ""}`}
-                    >
-                      <td className="px-6 py-4">
-                        <span className="font-medium text-foreground">
-                          {product.name}
-                        </span>
-                      </td>
-                      <td className="px-6 py-4 text-center text-primary font-semibold">
-                        {formatJPY(product.rentalPricePerDay)}
-                      </td>
-                      <td className="px-6 py-4 text-center hidden sm:table-cell">
-                        <Button asChild size="sm" variant="outline" className="bg-transparent">
-                          <Link href={`/${locale}/booking?plan=${product.id}`}>
-                            {tCommon("bookNow")}
-                          </Link>
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                  {products.length === 0 && (
-                    <tr>
-                      <td colSpan={3} className="px-6 py-8 text-center text-muted-foreground">
-                        Chưa có thông tin bảng giá.
-                      </td>
-                    </tr>
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </FadeIn>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-8 pb-12">
+           {/* Left Column: Women */}
+           <div className="lg:col-span-1">
+              <FadeIn delay={0.1}>
+                 {renderTable(womenCat, <Users className="h-6 w-6 text-primary" />)}
+                 
+                 {/* Footnotes */}
+                 <div className="mt-6 space-y-3 text-sm text-foreground/70 italic px-2">
+                    <p className="flex items-start gap-2">
+                       <span className="text-primary font-bold">※</span>
+                       <span>Bảng giá đã bao gồm: làm tóc, túi xách, dép đi kèm (zori/geta).</span>
+                    </p>
+                    <p className="flex items-start gap-2">
+                       <span className="text-primary font-bold">※</span>
+                       <span>Dịch vụ Make-up cơ bản (tùy chọn): +3,500 JPY</span>
+                    </p>
+                    <p className="flex items-start gap-2 mt-4 text-xs">
+                       * Giá thực tế có thể thay đổi nhẹ tùy theo mẫu mã đặc biệt. Vui lòng liên hệ để được tư vấn chi tiết.
+                    </p>
+                 </div>
+              </FadeIn>
+           </div>
 
-        {/* Extras - Static for now as per plan */}
-        <FadeIn delay={0.2}>
-          <div className="mb-16">
-            <h2 className="font-serif text-2xl font-bold text-foreground mb-6 text-center">
-              {t("extras")}
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-4xl mx-auto">
-              {extrasData.map((extra) => (
-                <div
-                  key={extra.key}
-                  className="bg-card rounded-xl p-5 ticktoc-shadow border border-border text-center"
-                >
-                  <p className="font-medium text-foreground">
-                    {t(extra.key)}
-                  </p>
-                  <p className="mt-2 text-xl font-bold text-primary">
-                    {formatJPY(extra.price)}
-                  </p>
+           {/* Right Column: Men & Children */}
+           <div className="lg:col-span-1 space-y-8">
+              <FadeIn delay={0.2}>
+                 {renderTable(menCat, <User className="h-6 w-6 text-primary" />)}
+              </FadeIn>
+              
+              <FadeIn delay={0.3}>
+                 {renderTable(kidsCat, <Baby className="h-6 w-6 text-primary" />)}
+              </FadeIn>
+
+              {/* Booking CTA */}
+              <FadeIn delay={0.4}>
+                <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20 text-center mt-12">
+                   <h3 className="font-serif text-xl font-bold text-foreground mb-4">
+                      {t("readyToBook") || "Ready for your transformation?"}
+                   </h3>
+                   <Button asChild size="lg" className="px-12">
+                      <Link href={`/${locale}/booking`}>{tCommon("bookNow")}</Link>
+                   </Button>
                 </div>
-              ))}
-            </div>
-
-            {/* Static Info from Image */}
-            <div className="mt-8 p-6 bg-secondary/30 rounded-xl border border-border max-w-2xl mx-auto">
-              <ul className="space-y-3 text-foreground/80">
-                <li className="flex gap-2">
-                  <span className="text-primary">※</span>
-                  <span>{t("photoPackageInclude")}</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary">※</span>
-                  <span>{t("extraPhotoEdit")}</span>
-                </li>
-                <li className="flex gap-2">
-                  <span className="text-primary">※</span>
-                  <span>{t("photoIssues")}</span>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </FadeIn>
-
-        {/* CTA */}
-        <FadeIn delay={0.3}>
-          <div className="text-center pb-16">
-            <Button asChild size="lg">
-              <Link href={`/${locale}/booking`}>{tCommon("bookNow")}</Link>
-            </Button>
-          </div>
-        </FadeIn>
+              </FadeIn>
+           </div>
+        </div>
       </div>
     </main>
   );
