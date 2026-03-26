@@ -128,8 +128,39 @@ function BookingForm() {
     return formatJPY(min);
   };
 
+  const validateForm = () => {
+    if (cart.length === 0) {
+      toast.error("Vui lòng chọn ít nhất một dịch vụ.");
+      return false;
+    }
+    if (!formData.name.trim()) {
+      toast.error("Vui lòng nhập họ và tên.");
+      return false;
+    }
+    if (!formData.email.trim()) {
+      toast.error("Vui lòng nhập địa chỉ email.");
+      return false;
+    }
+    if (!formData.date) {
+      toast.error("Vui lòng chọn ngày thuê.");
+      return false;
+    }
+    if (!formData.time) {
+      toast.error("Vui lòng chọn giờ đến dự kiến.");
+      return false;
+    }
+    if (!formData.people || parseInt(formData.people) < 1) {
+      toast.error("Vui lòng nhập số người (tối thiểu 1).");
+      return false;
+    }
+    return true;
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!validateForm()) return;
+    
     setSubmitting(true);
 
     const payload = {
@@ -305,31 +336,31 @@ function BookingForm() {
                 <div className="space-y-4">
                   <div className="grid grid-cols-2 gap-4">
                     <div>
-                      <Label htmlFor="name">{t("name")}</Label>
-                      <Input id="name" required value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder={t("name") + "..."} />
+                      <Label htmlFor="name">{t("name")} <span className="text-destructive">*</span></Label>
+                      <Input id="name" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder={t("name") + "..."} />
                     </div>
                     <div>
                       <Label htmlFor="phone">{t("phone")}</Label>
-                      <Input id="phone" required type="tel" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} placeholder="090..." />
+                      <Input id="phone" type="tel" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} placeholder="090..." />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="email">{t("email")}</Label>
-                    <Input id="email" required type="email" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} placeholder="name@example.com" />
+                    <Label htmlFor="email">{t("email")} <span className="text-destructive">*</span></Label>
+                    <Input id="email" type="email" value={formData.email} onChange={e => setFormData({ ...formData, email: e.target.value })} placeholder="name@example.com" />
                   </div>
                   <div className="grid grid-cols-3 gap-4">
                     <div className="col-span-1">
-                      <Label htmlFor="people">{t("people")}</Label>
+                      <Label htmlFor="people">{t("people")} <span className="text-destructive">*</span></Label>
                       <Input id="people" type="number" min="1" value={formData.people} onChange={e => setFormData({ ...formData, people: e.target.value })} />
                     </div>
                     <div className="col-span-2">
-                      <Label htmlFor="date">{t("date")}</Label>
-                      <Input id="date" type="date" required value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
+                      <Label htmlFor="date">{t("date")} <span className="text-destructive">*</span></Label>
+                      <Input id="date" type="date" value={formData.date} onChange={e => setFormData({ ...formData, date: e.target.value })} />
                     </div>
                   </div>
                   <div>
-                    <Label htmlFor="time">{tCommon("arrivalTime") || "Approx. Arrival Time"}</Label>
-                    <Input id="time" type="time" required value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />
+                    <Label htmlFor="time">{tCommon("arrivalTime") || "Approx. Arrival Time"} <span className="text-destructive">*</span></Label>
+                    <Input id="time" type="time" value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />
                   </div>
                   <div>
                     <Label htmlFor="note">{t("note")}</Label>
