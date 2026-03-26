@@ -13,6 +13,7 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Loader2, ShieldAlert } from 'lucide-react';
 import { toast } from 'sonner';
+import { ForgotPasswordModal } from '@/components/admin/modals/forgot-password-modal';
 
 const loginSchema = z.object({
     username: z.string().min(1, 'Vui lòng nhập tài khoản'),
@@ -27,6 +28,7 @@ export default function AdminLoginPage() {
     const searchParams = useSearchParams();
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
+    const [isForgotPasswordOpen, setIsForgotPasswordOpen] = useState(false);
 
     useEffect(() => {
         const errorType = searchParams.get('error');
@@ -99,6 +101,15 @@ export default function AdminLoginPage() {
                             {form.formState.errors.password && (
                                 <p className="text-xs text-destructive">{form.formState.errors.password.message}</p>
                             )}
+                            <div className="flex justify-end mt-1">
+                                <button
+                                    type="button"
+                                    onClick={() => setIsForgotPasswordOpen(true)}
+                                    className="text-xs text-primary hover:underline font-medium"
+                                >
+                                    Quên mật khẩu?
+                                </button>
+                            </div>
                         </div>
                         <Button type="submit" className="w-full h-11 text-base font-semibold" disabled={loading}>
                             {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Đăng nhập'}
@@ -110,6 +121,11 @@ export default function AdminLoginPage() {
                     <p>© 2024 Design by Boty Software</p>
                 </CardFooter>
             </Card>
+
+            <ForgotPasswordModal
+                isOpen={isForgotPasswordOpen}
+                onClose={() => setIsForgotPasswordOpen(false)}
+            />
         </div>
     );
 }
