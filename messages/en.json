@@ -126,9 +126,11 @@
     "photoPackage": "Photo package (20 photos)",
     "extraHour": "Extra hour",
     "rentalPlan": "Rental Plan",
-    "photoPackageInclude": "Photo package includes: all original photos and 10 edited photos",
-    "extraPhotoEdit": "Additional photo editing: please discuss directly with the photographer (extra fee applies)",
-    "photoIssues": "All image-related issues: please report directly to the photographer"
+    "kimonoType": "Kimono style",
+    "rentalPrice": "Rental price",
+    "footnote1": "Pricing includes: hair styling, bag, and footwear (zori/geta).",
+    "footnote2": "Basic make-up service (optional): +3,500 JPY",
+    "footnoteNote": "* Actual prices may vary slightly for special edition items. Please contact us for details."
   },
   "booking": {
     "title": "Book Kimono Rental",

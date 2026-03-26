@@ -138,7 +138,12 @@
     "photoPackageInclude": "Gói chụp bao gồm: toàn bộ ảnh gốc và chỉnh sửa 10 ảnh",
     "extraPhotoEdit": "Chỉnh sửa thêm ảnh: vui lòng trao đổi trực tiếp với thợ chụp (có phụ phí)",
     "photoIssues": "Mọi vấn đề liên quan đến hình ảnh: vui lòng phản ánh trực tiếp với thợ chụp",
-    "rentalPlan": "Gói thuê"
+    "rentalPlan": "Gói thuê",
+    "kimonoType": "Các loại kimono",
+    "rentalPrice": "Giá cho thuê",
+    "footnote1": "Bảng giá đã bao gồm: làm tóc, túi xách, dép đi kèm (zori/geta).",
+    "footnote2": "Dịch vụ Make-up cơ bản (tùy chọn): +3,500 JPY",
+    "footnoteNote": "* Giá thực tế có thể thay đổi nhẹ tùy theo mẫu mã đặc biệt. Vui lòng liên hệ để được tư vấn chi tiết."
   },
   "booking": {
     "title": "Đặt Lịch Thuê Kimono",

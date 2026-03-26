@@ -61,10 +61,12 @@ export default function PricingPage() {
     return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
   };
 
-  // Grouping logic based on user request names
-  const womenCat = categories.find(c => c.name.toLowerCase().includes("nữ") || c.name.toLowerCase().includes("women"));
-  const menCat = categories.find(c => c.name.toLowerCase().includes("nam") || c.name.toLowerCase().includes("men"));
-  const kidsCat = categories.find(c => c.name.toLowerCase().includes("trẻ em") || c.name.toLowerCase().includes("kids") || c.name.toLowerCase().includes("bé"));
+  // Grouping logic: use index-based (position from API) to be language-agnostic
+  // Backend returns categories ordered: [0]=Women, [1]=Men, [2]=Kids
+  const categoriesWithProducts = categories.filter(c => products.some(p => p.categoryId === c.id));
+  const womenCat = categoriesWithProducts[0];
+  const menCat = categoriesWithProducts[1];
+  const kidsCat = categoriesWithProducts[2];
 
   const renderTable = (category: CategoryDto | undefined, icon: React.ReactNode) => {
     if (!category) return null;
@@ -83,10 +85,10 @@ export default function PricingPage() {
           <thead>
             <tr className="border-b border-foreground/10">
               <th className="px-6 py-3 font-serif font-semibold text-foreground border-r border-foreground/10">
-                Các loại kimono
+                {t("kimonoType")}
               </th>
               <th className="px-6 py-3 font-serif font-semibold text-foreground text-center">
-                Giá cho thuê
+                {t("rentalPrice")}
               </th>
             </tr>
           </thead>
@@ -142,14 +144,14 @@ export default function PricingPage() {
                  <div className="mt-8 space-y-4 text-base sm:text-lg text-foreground font-medium px-2">
                     <p className="flex items-start gap-3">
                        <span className="text-primary font-bold text-xl">※</span>
-                       <span>Bảng giá đã bao gồm: làm tóc, túi xách, dép đi kèm (zori/geta).</span>
+                       <span>{t("footnote1")}</span>
                     </p>
                     <p className="flex items-start gap-3">
                        <span className="text-primary font-bold text-xl">※</span>
-                       <span>Dịch vụ Make-up cơ bản (tùy chọn): +3,500 JPY</span>
+                       <span>{t("footnote2")}</span>
                     </p>
                     <p className="flex items-start gap-3 mt-6 text-sm sm:text-base text-muted-foreground font-normal">
-                       <span>* Giá thực tế có thể thay đổi nhẹ tùy theo mẫu mã đặc biệt. Vui lòng liên hệ để được tư vấn chi tiết.</span>
+                       <span>{t("footnoteNote")}</span>
                     </p>
                  </div>
               </FadeIn>

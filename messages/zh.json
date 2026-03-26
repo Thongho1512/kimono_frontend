@@ -123,7 +123,12 @@
     "hairStyling": "基本发型",
     "hairStylingPro": "专业发型",
     "photoPackage": "摄影套餐（20张）",
-    "extraHour": "额外1小时"
+    "extraHour": "额外1小时",
+    "kimonoType": "和服类型",
+    "rentalPrice": "租赁价格",
+    "footnote1": "价格包含：发型设计、手提包、木屐（zori/geta）。",
+    "footnote2": "基本化妆服务（可选）：+3,500 JPY",
+    "footnoteNote": "* 特殊款式价格可能略有不同，请联系我们了解详情。"
   },
   "booking": {
     "title": "预约和服租赁",

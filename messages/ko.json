@@ -123,7 +123,12 @@
     "hairStyling": "기본 헤어스타일링",
     "hairStylingPro": "프로 헤어스타일링",
     "photoPackage": "포토 패키지 (20장)",
-    "extraHour": "추가 1시간"
+    "extraHour": "추가 1시간",
+    "kimonoType": "기모노 종류",
+    "rentalPrice": "대여 가격",
+    "footnote1": "가격에 포함: 헤어 스타일링, 가방, 신발 (조리/게타).",
+    "footnote2": "기본 메이크업 서비스 (선택): +3,500 JPY",
+    "footnoteNote": "* 특별 에디션 상품은 가격이 약간 다를 수 있습니다. 자세한 내용은 문의해 주세요."
   },
   "booking": {
     "title": "기모노 대여 예약",

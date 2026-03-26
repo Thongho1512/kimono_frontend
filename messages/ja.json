@@ -123,7 +123,12 @@
     "hairStyling": "基本ヘアスタイリング",
     "hairStylingPro": "プロヘアスタイリング",
     "photoPackage": "フォトパッケージ（20枚）",
-    "extraHour": "追加1時間"
+    "extraHour": "追加1時間",
+    "kimonoType": "着物の種類",
+    "rentalPrice": "レンタル料金",
+    "footnote1": "料金には、ヘアセット、バッグ、草履/下駄が含まれています。",
+    "footnote2": "基本メイクアップサービス（オプション）：+3,500 JPY",
+    "footnoteNote": "* 特別なデザインの商品は料金が若干異なる場合があります。詳細はお問い合わせください。"
   },
   "booking": {
     "title": "着物レンタル予約",
