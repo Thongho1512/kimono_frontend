@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Instagram, Facebook, Youtube, MapPin, Phone, Mail, AtSign } from "lucide-react";
+import Image from "next/image";
 import { SakuraIcon } from "./sakura-icon";
 import api from "@/lib/api";
 
@@ -51,8 +52,15 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div className="space-y-4">
-            <Link href={prefix} className="flex items-center gap-2">
-              <SakuraIcon className="h-7 w-7 text-primary" />
+            <Link href={prefix} className="flex items-center gap-2 group">
+              <div className="relative h-12 w-12 overflow-hidden rounded-full ring-2 ring-background/10 group-hover:ring-primary/30 transition-all">
+                <Image
+                  src="/images/logo.jpg"
+                  alt="Kyo Kimono Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
               <span className="font-serif text-lg font-semibold uppercase">
                 {storeInfo?.name || "Kyo Kimono Rental"}
               </span>

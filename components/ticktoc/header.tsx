@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 import { SakuraIcon } from "./sakura-icon";
 import { LanguageSwitcher } from "./language-switcher";
 import { Button } from "@/components/ui/button";
@@ -45,9 +46,16 @@ export function Header() {
     <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
       <div className="mx-auto max-w-7xl flex items-center justify-between px-4 py-3 lg:px-8">
         {/* Logo */}
-        <Link href={prefix} className="flex items-center gap-2">
-          <SakuraIcon className="h-7 w-7 text-primary" />
-          <span className="font-serif text-lg font-semibold tracking-tight text-foreground uppercase">
+        <Link href={prefix} className="flex items-center gap-2 group">
+          <div className="relative h-10 w-10 overflow-hidden rounded-full ring-2 ring-primary/10 group-hover:ring-primary/30 transition-all">
+            <Image
+              src="/images/logo.jpg"
+              alt="Kyo Kimono Logo"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <span className="font-serif text-lg font-semibold tracking-tight text-foreground uppercase hidden xs:block">
             {storeInfo?.name || "Kyo Kimono Rental"}
           </span>
         </Link>
