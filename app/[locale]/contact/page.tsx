@@ -22,7 +22,6 @@ interface StoreInfo {
   address: string;
   sdt: string;
   email: string;
-  zalo: string;
   openTime: string;
   closeTime: string;
   dayOfWeek: string;
@@ -69,12 +68,6 @@ export default function ContactPage() {
       label: t("email"),
       value: storeInfo?.email || t("emailValue"),
       href: `mailto:${storeInfo?.email || "kyokimononail.gc@gmail.com"}`,
-    },
-    {
-      icon: MessageCircle,
-      label: t("zalo"),
-      value: storeInfo?.zalo ? `Zalo: ${storeInfo.zalo}` : t("zaloValue"),
-      href: storeInfo?.zalo ? `https://zalo.me/${storeInfo.zalo}` : "https://zalo.me/07091500677",
     },
     {
       icon: Clock,
@@ -154,20 +147,10 @@ export default function ContactPage() {
               </div>
 
               <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                <Button asChild size="lg" className="flex-1">
+                <Button asChild size="lg" className="w-full">
                   <Link href={`/${locale}/booking`}>
                     {tCommon("bookNow")}
                   </Link>
-                </Button>
-                <Button asChild variant="outline" size="lg" className="flex-1 bg-transparent">
-                  <a
-                    href={storeInfo?.zalo ? `https://zalo.me/${storeInfo.zalo}` : "https://zalo.me/07091500677"}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="h-4 w-4 mr-2" />
-                    Zalo
-                  </a>
                 </Button>
               </div>
             </div>

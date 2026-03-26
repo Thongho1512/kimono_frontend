@@ -20,7 +20,6 @@ interface StoreInfo {
     openTime: string;
     closeTime: string;
     dayOfWeek: string;
-    zalo: string;
     email: string;
     sdt: string;
     nearbyPlaces: string;
@@ -37,7 +36,6 @@ const initialData: StoreInfo = {
     openTime: '08:00',
     closeTime: '20:00',
     dayOfWeek: 'Thứ 2 - Chủ Nhật',
-    zalo: '',
     email: '',
     sdt: '',
     nearbyPlaces: '',
