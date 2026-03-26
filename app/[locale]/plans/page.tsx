@@ -118,8 +118,7 @@ export default function PlansPage() {
   const formatPrice = (p: ProductDto) => {
     const isRange = p.priceType === "range" || p.priceType === "Khoảng";
     if (isRange) {
-      // Use hyphen without spaces if requested, but let's stick to standard range formatting
-      return `${formatJPY(p.rentalPriceMin)}-${formatJPY(p.rentalPriceMax)}`;
+      return `${formatJPY(p.rentalPriceMin)} - ${formatJPY(p.rentalPriceMax)}`;
     }
     return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
   };
