@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { ChangePasswordDialog } from '@/components/admin/change-password-dialog';
+import { AdminProvider } from '@/lib/admin-context';
 
 const NAV_ITEMS = [
     { href: '/admin', label: 'Tổng quan', icon: LayoutDashboard },
@@ -107,68 +108,70 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     }
 
     return (
-        <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
-            {/* Desktop Sidebar */}
-            <aside className="hidden lg:block w-72 h-screen sticky top-0 border-r shadow-sm overflow-hidden whitespace-nowrap">
-                <NavContent pathname={pathname || ''} locale={locale} logout={logout} setIsMobileOpen={setIsMobileOpen} />
-            </aside>
+        <AdminProvider>
+            <div className="flex min-h-screen bg-slate-50 dark:bg-slate-950">
+                {/* Desktop Sidebar */}
+                <aside className="hidden lg:block w-72 h-screen sticky top-0 border-r shadow-sm overflow-hidden whitespace-nowrap">
+                    <NavContent pathname={pathname || ''} locale={locale} logout={logout} setIsMobileOpen={setIsMobileOpen} />
+                </aside>
 
-            <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-                {/* Admin Header */}
-                <header className="h-16 border-b bg-white dark:bg-slate-900 sticky top-0 z-30 flex items-center justify-between px-4 lg:px-8 shadow-sm">
-                    <div className="flex items-center gap-4">
-                        <div className="lg:hidden">
-                            <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
-                                <SheetTrigger asChild>
-                                    <Button variant="ghost" size="icon" className="text-slate-500">
-                                        <Menu className="h-6 w-6" />
-                                    </Button>
-                                </SheetTrigger>
-                                <SheetContent side="left" className="p-0 w-72 border-none">
-                                    <SheetHeader className="sr-only">
-                                        <SheetTitle>Admin Menu</SheetTitle>
-                                        <SheetDescription>Phần dành cho quản trị viên</SheetDescription>
-                                    </SheetHeader>
-                                    <NavContent pathname={pathname || ''} locale={locale} logout={logout} setIsMobileOpen={setIsMobileOpen} />
-                                </SheetContent>
-                            </Sheet>
-                        </div>
-                        <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 hidden sm:block">
-                            {NAV_ITEMS.find(item => `/${locale}${item.href}` === pathname)?.label || 'Dashboard'}
-                        </h2>
-                    </div>
-
-                    <div className="flex items-center gap-2 sm:gap-4">
-                        <Link href={`/${locale}`}>
-                            <Button variant="outline" size="sm" className="gap-2 text-slate-600 border-slate-200 hover:bg-slate-100 hidden md:flex">
-                                <ChevronLeft className="h-4 w-4" />
-                                Quay về trang khách hàng
-                            </Button>
-                            <Button variant="outline" size="icon" className="md:hidden">
-                                <ChevronLeft className="h-4 w-4" />
-                            </Button>
-                        </Link>
-
-                        <div className="h-8 w-px bg-slate-200 mx-1 hidden sm:block" />
-
-                        <div className="flex items-center gap-2">
-                            <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold overflow-hidden border border-primary/20">
-                                <User className="h-5 w-5" />
+                <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+                    {/* Admin Header */}
+                    <header className="h-16 border-b bg-white dark:bg-slate-900 sticky top-0 z-30 flex items-center justify-between px-4 lg:px-8 shadow-sm">
+                        <div className="flex items-center gap-4">
+                            <div className="lg:hidden">
+                                <Sheet open={isMobileOpen} onOpenChange={setIsMobileOpen}>
+                                    <SheetTrigger asChild>
+                                        <Button variant="ghost" size="icon" className="text-slate-500">
+                                            <Menu className="h-6 w-6" />
+                                        </Button>
+                                    </SheetTrigger>
+                                    <SheetContent side="left" className="p-0 w-72 border-none">
+                                        <SheetHeader className="sr-only">
+                                            <SheetTitle>Admin Menu</SheetTitle>
+                                            <SheetDescription>Phần dành cho quản trị viên</SheetDescription>
+                                        </SheetHeader>
+                                        <NavContent pathname={pathname || ''} locale={locale} logout={logout} setIsMobileOpen={setIsMobileOpen} />
+                                    </SheetContent>
+                                </Sheet>
                             </div>
-                            <span className="text-sm font-medium text-slate-700 hidden lg:block">Admin</span>
+                            <h2 className="text-lg font-semibold text-slate-800 dark:text-slate-100 hidden sm:block">
+                                {NAV_ITEMS.find(item => `/${locale}${item.href}` === pathname)?.label || 'Dashboard'}
+                            </h2>
                         </div>
-                    </div>
-                </header>
 
-                {/* Main Content Area */}
-                <main className="flex-1 overflow-x-hidden overflow-y-auto">
-                    <div className="p-4 lg:p-8">
-                        <div className="max-w-[1600px] mx-auto animate-in fade-in slide-in-from-bottom-2 duration-300">
-                            {children}
+                        <div className="flex items-center gap-2 sm:gap-4">
+                            <Link href={`/${locale}`}>
+                                <Button variant="outline" size="sm" className="gap-2 text-slate-600 border-slate-200 hover:bg-slate-100 hidden md:flex">
+                                    <ChevronLeft className="h-4 w-4" />
+                                    Quay về trang khách hàng
+                                </Button>
+                                <Button variant="outline" size="icon" className="md:hidden">
+                                    <ChevronLeft className="h-4 w-4" />
+                                </Button>
+                            </Link>
+
+                            <div className="h-8 w-px bg-slate-200 mx-1 hidden sm:block" />
+
+                            <div className="flex items-center gap-2">
+                                <div className="h-8 w-8 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold overflow-hidden border border-primary/20">
+                                    <User className="h-5 w-5" />
+                                </div>
+                                <span className="text-sm font-medium text-slate-700 hidden lg:block">Admin</span>
+                            </div>
                         </div>
-                    </div>
-                </main>
+                    </header>
+
+                    {/* Main Content Area */}
+                    <main className="flex-1 overflow-x-hidden overflow-y-auto">
+                        <div className="p-4 lg:p-8">
+                            <div className="max-w-[1600px] mx-auto animate-in fade-in slide-in-from-bottom-2 duration-300">
+                                {children}
+                            </div>
+                        </div>
+                    </main>
+                </div>
             </div>
-        </div>
+        </AdminProvider>
     );
 }

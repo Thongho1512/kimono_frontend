@@ -8,6 +8,8 @@ import { Loader2, Plus, Trash2, Edit, ImageIcon } from 'lucide-react';
 import { toast } from 'sonner';
 import { ProductModal } from '@/components/admin/modals/product-modal';
 import Image from 'next/image';
+import { useAdmin } from '@/lib/admin-context';
+import { TableSkeleton } from '@/components/admin/skeleton-ui';
 
 interface Product {
     id: string;
@@ -20,33 +22,27 @@ interface Product {
     images: { id: string; url: string }[];
 }
 
-interface Category {
-    id: string;
-    name: string;
-}
-
 export default function ProductsPage() {
+    const { categories, refreshCategories } = useAdmin();
     const [products, setProducts] = useState<Product[]>([]);
-    const [categories, setCategories] = useState<Category[]>([]);
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
     useEffect(() => {
-        fetchData();
-    }, []);
+        if (categories.length === 0) {
+            refreshCategories();
+        }
+        fetchProducts();
+    }, [categories.length, refreshCategories]);
 
-    const fetchData = async () => {
+    const fetchProducts = async () => {
         setLoading(true);
         try {
-            const [prodRes, catRes] = await Promise.all([
-                api.get('/api/admin/catalog/products'),
-                api.get('/api/admin/catalog/categories')
-            ]);
-            setProducts(prodRes.data);
-            setCategories(catRes.data);
+            const res = await api.get('/api/admin/catalog/products');
+            setProducts(res.data);
         } catch (error) {
-            console.error('Failed to fetch', error);
+            console.error('Failed to fetch products', error);
             toast.error('Lỗi khi tải dữ liệu');
         } finally {
             setLoading(false);
@@ -67,17 +63,15 @@ export default function ProductsPage() {
         if (!confirm('Bạn có chắc muốn xóa sản phẩm này?')) return;
         try {
             await api.delete(`/api/admin/catalog/products/${id}`);
-            fetchData();
+            fetchProducts();
             toast.success('Đã xóa sản phẩm');
         } catch (error) {
             toast.error('Lỗi khi xóa');
         }
     };
 
-    if (loading) return (
-        <div className="flex justify-center py-20">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        </div>
+    if (loading && products.length === 0) return (
+        <TableSkeleton />
     );
 
     const columns = [
@@ -151,7 +145,7 @@ export default function ProductsPage() {
                 onClose={() => setIsModalOpen(false)}
                 initialData={selectedProduct}
                 categories={categories}
-                onSuccess={fetchData}
+                onSuccess={() => { fetchProducts(); refreshCategories(); }}
             />
         </div>
     );

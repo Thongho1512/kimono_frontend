@@ -9,6 +9,10 @@ import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 import { Loader2, Save, Info, Share2, Clock, Phone, Store, MapPin, Mail, Sparkles } from 'lucide-react';
 
+import { useTranslations } from 'next-intl';
+import { useAdmin } from '@/lib/admin-context';
+import { FormSkeleton } from '@/components/admin/skeleton-ui';
+
 interface StoreInfo {
     id?: string;
     name: string;
@@ -45,31 +49,20 @@ const initialData: StoreInfo = {
 };
 
 export default function ShopInfoPage() {
+    const t = useTranslations('admin.shopInfo');
+    const { shopInfo, isLoadingShopInfo, refreshShopInfo } = useAdmin();
     const [info, setInfo] = useState<StoreInfo>(initialData);
-    const [loading, setLoading] = useState(true);
     const [saving, setSaving] = useState(false);
     const [errors, setErrors] = useState<Partial<Record<keyof StoreInfo, string>>>({});
 
     useEffect(() => {
-        fetchShopInfo();
-    }, []);
-
-    const fetchShopInfo = async () => {
-        try {
-            const res = await api.get('/api/admin/shop-info');
-            if (res.data) {
-                setInfo(res.data);
-            }
-        } catch (error: any) {
-            if (error.response?.status === 404) {
-                console.log('Chưa có thông tin cửa hàng, khởi tạo mới');
-            } else {
-                toast.error('Không thể tải thông tin cửa hàng');
-            }
-        } finally {
-            setLoading(false);
+        if (shopInfo) {
+            setInfo(shopInfo);
+        } else if (!isLoadingShopInfo) {
+            refreshShopInfo();
         }
-    };
+    }, [shopInfo, isLoadingShopInfo, refreshShopInfo]);
+
 
     const validate = (): boolean => {
         const newErrors: Partial<Record<keyof StoreInfo, string>> = {};
@@ -98,9 +91,9 @@ export default function ShopInfoPage() {
                 await api.put('/api/admin/shop-info', info);
             } else {
                 await api.post('/api/admin/shop-info', info);
-                await fetchShopInfo(); // Get ID from server
             }
             toast.success('Đã cập nhật thông tin cửa hàng thành công');
+            refreshShopInfo();
         } catch (error) {
             toast.error('Không thể lưu thông tin. Vui lòng thử lại sau.');
             console.error(error);
@@ -109,12 +102,7 @@ export default function ShopInfoPage() {
         }
     };
 
-    if (loading) return (
-        <div className="flex flex-col items-center justify-center py-20">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            <p className="mt-4 text-muted-foreground italic">Đang tải dữ liệu...</p>
-        </div>
-    );
+    if (isLoadingShopInfo && !info.id) return <FormSkeleton />;
 
     const updateField = (field: keyof StoreInfo, value: string) => {
         setInfo(prev => ({ ...prev, [field]: value }));

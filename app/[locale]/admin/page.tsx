@@ -2,7 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Loader2, Store, Tags, Scissors, Images, Eye } from 'lucide-react';
+import { DashboardSkeleton } from '@/components/admin/skeleton-ui';
+import { Store, Tags, Scissors, Images } from 'lucide-react';
 import api from '@/lib/api';
 
 interface DashboardStats {
@@ -31,13 +32,7 @@ export default function AdminDashboardPage() {
         fetchStats();
     }, []);
 
-    if (loading) {
-        return (
-            <div className="flex h-[400px] items-center justify-center">
-                <Loader2 className="h-8 w-8 animate-spin text-primary" />
-            </div>
-        );
-    }
+    if (loading) return <DashboardSkeleton />;
 
     return (
         <div className="space-y-6">

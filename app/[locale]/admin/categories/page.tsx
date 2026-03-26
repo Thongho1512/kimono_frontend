@@ -7,6 +7,8 @@ import { Button } from '@/components/ui/button';
 import { Loader2, Plus, Trash2, Edit } from 'lucide-react';
 import { toast } from 'sonner';
 import { CategoryModal } from '@/components/admin/modals/category-modal';
+import { useAdmin } from '@/lib/admin-context';
+import { TableSkeleton } from '@/components/admin/skeleton-ui';
 
 interface Category {
     id: string;
@@ -14,27 +16,15 @@ interface Category {
 }
 
 export default function CategoriesPage() {
-    const [categories, setCategories] = useState<Category[]>([]);
-    const [loading, setLoading] = useState(true);
+    const { categories, isLoadingCategories, refreshCategories } = useAdmin();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
 
     useEffect(() => {
-        fetchData();
-    }, []);
-
-    const fetchData = async () => {
-        setLoading(true);
-        try {
-            const res = await api.get('/api/admin/catalog/categories');
-            setCategories(res.data);
-        } catch (error) {
-            console.error('Failed to fetch categories', error);
-            toast.error('Không thể tải danh sách danh mục');
-        } finally {
-            setLoading(false);
+        if (categories.length === 0) {
+            refreshCategories();
         }
-    };
+    }, [categories.length, refreshCategories]);
 
     const handleAdd = () => {
         setSelectedCategory(null);
@@ -50,17 +40,15 @@ export default function CategoriesPage() {
         if (!confirm('Bạn có chắc muốn xóa danh mục này? Các sản phẩm thuộc danh mục này cũng sẽ bị ảnh hưởng.')) return;
         try {
             await api.delete(`/api/admin/catalog/categories/${id}`);
-            fetchData();
+            refreshCategories();
             toast.success('Đã xóa danh mục');
         } catch (error) {
             toast.error('Không thể xóa danh mục');
         }
     };
 
-    if (loading) return (
-        <div className="flex justify-center py-20">
-            <Loader2 className="h-8 w-8 animate-spin text-primary" />
-        </div>
+    if (isLoadingCategories && categories.length === 0) return (
+        <TableSkeleton />
     );
 
     const columns = [
@@ -104,7 +92,7 @@ export default function CategoriesPage() {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 initialData={selectedCategory}
-                onSuccess={fetchData}
+                onSuccess={refreshCategories}
             />
         </div>
     );
