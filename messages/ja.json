@@ -174,7 +174,10 @@
     "pleaseEnterEmail": "メールアドレスを入力してください。",
     "pleaseSelectDate": "レンタル日を選択してください。",
     "pleaseSelectTime": "到着予定時刻を選択してください。",
-    "pleaseEnterPeople": "人数を入力してください（1人以上）。"
+    "pleaseEnterPeople": "人数を入力してください（1人以上）。",
+    "policyTitle": "予約・キャンセルポリシー",
+    "policyText": "予約のキャンセルや日時変更は2〜3日前までにご連絡ください。他のお客様との重複を避けるため、予約時間を厳守していただきますようお願いいたします。",
+    "agreePolicy": "予約ポリシーを読み、同意しました。"
   },
   "hairstyle": {
     "title": "基本ヘアスタイルギャラリー",
@@ -229,7 +232,8 @@
     "buildingExt": "外観",
     "shopEnt": "入口",
     "nearbyGion": "祇園周辺",
-    "connectWithUs": "SNSでつながる"
+    "connectWithUs": "SNSでつながる",
+    "name": "Kyo Kimono Rental"
   },
   "footer": {
     "description": "京都・祇園のプレミアム着物レンタルサービス。日本の伝統美をご体験ください。",

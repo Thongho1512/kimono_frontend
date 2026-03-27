@@ -10,7 +10,7 @@ import { PageBreadcrumb } from "@/components/ticktoc/page-breadcrumb";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Calendar, MessageCircle, CheckCircle2, Phone, ShoppingBag, Trash2, Plus, Minus } from "lucide-react";
+import { Calendar, MessageCircle, CheckCircle2, Phone, ShoppingBag, Trash2, Plus, Minus, AlertCircle } from "lucide-react";
 import api from "@/lib/api";
 import { formatJPY } from "@/lib/data";
 
@@ -49,6 +49,7 @@ function BookingForm() {
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [agreed, setAgreed] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -340,6 +341,18 @@ function BookingForm() {
         </div>
       </FadeIn>
 
+      <FadeIn delay={0.1}>
+        <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 rounded-2xl p-4 mb-8 flex gap-3 items-start shadow-sm">
+          <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <h4 className="font-bold text-amber-900 dark:text-amber-400 text-sm whitespace-pre-wrap">{t("policyTitle")}</h4>
+            <p className="text-amber-800 dark:text-amber-300/80 text-xs leading-relaxed">
+              {t("policyText")}
+            </p>
+          </div>
+        </div>
+      </FadeIn>
+
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 pb-16">
         {/* Product Selection List */}
         <div className="lg:col-span-7 space-y-6">
@@ -565,7 +578,20 @@ function BookingForm() {
                     />
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full" disabled={submitting}>
+                  <div className="flex items-start gap-3 p-1">
+                    <input
+                      type="checkbox"
+                      id="agree"
+                      className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary"
+                      checked={agreed}
+                      onChange={(e) => setAgreed(e.target.checked)}
+                    />
+                    <Label htmlFor="agree" className="text-xs text-muted-foreground cursor-pointer select-none">
+                      {t("agreePolicy")}
+                    </Label>
+                  </div>
+
+                  <Button type="submit" size="lg" className="w-full" disabled={submitting || !agreed}>
                     {submitting ? t("sending") : t("submit")}
                   </Button>
                 </div>

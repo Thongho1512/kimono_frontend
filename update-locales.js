@@ -50,7 +50,11 @@ const customOverrides = {
     "about.p1": "Kyo Kimono Rental is a premier kimono rental shop located in Gion, Kyoto. With over 200 genuine kimonos, we offer a diverse selection from traditional to modern styles - suitable for women, men, and children.",
     "about.p2": "Our professional team will help you dress properly, style your hair perfectly, and arrange photography. Whether you're strolling through Kyoto, visiting Kiyomizu-dera, or attending an event, Kyo Kimono Rental is ready to help you create unforgettable moments.",
     "contact.addressValue": NEW_ADDRESS,
-    "footer.description": "Premium kimono rental service in Kyoto, Japan. Experience the beauty of traditional Japanese culture in Gion."
+    "contact.name": "Kyo Kimono Rental",
+    "footer.description": "Premium kimono rental service in Kyoto, Japan. Experience the beauty of traditional Japanese culture in Gion.",
+    "booking.policyTitle": "Booking & Cancellation Policy",
+    "booking.policyText": "Cancellation or changes to date/time must be notified 2-3 days in advance. Please adhere to the appointment time exactly to avoid overlapping with other guests.",
+    "booking.agreePolicy": "I have read and agree to the booking policy."
   },
   vi: {
     "metadata.title": "Kyo Kimono Rental - Cho Thuê Kimono Đẹp Tại Kyoto",
@@ -62,7 +66,11 @@ const customOverrides = {
     "about.p1": "Kyo Kimono Rental là cửa hàng cho thuê kimono cao cấp tại Gion, Kyoto. Với hơn 200 bộ kimono chính hãng, chúng tôi cung cấp các mẫu mã đa dạng từ truyền thống đến hiện đại - dành cho cả nam, nữ và trẻ em.",
     "about.p2": "Đội ngũ chuyên nghiệp của chúng tôi sẽ hỗ trợ bạn mặc kimono đúng chuẩn, làm tóc đẹp mắt và các gói chụp hình lưu niệm. Dù dạo phố Kyoto hay dự sự kiện đặc biệt, Kyo Kimono Rental luôn sẵn sàng đồng hành cùng bạn.",
     "contact.addressValue": NEW_ADDRESS,
-    "footer.description": "Dịch vụ cho thuê kimono chuyên nghiệp tại Kyoto, Nhật Bản. Trải nghiệm vẻ đẹp Nhật Bản đích thực tại Gion."
+    "contact.name": "Kyo Kimono Rental",
+    "footer.description": "Dịch vụ cho thuê kimono chuyên nghiệp tại Kyoto, Nhật Bản. Trải nghiệm vẻ đẹp Nhật Bản đích thực tại Gion.",
+    "booking.policyTitle": "Chính Sách Đặt Lịch & Hủy Lịch",
+    "booking.policyText": "Hủy lịch hay thay đổi ngày, giờ cần báo, liên lạc với tiệm trước 2-3 ngày. Vui lòng tuân thủ thời gian lịch hẹn đúng giờ, tránh trường hợp trùng khung giờ khách khác đặt.",
+    "booking.agreePolicy": "Tôi đã đọc và đồng ý với chính sách đặt lịch."
   },
   ja: {
     "metadata.title": "Kyo Kimono Rental - 京都・祇園の着物レンタル",
@@ -74,7 +82,11 @@ const customOverrides = {
     "about.p1": "Kyo Kimono Rentalは、京都祇園にあるプレミアムな着物レンタルショップです。200着以上の本格的な着物を取り揃え、伝統的なスタイルからモダンなデザインまで、女性, 男性, お子様向けに豊富にご用意しています。",
     "about.p2": "プロのスタッフが着付け、ヘアセット, そして写真撮影を行います。京都の歴史ある街並みを散策したり、特別なイベントに参加したり、皆様の忘れられない思い出作りを全力でサポートいたします。",
     "contact.addressValue": NEW_ADDRESS,
-    "footer.description": "京都・祇園のプレミアム着物レンタルサービス。日本の伝統美をご体験ください。"
+    "contact.name": "Kyo Kimono Rental",
+    "footer.description": "京都・祇園のプレミアム着物レンタルサービス。日本の伝統美をご体験ください。",
+    "booking.policyTitle": "予約・キャンセルポリシー",
+    "booking.policyText": "予約のキャンセルや日時変更は2〜3日前までにご連絡ください。他のお客様との重複を避けるため、予約時間を厳守していただきますようお願いいたします。",
+    "booking.agreePolicy": "予約ポリシーを読み、同意しました。"
   },
   ko: {
     "metadata.title": "Kyo Kimono Rental - 교토 기온 기모노 대여",
@@ -86,7 +98,11 @@ const customOverrides = {
     "about.p1": "Kyo Kimono Rental은 교토 기온에 위치한 프리미엄 기모노 대여점입니다. 200여 벌의 정품 기모노를 보유하고 있으며 여성, 남성, 어린이를 위한 전통 스타일부터 모던 스타일까지 다양하게 제공합니다.",
     "about.p2": "전문 팀이 올바른 기모노 착용, 완벽한 헤어 스타일링 및 사진 촬영을 도와드립니다. 교토의 역사적인 거리를 산책하든 특별한 이벤트에 참석하든 잊지 못할 추억을 만들어 드립니다.",
     "contact.addressValue": NEW_ADDRESS,
-    "footer.description": "일본 교토의 프리미엄 기모노 대여 서비스. 기온에서 일본 전통 문화의 아름다움을 경험하세요."
+    "contact.name": "Kyo Kimono Rental",
+    "footer.description": "일본 교토의 프리미엄 기모노 대여 서비스. 기온에서 일본 전통 문화의 아름다움을 경험하세요.",
+    "booking.policyTitle": "예약 및 취소 규정",
+    "booking.policyText": "예약 취소나 일시 변경은 2~3일 전까지 연락해 주시기 바랍니다. 다른 고객과의 중복을 피하기 위해 예약 시간을 엄수해 주시기 바랍니다.",
+    "booking.agreePolicy": "예약 규정을 읽고 동의합니다."
   },
   zh: {
     "metadata.title": "Kyo Kimono Rental - 京都祇园高级和服租赁",
@@ -106,19 +122,19 @@ function processObject(obj, locale) {
   for (let key in obj) {
     if (typeof obj[key] === 'string') {
       let val = obj[key];
-      
+
       // Apply global replaces
       globalReplacements.forEach(rep => {
         val = val.replace(rep.regex, rep.to);
       });
-      
+
       // Apply locale specific replaces
       if (localeReplacements[locale]) {
         localeReplacements[locale].forEach(rep => {
           val = val.replace(rep.regex, rep.to);
         });
       }
-      
+
       obj[key] = val;
     } else if (typeof obj[key] === 'object' && obj[key] !== null) {
       processObject(obj[key], locale);
@@ -131,11 +147,11 @@ function applyOverrides(obj, overrides) {
     const parts = keyPath.split('.');
     let current = obj;
     for (let i = 0; i < parts.length - 1; i++) {
-        if (!current[parts[i]]) current[parts[i]] = {};
-        current = current[parts[i]];
+      if (!current[parts[i]]) current[parts[i]] = {};
+      current = current[parts[i]];
     }
     if (current && parts[parts.length - 1]) {
-        current[parts[parts.length - 1]] = overrides[keyPath];
+      current[parts[parts.length - 1]] = overrides[keyPath];
     }
   }
 }
@@ -146,15 +162,15 @@ files.forEach(file => {
     const locale = file.replace('.json', '');
     let content = fs.readFileSync(filePath, 'utf8');
     let json = JSON.parse(content);
-    
+
     // Process text
     processObject(json, locale);
-    
+
     // Apply overrides
     if (customOverrides[locale]) {
-        applyOverrides(json, customOverrides[locale]);
+      applyOverrides(json, customOverrides[locale]);
     }
-    
+
     // Write back
     fs.writeFileSync(filePath, JSON.stringify(json, null, 2), 'utf8');
     console.log('Updated ' + file);

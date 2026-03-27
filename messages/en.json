@@ -180,7 +180,10 @@
     "pleaseEnterEmail": "Please enter your email address.",
     "pleaseSelectDate": "Please select a rental date.",
     "pleaseSelectTime": "Please select an estimated arrival time.",
-    "pleaseEnterPeople": "Please enter number of people (minimum 1)."
+    "pleaseEnterPeople": "Please enter number of people (minimum 1).",
+    "policyTitle": "Booking & Cancellation Policy",
+    "policyText": "Cancellation or changes to date/time must be notified 2-3 days in advance. Please adhere to the appointment time exactly to avoid overlapping with other guests.",
+    "agreePolicy": "I have read and agree to the booking policy."
   },
   "hairstyle": {
     "title": "Basic Hairstyle Gallery",
@@ -235,7 +238,8 @@
     "buildingExt": "Exterior",
     "shopEnt": "Entrance",
     "nearbyGion": "Nearby Gion",
-    "connectWithUs": "Connect with us"
+    "connectWithUs": "Connect with us",
+    "name": "Kyo Kimono Rental"
   },
   "footer": {
     "description": "Premium kimono rental service in Kyoto, Japan. Experience the beauty of traditional Japanese culture in Gion.",

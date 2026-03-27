@@ -174,7 +174,10 @@
     "pleaseEnterEmail": "이메일 주소를 입력해 주세요.",
     "pleaseSelectDate": "대여 날짜를 선택해 주세요.",
     "pleaseSelectTime": "예상 도착 시간을 선택해 주세요.",
-    "pleaseEnterPeople": "인원 수를 입력해 주세요 (최소 1명)."
+    "pleaseEnterPeople": "인원 수를 입력해 주세요 (최소 1명).",
+    "policyTitle": "예약 및 취소 규정",
+    "policyText": "예약 취소나 일시 변경은 2~3일 전까지 연락해 주시기 바랍니다. 다른 고객과의 중복을 피하기 위해 예약 시간을 엄수해 주시기 바랍니다.",
+    "agreePolicy": "예약 규정을 읽고 동의합니다."
   },
   "hairstyle": {
     "title": "기본 헤어스타일 갤러리",
@@ -229,7 +232,8 @@
     "buildingExt": "외부",
     "shopEnt": "입구",
     "nearbyGion": "기온 주변",
-    "connectWithUs": "SNS로 소통하기"
+    "connectWithUs": "SNS로 소통하기",
+    "name": "Kyo Kimono Rental"
   },
   "footer": {
     "description": "일본 교토의 프리미엄 기모노 대여 서비스. 기온에서 일본 전통 문화의 아름다움을 경험하세요.",

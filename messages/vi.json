@@ -193,7 +193,10 @@
     "pleaseEnterEmail": "Vui lòng nhập địa chỉ email.",
     "pleaseSelectDate": "Vui lòng chọn ngày thuê.",
     "pleaseSelectTime": "Vui lòng chọn giờ đến dự kiến.",
-    "pleaseEnterPeople": "Vui lòng nhập số người (tối thiểu 1)."
+    "pleaseEnterPeople": "Vui lòng nhập số người (tối thiểu 1).",
+    "policyTitle": "Chính Sách Đặt Lịch & Hủy Lịch",
+    "policyText": "Hủy lịch hay thay đổi ngày, giờ cần báo, liên lạc với tiệm trước 2-3 ngày. Vui lòng tuân thủ thời gian lịch hẹn đúng giờ, tránh trường hợp trùng khung giờ khách khác đặt.",
+    "agreePolicy": "Tôi đã đọc và đồng ý với chính sách đặt lịch."
   },
   "hairstyle": {
     "title": "Mẫu Làm Tóc Cơ Bản",
@@ -248,7 +251,8 @@
     "buildingExt": "Bên ngoài",
     "shopEnt": "Lối vào",
     "nearbyGion": "Phố Gion",
-    "connectWithUs": "Kết nối với chúng tôi"
+    "connectWithUs": "Kết nối với chúng tôi",
+    "name": "Kyo Kimono Rental"
   },
   "footer": {
     "description": "Dịch vụ cho thuê kimono chuyên nghiệp tại Kyoto, Nhật Bản. Trải nghiệm vẻ đẹp Nhật Bản đích thực tại Gion.",

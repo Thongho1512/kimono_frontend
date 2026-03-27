@@ -20,6 +20,7 @@ import {
   Instagram,
   Youtube,
   AtSign,
+  AlertCircle,
 } from "lucide-react";
 import dynamic from "next/dynamic";
 
@@ -48,6 +49,7 @@ export default function ContactPage() {
   const t = useTranslations("contact");
   const tNav = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const tBooking = useTranslations("booking");
   const locale = useLocale();
 
   const [storeInfo, setStoreInfo] = useState<StoreInfo | null>(null);
@@ -142,6 +144,16 @@ export default function ContactPage() {
                     </div>
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-8 bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 rounded-2xl p-4 flex gap-3 items-start shadow-sm">
+                <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
+                <div className="space-y-1">
+                  <h4 className="font-bold text-amber-900 dark:text-amber-400 text-sm whitespace-pre-wrap">{tBooking("policyTitle")}</h4>
+                  <p className="text-amber-800 dark:text-amber-300/80 text-xs leading-relaxed">
+                    {tBooking("policyText")}
+                  </p>
+                </div>
               </div>
 
               {/* Nearby Attractions */}

@@ -71,7 +71,7 @@ export function FeaturedPlans() {
                 >
                   <div className="relative aspect-[3/4] overflow-hidden bg-muted">
                     <Image
-                      src={plan.images?.[0]?.url || "/images/placeholder.jpg"}
+                      src={plan.images?.[0]?.url || "/images/shop-interior.jpg"}
                       alt={plan.name}
                       fill
                       className="object-cover group-hover:scale-110 ticktoc-transition"
