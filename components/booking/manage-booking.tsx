@@ -190,7 +190,12 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                     childAges: booking.childAges,
                     extraServices: booking.extraServices,
                     note: booking.note,
-                    items: booking.items
+                    items: (booking.items || []).map((item: any) => ({
+                        productId: item.productId,
+                        productName: item.productName,
+                        price: item.price,
+                        quantity: item.quantity
+                    }))
                 })
             });
 
@@ -210,11 +215,11 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
     const handleCancel = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/public/bookings/${booking.id}/cancel`, {
-                method: 'PUT'
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/public/bookings/${booking.id}`, {
+                method: 'DELETE'
             });
 
-            if (!response.ok) throw new Error('Cancel failed');
+            if (!response.ok) throw new Error('Delete failed');
             
             toast.success(t('cancelSuccess'));
             onUpdate();
@@ -704,7 +709,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                     </AlertDialogHeader>
                                     <AlertDialogFooter>
                                         <AlertDialogCancel>{t('back')}</AlertDialogCancel>
-                                        <AlertDialogAction onClick={handleCancel} className="bg-red-600 hover:bg-red-700">{t('searchButton') || 'Xác nhận hủy'}</AlertDialogAction>
+                                        <AlertDialogAction onClick={handleCancel} className="bg-red-600 hover:bg-red-700">{t('confirm')}</AlertDialogAction>
                                     </AlertDialogFooter>
                                 </AlertDialogContent>
                             </AlertDialog>

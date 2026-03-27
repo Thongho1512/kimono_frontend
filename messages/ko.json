@@ -196,6 +196,7 @@
     "confirmCancel": "이 예약을 취소하시겠습니까?",
     "cancelWarning": "이 작업은 취소할 수 없습니다.",
     "back": "뒤로",
+    "confirm": "확인",
     "status_confirmed": "확인됨",
     "status_cancelled": "취소됨",
     "cancelBooking": "예약 취소",

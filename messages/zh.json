@@ -195,6 +195,7 @@
     "confirmCancel": "您确定要取消该预约吗？",
     "cancelWarning": "此操作无法撤销。",
     "back": "返回",
+    "confirm": "确认",
     "status_confirmed": "已确认",
     "status_cancelled": "已取消",
     "cancelBooking": "取消预约",

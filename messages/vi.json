@@ -212,6 +212,7 @@
     "confirmCancel": "Bạn có chắc chắn muốn hủy đặt lịch này không?",
     "cancelWarning": "Thao tác này không thể hoàn tác.",
     "back": "Quay lại",
+    "confirm": "Xác nhận",
     "status_confirmed": "Xác nhận",
     "status_cancelled": "Đã hủy",
     "cancelBooking": "Hủy đặt lịch",

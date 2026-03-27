@@ -199,6 +199,7 @@
     "confirmCancel": "Are you sure you want to cancel this booking?",
     "cancelWarning": "This action cannot be undone.",
     "back": "Back",
+    "confirm": "Confirm",
     "status_confirmed": "Confirmed",
     "status_cancelled": "Cancelled",
     "cancelBooking": "Cancel booking",
