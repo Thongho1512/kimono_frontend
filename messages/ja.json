@@ -12,6 +12,7 @@
     "faq": "よくある質問",
     "gallery": "フォトギャラリー",
     "contact": "お問い合わせ",
+    "manageBooking": "予約照会",
     "women": "女性用着物",
     "men": "男性用着物",
     "kids": "お子様用",
@@ -178,18 +179,23 @@
     "policyTitle": "予約・キャンセルポリシー",
     "policyText": "予約のキャンセルや日時変更は2〜3日前までにご連絡ください。他のお客様との重複を避けるため、予約時間を厳守していただきますようお願いいたします。",
     "agreePolicy": "予約ポリシーを読み、同意しました。",
-    "lookup": {
-      "title": "予約照会",
-      "subtitle": "予約を確認するには、メールアドレスまたは電話番号を入力してください。",
-      "placeholder": "メールアドレスまたは電話番号...",
-      "submit": "照会する",
-      "noResults": "予約が見つかりませんでした。",
-      "manage": {
-        "title": "予約管理",
-        "update": "情報を更新",
-        "cancel": "予約をキャンセル"
-      }
-    }
+    "lookupTitle": "予約照会",
+    "lookupSubtitle": "予約時に使用したメールアドレスまたは電話番号を入力して、情報を確認・管理してください。",
+    "contactPlaceholder": "メールアドレスまたは電話番号...",
+    "searchButton": "検索",
+    "bookingListTitle": "予約リスト",
+    "noBookingsFound": "予約が見つかりませんでした。情報を確認してください。",
+    "noBookingsTitle": "情報が見つかりません",
+    "noBookingsDescription": "電話番号またはメールアドレスを確認してください。または、070-9150-0677まで直接お問い合わせください。",
+    "lookupError": "照会中にエラーが発生しました。後でもう一度お試しください。",
+    "updateSuccess": "情報が更新されました！",
+    "cancelSuccess": "予約がキャンセルされました！",
+    "confirmCancel": "この予約をキャンセルしてもよろしいですか？",
+    "cancelWarning": "この操作は取り消せません。",
+    "back": "戻る",
+    "status_confirmed": "確認済み",
+    "status_cancelled": "キャンセル済み",
+    "updateBooking": "情報を変更"
   },
   "hairstyle": {
     "title": "基本ヘアスタイルギャラリー",

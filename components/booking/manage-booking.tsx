@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { format } from 'date-fns';
+import { useTranslations } from 'next-intl';
 import { 
     Calendar as CalendarIcon, 
     Clock, 
@@ -49,6 +50,7 @@ interface ManageBookingProps {
 }
 
 export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBookingProps) {
+    const t = useTranslations('booking');
     const [booking, setBooking] = useState(initialBooking);
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -74,12 +76,12 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
 
             if (!response.ok) throw new Error('Update failed');
             
-            toast.success('Cập nhật thông tin thành công!');
+            toast.success(t('updateSuccess'));
             setIsEditing(false);
             onUpdate();
         } catch (error) {
             console.error('Update error:', error);
-            toast.error('Không thể cập nhật. Vui lòng thử lại.');
+            toast.error(t('lookupError'));
         } finally {
             setLoading(false);
         }
@@ -94,11 +96,11 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
 
             if (!response.ok) throw new Error('Cancel failed');
             
-            toast.success('Hủy đặt lịch thành công!');
+            toast.success(t('cancelSuccess'));
             onUpdate();
         } catch (error) {
             console.error('Cancel error:', error);
-            toast.error('Không thể hủy lúc này. Vui lòng liên hệ hotline.');
+            toast.error(t('lookupError'));
         } finally {
             setLoading(false);
         }
@@ -124,14 +126,14 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                         <div className="flex items-center gap-2">
                             <span className="font-bold text-lg">{format(new Date(booking.bookingDate), 'dd/MM/yyyy')}</span>
                             {isCancelled ? (
-                                <Badge variant="destructive" className="bg-red-100 text-red-700 border-none px-2 py-0.5 text-[10px] font-bold">ĐÃ HỦY</Badge>
+                                <Badge variant="destructive" className="bg-red-100 text-red-700 border-none px-2 py-0.5 text-[10px] font-bold uppercase">{t('status_cancelled') || 'ĐÃ HỦY'}</Badge>
                             ) : (
-                                <Badge variant="outline" className="bg-green-100 text-green-700 border-none px-2 py-0.5 text-[10px] font-bold">XÁC NHẬN</Badge>
+                                <Badge variant="outline" className="bg-green-100 text-green-700 border-none px-2 py-0.5 text-[10px] font-bold uppercase">{t('status_confirmed') || 'XÁC NHẬN'}</Badge>
                             )}
                         </div>
                         <p className="text-sm text-muted-foreground flex items-center gap-3 mt-0.5">
                             <span className="flex items-center gap-1"><Clock className="h-3 w-3" /> {booking.arrivalTime}</span>
-                            <span className="flex items-center gap-1"><Users className="h-3 w-3" /> {booking.numberOfPeople} người</span>
+                            <span className="flex items-center gap-1"><Users className="h-3 w-3" /> {booking.numberOfPeople} {t('people')}</span>
                         </p>
                     </div>
                 </div>
@@ -156,11 +158,11 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                         <div className="space-y-4">
                             <h3 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
                                 <div className="h-4 w-1 bg-primary rounded-full" />
-                                Thông tin cá nhân
+                                {t('contactInfo')}
                             </h3>
                             <div className="space-y-4">
                                 <div className="space-y-2">
-                                    <Label className="text-xs font-bold text-slate-500">HỌ VÀ TÊN</Label>
+                                    <Label className="text-xs font-bold text-slate-500 uppercase">{t('name')}</Label>
                                     <Input 
                                         disabled={!isEditing || isCancelled}
                                         value={booking.customerName}
@@ -170,7 +172,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                 </div>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                     <div className="space-y-2">
-                                        <Label className="text-xs font-bold text-slate-500">SỐ ĐIỆN THOẠI</Label>
+                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('phone')}</Label>
                                         <Input 
                                             disabled={!isEditing || isCancelled}
                                             value={booking.customerPhone}
@@ -179,7 +181,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label className="text-xs font-bold text-slate-500">EMAIL</Label>
+                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('email')}</Label>
                                         <Input 
                                             disabled={!isEditing || isCancelled}
                                             value={booking.customerEmail}
@@ -195,12 +197,12 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                         <div className="space-y-4">
                             <h3 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
                                 <div className="h-4 w-1 bg-primary rounded-full" />
-                                Chi tiết dịch vụ
+                                {t('customerDetails')}
                             </h3>
                             <div className="space-y-4">
                                 <div className="grid grid-cols-2 gap-4">
                                     <div className="space-y-2">
-                                        <Label className="text-xs font-bold text-slate-500">GIỜ ĐẾN</Label>
+                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('arrivalTime')}</Label>
                                         <Input 
                                             type="time"
                                             disabled={!isEditing || isCancelled}
@@ -210,7 +212,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                         />
                                     </div>
                                     <div className="space-y-2">
-                                        <Label className="text-xs font-bold text-slate-500">SỐ NGƯỜI</Label>
+                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('people')}</Label>
                                         <Input 
                                             type="number"
                                             disabled={!isEditing || isCancelled}
@@ -221,13 +223,13 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <Label className="text-xs font-bold text-slate-500">GHI CHÚ</Label>
+                                    <Label className="text-xs font-bold text-slate-500 uppercase">{t('note')}</Label>
                                     <Textarea 
                                         disabled={!isEditing || isCancelled}
                                         value={booking.note || ''}
                                         onChange={(e) => setBooking({...booking, note: e.target.value})}
                                         className="bg-white min-h-[80px]"
-                                        placeholder="Không có ghi chú nào..."
+                                        placeholder="..."
                                     />
                                 </div>
                             </div>
@@ -241,19 +243,19 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                 <AlertDialogTrigger asChild>
                                     <Button variant="ghost" className="text-red-500 hover:text-red-600 hover:bg-red-50 gap-2 font-bold px-0">
                                         <Trash2 className="h-4 w-4" />
-                                        Hủy đơn đặt lịch này
+                                        {t('cancelBooking') || 'Hủy đơn đặt lịch này'}
                                     </Button>
                                 </AlertDialogTrigger>
                                 <AlertDialogContent>
                                     <AlertDialogHeader>
-                                        <AlertDialogTitle>Bạn có chắc chắn muốn hủy?</AlertDialogTitle>
+                                        <AlertDialogTitle>{t('confirmCancel')}</AlertDialogTitle>
                                         <AlertDialogDescription>
-                                            Thao tác này sẽ đánh dấu đơn đặt lịch của bạn là "Đã hủy" trong hệ thống. Bạn không thể hoàn tác thao tác này.
+                                            {t('cancelWarning')}
                                         </AlertDialogDescription>
                                     </AlertDialogHeader>
                                     <AlertDialogFooter>
-                                        <AlertDialogCancel>Quay lại</AlertDialogCancel>
-                                        <AlertDialogAction onClick={handleCancel} className="bg-red-600 hover:bg-red-700">Xác nhận hủy</AlertDialogAction>
+                                        <AlertDialogCancel>{t('back')}</AlertDialogCancel>
+                                        <AlertDialogAction onClick={handleCancel} className="bg-red-600 hover:bg-red-700">{t('searchButton') || 'Xác nhận hủy'}</AlertDialogAction>
                                     </AlertDialogFooter>
                                 </AlertDialogContent>
                             </AlertDialog>
@@ -262,16 +264,16 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                 {isEditing ? (
                                     <>
                                         <Button variant="outline" onClick={() => { setBooking(initialBooking); setIsEditing(false); }} disabled={loading}>
-                                            Hủy thay đổi
+                                            {t('back')}
                                         </Button>
                                         <Button onClick={handleSave} disabled={loading} className="gap-2 bg-primary font-bold shadow-lg shadow-primary/20">
                                             {loading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Save className="h-4 w-4" />}
-                                            Lưu cập nhật
+                                            {t('submit')}
                                         </Button>
                                     </>
                                 ) : (
                                     <Button onClick={() => setIsEditing(true)} className="gap-2 font-bold">
-                                        Thay đổi thông tin
+                                        {t('updateBooking') || 'Thay đổi thông tin'}
                                     </Button>
                                 )}
                             </div>
@@ -281,7 +283,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                     {isCancelled && (
                         <div className="flex items-center gap-3 bg-red-50 dark:bg-red-900/10 p-4 rounded-xl border border-red-100 dark:border-red-900/20 text-red-700 dark:text-red-300">
                             <AlertCircle className="h-5 w-5 shrink-0" />
-                            <p className="text-sm font-medium">Lịch này đã bị hủy. Bạn không thể thay đổi thông tin. Vui lòng đặt lịch mới nếu cần thiết.</p>
+                            <p className="text-sm font-medium">{t('cancelWarning')}</p>
                         </div>
                     )}
                 </div>

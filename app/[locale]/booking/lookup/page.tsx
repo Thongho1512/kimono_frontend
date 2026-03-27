@@ -27,11 +27,11 @@ export default function BookingLookupPage() {
             setBookings(data);
             setHasSearched(true);
             if (data.length === 0) {
-                toast.error('Không tìm thấy đơn đặt lịch. Vui lòng kiểm tra lại thông tin.');
+                toast.error(t('noBookingsFound'));
             }
         } catch (error) {
             console.error('Lookup error:', error);
-            toast.error('Có lỗi xảy ra khi tra cứu. Vui lòng thử lại sau.');
+            toast.error(t('lookupError'));
         } finally {
             setLoading(false);
         }
@@ -41,8 +41,8 @@ export default function BookingLookupPage() {
         <div className="container mx-auto px-4 py-12 min-h-[60vh]">
             <div className="max-w-2xl mx-auto space-y-8">
                 <div className="text-center space-y-4">
-                    <h1 className="text-3xl md:text-4xl font-bold text-primary">Tra cứu đặt lịch</h1>
-                    <p className="text-muted-foreground">Nhập Email hoặc Số điện thoại bạn đã dùng để đặt lịch để xem lại và quản lý thông tin.</p>
+                    <h1 className="text-3xl md:text-4xl font-bold text-primary">{t('lookupTitle')}</h1>
+                    <p className="text-muted-foreground">{t('lookupSubtitle')}</p>
                 </div>
 
                 <form onSubmit={handleSearch} className="flex flex-col sm:flex-row gap-3 bg-white dark:bg-slate-900 p-6 rounded-2xl shadow-xl border border-primary/10">
@@ -51,13 +51,13 @@ export default function BookingLookupPage() {
                         <Input 
                             value={contact}
                             onChange={(e) => setContact(e.target.value)}
-                            placeholder="Email hoặc Số điện thoại..." 
+                            placeholder={t('contactPlaceholder')} 
                             className="pl-10 h-12 bg-slate-50 border-slate-200 focus:border-primary"
                         />
                     </div>
                     <Button type="submit" size="lg" disabled={loading} className="h-12 px-8 gap-2 font-bold text-lg">
                         {loading ? <Loader2 className="h-5 w-5 animate-spin" /> : <Search className="h-5 w-5" />}
-                        Tra cứu
+                        {t('searchButton')}
                     </Button>
                 </form>
 
@@ -65,7 +65,7 @@ export default function BookingLookupPage() {
                     <div className="space-y-6 pt-4">
                         <h2 className="text-xl font-bold flex items-center gap-2">
                             <div className="h-4 w-1 bg-primary rounded-full" />
-                            Danh sách lịch đã đặt ({bookings.length})
+                            {t('bookingListTitle')} ({bookings.length})
                         </h2>
                         <div className="grid gap-6">
                             {bookings.map((booking) => (
@@ -80,9 +80,9 @@ export default function BookingLookupPage() {
                         <div className="mx-auto w-12 h-12 bg-red-100 rounded-full flex items-center justify-center text-red-600 mb-2">
                             <AlertCircle className="h-6 w-6" />
                         </div>
-                        <h3 className="text-lg font-bold text-red-800 dark:text-red-400">Không tìm thấy thông tin</h3>
+                        <h3 className="text-lg font-bold text-red-800 dark:text-red-400">{t('noBookingsTitle')}</h3>
                         <p className="text-sm text-red-600 dark:text-red-300">
-                            Vui lòng kiểm tra lại số điện thoại hoặc email. Hoặc bạn có thể liên hệ trực tiếp với chúng tôi qua số điện thoại 070-9150-0677 để được hỗ trợ.
+                            {t('noBookingsDescription')}
                         </p>
                     </div>
                 )}

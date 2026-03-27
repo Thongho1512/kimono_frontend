@@ -12,6 +12,7 @@
     "faq": "FAQ",
     "gallery": "Gallery",
     "contact": "Contact",
+    "manageBooking": "Manage Booking",
     "women": "Women's Kimono",
     "men": "Men's Kimono",
     "kids": "Kids",
@@ -184,18 +185,23 @@
     "policyTitle": "Booking & Cancellation Policy",
     "policyText": "Cancellation or changes to date/time must be notified 2-3 days in advance. Please adhere to the appointment time exactly to avoid overlapping with other guests.",
     "agreePolicy": "I have read and agree to the booking policy.",
-    "lookup": {
-      "title": "Lookup Booking",
-      "subtitle": "Enter your Email or Phone to check your reservation.",
-      "placeholder": "Email or Phone number...",
-      "submit": "Lookup",
-      "noResults": "No booking found.",
-      "manage": {
-        "title": "Manage Booking",
-        "update": "Update Info",
-        "cancel": "Cancel Booking"
-      }
-    }
+    "lookupTitle": "Booking Lookup",
+    "lookupSubtitle": "Enter your Email or Phone number used for booking to review and manage your reservation.",
+    "contactPlaceholder": "Email or Phone number...",
+    "searchButton": "Search",
+    "bookingListTitle": "Your Bookings",
+    "noBookingsFound": "No bookings found. Please check your information.",
+    "noBookingsTitle": "No Information Found",
+    "noBookingsDescription": "Please check your phone number or email. Or contact us directly at 070-9150-0677 for support.",
+    "lookupError": "An error occurred during lookup. Please try again later.",
+    "updateSuccess": "Information updated successfully!",
+    "cancelSuccess": "Booking cancelled successfully!",
+    "confirmCancel": "Are you sure you want to cancel this booking?",
+    "cancelWarning": "This action cannot be undone.",
+    "back": "Back",
+    "status_confirmed": "Confirmed",
+    "status_cancelled": "Cancelled",
+    "updateBooking": "Update Information"
   },
   "hairstyle": {
     "title": "Basic Hairstyle Gallery",

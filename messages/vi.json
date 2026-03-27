@@ -12,6 +12,7 @@
     "faq": "Hỏi Đáp",
     "gallery": "Album Ảnh",
     "contact": "Liên Hệ",
+    "manageBooking": "Tra cứu lịch",
     "women": "Kimono Nữ",
     "men": "Kimono Nam",
     "kids": "Trẻ Em",
@@ -197,18 +198,23 @@
     "policyTitle": "Chính Sách Đặt Lịch & Hủy Lịch",
     "policyText": "Hủy lịch hay thay đổi ngày, giờ cần báo, liên lạc với tiệm trước 2-3 ngày. Vui lòng tuân thủ thời gian lịch hẹn đúng giờ, tránh trường hợp trùng khung giờ khách khác đặt.",
     "agreePolicy": "Tôi đã đọc và đồng ý với chính sách đặt lịch.",
-    "lookup": {
-      "title": "Tra cứu đặt lịch",
-      "subtitle": "Nhập Email hoặc Số điện thoại để xem lại thông tin.",
-      "placeholder": "Email hoặc Số điện thoại...",
-      "submit": "Tra cứu",
-      "noResults": "Không tìm thấy đơn đặt lịch nào.",
-      "manage": {
-        "title": "Quản lý đặt lịch",
-        "update": "Cập nhật thông tin",
-        "cancel": "Hủy đặt lịch"
-      }
-    }
+    "lookupTitle": "Tra cứu đặt lịch",
+    "lookupSubtitle": "Nhập Email hoặc Số điện thoại bạn đã dùng để đặt lịch để xem lại và quản lý thông tin.",
+    "contactPlaceholder": "Email hoặc Số điện thoại...",
+    "searchButton": "Tra cứu",
+    "bookingListTitle": "Danh sách lịch đã đặt",
+    "noBookingsFound": "Không tìm thấy đơn đặt lịch. Vui lòng kiểm tra lại thông tin.",
+    "noBookingsTitle": "Không tìm thấy thông tin",
+    "noBookingsDescription": "Vui lòng kiểm tra lại số điện thoại hoặc email. Hoặc bạn có thể liên hệ trực tiếp với chúng tôi qua số điện thoại 070-9150-0677 để được hỗ trợ.",
+    "lookupError": "Có lỗi xảy ra khi tra cứu. Vui lòng thử lại sau.",
+    "updateSuccess": "Cập nhật thông tin thành công!",
+    "cancelSuccess": "Hủy đặt lịch thành công!",
+    "confirmCancel": "Bạn có chắc chắn muốn hủy đặt lịch này không?",
+    "cancelWarning": "Thao tác này không thể hoàn tác.",
+    "back": "Quay lại",
+    "status_confirmed": "Xác nhận",
+    "status_cancelled": "Đã hủy",
+    "updateBooking": "Thay đổi thông tin"
   },
   "hairstyle": {
     "title": "Mẫu Làm Tóc Cơ Bản",

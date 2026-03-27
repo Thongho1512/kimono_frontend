@@ -36,6 +36,7 @@ export function Header() {
     { label: t("home"), href: prefix },
     { label: t("pricing"), href: `${prefix}/pricing` },
     { label: t("booking"), href: `${prefix}/booking` },
+    { label: t("manageBooking"), href: `${prefix}/booking/lookup` },
     { label: t("hairstyle"), href: `${prefix}/hairstyle` },
     { label: t("faq"), href: `${prefix}/faq` },
     { label: t("gallery"), href: `${prefix}/gallery` },

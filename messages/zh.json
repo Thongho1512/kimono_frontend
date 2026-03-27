@@ -12,6 +12,7 @@
     "faq": "常见问题",
     "gallery": "相册",
     "contact": "联系我们",
+    "manageBooking": "查询预约",
     "women": "女士和服",
     "men": "男士和服",
     "kids": "儿童",
@@ -175,18 +176,23 @@
     "pleaseSelectDate": "请选择租赁日期。",
     "pleaseSelectTime": "请选择预计到达时间。",
     "pleaseEnterPeople": "请输入人数（至少1人）。",
-    "lookup": {
-      "title": "查询预约",
-      "subtitle": "请输入您的电子邮件或电话号码以查询预约信息。",
-      "placeholder": "电子邮件或电话号码...",
-      "submit": "查询",
-      "noResults": "未找到预约信息。",
-      "manage": {
-        "title": "管理预约",
-        "update": "更新信息",
-        "cancel": "取消预约"
-      }
-    }
+    "lookupTitle": "查询预约",
+    "lookupSubtitle": "输入您预约时使用的邮箱或电话号码，以查看和管理您的信息。",
+    "contactPlaceholder": "邮箱或电话号码...",
+    "searchButton": "查询",
+    "bookingListTitle": "预约列表",
+    "noBookingsFound": "未找到预约。请检查您输入的信息。",
+    "noBookingsTitle": "未找到信息",
+    "noBookingsDescription": "请检查您的电话号码或邮箱。或直接拨打 070-9150-0677 联系我们寻求帮助。",
+    "lookupError": "查询时发生错误。请稍后再试。",
+    "updateSuccess": "信息更新成功！",
+    "cancelSuccess": "预约取消成功！",
+    "confirmCancel": "您确定要取消该预约吗？",
+    "cancelWarning": "此操作无法撤销。",
+    "back": "返回",
+    "status_confirmed": "已确认",
+    "status_cancelled": "已取消",
+    "updateBooking": "更新信息"
   },
   "hairstyle": {
     "title": "基本发型展示",

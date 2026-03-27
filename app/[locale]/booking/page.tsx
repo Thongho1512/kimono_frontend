@@ -338,12 +338,24 @@ function BookingForm() {
       </FadeIn>
 
       <FadeIn delay={0.1}>
-        <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 rounded-2xl p-4 mb-8 flex gap-3 items-start shadow-sm">
+        <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 rounded-2xl p-4 mb-4 flex gap-3 items-start shadow-sm">
           <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <h4 className="font-bold text-amber-900 dark:text-amber-400 text-sm whitespace-pre-wrap">{t("policyTitle")}</h4>
+            <h4 className="font-bold text-amber-900 dark:text-amber-400 text-sm">{t("policyTitle")}</h4>
             <p className="text-amber-800 dark:text-amber-300/80 text-xs leading-relaxed">
               {t("policyText")}
+            </p>
+          </div>
+        </div>
+
+        <div className="bg-primary/5 border border-primary/20 rounded-2xl p-4 mb-8 flex gap-3 items-center shadow-sm">
+          <Calendar className="h-5 w-5 text-primary shrink-0" />
+          <div className="flex-1">
+            <p className="text-sm text-foreground">
+              {locale === 'vi' ? 'Đã có lịch hẹn? ' : (locale === 'en' ? 'Already have a booking? ' : (locale === 'ja' ? 'すでにご予約をお持ちですか？ ' : (locale === 'ko' ? '이미 예약하셨나요? ' : '已有预约？ ')))}
+              <Link href={`/${locale}/booking/lookup`} className="font-bold text-primary hover:underline underline-offset-4">
+                {locale === 'vi' ? 'Tra cứu và quản lý tại đây' : (locale === 'en' ? 'Lookup and manage here' : (locale === 'ja' ? 'こちらで照会・管理できます' : (locale === 'ko' ? '여기에서 조회 및 관리할 수 있습니다' : '在此查询和管理')))}
+              </Link>
             </p>
           </div>
         </div>
