@@ -52,8 +52,8 @@ const customOverrides = {
     "contact.addressValue": NEW_ADDRESS,
     "contact.name": "Kyo Kimono Rental",
     "footer.description": "Premium kimono rental service in Kyoto, Japan. Experience the beauty of traditional Japanese culture in Gion.",
-    "booking.policyTitle": "Booking & Cancellation Policy",
-    "booking.policyText": "Cancellation or changes to date/time must be notified 2-3 days in advance. Please adhere to the appointment time exactly to avoid overlapping with other guests.",
+    "booking.policyTitle": "Change & Cancellation Policy",
+    "booking.policyText": "If you wish to change your booking details or cancel your appointment, please use the lookup feature to proceed. We are here to assist you with the best service.",
     "booking.agreePolicy": "I have read and agree to the booking policy."
   },
   vi: {
@@ -68,8 +68,8 @@ const customOverrides = {
     "contact.addressValue": NEW_ADDRESS,
     "contact.name": "Kyo Kimono Rental",
     "footer.description": "Dịch vụ cho thuê kimono chuyên nghiệp tại Kyoto, Nhật Bản. Trải nghiệm vẻ đẹp Nhật Bản đích thực tại Gion.",
-    "booking.policyTitle": "Chính Sách Đặt Lịch & Hủy Lịch",
-    "booking.policyText": "Hủy lịch hay thay đổi ngày, giờ cần báo, liên lạc với tiệm trước 2-3 ngày. Vui lòng tuân thủ thời gian lịch hẹn đúng giờ, tránh trường hợp trùng khung giờ khách khác đặt.",
+    "booking.policyTitle": "Chính sách Thay đổi & Hủy lịch",
+    "booking.policyText": "Nếu quý khách muốn thay đổi thông tin hoặc hủy lịch hẹn, vui lòng sử dụng tính năng tra cứu để thực hiện. Chúng tôi luôn sẵn sàng hỗ trợ quý khách tốt nhất.",
     "booking.agreePolicy": "Tôi đã đọc và đồng ý với chính sách đặt lịch."
   },
   ja: {
@@ -84,8 +84,8 @@ const customOverrides = {
     "contact.addressValue": NEW_ADDRESS,
     "contact.name": "Kyo Kimono Rental",
     "footer.description": "京都・祇園のプレミアム着物レンタルサービス。日本の伝統美をご体験ください。",
-    "booking.policyTitle": "予約・キャンセルポリシー",
-    "booking.policyText": "予約のキャンセルや日時変更は2〜3日前までにご連絡ください。他のお客様との重複を避けるため、予約時間を厳守していただきますようお願いいたします。",
+    "booking.policyTitle": "変更・キャンセルポリシー",
+    "booking.policyText": "予約内容の変更またはキャンセルをご希望の場合は、予約照会機能をご利用ください。お客様に最適なサービスを提供できるよう努めております。",
     "booking.agreePolicy": "予約ポリシーを読み、同意しました。"
   },
   ko: {
@@ -100,8 +100,8 @@ const customOverrides = {
     "contact.addressValue": NEW_ADDRESS,
     "contact.name": "Kyo Kimono Rental",
     "footer.description": "일본 교토의 프리미엄 기모노 대여 서비스. 기온에서 일본 전통 문화의 아름다움을 경험하세요.",
-    "booking.policyTitle": "예약 및 취소 규정",
-    "booking.policyText": "예약 취소나 일시 변경은 2~3일 전까지 연락해 주시기 바랍니다. 다른 고객과의 중복을 피하기 위해 예약 시간을 엄수해 주시기 바랍니다.",
+    "booking.policyTitle": "변경 및 취소 규정",
+    "booking.policyText": "예약 내용을 변경하거나 취소하시려면 예약 조회 기능을 이용해 주시기 바랍니다. 항상 최상의 서비스를 제공하기 위해 노력하겠습니다.",
     "booking.agreePolicy": "예약 규정을 읽고 동의합니다."
   },
   zh: {
@@ -114,7 +114,9 @@ const customOverrides = {
     "about.p1": "Kyo Kimono Rental 是一家位于京都祇园的高级和服租赁店。我们拥有200多套正宗和服，从传统到现代风格应有尽有，适合女性、男性和儿童。",
     "about.p2": "我们的专业团队将帮助您正确穿着和服、设计发型，并安排摄影服务。无论您是在京都漫步还是参加特别活动，我们都准备好帮助您创造难忘的回忆。",
     "contact.addressValue": NEW_ADDRESS,
-    "footer.description": "日本京都提供高级和服租赁服务。在祇园体验日本传统文化之美。"
+    "footer.description": "日本京都提供高级和服租赁服务。在祇园体验日本传统文化之美。",
+    "booking.policyTitle": "修改与取消政策",
+    "booking.policyText": "如需修改预约详情或取消预约，请使用查询功能进行操作。我们将竭诚为您提供优质的服务。"
   }
 };
 
