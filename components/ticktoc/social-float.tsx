@@ -63,7 +63,7 @@ export function SocialFloat() {
       icon: (
         <div className="h-full w-full relative overflow-hidden rounded-full">
           <Image
-            src="/images/threads.jpg"
+            src="/images/threads.JPG"
             alt="Threads"
             fill
             className="object-cover"

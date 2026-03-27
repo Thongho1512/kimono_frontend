@@ -34,7 +34,7 @@ export function TopBar() {
             id: "threads", icon: (
                 <div className="h-4.5 w-4.5 relative overflow-hidden rounded-full border border-background/20 group-hover:border-primary/30 transition-all">
                     <Image
-                        src="/images/threads.jpg"
+                        src="/images/threads.JPG"
                         alt="Threads"
                         fill
                         className="object-cover"

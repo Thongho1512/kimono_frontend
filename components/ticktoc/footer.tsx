@@ -126,7 +126,7 @@ export function Footer() {
                 >
                   <div className="relative h-6 w-6 rounded-full overflow-hidden">
                     <Image
-                      src="/images/threads.jpg"
+                      src="/images/threads.JPG"
                       alt="Threads"
                       fill
                       className="object-cover"
