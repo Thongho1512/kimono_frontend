@@ -24,11 +24,24 @@ export function AlbumUploadModal({ isOpen, onClose, onSuccess }: AlbumUploadModa
         const files = Array.from(e.target.files || []);
         if (files.length === 0) return;
 
-        const newFiles = [...selectedFiles, ...files];
-        setSelectedFiles(newFiles);
+        const totalPlanned = selectedFiles.length + files.length;
+        if (totalPlanned > 20) {
+            toast.error('Bạn chỉ có thể tải lên tối đa 20 ảnh mỗi lần');
+            const remainingSlots = 20 - selectedFiles.length;
+            if (remainingSlots <= 0) return;
+            
+            const limitedFiles = files.slice(0, remainingSlots);
+            setSelectedFiles([...selectedFiles, ...limitedFiles]);
+            
+            const newPreviews = limitedFiles.map(file => URL.createObjectURL(file));
+            setPreviews([...previews, ...newPreviews]);
+        } else {
+            const newFiles = [...selectedFiles, ...files];
+            setSelectedFiles(newFiles);
 
-        const newPreviews = files.map(file => URL.createObjectURL(file));
-        setPreviews([...previews, ...newPreviews]);
+            const newPreviews = files.map(file => URL.createObjectURL(file));
+            setPreviews([...previews, ...newPreviews]);
+        }
 
         if (fileInputRef.current) fileInputRef.current.value = '';
     };
@@ -94,7 +107,7 @@ export function AlbumUploadModal({ isOpen, onClose, onSuccess }: AlbumUploadModa
                         className="border-2 border-dashed rounded-lg p-10 flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-muted/50 transition-colors"
                     >
                         <Plus className="h-10 w-10 text-muted-foreground" />
-                        <p className="text-sm text-muted-foreground font-medium">Click để chọn nhiều ảnh</p>
+                        <p className="text-sm text-muted-foreground font-medium">Click để chọn nhiều ảnh (Tối đa 20 ảnh/lần)</p>
                         <input
                             type="file"
                             multiple
