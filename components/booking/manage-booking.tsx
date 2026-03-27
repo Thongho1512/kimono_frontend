@@ -17,7 +17,9 @@ import {
     XCircle,
     Loader2,
     ChevronDown,
-    ChevronUp
+    ChevronUp,
+    Plus,
+    Minus
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -69,6 +71,12 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                     bookingDate: booking.bookingDate,
                     arrivalTime: booking.arrivalTime,
                     numberOfPeople: booking.numberOfPeople,
+                    adultMale: booking.adultMale,
+                    adultFemale: booking.adultFemale,
+                    childMale: booking.childMale,
+                    childFemale: booking.childFemale,
+                    childAges: booking.childAges,
+                    extraServices: booking.extraServices,
                     note: booking.note,
                     items: booking.items
                 })
@@ -154,85 +162,239 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
             {isExpanded && (
                 <div className="p-6 border-t bg-slate-50/30 dark:bg-slate-900/10 space-y-8 animate-in slide-in-from-top duration-300">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        {/* Column 1: Customer Contact */}
-                        <div className="space-y-4">
-                            <h3 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
-                                <div className="h-4 w-1 bg-primary rounded-full" />
-                                {t('contactInfo')}
-                            </h3>
+                        {/* Column 1: Customer Contact & Main Details */}
+                        <div className="space-y-6">
                             <div className="space-y-4">
-                                <div className="space-y-2">
-                                    <Label className="text-xs font-bold text-slate-500 uppercase">{t('name')}</Label>
-                                    <Input 
-                                        disabled={!isEditing || isCancelled}
-                                        value={booking.customerName}
-                                        onChange={(e) => setBooking({...booking, customerName: e.target.value})}
-                                        className="bg-white"
-                                    />
-                                </div>
-                                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <h3 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                                    <div className="h-4 w-1 bg-primary rounded-full" />
+                                    {t('contactInfo')}
+                                </h3>
+                                <div className="space-y-4">
                                     <div className="space-y-2">
-                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('phone')}</Label>
+                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('name')}</Label>
                                         <Input 
                                             disabled={!isEditing || isCancelled}
-                                            value={booking.customerPhone}
-                                            onChange={(e) => setBooking({...booking, customerPhone: e.target.value})}
+                                            value={booking.customerName}
+                                            onChange={(e) => setBooking({...booking, customerName: e.target.value})}
                                             className="bg-white"
                                         />
                                     </div>
-                                    <div className="space-y-2">
-                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('email')}</Label>
-                                        <Input 
-                                            disabled={!isEditing || isCancelled}
-                                            value={booking.customerEmail}
-                                            onChange={(e) => setBooking({...booking, customerEmail: e.target.value})}
-                                            className="bg-white"
-                                        />
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                        <div className="space-y-2">
+                                            <Label className="text-xs font-bold text-slate-500 uppercase">{t('phone')}</Label>
+                                            <Input 
+                                                disabled={!isEditing || isCancelled}
+                                                value={booking.customerPhone}
+                                                onChange={(e) => setBooking({...booking, customerPhone: e.target.value})}
+                                                className="bg-white"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label className="text-xs font-bold text-slate-500 uppercase">{t('email')}</Label>
+                                            <Input 
+                                                disabled={!isEditing || isCancelled}
+                                                value={booking.customerEmail}
+                                                onChange={(e) => setBooking({...booking, customerEmail: e.target.value})}
+                                                className="bg-white"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                            {/* Date & Time (Editing) */}
+                            {isEditing && !isCancelled && (
+                                <div className="space-y-4 pt-4 border-t border-slate-100">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="space-y-2">
+                                            <Label className="text-xs font-bold text-primary uppercase">{t('date')}</Label>
+                                            <Input 
+                                                type="date"
+                                                value={booking.bookingDate ? booking.bookingDate.split('T')[0] : ''}
+                                                onChange={(e) => setBooking({...booking, bookingDate: e.target.value})}
+                                                className="bg-white border-primary/20"
+                                            />
+                                        </div>
+                                        <div className="space-y-2">
+                                            <Label className="text-xs font-bold text-primary uppercase">{t('arrivalTime')}</Label>
+                                            <Input 
+                                                type="time"
+                                                value={booking.arrivalTime}
+                                                onChange={(e) => setBooking({...booking, arrivalTime: e.target.value})}
+                                                className="bg-white border-primary/20"
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-2">
+                                        <Label className="text-xs font-bold text-primary uppercase">{t('people')}</Label>
+                                        <div className="flex items-center gap-3">
+                                            <Input 
+                                                type="number"
+                                                value={booking.numberOfPeople}
+                                                onChange={(e) => setBooking({...booking, numberOfPeople: parseInt(e.target.value) || 1})}
+                                                className="bg-white w-24"
+                                            />
+                                            <span className="text-xs text-muted-foreground italic">({t('totalPeopleHint') || "Tổng số người dự kiến"})</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
-                        {/* Column 2: Booking specifics */}
-                        <div className="space-y-4">
+                        {/* Column 2: Specific Details & Breakdown */}
+                        <div className="space-y-6">
                             <h3 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
                                 <div className="h-4 w-1 bg-primary rounded-full" />
                                 {t('customerDetails')}
                             </h3>
-                            <div className="space-y-4">
-                                <div className="grid grid-cols-2 gap-4">
+                            
+                            {/* Breakdown (Editing) */}
+                            {isEditing && !isCancelled ? (
+                                <div className="space-y-6">
+                                    <div className="grid grid-cols-2 gap-6">
+                                        <div className="space-y-3">
+                                            <Label className="text-xs font-bold text-slate-500 uppercase">{t('adults') || "Người lớn"}</Label>
+                                            <div className="space-y-2">
+                                                <div className="flex items-center justify-between text-[11px]">
+                                                    <span className="text-muted-foreground uppercase">{t('adultMale')}</span>
+                                                    <div className="flex items-center gap-2">
+                                                        <Button type="button" variant="outline" size="icon" className="h-7 w-7" onClick={() => setBooking({...booking, adultMale: Math.max(0, (booking.adultMale || 0) - 1)})}><Minus className="h-3 w-3" /></Button>
+                                                        <span className="w-4 text-center font-medium">{booking.adultMale || 0}</span>
+                                                        <Button type="button" variant="outline" size="icon" className="h-7 w-7" onClick={() => setBooking({...booking, adultMale: (booking.adultMale || 0) + 1})}><Plus className="h-3 w-3" /></Button>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center justify-between text-[11px]">
+                                                    <span className="text-muted-foreground uppercase">{t('adultFemale')}</span>
+                                                    <div className="flex items-center gap-2">
+                                                        <Button type="button" variant="outline" size="icon" className="h-7 w-7" onClick={() => setBooking({...booking, adultFemale: Math.max(0, (booking.adultFemale || 0) - 1)})}><Minus className="h-3 w-3" /></Button>
+                                                        <span className="w-4 text-center font-medium">{booking.adultFemale || 0}</span>
+                                                        <Button type="button" variant="outline" size="icon" className="h-7 w-7" onClick={() => setBooking({...booking, adultFemale: (booking.adultFemale || 0) + 1})}><Plus className="h-3 w-3" /></Button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div className="space-y-3">
+                                            <Label className="text-xs font-bold text-slate-500 uppercase">{t('children') || "Trẻ em"}</Label>
+                                            <div className="space-y-2">
+                                                <div className="flex items-center justify-between text-[11px]">
+                                                    <span className="text-muted-foreground uppercase">{t('childMale')}</span>
+                                                    <div className="flex items-center gap-2">
+                                                        <Button type="button" variant="outline" size="icon" className="h-7 w-7" onClick={() => setBooking({...booking, childMale: Math.max(0, (booking.childMale || 0) - 1)})}><Minus className="h-3 w-3" /></Button>
+                                                        <span className="w-4 text-center font-medium">{booking.childMale || 0}</span>
+                                                        <Button type="button" variant="outline" size="icon" className="h-7 w-7" onClick={() => setBooking({...booking, childMale: (booking.childMale || 0) + 1})}><Plus className="h-3 w-3" /></Button>
+                                                    </div>
+                                                </div>
+                                                <div className="flex items-center justify-between text-[11px]">
+                                                    <span className="text-muted-foreground uppercase">{t('childFemale')}</span>
+                                                    <div className="flex items-center gap-2">
+                                                        <Button type="button" variant="outline" size="icon" className="h-7 w-7" onClick={() => setBooking({...booking, childFemale: Math.max(0, (booking.childFemale || 0) - 1)})}><Minus className="h-3 w-3" /></Button>
+                                                        <span className="w-4 text-center font-medium">{booking.childFemale || 0}</span>
+                                                        <Button type="button" variant="outline" size="icon" className="h-7 w-7" onClick={() => setBooking({...booking, childFemale: (booking.childFemale || 0) + 1})}><Plus className="h-3 w-3" /></Button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                     <div className="space-y-2">
-                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('arrivalTime')}</Label>
+                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('childAges')}</Label>
                                         <Input 
-                                            type="time"
-                                            disabled={!isEditing || isCancelled}
-                                            value={booking.arrivalTime}
-                                            onChange={(e) => setBooking({...booking, arrivalTime: e.target.value})}
+                                            value={booking.childAges || ''}
+                                            onChange={(e) => setBooking({...booking, childAges: e.target.value})}
+                                            placeholder={t('childAgesPlaceholder')}
                                             className="bg-white"
                                         />
                                     </div>
+
                                     <div className="space-y-2">
-                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('people')}</Label>
-                                        <Input 
-                                            type="number"
-                                            disabled={!isEditing || isCancelled}
-                                            value={booking.numberOfPeople}
-                                            onChange={(e) => setBooking({...booking, numberOfPeople: parseInt(e.target.value) || 1})}
-                                            className="bg-white"
+                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('extraServices')}</Label>
+                                        <div className="flex flex-wrap gap-2">
+                                            <Button 
+                                                type="button"
+                                                size="sm"
+                                                variant={(booking.extraServices || '').includes('Chụp ảnh') ? "default" : "outline"}
+                                                onClick={() => {
+                                                    let services = (booking.extraServices || '').split(', ').filter((s: string) => s);
+                                                    if (services.includes('Chụp ảnh')) {
+                                                        services = services.filter((s: string) => s !== 'Chụp ảnh');
+                                                    } else {
+                                                        services.push('Chụp ảnh');
+                                                    }
+                                                    setBooking({...booking, extraServices: services.join(', ')});
+                                                }}
+                                                className="rounded-full text-[10px] h-7"
+                                            >
+                                                📸 {t('photoService')}
+                                            </Button>
+                                            <Button 
+                                                type="button"
+                                                size="sm"
+                                                variant={(booking.extraServices || '').includes('Makeup') ? "default" : "outline"}
+                                                onClick={() => {
+                                                    let services = (booking.extraServices || '').split(', ').filter((s: string) => s);
+                                                    if (services.includes('Makeup')) {
+                                                        services = services.filter((s: string) => s !== 'Makeup');
+                                                    } else {
+                                                        services.push('Makeup');
+                                                    }
+                                                    setBooking({...booking, extraServices: services.join(', ')});
+                                                }}
+                                                className="rounded-full text-[10px] h-7"
+                                            >
+                                                💄 {t('makeupService')}
+                                            </Button>
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <Label className="text-xs font-bold text-slate-500 uppercase">{t('note')}</Label>
+                                        <Textarea 
+                                            value={booking.note || ''}
+                                            onChange={(e) => setBooking({...booking, note: e.target.value})}
+                                            className="bg-white min-h-[80px] text-sm"
+                                            placeholder="..."
                                         />
                                     </div>
                                 </div>
-                                <div className="space-y-2">
-                                    <Label className="text-xs font-bold text-slate-500 uppercase">{t('note')}</Label>
-                                    <Textarea 
-                                        disabled={!isEditing || isCancelled}
-                                        value={booking.note || ''}
-                                        onChange={(e) => setBooking({...booking, note: e.target.value})}
-                                        className="bg-white min-h-[80px]"
-                                        placeholder="..."
-                                    />
+                            ) : (
+                                <div className="space-y-4">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div className="space-y-1">
+                                            <Label className="text-[10px] font-bold text-slate-400 uppercase">{t('adults')}</Label>
+                                            <p className="text-sm font-medium">{booking.adultMale || 0} Nam, {booking.adultFemale || 0} Nữ</p>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <Label className="text-[10px] font-bold text-slate-400 uppercase">{t('children')}</Label>
+                                            <p className="text-sm font-medium">{booking.childMale || 0} Nam, {booking.childFemale || 0} Nữ</p>
+                                        </div>
+                                    </div>
+                                    
+                                    {booking.childAges && (
+                                        <div className="space-y-1">
+                                            <Label className="text-[10px] font-bold text-slate-400 uppercase">{t('childAges')}</Label>
+                                            <p className="text-sm text-slate-600 italic">"{booking.childAges}"</p>
+                                        </div>
+                                    )}
+
+                                    {booking.extraServices && (
+                                        <div className="space-y-1">
+                                            <Label className="text-[10px] font-bold text-slate-400 uppercase">{t('extraServices')}</Label>
+                                            <div className="flex flex-wrap gap-1 mt-1">
+                                                {booking.extraServices.split(', ').map((s: string) => (
+                                                    <Badge key={s} variant="secondary" className="text-[10px] font-normal">{s}</Badge>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
+                                    {booking.note && (
+                                        <div className="space-y-1">
+                                            <Label className="text-[10px] font-bold text-slate-400 uppercase">{t('note')}</Label>
+                                            <p className="text-sm text-slate-600 bg-white p-3 rounded-lg border border-slate-100">{booking.note}</p>
+                                        </div>
+                                    )}
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </div>
 

@@ -201,6 +201,7 @@
     "back": "Back",
     "status_confirmed": "Confirmed",
     "status_cancelled": "Cancelled",
+    "cancelBooking": "Cancel booking",
     "updateBooking": "Update Information"
   },
   "hairstyle": {

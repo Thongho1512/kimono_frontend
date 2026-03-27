@@ -149,7 +149,10 @@
     "childMale": "어린이 (남아)",
     "childFemale": "어린이 (여아)",
     "childAges": "어린이 연령",
-    "childAgesPlaceholder": "예: 3세, 5세...",
+    "childAgesInputTitle": "각 어린이의 연령을 입력해 주세요.",
+    "boy": "남아",
+    "girl": "여아",
+    "agePlaceholder": "연령...",
     "extraServices": "추가 서비스",
     "photoService": "사진 촬영",
     "makeupService": "메이크업 및 헤어",
@@ -195,6 +198,7 @@
     "back": "뒤로",
     "status_confirmed": "확인됨",
     "status_cancelled": "취소됨",
+    "cancelBooking": "예약 취소",
     "updateBooking": "정보 업데이트"
   },
   "hairstyle": {

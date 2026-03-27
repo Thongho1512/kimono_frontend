@@ -149,7 +149,10 @@
     "childMale": "儿童 (男孩)",
     "childFemale": "儿童 (女孩)",
     "childAges": "儿童年龄",
-    "childAgesPlaceholder": "例如：3岁，5岁...",
+    "childAgesInputTitle": "请按顺序输入每个孩子的年龄",
+    "boy": "男孩",
+    "girl": "女孩",
+    "agePlaceholder": "年龄...",
     "extraServices": "附加服务",
     "photoService": "摄影",
     "makeupService": "化妆和发型",
@@ -194,6 +197,7 @@
     "back": "返回",
     "status_confirmed": "已确认",
     "status_cancelled": "已取消",
+    "cancelBooking": "取消预约",
     "updateBooking": "更新信息"
   },
   "hairstyle": {

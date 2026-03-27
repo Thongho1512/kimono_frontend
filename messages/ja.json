@@ -195,6 +195,7 @@
     "back": "戻る",
     "status_confirmed": "確認済み",
     "status_cancelled": "キャンセル済み",
+    "cancelBooking": "予約をキャンセル",
     "updateBooking": "情報を変更"
   },
   "hairstyle": {

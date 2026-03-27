@@ -214,6 +214,7 @@
     "back": "Quay lại",
     "status_confirmed": "Xác nhận",
     "status_cancelled": "Đã hủy",
+    "cancelBooking": "Hủy đặt lịch",
     "updateBooking": "Thay đổi thông tin"
   },
   "hairstyle": {
