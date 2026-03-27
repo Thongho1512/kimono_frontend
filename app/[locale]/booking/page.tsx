@@ -341,8 +341,8 @@ function BookingForm() {
         <div className="bg-amber-50 dark:bg-amber-950/20 border border-amber-200 dark:border-amber-900/50 rounded-2xl p-4 mb-4 flex gap-3 items-start shadow-sm">
           <AlertCircle className="h-5 w-5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <h4 className="font-bold text-amber-900 dark:text-amber-400 text-sm">{t("policyTitle")}</h4>
-            <p className="text-amber-800 dark:text-amber-300/80 text-xs leading-relaxed">
+            <h4 className="font-bold text-amber-900 dark:text-amber-400 text-base">{t("policyTitle")}</h4>
+            <p className="text-amber-800 dark:text-amber-300/80 text-sm leading-relaxed">
               {t("policyText")}
             </p>
           </div>
