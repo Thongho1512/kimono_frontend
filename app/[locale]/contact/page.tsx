@@ -16,7 +16,16 @@ import {
   Clock,
   Landmark,
   X,
+  Facebook,
+  Instagram,
+  Youtube,
+  AtSign,
 } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const ShopMap = dynamic(() => import("@/components/ticktoc/shop-map").then(m => m.ShopMap), { ssr: false });
+const ContactGallery = dynamic(() => import("@/components/ticktoc/contact-gallery").then(m => m.ContactGallery), { ssr: false });
+const Lightbox = dynamic(() => import("@/components/ticktoc/lightbox").then(m => m.Lightbox), { ssr: false });
 
 interface StoreInfo {
   name: string;
@@ -28,6 +37,11 @@ interface StoreInfo {
   dayOfWeek: string;
   nearbyPlaces: string;
   urlYoutube: string;
+  urlFacebook?: string;
+  urlInstagram?: string;
+  urlTiktok?: string;
+  urlThreads?: string;
+  urlZalo?: string;
 }
 
 export default function ContactPage() {
@@ -155,6 +169,53 @@ export default function ContactPage() {
                   </Link>
                 </Button>
               </div>
+
+              {/* Social Media Link section */}
+              <div className="mt-10 pt-8 border-t border-border">
+                <h3 className="font-serif text-lg font-semibold text-foreground mb-5 flex items-center gap-2">
+                  <MessageCircle className="h-4 w-4 text-primary" />
+                  {t("connectWithUs") || "Kết nối với chúng tôi"}
+                </h3>
+                <div className="flex flex-wrap gap-4">
+                  {storeInfo?.urlFacebook && (
+                    <a href={storeInfo.urlFacebook} target="_blank" rel="noopener noreferrer" 
+                       className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-[#1877F2] hover:text-white hover:border-[#1877F2] transition-all duration-300 transform hover:scale-110 shadow-sm"
+                       aria-label="Facebook">
+                      <Facebook className="h-5 w-5" />
+                    </a>
+                  )}
+                  {storeInfo?.urlInstagram && (
+                    <a href={storeInfo.urlInstagram} target="_blank" rel="noopener noreferrer" 
+                       className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-gradient-to-tr hover:from-[#f9ce34] hover:via-[#ee2a7b] hover:to-[#6228d7] hover:text-white hover:border-transparent transition-all duration-300 transform hover:scale-110 shadow-sm"
+                       aria-label="Instagram">
+                      <Instagram className="h-5 w-5" />
+                    </a>
+                  )}
+                  {storeInfo?.urlTiktok && (
+                    <a href={storeInfo.urlTiktok} target="_blank" rel="noopener noreferrer" 
+                       className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-black hover:text-white hover:border-black transition-all duration-300 transform hover:scale-110 shadow-sm"
+                       aria-label="TikTok">
+                      <svg viewBox="0 0 24 24" className="h-5 w-5" fill="currentColor">
+                        <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.69a8.22 8.22 0 0 0 4.76 1.52v-3.4a4.85 4.85 0 0 1-1-.12z" />
+                      </svg>
+                    </a>
+                  )}
+                  {storeInfo?.urlYoutube && (
+                    <a href={storeInfo.urlYoutube} target="_blank" rel="noopener noreferrer" 
+                       className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-[#FF0000] hover:text-white hover:border-[#FF0000] transition-all duration-300 transform hover:scale-110 shadow-sm"
+                       aria-label="YouTube">
+                      <Youtube className="h-5 w-5" />
+                    </a>
+                  )}
+                  {storeInfo?.urlThreads && (
+                    <a href={storeInfo.urlThreads} target="_blank" rel="noopener noreferrer" 
+                       className="w-12 h-12 rounded-full border border-border flex items-center justify-center text-foreground hover:bg-black hover:text-white hover:border-black transition-all duration-300 transform hover:scale-110 shadow-sm"
+                       aria-label="Threads">
+                      <AtSign className="h-5 w-5" />
+                    </a>
+                  )}
+                </div>
+              </div>
             </div>
           </FadeIn>
 
@@ -166,6 +227,7 @@ export default function ContactPage() {
                   src="/images/shop-interior.jpg"
                   alt={t("shopTour")}
                   fill
+                  priority
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
@@ -178,47 +240,16 @@ export default function ContactPage() {
               </div>
 
               {/* Embedded Google Map */}
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden ticktoc-shadow border border-border">
-                <iframe
-                  src="https://maps.google.com/maps?q=京都市東山区祇園町北側347-25&t=&z=16&ie=UTF8&iwloc=&output=embed"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Kyo kimono rental &nail Location"
-                  className="absolute inset-0"
-                />
-              </div>
+              <ShopMap title={t("name") || "Kyo kimono rental & nail Location"} />
 
               {/* Tiny Thumbnails Gallery right below map */}
-              <div className="space-y-3">
-                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider ml-1">
-                  {t("shopImagesTitle") || "Một số hình ảnh về cửa hàng"}
-                </p>
-                <div className="grid grid-cols-3 gap-3">
-                  {[
-                    { src: "/images/store1.png", label: t("buildingExt") || "Exterior" },
-                    { src: "/images/store2.jpg", label: t("shopEnt") || "Entrance" },
-                  ].map((img, idx) => (
-                    <div
-                      key={idx}
-                      className="relative aspect-square rounded-xl overflow-hidden cursor-pointer ticktoc-shadow-sm border border-border/50 group"
-                      onClick={() => setSelectedImage(img.src)}
-                    >
-                      <Image
-                        src={img.src}
-                        alt={img.label}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                        sizes="(max-width: 768px) 30vw, 15vw"
-                      />
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
-                    </div>
-                  ))}
-                </div>
-              </div>
+              <ContactGallery 
+                setSelectedImage={setSelectedImage}
+                shopImagesTitle={t("shopImagesTitle")}
+                buildingExt={t("buildingExt")}
+                shopEnt={t("shopEnt")}
+                nearbyGion={t("nearbyGion")}
+              />
             </div>
           </FadeIn>
         </div>
@@ -226,31 +257,11 @@ export default function ContactPage() {
 
       {/* Basic Lightbox Modal */}
       {selectedImage && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-10 animate-in fade-in duration-300 backdrop-blur-sm"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button
-            className="absolute top-6 right-6 text-white hover:text-primary transition-colors p-2 bg-white/10 rounded-full"
-            onClick={(e) => {
-              e.stopPropagation();
-              setSelectedImage(null);
-            }}
-          >
-            <X className="h-6 w-6" />
-          </button>
-
-          <div className="relative w-full max-w-5xl aspect-video md:aspect-auto">
-            <Image
-              src={selectedImage}
-              alt="Store photo large view"
-              width={1600}
-              height={1200}
-              className="object-contain max-h-[85vh] w-auto mx-auto rounded-lg shadow-2xl"
-              priority
-            />
-          </div>
-        </div>
+        <Lightbox 
+          images={[selectedImage]} 
+          currentIndex={0} 
+          onClose={() => setSelectedImage(null)} 
+        />
       )}
 
       {/* LocalBusiness Schema */}

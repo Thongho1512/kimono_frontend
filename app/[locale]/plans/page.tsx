@@ -1,306 +1,38 @@
-"use client";
+import { setRequestLocale } from "next-intl/server";
+import { PlansContent } from "@/components/ticktoc/plans-content";
 
-import Image from "next/image";
-import Link from "next/link";
-import { useLocale, useTranslations } from "next-intl";
-import { useState, useEffect } from "react";
-import { formatJPY } from "@/lib/data";
-import { FadeIn } from "@/components/ticktoc/fade-in";
-import { PageBreadcrumb } from "@/components/ticktoc/page-breadcrumb";
-import { ArrowLeft, ArrowRight, Loader2, ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "@/lib/utils";
-import api from "@/lib/api";
-import { useRef } from "react";
-
-interface CategoryDto {
-  id: string;
-  name: string;
+interface Props {
+  params: Promise<{ locale: string }>;
 }
 
-interface ProductDto {
-  id: string;
-  categoryId: string;
-  name: string;
-  slug: string;
-  rentalPricePerDay: number;
-  rentalPriceMin: number;
-  rentalPriceMax: number;
-  priceType: string;
-  images: { url: string }[];
-  description?: string;
-}
+export default async function PlansPage({ params }: Props) {
+  const { locale } = await params;
+  setRequestLocale(locale);
 
-export default function PlansPage() {
-  const t = useTranslations("plans");
-  const tNav = useTranslations("nav");
-  const locale = useLocale();
-  const [activeSection, setActiveSection] = useState<string>("");
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5090';
 
-  const [categories, setCategories] = useState<CategoryDto[]>([]);
-  const [products, setProducts] = useState<ProductDto[]>([]);
-  const [loading, setLoading] = useState(true);
+  let categories = [];
+  let products = [];
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [catsRes, prodsRes] = await Promise.all([
-          api.get(`/api/public/products/categories?culture=${locale}`),
-          api.get(`/api/public/products?culture=${locale}`)
-        ]);
-        setCategories(catsRes.data);
-        setProducts(prodsRes.data);
-      } catch (error) {
-        console.error("Failed to fetch plans data", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  try {
+    const [catsRes, prodsRes] = await Promise.all([
+      fetch(`${baseUrl}/api/public/products/categories?culture=${locale}`, {
+        next: { revalidate: 3600 }
+      }),
+      fetch(`${baseUrl}/api/public/products?culture=${locale}`, {
+        next: { revalidate: 3600 }
+      })
+    ]);
 
-
-  // Scroll to section
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(`section-${id}`);
-    if (element) {
-      const offset = 100; // Header offset
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-      setActiveSection(id);
-    }
-  };
-
-  // Detect active section on scroll
-  useEffect(() => {
-    if (categories.length === 0) return;
-
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 250;
-      const categoriesWithProds = categories.filter(cat => products.some(p => p.categoryId === cat.id));
-
-      for (const cat of categoriesWithProds) {
-        const element = document.getElementById(`section-${cat.id}`);
-        if (element) {
-          const { offsetTop, offsetHeight } = element;
-          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-            setActiveSection(cat.id);
-            break;
-          }
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [categories, products]);
-
-  // Set initial active section
-  useEffect(() => {
-    if (categories.length > 0 && products.length > 0 && !activeSection) {
-      const firstCat = categories.find(cat => products.some(p => p.categoryId === cat.id));
-      if (firstCat) setActiveSection(firstCat.id);
-    }
-  }, [categories, products, activeSection]);
-
-  if (loading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
+    if (catsRes.ok) categories = await catsRes.json();
+    if (prodsRes.ok) products = await prodsRes.json();
+  } catch (error) {
+    console.error("Failed to fetch plans data on server", error);
   }
-
-  const formatPrice = (p: ProductDto) => {
-    const isRange = p.priceType === "range" || p.priceType === "Khoảng";
-    if (isRange) {
-      return `${formatJPY(p.rentalPriceMin)} - ${formatJPY(p.rentalPriceMax)}`;
-    }
-    return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
-  };
-
 
   return (
     <main className="min-h-screen">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <PageBreadcrumb items={[{ label: tNav("plans") }]} />
-
-        <FadeIn>
-          <div className="text-center mb-12">
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
-              {t("title")}
-            </h1>
-            <p className="mt-3 text-muted-foreground max-w-2xl mx-auto text-pretty">
-              {t("subtitle")}
-            </p>
-            <div className="sakura-line mt-6 mx-auto w-32" />
-          </div>
-        </FadeIn>
-
-        {/* Dynamic Categories Sections */}
-        <div className="space-y-20 pb-20">
-          {categories.map((cat, idx) => {
-            const catProducts = products
-              .filter(p => p.categoryId === cat.id)
-              .sort((a, b) => {
-                const priceA = a.rentalPriceMin > 0 ? a.rentalPriceMin : a.rentalPricePerDay;
-                const priceB = b.rentalPriceMin > 0 ? b.rentalPriceMin : b.rentalPricePerDay;
-                return priceB - priceA;
-              });
-            if (catProducts.length === 0) return null;
-
-            return (
-              <section
-                key={cat.id}
-                id={`section-${cat.id}`}
-                className="scroll-mt-24"
-              >
-                <FadeIn delay={0.1}>
-                  <div className="flex flex-col items-center mb-12">
-                    <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground text-center">
-                      {cat.name}
-                    </h2>
-                    <div className="sakura-line mt-4 w-24 mx-auto" />
-                  </div>
-                </FadeIn>
-
-                {/* Products for the Category */}
-                <div className="space-y-16">
-                  {catProducts.map((plan, pIdx) => (
-                    <ProductPlanSection 
-                      key={plan.id} 
-                      plan={plan} 
-                      pIdx={pIdx} 
-                      locale={locale} 
-                      formatPrice={formatPrice} 
-                    />
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* Floating Navigation Bar - Dynamic based on categories that have products */}
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-bottom-4 duration-500 overflow-x-auto max-w-[95vw] no-scrollbar">
-        <div className="bg-card/95 backdrop-blur-md rounded-full shadow-2xl border border-border px-2 py-2 flex items-center gap-2">
-          {categories
-            .filter(cat => products.some(p => p.categoryId === cat.id))
-            .map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => scrollToSection(cat.id)}
-                className={cn(
-                  "px-6 py-3 rounded-full text-sm font-medium ticktoc-transition flex items-center gap-2 whitespace-nowrap",
-                  activeSection === cat.id
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "text-foreground hover:bg-secondary"
-                )}
-              >
-                <span>{cat.name}</span>
-              </button>
-            ))}
-        </div>
-      </div>
+      <PlansContent categories={categories} products={products} />
     </main>
-  );
-}
-
-function ProductPlanSection({ plan, pIdx, locale, formatPrice }: { plan: ProductDto, pIdx: number, locale: string, formatPrice: (p: ProductDto) => string }) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollAmount = clientWidth * 0.8; 
-      scrollRef.current.scrollTo({
-        left: direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  return (
-    <FadeIn key={plan.id} delay={0.2 + pIdx * 0.1}>
-      <div className="space-y-6">
-        {/* Product Header: Name and Price */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border pb-3">
-          <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground">
-            {plan.name}
-          </h3>
-          <div className="flex items-center gap-2">
-             <span className="text-lg sm:text-xl font-bold text-primary">
-                {formatPrice(plan)}
-             </span>
-          </div>
-        </div>
-
-        {/* Product Images Slider */}
-        <div className="relative group/slider">
-          {(plan.images && plan.images.length > 0) ? (
-            <>
-              <div 
-                ref={scrollRef}
-                className="flex overflow-x-auto gap-4 scroll-smooth no-scrollbar pb-4 -mx-1 px-1"
-              >
-                {plan.images.map((img, iIdx) => (
-                  <Link 
-                    key={iIdx} 
-                    href={`/${locale}/plans/${plan.slug || plan.id}`}
-                    className="flex-none w-[260px] sm:w-[300px] relative aspect-[3/4] rounded-lg overflow-hidden border border-border ticktoc-shadow hover:border-primary/50 transition-all"
-                  >
-                    <Image
-                      src={img.url || "/placeholder.svg"}
-                      alt={`${plan.name} - ${iIdx + 1}`}
-                      fill
-                      className="object-cover group-hover:scale-105 ticktoc-transition"
-                      sizes="300px"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-all pointer-events-none">
-                      <p className="text-white text-xs font-serif">Xem chi tiết</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-              
-              {/* Slider Buttons */}
-              {plan.images.length > 1 && (
-                <>
-                  <button 
-                    onClick={() => scroll('left')}
-                    className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-card/90 shadow-lg border border-border opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-primary hover:text-primary-foreground hidden md:block"
-                    aria-label="Previous"
-                  >
-                    <ChevronLeft className="h-6 w-6" />
-                  </button>
-                  <button 
-                    onClick={() => scroll('right')}
-                    className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-card/90 shadow-lg border border-border opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-primary hover:text-primary-foreground hidden md:block"
-                    aria-label="Next"
-                  >
-                    <ChevronRight className="h-6 w-6" />
-                  </button>
-                </>
-              )}
-            </>
-          ) : (
-            <div className="py-12 border-2 border-dashed border-border rounded-xl flex items-center justify-center text-muted-foreground italic">
-              Đang cập nhật hình ảnh mẫu...
-            </div>
-          )}
-        </div>
-        
-        {plan.description && (
-           <p className="text-sm text-muted-foreground max-w-3xl leading-relaxed">
-              {plan.description}
-           </p>
-        )}
-      </div>
-    </FadeIn>
   );
 }
