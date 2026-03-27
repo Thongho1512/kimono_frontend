@@ -183,7 +183,19 @@
     "pleaseEnterPeople": "Please enter number of people (minimum 1).",
     "policyTitle": "Booking & Cancellation Policy",
     "policyText": "Cancellation or changes to date/time must be notified 2-3 days in advance. Please adhere to the appointment time exactly to avoid overlapping with other guests.",
-    "agreePolicy": "I have read and agree to the booking policy."
+    "agreePolicy": "I have read and agree to the booking policy.",
+    "lookup": {
+      "title": "Lookup Booking",
+      "subtitle": "Enter your Email or Phone to check your reservation.",
+      "placeholder": "Email or Phone number...",
+      "submit": "Lookup",
+      "noResults": "No booking found.",
+      "manage": {
+        "title": "Manage Booking",
+        "update": "Update Info",
+        "cancel": "Cancel Booking"
+      }
+    }
   },
   "hairstyle": {
     "title": "Basic Hairstyle Gallery",
@@ -296,5 +308,15 @@
     "back": "Back",
     "home": "Home",
     "addedToCart": "Added to cart"
+  },
+  "thankYou": {
+    "title": "Booking Successful!",
+    "subtitle": "Thank you for choosing our service.",
+    "message": "Your request has been recorded. We will contact you soon to confirm.",
+    "nextSteps": "Next Steps:",
+    "contactSupport": "Our staff will contact you via the phone number or email provided to confirm the information and provide details.",
+    "emergencySupport": "Emergency Support:",
+    "backHome": "Back Home",
+    "viewGallery": "View Gallery"
   }
 }

@@ -174,7 +174,19 @@
     "pleaseEnterEmail": "请输入您的电子邮件地址。",
     "pleaseSelectDate": "请选择租赁日期。",
     "pleaseSelectTime": "请选择预计到达时间。",
-    "pleaseEnterPeople": "请输入人数（至少1人）。"
+    "pleaseEnterPeople": "请输入人数（至少1人）。",
+    "lookup": {
+      "title": "查询预约",
+      "subtitle": "请输入您的电子邮件或电话号码以查询预约信息。",
+      "placeholder": "电子邮件或电话号码...",
+      "submit": "查询",
+      "noResults": "未找到预约信息。",
+      "manage": {
+        "title": "管理预约",
+        "update": "更新信息",
+        "cancel": "取消预约"
+      }
+    }
   },
   "hairstyle": {
     "title": "基本发型展示",
@@ -255,11 +267,11 @@
   "about": {
     "badge": "关于我们",
     "title": "京都祇园高级和服租赁服务",
-    "p1": "Kyo Kimono Rental 是一家位于京都祇园的高级和服租赁店。我们拥有200多套正宗和服，从传统到现代风格应有尽有，适合女性、男性和儿童。",
+    "p1": "Kyo Kimono Rental 是一家位于京都祇园的高级和服租赁店。我们拥有200多套正宗和服，从传统到现代风格应有尽yǒu，适合女性、男性和儿童。",
     "p2": "我们的专业团队将帮助您正确穿着和服、设计发型，并安排摄影服务。无论您是在京都漫步还是参加特别活动，我们都准备好帮助您创造难忘的回忆。",
     "p3": "在 Kyo Kimono Rental，我们的专业团队将协助您进行正确的和服着装、优雅的发型设计以及可选的专业摄影服务。作为京都值得信赖的和服出租店，我们帮助您在游览清水寺和祇园历史街道等著名景点时捕捉难忘时刻。",
     "p4": "无论您是观光、拍照还是参加特别活动，我们的服务都能确保您拥有顺畅且难忘的体验。",
-    "ctaText": "立即预订您的京都和服出租，与 Kyo Kimono Rental 一起创造难忘的回忆。",
+    "ctaText": "今すぐ京都で和服レンタルを予約して、Kyo Kimono Rentalと共に一生の思い出を作りましょう。",
     "imageAlt": "Kyo Kimono Rental和服店铺内部",
     "happyCustomers": "满意客户",
     "locationLabel": "京都祇园中心便利位置",
@@ -285,5 +297,15 @@
     "viewAll": "查看全部",
     "back": "返回",
     "home": "首页"
+  },
+  "thankYou": {
+    "title": "预约成功！",
+    "subtitle": "感谢您选择我们的服务。",
+    "message": "您的请求已记录。我们将尽快与您联系以确认。",
+    "nextSteps": "后续步骤：",
+    "contactSupport": "我们的工作人员将通过您提供的电话或电子邮件与您联系，确认信息并提供详细说明。",
+    "emergencySupport": "紧急支持：",
+    "backHome": "返回首页",
+    "viewGallery": "查看相册"
   }
 }

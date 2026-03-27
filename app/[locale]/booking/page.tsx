@@ -4,7 +4,7 @@ import React, { useState, useEffect, Suspense } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useLocale, useTranslations } from "next-intl";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { FadeIn } from "@/components/ticktoc/fade-in";
 import { PageBreadcrumb } from "@/components/ticktoc/page-breadcrumb";
 import { Button } from "@/components/ui/button";
@@ -42,6 +42,7 @@ function BookingForm() {
   const tCommon = useTranslations("common");
   const locale = useLocale();
   const searchParams = useSearchParams();
+  const router = useRouter();
   const preselectedPlanId = searchParams.get("plan");
 
   const [products, setProducts] = useState<ProductDto[]>([]);
@@ -253,22 +254,17 @@ function BookingForm() {
     };
 
     try {
-      const res = await api.post('/api/public/bookings/send-email', payload);
-      if (res.status === 200 || res.status === 201) {
-        setSubmitted(true);
-        setCart([]);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
+      // Background call - don't await fully or handle redirect immediately
+      api.post('/api/public/bookings/send-email', payload).catch(err => {
+        console.error("Background booking failed", err);
+      });
+      
+      // Redirect immediately for better UX
+      router.push(`/${locale}/booking/thank-you`);
+      setCart([]);
     } catch (error: any) {
-      console.error("Booking failed", error);
-
-      // If it's a 500 but we suspect the request might have been received (or the error is just notification)
-      // we can choose how to handle it. For now, let's show the detailed error if available.
-      const errorMsg = error.response?.data?.message || error.response?.data?.error || "Failed to send booking request. Please try again or contact us via Zalo.";
-      toast.error(errorMsg);
-
-      // Even if email fails, if the user really wants the 'Thank you' page, 
-      // they might prefer it over a stuck form. But usually it's better to keep them on the form.
+      console.error("Booking submission error", error);
+      toast.error("An error occurred. Please try again.");
     } finally {
       setSubmitting(false);
     }

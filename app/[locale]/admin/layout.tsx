@@ -16,7 +16,8 @@ import {
     Scissors,
     Camera,
     ChevronLeft,
-    User
+    User,
+    CalendarDays
 } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { ChangePasswordDialog } from '@/components/admin/change-password-dialog';
@@ -29,6 +30,7 @@ const NAV_ITEMS = [
     { href: '/admin/hair-styles', label: 'Mẫu tóc', icon: Scissors },
     { href: '/admin/photography', label: 'Dịch vụ chụp ảnh', icon: Camera },
     { href: '/admin/albums', label: 'Album ảnh', icon: Images },
+    { href: '/admin/bookings', label: 'Lịch đặt', icon: CalendarDays },
     { href: '/admin/shop-info', label: 'Cài đặt tiệm', icon: Store },
 ];
 

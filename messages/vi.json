@@ -136,11 +136,11 @@
     "photoPackage": "Gói chụp ảnh (20 ảnh)",
     "extraHour": "Thêm giờ",
     "photoPackageInclude": "Gói chụp bao gồm: toàn bộ ảnh gốc và chỉnh sửa 10 ảnh",
-    "extraPhotoEdit": "Chỉnh sửa thêm ảnh: vui lòng trao đổi trực tiếp với thợ chụp (có phụ phí)",
+    "extraPhotoEdit": "Chình sửa thêm ảnh: vui lòng trao đổi trực tiếp với thợ chụp (có phụ phí)",
     "photoIssues": "Mọi vấn đề liên quan đến hình ảnh: vui lòng phản ánh trực tiếp với thợ chụp",
     "rentalPlan": "Gói thuê",
     "kimonoType": "Các loại kimono",
-    "rentalPrice": "Giá cho thuê",
+    "rentalPrice": "Giả cho thuê",
     "footnote1": "Bảng giá đã bao gồm: làm tóc, túi xách, dép đi kèm (zori/geta).",
     "footnote2": "Dịch vụ Make-up cơ bản (tùy chọn): +3,500 JPY",
     "footnoteNote": "* Giá thực tế có thể thay đổi nhẹ tùy theo mẫu mã đặc biệt. Vui lòng liên hệ để được tư vấn chi tiết."
@@ -196,7 +196,19 @@
     "pleaseEnterPeople": "Vui lòng nhập số người (tối thiểu 1).",
     "policyTitle": "Chính Sách Đặt Lịch & Hủy Lịch",
     "policyText": "Hủy lịch hay thay đổi ngày, giờ cần báo, liên lạc với tiệm trước 2-3 ngày. Vui lòng tuân thủ thời gian lịch hẹn đúng giờ, tránh trường hợp trùng khung giờ khách khác đặt.",
-    "agreePolicy": "Tôi đã đọc và đồng ý với chính sách đặt lịch."
+    "agreePolicy": "Tôi đã đọc và đồng ý với chính sách đặt lịch.",
+    "lookup": {
+      "title": "Tra cứu đặt lịch",
+      "subtitle": "Nhập Email hoặc Số điện thoại để xem lại thông tin.",
+      "placeholder": "Email hoặc Số điện thoại...",
+      "submit": "Tra cứu",
+      "noResults": "Không tìm thấy đơn đặt lịch nào.",
+      "manage": {
+        "title": "Quản lý đặt lịch",
+        "update": "Cập nhật thông tin",
+        "cancel": "Hủy đặt lịch"
+      }
+    }
   },
   "hairstyle": {
     "title": "Mẫu Làm Tóc Cơ Bản",
@@ -309,5 +321,15 @@
     "back": "Quay lại",
     "home": "Trang chủ",
     "addedToCart": "Đã thêm vào giỏ hàng"
+  },
+  "thankYou": {
+    "title": "Đặt Lịch Thành Công!",
+    "subtitle": "Cảm ơn bạn đã tin tưởng dịch vụ của chúng tôi.",
+    "message": "Yêu cầu của bạn đã được ghi nhận. Chúng tôi sẽ sớm liên hệ để xác nhận.",
+    "nextSteps": "Các bước tiếp theo:",
+    "contactSupport": "Nhân viên sẽ liên hệ với bạn qua số điện thoại hoặc email đã cung cấp để xác nhận lại thông tin và hỗ trợ chi tiết.",
+    "emergencySupport": "Hỗ trợ khẩn cấp:",
+    "backHome": "Về trang chủ",
+    "viewGallery": "Xem album ảnh"
   }
 }

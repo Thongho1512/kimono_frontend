@@ -141,7 +141,7 @@
     "phone": "전화번호",
     "email": "이메일",
     "note": "메모",
-    "notePlaceholder": "특별 요청, 기모노 수량 등... 개장 전이나 폐장 후 도착하시는 경우 여기에 기재해 주세요。",
+    "notePlaceholder": "특별 요청, 기모노 수량 등... 개장 전이나 폐장 후 도착하시는 경우 여기에 기재해 주세요.",
     "customerDetails": "고객 상세 정보",
     "adultMale": "성인 (남성)",
     "adultFemale": "성인 (여성)",
@@ -162,11 +162,11 @@
     "noItemsSelected": "선택된 서비스가 없습니다.",
     "selectFromList": "목록에서 서비스를 선택해 주세요.",
     "totalEstimate": "예상 합계:",
-    "contactInfo": "연락체 정보",
+    "contactInfo": "연락처 정보",
     "add": "추가",
     "sending": "전송 중...",
     "sendRequest": "예약 요청 제출",
-    "thankYouMessage": "요청에 감사드립니다! 예약 확인을 위해 콴 무련 연락드리겠습니다.",
+    "thankYouMessage": "요청에 감사드립니다! 예약 확인을 위해 곧 연락드리겠습니다.",
     "addedToCart": "목록에 추가되었습니다!",
     "pleaseSelectService": "적어도 하나의 서비스를 선택해 주세요.",
     "pleaseEnterName": "이름을 입력해 주세요.",
@@ -177,7 +177,19 @@
     "pleaseEnterPeople": "인원 수를 입력해 주세요 (최소 1명).",
     "policyTitle": "예약 및 취소 규정",
     "policyText": "예약 취소나 일시 변경은 2~3일 전까지 연락해 주시기 바랍니다. 다른 고객과의 중복을 피하기 위해 예약 시간을 엄수해 주시기 바랍니다.",
-    "agreePolicy": "예약 규정을 읽고 동의합니다."
+    "agreePolicy": "예약 규정을 읽고 동의합니다.",
+    "lookup": {
+      "title": "예약 조회",
+      "subtitle": "예약을 확인하려면 이메일 또는 전화번호를 입력하세요.",
+      "placeholder": "이메일 또는 전화번호...",
+      "submit": "조회하기",
+      "noResults": "예약을 찾을 수 없습니다.",
+      "manage": {
+        "title": "예약 관리",
+        "update": "정보 업데이트",
+        "cancel": "예약 취소"
+      }
+    }
   },
   "hairstyle": {
     "title": "기본 헤어스타일 갤러리",
@@ -212,7 +224,7 @@
   "gallery": {
     "title": "포토 갤러리",
     "subtitle": "Kyo Kimono Rental에서의 아름다운 순간들",
-    "note": "현재 정적 플레이스홀더."
+    "noImages": "앨범에 이미지가 없습니다."
   },
   "contact": {
     "title": "문의하기",
@@ -261,13 +273,13 @@
     "title": "교토 기온 프리미엄 기모노 대여 서비스",
     "p1": "Kyo Kimono Rental은 교토 기온에 위치한 프리미엄 기모노 대여점입니다. 200여 벌의 정품 기모노를 보유하고 있으며 여성, 남성, 어린이를 위한 전통 스타일부터 모던 스타일까지 다양하게 제공합니다.",
     "p2": "전문 팀이 올바른 기모노 착용, 완벽한 헤어 스타일링 및 사진 촬영을 도와드립니다. 교토의 역사적인 거리를 산책하든 특별한 이벤트에 참석하든 잊지 못할 추억을 만들어 드립니다.",
-    "p3": "Kyo Kimono Rental의 전문 팀이 올바른 기모노 착용, 우아한 헤어 스타일링 및 선택 사항인 전문 사진 촬영 서비스를 도와드립니다。교토의 신뢰할 수 있는 기모노 대여점으로서 기요미즈데라와 기온의 역사적인 거리와 같은 유명한 명소를 탐방하는 동안 잊지 못할 순간을 포착할 수 있도록 도와드립니다。",
-    "p4": "관광, 사진 촬영 또는 특별한 행사에 참석하시는 경우에도 저희 서비스는 원활하고 기억에 남는 경험을 보장합니다。",
-    "ctaText": "오늘 교토 기모노 대여를 예약하고 Kyo Kimono Rental과 함께 잊지 못할 추억을 만드세요。",
+    "p3": "Kyo Kimono Rental의 전문 팀이 올바른 기모노 착용, 우아한 헤어 스타일링 및 선택 사항인 전문 사진 촬영 서비스를 도와드립니다. 교토의 신뢰할 수 있는 기모노 대여점으로서 기요미즈데라와 기온의 역사적인 거리와 같은 유명한 명소를 탐방하는 동안 잊지 못할 순간을 포착할 수 있도록 도와드립니다.",
+    "p4": "관광, 사진 촬영 또는 특별한 행사에 참석하시는 경우에도 저희 서비스는 원활하고 기억에 남는 경험을 보장합니다.",
+    "ctaText": "오늘 교토 기모노 대여를 예약하고 Kyo Kimono Rental과 함께 잊지 못할 추억을 만드세요.",
     "imageAlt": "Kyo Kimono Rental 기모노 매장 내부",
     "happyCustomers": "만족 고객",
     "locationLabel": "교토 기온 중심부의 편리한 위치",
-    "locationValue": "347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan - 기요미즈데라, 야사카 신사, 기온 산책로 근처。",
+    "locationValue": "347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan - 기요미즈데라, 야사카 신사, 기온 산책로 근처.",
     "explorePlans": "플랜 보기",
     "viewGallery": "포토 갤러리"
   },
@@ -289,5 +301,15 @@
     "viewAll": "모두 보기",
     "back": "뒤로",
     "home": "홈"
+  },
+  "thankYou": {
+    "title": "예약이 완료되었습니다!",
+    "subtitle": "저희 서비스를 선택해 주셔서 감사합니다.",
+    "message": "예약이 접수되었습니다. 곧 확인 연락을 드리겠습니다.",
+    "nextSteps": "다음 단계:",
+    "contactSupport": "제공해주신 전화번호나 이메일로 담당자가 연락하여 상세 내용을 확인해 드릴 예정입니다.",
+    "emergencySupport": "긴급 지원:",
+    "backHome": "홈으로 돌아가기",
+    "viewGallery": "갤러리 보기"
   }
 }
