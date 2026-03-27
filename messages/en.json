@@ -202,7 +202,13 @@
     "status_confirmed": "Confirmed",
     "status_cancelled": "Cancelled",
     "cancelBooking": "Cancel booking",
-    "updateBooking": "Update Information"
+    "updateBooking": "Update Information",
+    "adults": "Adults",
+    "children": "Children",
+    "totalPeopleHint": "Planned total number of people",
+    "dateFormatHint": "Format: mm/dd/yyyy",
+    "selectProduct": "Select kimono type",
+    "searchProducts": "Search products..."
   },
   "hairstyle": {
     "title": "Basic Hairstyle Gallery",

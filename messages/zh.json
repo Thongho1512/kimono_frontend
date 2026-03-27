@@ -198,7 +198,13 @@
     "status_confirmed": "已确认",
     "status_cancelled": "已取消",
     "cancelBooking": "取消预约",
-    "updateBooking": "更新信息"
+    "updateBooking": "更新信息",
+    "adults": "成人",
+    "children": "儿童",
+    "totalPeopleHint": "预计总人数",
+    "dateFormatHint": "格式: YYYY/MM/DD",
+    "selectProduct": "选择和服类型",
+    "searchProducts": "搜索产品..."
   },
   "hairstyle": {
     "title": "基本发型展示",

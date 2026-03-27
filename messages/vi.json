@@ -215,7 +215,13 @@
     "status_confirmed": "Xác nhận",
     "status_cancelled": "Đã hủy",
     "cancelBooking": "Hủy đặt lịch",
-    "updateBooking": "Thay đổi thông tin"
+    "updateBooking": "Thay đổi thông tin",
+    "adults": "Người lớn",
+    "children": "Trẻ em",
+    "totalPeopleHint": "Tổng số người dự kiến",
+    "dateFormatHint": "Định dạng: tháng/ngày/năm",
+    "selectProduct": "Chọn loại kimono",
+    "searchProducts": "Tìm kiếm sản phẩm..."
   },
   "hairstyle": {
     "title": "Mẫu Làm Tóc Cơ Bản",

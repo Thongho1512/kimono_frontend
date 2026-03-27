@@ -199,7 +199,13 @@
     "status_confirmed": "확인됨",
     "status_cancelled": "취소됨",
     "cancelBooking": "예약 취소",
-    "updateBooking": "정보 업데이트"
+    "updateBooking": "정보 업데이트",
+    "adults": "성인",
+    "children": "어린이",
+    "totalPeopleHint": "예상 총 인원",
+    "dateFormatHint": "형식: YYYY/MM/DD",
+    "selectProduct": "기모노 종류 선택",
+    "searchProducts": "제품 검색..."
   },
   "hairstyle": {
     "title": "기본 헤어스타일 갤러리",

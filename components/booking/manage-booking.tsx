@@ -1,6 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import Image from 'next/image';
+import api from '@/lib/api';
 import { format } from 'date-fns';
 import { useTranslations } from 'next-intl';
 import { 
@@ -19,7 +21,10 @@ import {
     ChevronDown,
     ChevronUp,
     Plus,
-    Minus
+    Minus,
+    ShoppingBag,
+    X,
+    Search
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -51,12 +56,119 @@ interface ManageBookingProps {
     onUpdate: () => void;
 }
 
+interface ProductDto {
+  id: string;
+  name: string;
+  rentalPricePerDay: number;
+  rentalPriceMin: number;
+  rentalPriceMax: number;
+  priceType: string;
+  images: { url: string }[];
+}
+
 export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBookingProps) {
     const t = useTranslations('booking');
     const [booking, setBooking] = useState(initialBooking);
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
+    const [products, setProducts] = useState<ProductDto[]>([]);
+    const [searchQuery, setSearchQuery] = useState("");
+    const [childAgesList, setChildAgesList] = useState<{id: string, age: string}[]>([]);
+
+    useEffect(() => {
+        if (isEditing && products.length === 0) {
+            const fetchProducts = async () => {
+                try {
+                    const res = await api.get(`/api/public/products?culture=${initialBooking.culture || 'vi'}`);
+                    setProducts(res.data);
+                } catch (error) {
+                    console.error("Failed to fetch products", error);
+                }
+            };
+            fetchProducts();
+        }
+    }, [isEditing]);
+
+    useEffect(() => {
+        // Parse child ages string into list
+        if (booking.childAges) {
+            const ages = booking.childAges.split(', ').map((s: string, i: number) => ({
+                id: `child-${i}`,
+                age: s.includes(':') ? s.split(': ')[1].replace(' tuổi', '') : s
+            }));
+            setChildAgesList(ages);
+        } else {
+            const totalChildren = (booking.childMale || 0) + (booking.childFemale || 0);
+            setChildAgesList(Array.from({length: totalChildren}, (_, i) => ({ id: `child-${i}`, age: "" })));
+        }
+    }, [booking.id]); // Only on load/id change
+
+    // Sync childAgesList with guest counts
+    useEffect(() => {
+        const totalChildren = (booking.childMale || 0) + (booking.childFemale || 0);
+        if (childAgesList.length !== totalChildren) {
+            if (childAgesList.length < totalChildren) {
+                // Add more
+                const diff = totalChildren - childAgesList.length;
+                setChildAgesList([...childAgesList, ...Array.from({length: diff}, (_, i) => ({ id: `new-${childAgesList.length + i}`, age: "" }))]);
+            } else {
+                // Remove some
+                setChildAgesList(childAgesList.slice(0, totalChildren));
+            }
+        }
+    }, [booking.childMale, booking.childFemale]);
+
+    const updateChildAge = (id: string, age: string) => {
+        const newList = childAgesList.map(c => c.id === id ? { ...c, age } : c);
+        setChildAgesList(newList);
+        
+        // Update booking state with comma string
+        const summaries = newList.map((c, i) => {
+            const isMale = i < (booking.childMale || 0);
+            const genderText = isMale ? "Bé trai" : "Bé gái";
+            const genderIdx = isMale ? i + 1 : (i - (booking.childMale || 0) + 1);
+            return `${genderText} ${genderIdx}: ${c.age || "chưa rõ"} tuổi`;
+        });
+        setBooking({...booking, childAges: summaries.join(", ")});
+    };
+
+    const addToItems = (product: ProductDto) => {
+        const existing = (booking.items || []).find((item: any) => item.productId === product.id);
+        if (existing) {
+            const newItems = booking.items.map((item: any) => 
+                item.productId === product.id ? { ...item, quantity: item.quantity + 1 } : item
+            );
+            setBooking({...booking, items: newItems});
+        } else {
+            const newItem = {
+                productId: product.id,
+                productName: product.name,
+                price: product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay,
+                priceMin: product.rentalPriceMin,
+                priceMax: product.rentalPriceMax,
+                quantity: 1,
+                product: product // Keep for image display
+            };
+            setBooking({...booking, items: [...(booking.items || []), newItem]});
+        }
+        toast.success(t('addedToCart'));
+    };
+
+    const updateItemQuantity = (productId: string, delta: number) => {
+        const newItems = booking.items.map((item: any) => {
+            if (item.productId === productId) {
+                return { ...item, quantity: Math.max(1, item.quantity + delta) };
+            }
+            return item;
+        });
+        setBooking({...booking, items: newItems});
+    };
+
+    const removeItem = (productId: string) => {
+        const newItems = booking.items.filter((item: any) => item.productId !== productId);
+        setBooking({...booking, items: newItems});
+    };
 
     const handleSave = async () => {
         try {
@@ -162,6 +274,126 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
             {isExpanded && (
                 <div className="p-6 border-t bg-slate-50/30 dark:bg-slate-900/10 space-y-8 animate-in slide-in-from-top duration-300">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        {/* Items Selection (Editing) */}
+                        {isEditing && !isCancelled && (
+                            <div className="md:col-span-2 space-y-4 pb-4 border-b">
+                                <h3 className="text-sm font-bold uppercase tracking-widest text-primary flex items-center gap-2">
+                                    <ShoppingBag className="h-4 w-4" />
+                                    {t('selectServices') || "Chọn loại Kimono"}
+                                </h3>
+                                
+                                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                                    {/* Search & Add */}
+                                    <div className="space-y-3">
+                                        <div className="relative">
+                                            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                                            <Input 
+                                                placeholder={t('searchProducts') || "Tìm kiếm sản phẩm..."}
+                                                className="pl-9 bg-white"
+                                                value={searchQuery}
+                                                onChange={(e) => setSearchQuery(e.target.value)}
+                                            />
+                                        </div>
+                                        <div className="bg-white border rounded-xl p-2 max-h-[300px] overflow-y-auto space-y-1 custom-scrollbar">
+                                            {products
+                                                .filter(p => !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()))
+                                                .map(product => (
+                                                    <div 
+                                                        key={product.id} 
+                                                        className="flex items-center justify-between p-2 hover:bg-slate-50 rounded-lg group cursor-pointer border border-transparent hover:border-primary/20 transition-all"
+                                                        onClick={() => addToItems(product)}
+                                                    >
+                                                        <div className="flex items-center gap-3">
+                                                            <div className="h-10 w-8 relative rounded overflow-hidden bg-slate-100 italic">
+                                                                <Image 
+                                                                    src={product.images?.[0]?.url || "/placeholder.svg"} 
+                                                                    alt={product.name} 
+                                                                    fill 
+                                                                    className="object-cover"
+                                                                />
+                                                            </div>
+                                                            <div>
+                                                                <p className="text-sm font-medium leading-tight">{product.name}</p>
+                                                                <p className="text-[10px] text-primary font-bold">
+                                                                    {product.rentalPriceMin > 0 ? `${(product.rentalPriceMin/1000).toFixed(0)}k` : `${(product.rentalPricePerDay/1000).toFixed(0)}k`}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <Button size="icon" variant="ghost" className="h-7 w-7 rounded-full bg-primary/0 group-hover:bg-primary/20 text-primary">
+                                                            <Plus className="h-3 w-3" />
+                                                        </Button>
+                                                    </div>
+                                                ))}
+                                            {products.length === 0 && <p className="text-xs text-center py-4 text-muted-foreground italic">Đang tải sản phẩm...</p>}
+                                        </div>
+                                    </div>
+
+                                    {/* Current Selection */}
+                                    <div className="space-y-3">
+                                        <Label className="text-xs font-bold text-slate-500 uppercase flex items-center gap-2">
+                                            {t('yourSelection') || "Lựa chọn của bạn"}
+                                            <Badge variant="outline" className="text-[10px] font-normal">{(booking.items || []).length} items</Badge>
+                                        </Label>
+                                        <div className="space-y-2">
+                                            {(booking.items || []).map((item: any) => (
+                                                <div key={item.productId} className="flex items-center gap-3 p-2 bg-white border border-slate-100 rounded-xl shadow-sm">
+                                                    <div className="h-12 w-10 relative rounded overflow-hidden bg-slate-50">
+                                                        <Image 
+                                                            src={item.product?.images?.[0]?.url || item.image || "/placeholder.svg"} 
+                                                            alt={item.productName} 
+                                                            fill 
+                                                            className="object-cover"
+                                                        />
+                                                    </div>
+                                                    <div className="flex-1 min-w-0">
+                                                        <p className="text-xs font-bold truncate leading-none mb-1">{item.productName}</p>
+                                                        <div className="flex items-center gap-2">
+                                                            <div className="flex items-center bg-slate-100 rounded-lg p-0.5">
+                                                                <Button 
+                                                                    variant="ghost" 
+                                                                    size="icon" 
+                                                                    className="h-5 w-5 rounded-md hover:bg-white"
+                                                                    onClick={(e) => { e.stopPropagation(); updateItemQuantity(item.productId, -1); }}
+                                                                >
+                                                                    <Minus className="h-2 w-2" />
+                                                                </Button>
+                                                                <span className="w-5 text-center text-[10px] font-bold">{item.quantity}</span>
+                                                                <Button 
+                                                                    variant="ghost" 
+                                                                    size="icon" 
+                                                                    className="h-5 w-5 rounded-md hover:bg-white"
+                                                                    onClick={(e) => { e.stopPropagation(); updateItemQuantity(item.productId, 1); }}
+                                                                >
+                                                                    <Plus className="h-2 w-2" />
+                                                                </Button>
+                                                            </div>
+                                                            <span className="text-[10px] text-primary font-bold">
+                                                                {((item.price * item.quantity)/1000).toFixed(0)}k
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                    <Button 
+                                                        variant="ghost" 
+                                                        size="icon" 
+                                                        className="h-7 w-7 text-slate-400 hover:text-red-500 rounded-full"
+                                                        onClick={(e) => { e.stopPropagation(); removeItem(item.productId); }}
+                                                    >
+                                                        <Trash2 className="h-4 w-4" />
+                                                    </Button>
+                                                </div>
+                                            ))}
+                                            {(booking.items || []).length === 0 && (
+                                                <div className="flex flex-col items-center justify-center py-10 bg-slate-50/50 rounded-xl border border-dashed border-slate-200">
+                                                    <ShoppingBag className="h-8 w-8 text-slate-200 mb-2" />
+                                                    <p className="text-xs text-muted-foreground">{t('noItemsSelected') || "Chưa chọn sản phẩm nào"}</p>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        )}
+
                         {/* Column 1: Customer Contact & Main Details */}
                         <div className="space-y-6">
                             <div className="space-y-4">
@@ -208,12 +440,15 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="space-y-2">
                                             <Label className="text-xs font-bold text-primary uppercase">{t('date')}</Label>
-                                            <Input 
-                                                type="date"
-                                                value={booking.bookingDate ? booking.bookingDate.split('T')[0] : ''}
-                                                onChange={(e) => setBooking({...booking, bookingDate: e.target.value})}
-                                                className="bg-white border-primary/20"
-                                            />
+                                            <div className="space-y-1">
+                                                <Input 
+                                                    type="date"
+                                                    value={booking.bookingDate ? booking.bookingDate.split('T')[0] : ''}
+                                                    onChange={(e) => setBooking({...booking, bookingDate: e.target.value})}
+                                                    className="bg-white border-primary/20"
+                                                />
+                                                <p className="text-[10px] text-muted-foreground italic">{t('dateFormatHint') || "Định dạng: tháng/ngày/năm"}</p>
+                                            </div>
                                         </div>
                                         <div className="space-y-2">
                                             <Label className="text-xs font-bold text-primary uppercase">{t('arrivalTime')}</Label>
@@ -296,53 +531,76 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                         </div>
                                     </div>
 
-                                    <div className="space-y-2">
+                                    <div className="space-y-3">
                                         <Label className="text-xs font-bold text-slate-500 uppercase">{t('childAges')}</Label>
-                                        <Input 
-                                            value={booking.childAges || ''}
-                                            onChange={(e) => setBooking({...booking, childAges: e.target.value})}
-                                            placeholder={t('childAgesPlaceholder')}
-                                            className="bg-white"
-                                        />
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            {childAgesList.map((child, idx) => (
+                                                <div key={child.id} className="space-y-1">
+                                                    <Label className="text-[10px] text-muted-foreground">
+                                                        {idx < (booking.childMale || 0) ? `${t('boy')} ${idx + 1}` : `${t('girl')} ${idx - (booking.childMale || 0) + 1}`}
+                                                    </Label>
+                                                    <Input 
+                                                        value={child.age}
+                                                        onChange={(e) => updateChildAge(child.id, e.target.value)}
+                                                        placeholder={t('agePlaceholder') || "Tuổi..."}
+                                                        className="bg-white h-8 text-sm"
+                                                    />
+                                                </div>
+                                            ))}
+                                        </div>
                                     </div>
 
-                                    <div className="space-y-2">
+                                    <div className="space-y-3">
                                         <Label className="text-xs font-bold text-slate-500 uppercase">{t('extraServices')}</Label>
                                         <div className="flex flex-wrap gap-2">
-                                            <Button 
-                                                type="button"
-                                                size="sm"
-                                                variant={(booking.extraServices || '').includes('Chụp ảnh') ? "default" : "outline"}
-                                                onClick={() => {
-                                                    let services = (booking.extraServices || '').split(', ').filter((s: string) => s);
-                                                    if (services.includes('Chụp ảnh')) {
-                                                        services = services.filter((s: string) => s !== 'Chụp ảnh');
-                                                    } else {
+                                            {/* Show current services as tags with X */}
+                                            {(booking.extraServices || '').split(', ').filter((s: string) => s).map((service: string) => (
+                                                <Badge key={service} variant="secondary" className="gap-1 py-1 px-3 bg-primary/10 text-primary border-primary/20">
+                                                    {service === 'Chụp ảnh' ? '📸 ' : (service === 'Makeup' ? '💄 ' : '')}
+                                                    {service === 'Chụp ảnh' ? t('photoService') : (service === 'Makeup' ? t('makeupService') : service)}
+                                                    <button 
+                                                        onClick={() => {
+                                                            const services = (booking.extraServices || '').split(', ').filter((s: string) => s !== service);
+                                                            setBooking({...booking, extraServices: services.join(', ')});
+                                                        }}
+                                                        className="ml-1 hover:text-red-500 transition-colors"
+                                                    >
+                                                        <X className="h-3 w-3" />
+                                                    </button>
+                                                </Badge>
+                                            ))}
+                                            
+                                            {/* Quick add buttons if not present */}
+                                            {!(booking.extraServices || '').includes('Chụp ảnh') && (
+                                                <Button 
+                                                    type="button" 
+                                                    variant="outline" 
+                                                    size="sm" 
+                                                    className="rounded-full text-[10px] h-7 dashed border-dashed bg-slate-50/50"
+                                                    onClick={() => {
+                                                        const services = (booking.extraServices || '').split(', ').filter((s: string) => s);
                                                         services.push('Chụp ảnh');
-                                                    }
-                                                    setBooking({...booking, extraServices: services.join(', ')});
-                                                }}
-                                                className="rounded-full text-[10px] h-7"
-                                            >
-                                                📸 {t('photoService')}
-                                            </Button>
-                                            <Button 
-                                                type="button"
-                                                size="sm"
-                                                variant={(booking.extraServices || '').includes('Makeup') ? "default" : "outline"}
-                                                onClick={() => {
-                                                    let services = (booking.extraServices || '').split(', ').filter((s: string) => s);
-                                                    if (services.includes('Makeup')) {
-                                                        services = services.filter((s: string) => s !== 'Makeup');
-                                                    } else {
+                                                        setBooking({...booking, extraServices: services.join(', ')});
+                                                    }}
+                                                >
+                                                    <Plus className="h-3 w-3 mr-1" /> {t('photoService')}
+                                                </Button>
+                                            )}
+                                            {!(booking.extraServices || '').includes('Makeup') && (
+                                                <Button 
+                                                    type="button" 
+                                                    variant="outline" 
+                                                    size="sm" 
+                                                    className="rounded-full text-[10px] h-7 dashed border-dashed bg-slate-50/50"
+                                                    onClick={() => {
+                                                        const services = (booking.extraServices || '').split(', ').filter((s: string) => s);
                                                         services.push('Makeup');
-                                                    }
-                                                    setBooking({...booking, extraServices: services.join(', ')});
-                                                }}
-                                                className="rounded-full text-[10px] h-7"
-                                            >
-                                                💄 {t('makeupService')}
-                                            </Button>
+                                                        setBooking({...booking, extraServices: services.join(', ')});
+                                                    }}
+                                                >
+                                                    <Plus className="h-3 w-3 mr-1" /> {t('makeupService')}
+                                                </Button>
+                                            )}
                                         </div>
                                     </div>
 
@@ -357,7 +615,36 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                     </div>
                                 </div>
                             ) : (
-                                <div className="space-y-4">
+                                <div className="space-y-6">
+                                    {/* Booked Items (View Mode) */}
+                                    {(booking.items || []).length > 0 && (
+                                        <div className="space-y-3 p-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 rounded-2xl">
+                                            <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-2 flex items-center gap-2">
+                                                <ShoppingBag className="h-3 w-3 text-primary" />
+                                                {t('yourSelection') || "Sản phẩm đã chọn"}
+                                            </h4>
+                                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                {booking.items.map((item: any) => (
+                                                    <div key={item.productId} className="flex items-center gap-3 bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100/50 dark:border-slate-800 shadow-sm transition-all hover:shadow-md">
+                                                        <div className="h-10 w-8 relative rounded overflow-hidden bg-slate-50 dark:bg-slate-800">
+                                                            <Image 
+                                                                src={item.product?.images?.[0]?.url || item.image || "/placeholder.svg"} 
+                                                                alt={item.productName} 
+                                                                fill 
+                                                                className="object-cover"
+                                                                sizes="40px"
+                                                            />
+                                                        </div>
+                                                        <div className="flex-1 min-w-0">
+                                                            <p className="text-xs font-bold truncate leading-tight mb-0.5">{item.productName}</p>
+                                                            <p className="text-[10px] text-muted-foreground font-medium uppercase tracking-tighter">Số lượng: {item.quantity}</p>
+                                                        </div>
+                                                    </div>
+                                                ))}
+                                            </div>
+                                        </div>
+                                    )}
+
                                     <div className="grid grid-cols-2 gap-4">
                                         <div className="space-y-1">
                                             <Label className="text-[10px] font-bold text-slate-400 uppercase">{t('adults')}</Label>

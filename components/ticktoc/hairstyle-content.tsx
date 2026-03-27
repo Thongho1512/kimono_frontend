@@ -45,7 +45,7 @@ export function HairstyleContent({ initialStyles }: HairstyleContentProps) {
         </div>
       </FadeIn>
 
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-12">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 pb-12">
         {initialStyles.map((style, i) => (
           <FadeIn key={style.id} delay={i * 0.05}>
             <div 
@@ -58,11 +58,11 @@ export function HairstyleContent({ initialStyles }: HairstyleContentProps) {
                   alt={style.name || style.description || "Hairstyle"}
                   fill
                   className="object-cover group-hover:scale-105 ticktoc-transition"
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                  sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
                 />
               </div>
-              <div className="p-4">
-                <p className="text-sm text-muted-foreground text-center">
+              <div className="p-2">
+                <p className="text-xs text-muted-foreground text-center">
                   {style.name || style.description || "Mẫu tóc đẹp"}
                 </p>
               </div>
