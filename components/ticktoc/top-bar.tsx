@@ -30,16 +30,18 @@ export function TopBar() {
         { id: "instagram", icon: <Instagram className="h-4.5 w-4.5" />, href: storeInfo?.urlInstagram, label: "Instagram" },
         { id: "facebook", icon: <Facebook className="h-4.5 w-4.5" />, href: storeInfo?.urlFacebook, label: "Facebook" },
         { id: "youtube", icon: <Youtube className="h-4.5 w-4.5" />, href: storeInfo?.urlYoutube, label: "YouTube" },
-        { id: "threads", icon: (
-            <div className="h-4.5 w-4.5 relative overflow-hidden rounded-full border border-background/20 group-hover:border-primary/30 transition-all">
-                <Image
-                    src="/images/threads.jfif"
-                    alt="Threads"
-                    fill
-                    className="object-cover"
-                />
-            </div>
-        ), href: storeInfo?.urlThreads, label: "Threads" },
+        {
+            id: "threads", icon: (
+                <div className="h-4.5 w-4.5 relative overflow-hidden rounded-full border border-background/20 group-hover:border-primary/30 transition-all">
+                    <Image
+                        src="/images/threads.jpg"
+                        alt="Threads"
+                        fill
+                        className="object-cover"
+                    />
+                </div>
+            ), href: storeInfo?.urlThreads, label: "Threads"
+        },
     ];
 
     const tiktokIcon = (

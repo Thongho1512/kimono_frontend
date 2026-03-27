@@ -126,7 +126,7 @@ export function Footer() {
                 >
                   <div className="relative h-6 w-6 rounded-full overflow-hidden">
                     <Image
-                      src="/images/threads.jfif"
+                      src="/images/threads.jpg"
                       alt="Threads"
                       fill
                       className="object-cover"
@@ -183,7 +183,7 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-sm opacity-70">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-                <a 
+                <a
                   href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan")}`}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -220,7 +220,7 @@ export function Footer() {
                   );
                 })}
               </div>
-              <a 
+              <a
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan")}`}
                 target="_blank"
                 rel="noopener noreferrer"
