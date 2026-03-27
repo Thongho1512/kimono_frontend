@@ -52,6 +52,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: "website",
       locale: locale,
     },
+    icons: {
+      icon: "/images/logo.jpg",
+      shortcut: "/images/logo.jpg",
+      apple: "/images/logo.jpg",
+    },
   };
 }
 

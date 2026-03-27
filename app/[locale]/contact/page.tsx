@@ -15,6 +15,7 @@ import {
   MessageCircle,
   Clock,
   Landmark,
+  X,
 } from "lucide-react";
 
 interface StoreInfo {
@@ -36,6 +37,7 @@ export default function ContactPage() {
   const locale = useLocale();
 
   const [storeInfo, setStoreInfo] = useState<StoreInfo | null>(null);
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   useEffect(() => {
     const fetchInfo = async () => {
@@ -189,10 +191,67 @@ export default function ContactPage() {
                   className="absolute inset-0"
                 />
               </div>
+
+              {/* Tiny Thumbnails Gallery right below map */}
+              <div className="space-y-3">
+                <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider ml-1">
+                  {t("shopImagesTitle") || "Một số hình ảnh về cửa hàng"}
+                </p>
+                <div className="grid grid-cols-3 gap-3">
+                  {[
+                    { src: "/images/store1.png", label: t("buildingExt") || "Exterior" },
+                    { src: "/images/store2.jpg", label: t("shopEnt") || "Entrance" },
+                  ].map((img, idx) => (
+                    <div
+                      key={idx}
+                      className="relative aspect-square rounded-xl overflow-hidden cursor-pointer ticktoc-shadow-sm border border-border/50 group"
+                      onClick={() => setSelectedImage(img.src)}
+                    >
+                      <Image
+                        src={img.src}
+                        alt={img.label}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        sizes="(max-width: 768px) 30vw, 15vw"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </FadeIn>
         </div>
       </div>
+
+      {/* Basic Lightbox Modal */}
+      {selectedImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-10 animate-in fade-in duration-300 backdrop-blur-sm"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            className="absolute top-6 right-6 text-white hover:text-primary transition-colors p-2 bg-white/10 rounded-full"
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(null);
+            }}
+          >
+            <X className="h-6 w-6" />
+          </button>
+
+          <div className="relative w-full max-w-5xl aspect-video md:aspect-auto">
+            <Image
+              src={selectedImage}
+              alt="Store photo large view"
+              width={1600}
+              height={1200}
+              className="object-contain max-h-[85vh] w-auto mx-auto rounded-lg shadow-2xl"
+              priority
+            />
+          </div>
+        </div>
+      )}
 
       {/* LocalBusiness Schema */}
       <script

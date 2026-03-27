@@ -60,6 +60,54 @@ function BookingForm() {
     note: "",
   });
 
+  const [extraInfo, setExtraInfo] = useState({
+    adultMale: 0,
+    adultFemale: 0,
+    childMale: 0,
+    childFemale: 0,
+    children: [] as { id: string; gender: "male" | "female"; age: string }[],
+    photoService: false,
+    makeupService: false,
+  });
+
+  const addChild = (gender: "male" | "female") => {
+    setExtraInfo((p) => ({
+      ...p,
+      [gender === "male" ? "childMale" : "childFemale"]: p[gender === "male" ? "childMale" : "childFemale"] + 1,
+      children: [...p.children, { id: Math.random().toString(36).substr(2, 9), gender, age: "" }],
+    }));
+  };
+
+  const removeChild = (gender: "male" | "female") => {
+    setExtraInfo((p) => {
+      if (p[gender === "male" ? "childMale" : "childFemale"] <= 0) return p;
+      const lastIndex = [...p.children].reverse().findIndex((c) => c.gender === gender);
+      if (lastIndex === -1) return p;
+      const actualIndex = p.children.length - 1 - lastIndex;
+      const newChildren = [...p.children];
+      newChildren.splice(actualIndex, 1);
+      return {
+        ...p,
+        [gender === "male" ? "childMale" : "childFemale"]: p[gender === "male" ? "childMale" : "childFemale"] - 1,
+        children: newChildren,
+      };
+    });
+  };
+
+  const updateChildAge = (id: string, age: string) => {
+    setExtraInfo((p) => ({
+      ...p,
+      children: p.children.map((c) => (c.id === id ? { ...c, age } : c)),
+    }));
+  };
+
+  useEffect(() => {
+    const total = extraInfo.adultMale + extraInfo.adultFemale + extraInfo.childMale + extraInfo.childFemale;
+    if (total > 0) {
+      setFormData((prev) => ({ ...prev, people: total.toString() }));
+    }
+  }, [extraInfo.adultMale, extraInfo.adultFemale, extraInfo.childMale, extraInfo.childFemale]);
+
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -137,6 +185,10 @@ function BookingForm() {
       toast.error(t("pleaseEnterName"));
       return false;
     }
+    if (!formData.phone.trim()) {
+      toast.error(t("pleaseEnterPhone") || "Vui lòng nhập số điện thoại.");
+      return false;
+    }
     if (!formData.email.trim()) {
       toast.error(t("pleaseEnterEmail"));
       return false;
@@ -170,12 +222,30 @@ function BookingForm() {
       bookingDate: formData.date,
       arrivalTime: formData.time,
       numberOfPeople: parseInt(formData.people),
+      adultMale: extraInfo.adultMale,
+      adultFemale: extraInfo.adultFemale,
+      childMale: extraInfo.childMale,
+      childFemale: extraInfo.childFemale,
+      childAges: (() => {
+        let summaries = extraInfo.children.map((c, i) => {
+          const genderText = c.gender === "male" ? "Bé trai" : "Bé gái";
+          const count = extraInfo.children.filter((item, idx) => item.gender === c.gender && idx <= i).length;
+          return `${genderText} ${count}: ${c.age || "chưa rõ"} tuổi`;
+        });
+        return summaries.join(", ");
+      })(),
+      extraServices: (() => {
+        let services = [];
+        if (extraInfo.photoService) services.push("Chụp ảnh");
+        if (extraInfo.makeupService) services.push("Makeup");
+        return services.join(", ");
+      })(),
       note: formData.note,
       items: cart.map(item => ({
         productId: item.productId,
         productName: item.productName,
         price: item.priceMin,
-        priceMin: item.priceMin,
+        priceMin: item.priceMin, // Include priceMin/Max for backend sync
         priceMax: item.priceMax,
         quantity: item.quantity
       }))
@@ -205,21 +275,49 @@ function BookingForm() {
 
   if (submitted) {
     return (
-      <FadeIn>
-        <div className="min-h-[60vh] flex items-center justify-center">
-          <div className="text-center max-w-md">
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle2 className="h-8 w-8 text-primary" />
+      <FadeIn className="pt-24 pb-16">
+        <div className="min-h-[60vh] flex items-center justify-center px-4">
+          <div className="bg-card w-full max-w-2xl rounded-3xl p-8 sm:p-12 ticktoc-shadow border border-border text-center overflow-hidden relative">
+            {/* Background decoration */}
+            <div className="absolute top-0 right-0 -mt-10 -mr-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 -mb-10 -ml-10 w-40 h-40 bg-secondary/50 rounded-full blur-3xl" />
+            
+            <div className="relative z-10">
+              <div className="w-20 h-20 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center mx-auto mb-6 shadow-sm ring-8 ring-green-50 dark:ring-green-900/10">
+                <CheckCircle2 className="h-10 w-10 text-green-600 dark:text-green-500" />
+              </div>
+              
+              <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground mb-4">
+                {t("success") || "Đặt lịch thành công!"}
+              </h2>
+              
+              <div className="space-y-4 mb-8 text-muted-foreground text-sm sm:text-base">
+                <p>
+                  Cảm ơn <strong className="text-foreground">{formData.name}</strong> đã tin tưởng và lựa chọn dịch vụ của chúng tôi.
+                </p>
+                <p>
+                  Yêu cầu đặt lịch của bạn vào ngày <strong className="text-foreground">{formData.date}</strong> lúc <strong className="text-foreground">{formData.time}</strong> đã được ghi nhận.
+                </p>
+                <div className="bg-secondary/30 p-4 rounded-xl border border-border inline-block w-full max-w-sm mx-auto mt-4">
+                  <p className="font-semibold text-foreground mb-1">Các bước tiếp theo:</p>
+                  <p className="text-sm">Nhân viên của chúng tôi sẽ sớm liên hệ với bạn qua số điện thoại <strong>{formData.phone || "bạn cung cấp"}</strong> hoặc Email để xác nhận lại thông tin và hỗ trợ chi tiết.</p>
+                </div>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
+                <Button asChild size="lg" className="w-full sm:w-auto rounded-full px-8 shadow-md">
+                  <Link href={`/${locale}`}>{tNav("home") || "Trở về trang chủ"}</Link>
+                </Button>
+                <Button asChild variant="outline" size="lg" className="w-full sm:w-auto rounded-full px-8">
+                  <Link href={`/${locale}/gallery`}>Xem thư viện ảnh</Link>
+                </Button>
+              </div>
+
+              <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
+                <span className="flex items-center gap-1"><Phone className="w-4 h-4" /> Hỗ trợ khẩn cấp:</span>
+                <span className="font-semibold text-foreground">086.xx.xxxxx</span>
+              </div>
             </div>
-            <h2 className="font-serif text-2xl font-bold text-foreground mb-2">
-              {t("success")}
-            </h2>
-            <p className="text-muted-foreground mb-6">
-              {t("thankYouMessage")}
-            </p>
-            <Button asChild className="mt-2">
-              <Link href={`/${locale}`}>{tNav("home")}</Link>
-            </Button>
           </div>
         </div>
       </FadeIn>
@@ -340,7 +438,7 @@ function BookingForm() {
                       <Input id="name" value={formData.name} onChange={e => setFormData({ ...formData, name: e.target.value })} placeholder={t("name") + "..."} />
                     </div>
                     <div>
-                      <Label htmlFor="phone">{t("phone")}</Label>
+                      <Label htmlFor="phone">{t("phone")} <span className="text-destructive">*</span></Label>
                       <Input id="phone" type="tel" value={formData.phone} onChange={e => setFormData({ ...formData, phone: e.target.value })} placeholder="090..." />
                     </div>
                   </div>
@@ -361,14 +459,107 @@ function BookingForm() {
                   <div>
                     <Label htmlFor="time">{t("arrivalTime")} <span className="text-destructive">*</span></Label>
                     <Input id="time" type="time" value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />
+                    <p className="text-[10px] text-muted-foreground mt-1 leading-relaxed italic">
+                      {t("arrivalTimeNote")}
+                    </p>
                   </div>
+                  <div className="space-y-4 p-4 bg-secondary/30 rounded-lg border border-border">
+                    <Label className="font-semibold">{t("customerDetails") || "Chi tiết đoàn khách"}</Label>
+                    
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label className="text-xs text-muted-foreground">{t("adultMale") || "Nam (Người lớn)"}</Label>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Button type="button" variant="outline" size="icon" className="h-8 w-8" onClick={() => setExtraInfo(p => ({...p, adultMale: Math.max(0, p.adultMale - 1)}))}><Minus className="h-3 w-3" /></Button>
+                          <span className="w-6 text-center text-sm">{extraInfo.adultMale}</span>
+                          <Button type="button" variant="outline" size="icon" className="h-8 w-8" onClick={() => setExtraInfo(p => ({...p, adultMale: p.adultMale + 1}))}><Plus className="h-3 w-3" /></Button>
+                        </div>
+                      </div>
+                      <div>
+                        <Label className="text-xs text-muted-foreground">{t("adultFemale") || "Nữ (Người lớn)"}</Label>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Button type="button" variant="outline" size="icon" className="h-8 w-8" onClick={() => setExtraInfo(p => ({...p, adultFemale: Math.max(0, p.adultFemale - 1)}))}><Minus className="h-3 w-3" /></Button>
+                          <span className="w-6 text-center text-sm">{extraInfo.adultFemale}</span>
+                          <Button type="button" variant="outline" size="icon" className="h-8 w-8" onClick={() => setExtraInfo(p => ({...p, adultFemale: p.adultFemale + 1}))}><Plus className="h-3 w-3" /></Button>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-4">
+                      <div>
+                        <Label className="text-xs text-muted-foreground">{t("childMale") || "Bé trai (Trẻ em)"}</Label>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Button type="button" variant="outline" size="icon" className="h-8 w-8" onClick={() => removeChild("male")}><Minus className="h-3 w-3" /></Button>
+                          <span className="w-6 text-center text-sm">{extraInfo.childMale}</span>
+                          <Button type="button" variant="outline" size="icon" className="h-8 w-8" onClick={() => addChild("male")}><Plus className="h-3 w-3" /></Button>
+                        </div>
+                      </div>
+                      <div>
+                        <Label className="text-xs text-muted-foreground">{t("childFemale") || "Bé gái (Trẻ em)"}</Label>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Button type="button" variant="outline" size="icon" className="h-8 w-8" onClick={() => removeChild("female")}><Minus className="h-3 w-3" /></Button>
+                          <span className="w-6 text-center text-sm">{extraInfo.childFemale}</span>
+                          <Button type="button" variant="outline" size="icon" className="h-8 w-8" onClick={() => addChild("female")}><Plus className="h-3 w-3" /></Button>
+                        </div>
+                      </div>
+                    </div>
+
+                    {extraInfo.children.length > 0 && (
+                      <div className="space-y-3 pt-2 border-t border-border mt-2 animate-in fade-in slide-in-from-top-1">
+                        <Label className="text-sm font-medium">{t("childAgesInputTitle") || "Vui lòng nhập độ tuổi của từng bé"}</Label>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {extraInfo.children.map((child, index) => {
+                            const genderText = child.gender === "male" ? (t("boy") || "Bé trai") : (t("girl") || "Bé gái");
+                            // Count appearing for this specific gender before this index
+                            const genderCount = extraInfo.children.filter((c, i) => c.gender === child.gender && i <= index).length;
+                            
+                            return (
+                              <div key={child.id} className="relative">
+                                <Label className="text-[10px] absolute -top-2 left-2 bg-background px-1 z-10 text-primary font-bold uppercase transition-all">
+                                  {genderText} {genderCount}
+                                </Label>
+                                <Input 
+                                  placeholder={t("agePlaceholder") || "Nhập số tuổi..."} 
+                                  className="h-9 pt-1" 
+                                  value={child.age}
+                                  onChange={(e) => updateChildAge(child.id, e.target.value)}
+                                />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+
+                  <div className="space-y-3 p-4 bg-secondary/30 rounded-lg border border-border">
+                    <Label className="font-semibold">{t("extraServices") || "Dịch vụ đi kèm"}</Label>
+                    <div className="flex flex-wrap gap-3 mt-1">
+                      <Button 
+                        type="button" 
+                        variant={extraInfo.photoService ? "default" : "outline"} 
+                        onClick={() => setExtraInfo(p => ({...p, photoService: !p.photoService}))}
+                        className="rounded-full shadow-sm transition-all"
+                      >
+                        📸 {t("photoService") || "Chụp ảnh"}
+                      </Button>
+                      <Button 
+                        type="button" 
+                        variant={extraInfo.makeupService ? "default" : "outline"} 
+                        onClick={() => setExtraInfo(p => ({...p, makeupService: !p.makeupService}))}
+                        className="rounded-full shadow-sm transition-all"
+                      >
+                        💄 {t("makeupService") || "Makeup & Làm tóc"}
+                      </Button>
+                    </div>
+                  </div>
+
                   <div>
-                    <Label htmlFor="note">{t("note")}</Label>
+                    <Label htmlFor="note">{t("note") || "Ghi chú thêm"}</Label>
                     <textarea
                       id="note"
-                      rows={3}
-                      className="flex w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
-                      placeholder={t("notePlaceholder")}
+                      rows={2}
+                      className="flex w-full mt-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 resize-none"
                       value={formData.note}
                       onChange={e => setFormData({ ...formData, note: e.target.value })}
                     />

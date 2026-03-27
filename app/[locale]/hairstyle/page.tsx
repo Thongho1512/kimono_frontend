@@ -67,7 +67,7 @@ export default function HairstylePage() {
           </div>
         </FadeIn>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pb-12">
           {styles.map((style, i) => (
             <FadeIn key={style.id} delay={i * 0.05}>
               <div className="bg-card rounded-xl overflow-hidden ticktoc-shadow border border-border group">
@@ -77,7 +77,7 @@ export default function HairstylePage() {
                     alt={style.name || style.description || "Hairstyle"}
                     fill
                     className="object-cover group-hover:scale-105 ticktoc-transition"
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                   />
                 </div>
                 <div className="p-4">
