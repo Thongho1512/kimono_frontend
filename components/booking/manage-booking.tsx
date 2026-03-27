@@ -72,7 +72,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
-    const [products, setProducts] = useState<ProductDto[]>([]);
+    const [products, setProducts] = useState<(ProductDto & { categoryNameTranslated?: string })[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
     const [childAgesList, setChildAgesList] = useState<{id: string, age: string}[]>([]);
 
@@ -299,37 +299,49 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                                 onChange={(e) => setSearchQuery(e.target.value)}
                                             />
                                         </div>
-                                        <div className="bg-white border rounded-xl p-2 max-h-[300px] overflow-y-auto space-y-1 custom-scrollbar">
+                                        <div className="bg-white border rounded-xl p-2 max-h-[400px] overflow-y-auto space-y-2 custom-scrollbar shadow-inner">
                                             {products
-                                                .filter(p => !searchQuery || p.name.toLowerCase().includes(searchQuery.toLowerCase()))
-                                                .map(product => (
-                                                    <div 
-                                                        key={product.id} 
-                                                        className="flex items-center justify-between p-2 hover:bg-slate-50 rounded-lg group cursor-pointer border border-transparent hover:border-primary/20 transition-all"
-                                                        onClick={() => addToItems(product)}
-                                                    >
-                                                        <div className="flex items-center gap-3">
-                                                            <div className="h-10 w-8 relative rounded overflow-hidden bg-slate-100 italic">
-                                                                <Image 
-                                                                    src={product.images?.[0]?.url || "/placeholder.svg"} 
-                                                                    alt={product.name} 
-                                                                    fill 
-                                                                    className="object-cover"
-                                                                />
+                                                .filter(p => !searchQuery || 
+                                                    p.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                                                    (p.categoryNameTranslated && p.categoryNameTranslated.toLowerCase().includes(searchQuery.toLowerCase()))
+                                                )
+                                                .map(product => {
+                                                    const isRange = product.priceType === "range" || product.priceType === "Khoảng";
+                                                    const priceText = isRange 
+                                                        ? `${product.rentalPriceMin.toLocaleString()} - ${product.rentalPriceMax.toLocaleString()} ¥` 
+                                                        : `${(product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay).toLocaleString()} ¥`;
+                                                    
+                                                    return (
+                                                        <div 
+                                                            key={product.id} 
+                                                            className="flex items-center justify-between p-2.5 hover:bg-primary/5 rounded-xl group cursor-pointer border border-transparent hover:border-primary/20 transition-all duration-200"
+                                                            onClick={() => addToItems(product)}
+                                                        >
+                                                            <div className="flex items-center gap-4">
+                                                                <div className="h-12 w-10 relative rounded-lg overflow-hidden bg-slate-100 shadow-sm">
+                                                                    <Image 
+                                                                        src={product.images?.[0]?.url || "/placeholder.svg"} 
+                                                                        alt={product.name} 
+                                                                        fill 
+                                                                        className="object-cover group-hover:scale-110 transition-transform duration-300"
+                                                                    />
+                                                                </div>
+                                                                <div className="space-y-0.5">
+                                                                    <p className="text-[10px] text-primary font-bold tracking-wider leading-none">
+                                                                        {product.categoryNameTranslated || "SẢN PHẨM"} — {product.name}
+                                                                    </p>
+                                                                    <p className="text-xs font-semibold text-slate-700 leading-tight">
+                                                                        {isRange ? `Khoảng giá: ${priceText}` : priceText}
+                                                                    </p>
+                                                                </div>
                                                             </div>
-                                                            <div>
-                                                                <p className="text-sm font-medium leading-tight">{product.name}</p>
-                                                                <p className="text-[10px] text-primary font-bold">
-                                                                    {product.rentalPriceMin > 0 ? `${(product.rentalPriceMin/1000).toFixed(0)}k` : `${(product.rentalPricePerDay/1000).toFixed(0)}k`}
-                                                                </p>
-                                                            </div>
+                                                            <Button size="icon" variant="ghost" className="h-8 w-8 rounded-full bg-slate-100 group-hover:bg-primary group-hover:text-white transition-colors">
+                                                                <Plus className="h-4 w-4" />
+                                                            </Button>
                                                         </div>
-                                                        <Button size="icon" variant="ghost" className="h-7 w-7 rounded-full bg-primary/0 group-hover:bg-primary/20 text-primary">
-                                                            <Plus className="h-3 w-3" />
-                                                        </Button>
-                                                    </div>
-                                                ))}
-                                            {products.length === 0 && <p className="text-xs text-center py-4 text-muted-foreground italic">Đang tải sản phẩm...</p>}
+                                                    );
+                                                })}
+                                            {products.length === 0 && <p className="text-xs text-center py-6 text-muted-foreground italic">Đang tải sản phẩm...</p>}
                                         </div>
                                     </div>
 
@@ -373,7 +385,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                                                 </Button>
                                                             </div>
                                                             <span className="text-[10px] text-primary font-bold">
-                                                                {((item.price * item.quantity)/1000).toFixed(0)}k
+                                                                {((item.price * item.quantity)).toLocaleString()} ¥
                                                             </span>
                                                         </div>
                                                     </div>
