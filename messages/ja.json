@@ -212,7 +212,7 @@
   "gallery": {
     "title": "フォトギャラリー",
     "subtitle": "Kyo Kimono Rentalでのお客様の美しい瞬間",
-    "note": "現在は静的プレースホルダー。ヘッドレスCMSまたはCloudinaryを統合予定。"
+    "noImages": "アルバムにまだ画像がありません。"
   },
   "contact": {
     "title": "お問い合わせ",

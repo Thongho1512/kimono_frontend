@@ -209,7 +209,7 @@
   "gallery": {
     "title": "照片集",
     "subtitle": "Kyo Kimono Rental客户的美好瞬间",
-    "note": "当前为静态占位图。"
+    "noImages": "相册中尚无照片。"
   },
   "contact": {
     "title": "联系我们",

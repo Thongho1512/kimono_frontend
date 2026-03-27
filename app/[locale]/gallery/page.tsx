@@ -11,19 +11,19 @@ export default async function GalleryPage({ params }: Props) {
 
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5090';
 
-  let images = [];
+  let initialData = { items: [], totalCount: 0, page: 1, pageSize: 12 };
   try {
-    const res = await fetch(`${baseUrl}/api/public/albums`, {
+    const res = await fetch(`${baseUrl}/api/public/albums?page=1&pageSize=12`, {
       next: { revalidate: 3600 }
     });
-    if (res.ok) images = await res.json();
+    if (res.ok) initialData = await res.json();
   } catch (error) {
     console.error("Failed to fetch gallery images on server", error);
   }
 
   return (
     <main className="min-h-screen">
-      <GalleryContent initialImages={images} />
+      <GalleryContent initialData={initialData} />
     </main>
   );
 }

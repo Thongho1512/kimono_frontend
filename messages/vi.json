@@ -231,7 +231,7 @@
   "gallery": {
     "title": "Album Ảnh",
     "subtitle": "Những khoảnh khắc đẹp của khách hàng tại Kyo Kimono Rental",
-    "note": "Hiện tại static placeholders; để admin upload ảnh mới hàng tuần, tích hợp headless CMS hoặc Cloudinary sau."
+    "noImages": "Chưa có hình ảnh nào trong album."
   },
   "contact": {
     "title": "Liên Hệ",

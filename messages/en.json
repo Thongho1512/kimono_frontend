@@ -218,7 +218,7 @@
   "gallery": {
     "title": "Photo Gallery",
     "subtitle": "Beautiful moments of our customers at Kyo Kimono Rental",
-    "note": "Currently static placeholders; integrate headless CMS or Cloudinary for weekly admin uploads."
+    "noImages": "No images in the album yet."
   },
   "contact": {
     "title": "Contact Us",
