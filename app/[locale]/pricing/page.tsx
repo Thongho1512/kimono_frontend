@@ -12,7 +12,7 @@ export default async function PricingPage({ params }: Props) {
   const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5090';
   
   const fetchOptions = {
-    next: { revalidate: 3600 } 
+    next: { revalidate: 1800 } 
   };
 
   let categories = [];

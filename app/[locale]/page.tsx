@@ -29,13 +29,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
+
+  const baseUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5090';
+  let initialPlans = [];
+  try {
+    const res = await fetch(`${baseUrl}/api/public/products?culture=${locale}`, {
+      next: { revalidate: 1800 }
+    });
+    if (res.ok) {
+      const allProducts = await res.json();
+      initialPlans = allProducts.slice(0, 4);
+    }
+  } catch (error) {
+    console.error("Failed to fetch plans for home page", error);
+  }
+
   return (
     <main>
       {/* Hero loads immediately (above the fold) */}
       <Hero />
       {/* Everything below lazy-loads as the user scrolls */}
       <AboutSection />
-      <FeaturedPlans />
+      <FeaturedPlans initialPlans={initialPlans} />
       <ProcessSection />
       <WhyUs />
       <Testimonials />

@@ -10,19 +10,27 @@ import api from "@/lib/api";
 import { formatJPY } from "@/lib/data";
 import { FadeIn } from "./fade-in";
 
-export function FeaturedPlans() {
+interface FeaturedPlansProps {
+  initialPlans?: any[];
+}
+
+export function FeaturedPlans({ initialPlans = [] }: FeaturedPlansProps) {
   const t = useTranslations();
   const locale = useLocale();
   const prefix = `/${locale}`;
-  const [plans, setPlans] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [plans, setPlans] = useState<any[]>(initialPlans);
+  const [loading, setLoading] = useState(initialPlans.length === 0);
 
   useEffect(() => {
+    if (initialPlans.length > 0) {
+      setLoading(false);
+      return;
+    }
+
     const fetchPlans = async () => {
       try {
         const res = await api.get(`/api/public/products?culture=${locale}`);
         if (res.data) {
-          // Take first 4 as featured, or filter if backend adds a flag later
           setPlans(res.data.slice(0, 4));
         }
       } catch (err) {
@@ -32,7 +40,7 @@ export function FeaturedPlans() {
       }
     };
     fetchPlans();
-  }, [locale]);
+  }, [locale, initialPlans]);
 
   if (loading) {
     return (
