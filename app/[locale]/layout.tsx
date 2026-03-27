@@ -101,7 +101,7 @@ export default async function LocaleLayout({ children, params }: Props) {
             <LayoutWrapper>
               {children}
             </LayoutWrapper>
-            <Toaster position="top-right" richColors />
+            <Toaster position="top-right" richColors duration={2000} />
           </AuthProvider>
         </NextIntlClientProvider>
         <Analytics />

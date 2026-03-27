@@ -222,7 +222,9 @@
     "totalPeopleHint": "Tổng số người dự kiến",
     "dateFormatHint": "Định dạng: tháng/ngày/năm",
     "selectProduct": "Chọn loại kimono",
-    "searchProducts": "Tìm kiếm sản phẩm..."
+    "searchProducts": "Tìm kiếm sản phẩm...",
+    "appointmentDate": "Ngày hẹn",
+    "creationDate": "Ngày đặt đơn"
   },
   "hairstyle": {
     "title": "Mẫu Làm Tóc Cơ Bản",
@@ -342,7 +344,6 @@
     "message": "Yêu cầu của bạn đã được ghi nhận. Chúng tôi sẽ sớm liên hệ để xác nhận.",
     "nextSteps": "Các bước tiếp theo:",
     "contactSupport": "Nhân viên sẽ liên hệ với bạn qua số điện thoại hoặc email đã cung cấp để xác nhận lại thông tin và hỗ trợ chi tiết.",
-    "emergencySupport": "Hỗ trợ khẩn cấp:",
     "backHome": "Về trang chủ",
     "viewGallery": "Xem album ảnh"
   }

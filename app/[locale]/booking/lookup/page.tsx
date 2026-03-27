@@ -69,7 +69,19 @@ export default function BookingLookupPage() {
                         </h2>
                         <div className="grid gap-6">
                             {bookings.map((booking) => (
-                                <ManageBooking key={booking.id} booking={booking} onUpdate={() => handleSearch({ preventDefault: () => {} } as any)} />
+                                <ManageBooking 
+                                    key={booking.id} 
+                                    booking={booking} 
+                                    onUpdate={(updatedData) => {
+                                        if (updatedData) {
+                                            // Handle Save
+                                            setBookings(prev => prev.map(b => b.id === booking.id ? updatedData : b));
+                                        } else {
+                                            // Handle Delete
+                                            setBookings(prev => prev.filter(b => b.id !== booking.id));
+                                        }
+                                    }} 
+                                />
                             ))}
                         </div>
                     </div>

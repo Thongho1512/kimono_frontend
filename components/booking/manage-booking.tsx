@@ -53,7 +53,7 @@ import {
 
 interface ManageBookingProps {
     booking: any;
-    onUpdate: () => void;
+    onUpdate: (updatedData?: any) => void;
 }
 
 interface ProductDto {
@@ -71,6 +71,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
     const [booking, setBooking] = useState(initialBooking);
     const [isEditing, setIsEditing] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [isDeleting, setIsDeleting] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
     const [products, setProducts] = useState<(ProductDto & { categoryNameTranslated?: string })[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
@@ -173,40 +174,37 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
     const handleSave = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/public/bookings/${booking.id}`, {
-                method: 'PUT',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    customerName: booking.customerName,
-                    customerPhone: booking.customerPhone,
-                    customerEmail: booking.customerEmail,
-                    bookingDate: booking.bookingDate,
-                    arrivalTime: booking.arrivalTime,
-                    numberOfPeople: booking.numberOfPeople,
-                    adultMale: booking.adultMale,
-                    adultFemale: booking.adultFemale,
-                    childMale: booking.childMale,
-                    childFemale: booking.childFemale,
-                    childAges: booking.childAges,
-                    extraServices: booking.extraServices,
-                    note: booking.note,
-                    items: (booking.items || []).map((item: any) => ({
-                        productId: item.productId,
-                        productName: item.productName,
-                        price: item.price,
-                        quantity: item.quantity
-                    }))
-                })
+            const response = await api.put(`/api/public/bookings/${booking.id}`, {
+                customerName: booking.customerName,
+                customerPhone: booking.customerPhone,
+                customerEmail: booking.customerEmail,
+                bookingDate: booking.bookingDate,
+                arrivalTime: booking.arrivalTime,
+                numberOfPeople: booking.numberOfPeople,
+                adultMale: booking.adultMale,
+                adultFemale: booking.adultFemale,
+                childMale: booking.childMale,
+                childFemale: booking.childFemale,
+                childAges: booking.childAges,
+                extraServices: booking.extraServices,
+                note: booking.note,
+                items: (booking.items || []).map((item: any) => ({
+                    productId: item.productId,
+                    productName: item.productName,
+                    price: item.price,
+                    quantity: item.quantity
+                }))
             });
 
-            if (!response.ok) throw new Error('Update failed');
+            if (!response.data.success) throw new Error('Update failed');
             
             toast.success(t('updateSuccess'));
             setIsEditing(false);
-            onUpdate();
-        } catch (error) {
+            onUpdate(response.data.booking || booking);
+        } catch (error: any) {
             console.error('Update error:', error);
-            toast.error(t('lookupError'));
+            const backendMsg = error.response?.data?.message;
+            toast.error(backendMsg || t('lookupError'));
         } finally {
             setLoading(false);
         }
@@ -215,17 +213,19 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
     const handleCancel = async () => {
         try {
             setLoading(true);
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/public/bookings/${booking.id}`, {
-                method: 'DELETE'
-            });
+            const response = await api.delete(`/api/public/bookings/${booking.id}`);
 
-            if (!response.ok) throw new Error('Delete failed');
+            if (!response.data.success) throw new Error('Delete failed');
             
             toast.success(t('cancelSuccess'));
-            onUpdate();
-        } catch (error) {
+            setIsDeleting(true);
+            setTimeout(() => {
+                onUpdate();
+            }, 300);
+        } catch (error: any) {
             console.error('Cancel error:', error);
-            toast.error(t('lookupError'));
+            const backendMsg = error.response?.data?.message;
+            toast.error(backendMsg || t('lookupError'));
         } finally {
             setLoading(false);
         }
@@ -236,7 +236,8 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
     return (
         <div className={cn(
             "bg-white dark:bg-slate-900 rounded-2xl border transition-all duration-300 overflow-hidden",
-            isExpanded ? "ring-2 ring-primary/20 shadow-2xl" : "shadow hover:shadow-md border-primary/5"
+            isExpanded ? "ring-2 ring-primary/20 shadow-2xl" : "shadow hover:shadow-md border-primary/5",
+            isDeleting && "opacity-0 scale-95 translate-y-4 pointer-events-none"
         )}>
             {/* Header / Summary */}
             <div 
@@ -633,6 +634,30 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                 </div>
                             ) : (
                                 <div className="space-y-6">
+                                    {/* Appointment details summary */}
+                                    <div className="grid grid-cols-2 gap-4 pb-4 border-b">
+                                        <div className="space-y-1">
+                                            <Label className="text-[10px] font-bold text-slate-400 uppercase">{t('appointmentDate')}</Label>
+                                            <p className="text-sm font-bold text-primary flex items-center gap-2">
+                                                <CalendarIcon className="h-4 w-4" />
+                                                {format(new Date(booking.bookingDate), 'dd/MM/yyyy')}
+                                            </p>
+                                        </div>
+                                        <div className="space-y-1">
+                                            <Label className="text-[10px] font-bold text-slate-400 uppercase">{t('arrivalTime')}</Label>
+                                            <p className="text-sm font-bold text-primary flex items-center gap-2">
+                                                <Clock className="h-4 w-4" />
+                                                {booking.arrivalTime}
+                                            </p>
+                                        </div>
+                                        <div className="col-span-2">
+                                            <p className="text-[10px] text-muted-foreground italic flex items-center gap-2">
+                                                <CheckCircle2 className="h-3 w-3" />
+                                                {t('creationDate')}: {booking.createdAt ? format(new Date(booking.createdAt), 'HH:mm dd/MM/yyyy') : 'chưa có dữ liệu'}
+                                            </p>
+                                        </div>
+                                    </div>
+
                                     {/* Booked Items (View Mode) */}
                                     {(booking.items || []).length > 0 && (
                                         <div className="space-y-3 p-4 bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 rounded-2xl">
@@ -738,9 +763,10 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                         </Button>
                                     </>
                                 ) : (
-                                    <Button onClick={() => setIsEditing(true)} className="gap-2 font-bold">
+                                    /* <Button onClick={() => setIsEditing(true)} className="gap-2 font-bold">
                                         {t('updateBooking') || 'Thay đổi thông tin'}
-                                    </Button>
+                                    </Button> */
+                                    null
                                 )}
                             </div>
                         </div>

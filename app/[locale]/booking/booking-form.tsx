@@ -242,12 +242,17 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
     };
 
     try {
-      api.post('/api/public/bookings/send-email', payload).catch(err => console.error("Background booking failed", err));
-      router.push(`/${locale}/booking/thank-you`);
-      setCart([]);
+      const response = await api.post('/api/public/bookings/send-email', payload);
+      if (response.data.success) {
+        router.push(`/${locale}/booking/thank-you`);
+        setCart([]);
+      } else {
+        toast.error(response.data.message || "Booking failed.");
+      }
     } catch (error: any) {
       console.error("Booking submission error", error);
-      toast.error("An error occurred. Please try again.");
+      const errorMsg = error.response?.data?.message || "An error occurred. Please try again.";
+      toast.error(errorMsg);
     } finally {
       setSubmitting(false);
     }

@@ -3,6 +3,7 @@
 import { useLocale } from "next-intl";
 import { useRouter, usePathname } from "next/navigation";
 import { Globe } from "lucide-react";
+import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -20,14 +21,30 @@ const localeLabels: Record<string, string> = {
 };
 
 export function LanguageSwitcher() {
+  const [mounted, setMounted] = useState(false);
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function switchLocale(newLocale: string) {
     const segments = pathname.split("/");
     segments[1] = newLocale;
     router.push(segments.join("/"));
+  }
+
+  if (!mounted) {
+    return (
+      <Button variant="ghost" size="sm" className="gap-1.5 text-foreground">
+        <Globe className="h-4 w-4" />
+        <span className="hidden sm:inline text-sm">
+          {localeLabels[locale]}
+        </span>
+      </Button>
+    );
   }
 
   return (

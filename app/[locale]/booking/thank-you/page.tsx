@@ -52,10 +52,6 @@ export default function ThankYouPage() {
                   </Button>
                 </div>
 
-                <div className="mt-10 pt-6 border-t border-border flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-1"><Phone className="w-4 h-4" /> {t("emergencySupport")}</span>
-                  <span className="font-semibold text-foreground">086.xx.xxxxx</span>
-                </div>
               </div>
             </div>
           </div>
