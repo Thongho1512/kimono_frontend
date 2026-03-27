@@ -48,7 +48,6 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
   const [cart, setCart] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(initialProducts.length === 0);
   const [submitting, setSubmitting] = useState(false);
-  const [agreed, setAgreed] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -478,12 +477,7 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3 p-1">
-                    <input type="checkbox" id="agree" className="mt-1 h-4 w-4 rounded border-gray-300 text-primary focus:ring-primary" checked={agreed} onChange={(e) => setAgreed(e.target.checked)} />
-                    <Label htmlFor="agree" className="text-xs text-muted-foreground cursor-pointer select-none">{t("agreePolicy")}</Label>
-                  </div>
-
-                  <Button type="submit" size="lg" className="w-full" disabled={submitting || !agreed}>
+                  <Button type="submit" size="lg" className="w-full" disabled={submitting}>
                     {submitting ? t("sending") : t("submit")}
                   </Button>
                 </div>
