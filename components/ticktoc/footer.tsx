@@ -178,7 +178,14 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-sm opacity-70">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0 text-primary" />
-                <span>{storeInfo?.address || t("contact.addressValue")}</span>
+                <a 
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-primary transition-colors"
+                >
+                  {storeInfo?.address || t("contact.addressValue")}
+                </a>
               </li>
               <li className="flex items-center gap-2.5 text-sm opacity-70">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
@@ -208,9 +215,14 @@ export function Footer() {
                   );
                 })}
               </div>
-              <p className="mt-4 text-[11px] opacity-60 leading-relaxed italic border-l-2 border-primary/20 pl-3">
+              <a 
+                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-4 text-[11px] opacity-60 leading-relaxed italic border-l-2 border-primary/20 pl-3 block hover:text-primary transition-colors"
+              >
                 {storeInfo?.address || t("contact.addressValue")}
-              </p>
+              </a>
             </div>
           </div>
         </div>
@@ -241,9 +253,10 @@ export function Footer() {
             email: "kyokimononail.gc@gmail.com",
             address: {
               "@type": "PostalAddress",
-              streetAddress: "京都市東山区祇園町北側 347-25  3階",
+              streetAddress: "347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F",
               addressLocality: "Kyoto",
-              addressRegion: "Higashiyama-ku",
+              addressRegion: "Kyoto-fu",
+              postalCode: "605-0073",
               addressCountry: "JP",
             },
             openingHours: "Mo-Su 09:00-19:00",

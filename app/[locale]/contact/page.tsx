@@ -71,7 +71,7 @@ export default function ContactPage() {
       icon: MapPin,
       label: t("address"),
       value: storeInfo?.address || t("addressValue"),
-      href: storeInfo?.address ? `https://maps.google.com/?q=${encodeURIComponent(storeInfo.address)}` : "https://maps.google.com/?q=123+Nguyen+Hue+District+1+Ho+Chi+Minh+City",
+      href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan")}`,
     },
     {
       icon: Phone,

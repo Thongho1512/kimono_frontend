@@ -10,7 +10,7 @@ export function ShopMap({ title }: ShopMapProps) {
   return (
     <div className="relative aspect-[4/3] rounded-2xl overflow-hidden ticktoc-shadow border border-border">
       <iframe
-        src="https://maps.google.com/maps?q=京都市東山区祇園町北側347-25&t=&z=16&ie=UTF8&iwloc=&output=embed"
+        src="https://maps.google.com/maps?q=347-25%20Gionmachi%20Kitagawa,%20Higashiyama%20Ward,%203F,%20Kyoto%20605-0073,%20Japan&t=&z=18&ie=UTF8&iwloc=&output=embed"
         width="100%"
         height="100%"
         style={{ border: 0 }}

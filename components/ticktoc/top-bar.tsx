@@ -58,14 +58,19 @@ export function TopBar() {
                         </div>
                         <span>{storeInfo?.sdt || t("contact.phoneValue")}</span>
                     </a>
-                    <div className="hidden md:flex items-center gap-2 opacity-80 hover:opacity-100 transition-all duration-300">
-                        <div className="p-1 rounded-full bg-background/10">
+                    <a
+                        href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hidden md:flex items-center gap-2 opacity-80 hover:opacity-100 hover:text-primary transition-all duration-300 group/address"
+                    >
+                        <div className="p-1 rounded-full bg-background/10 group-hover/address:bg-primary/20 transition-colors">
                             <MapPin className="h-3 w-3 text-primary" />
                         </div>
                         <span className="truncate max-w-[200px] lg:max-w-none">
                             {storeInfo?.address || t("contact.addressValue")}
                         </span>
-                    </div>
+                    </a>
                 </div>
 
                 {/* Social Links */}
