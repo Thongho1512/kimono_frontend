@@ -49,10 +49,10 @@ export function ChangePasswordDialog() {
             <DialogTrigger asChild>
                 <Button 
                     variant="ghost" 
-                    className="w-full justify-start gap-3 text-slate-400 hover:text-white hover:bg-slate-800 px-4 pr-8 py-2.5 h-auto transition-all duration-200"
+                    className="w-full justify-start gap-3 text-slate-400 hover:text-white hover:bg-slate-800 px-4 py-2 h-10 transition-all duration-200"
                 >
-                    <Lock className="h-5 w-5" />
-                    Đổi mật khẩu
+                    <Lock className="h-4 w-4" />
+                    <span className="truncate">Đổi mật khẩu</span>
                 </Button>
             </DialogTrigger>
             <DialogContent>

@@ -24,6 +24,7 @@ interface ProductDto {
   rentalPriceMax: number;
   priceType: string;
   categoryName?: string;
+  categoryNameTranslated?: string;
   images: { url: string }[];
 }
 
@@ -110,9 +111,11 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
       
       const isRange = product.priceType === "range" || product.priceType === "Khoảng";
       
+      const catName = product.categoryNameTranslated || product.categoryName || "";
+      
       return [...prev, {
         productId: product.id,
-        productName: product.categoryName ? `${product.categoryName} - ${product.name}` : product.name,
+        productName: catName ? `${catName} - ${product.name}` : product.name,
         priceMin: isRange ? product.rentalPriceMin : (product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay),
         priceMax: isRange ? product.rentalPriceMax : (product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay),
         priceType: product.priceType,
@@ -180,6 +183,13 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
     return formatJPY(min);
   };
 
+  const groupedProducts = products.reduce((acc, product) => {
+    const catName = product.categoryNameTranslated || product.categoryName || (locale === 'en' ? 'Other' : (locale === 'ja' ? 'その他' : (locale === 'ko' ? '기타' : (locale === 'zh' ? '其他' : 'Khác'))));
+    if (!acc[catName]) acc[catName] = [];
+    acc[catName].push(product);
+    return acc;
+  }, {} as Record<string, ProductDto[]>);
+
   const validateForm = () => {
     if (cart.length === 0) {
       toast.error(t("pleaseSelectService"));
@@ -229,7 +239,7 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
       childMale: extraInfo.childMale,
       childFemale: extraInfo.childFemale,
       childAges: extraInfo.children.map((c, i) => `${c.gender === "male" ? "Bé trai" : "Bé gái"} ${i+1}: ${c.age || "chưa rõ"} tuổi`).join(", "),
-      extraServices: [extraInfo.photoService && "Chụp ảnh", extraInfo.makeupService && "Makeup"].filter(Boolean).join(", "),
+      extraServices: [extraInfo.photoService && "Chụp ảnh", extraInfo.makeupService && "Làm tóc"].filter(Boolean).join(", "),
       note: formData.note,
       items: cart.map(item => ({
         productId: item.productId,
@@ -305,31 +315,40 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
               <ShoppingBag className="h-5 w-5 text-primary" />
               {t("selectServices")}
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {products.map(product => (
-                <div key={product.id} className="bg-card border border-border rounded-lg p-4 flex gap-4 hover:border-primary/50 transition-colors">
-                  <div className="relative w-20 h-24 shrink-0 rounded-md overflow-hidden bg-secondary">
-                    <Image
-                      src={product.images?.[0]?.url || "/placeholder.svg"}
-                      alt={product.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex-1 flex flex-col justify-between">
-                    <div>
-                      <h3 className="font-medium line-clamp-1" title={product.name}>{product.name}</h3>
-                      <p className="text-primary font-bold text-sm">
-                        {formatRange(
-                          product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay, 
-                          product.rentalPriceMax, 
-                          product.priceType
-                        )}
-                      </p>
-                    </div>
-                    <Button size="sm" variant="secondary" onClick={() => addToCart(product)} className="w-full mt-2 h-8">
-                      <Plus className="h-3 w-3 mr-1" /> {t("add")}
-                    </Button>
+            <div className="space-y-8">
+              {Object.entries(groupedProducts).map(([category, items]) => (
+                <div key={category} className="space-y-4">
+                  <h3 className="font-serif text-lg font-bold border-b border-border pb-2 text-primary">{category}</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {items.map(product => (
+                      <div key={product.id} className="bg-card border border-border rounded-lg p-4 flex gap-4 hover:border-primary/50 transition-colors">
+                        <div className="relative w-20 h-24 shrink-0 rounded-md overflow-hidden bg-secondary">
+                          <Image
+                            src={product.images?.[0]?.url || "/placeholder.svg"}
+                            alt={product.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <div className="flex-1 flex flex-col justify-between">
+                          <div>
+                            <h3 className="font-medium line-clamp-2 leading-tight" title={`${category} - ${product.name}`}>
+                              {category} - {product.name}
+                            </h3>
+                            <p className="text-primary font-bold text-sm mt-1">
+                              {formatRange(
+                                product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay, 
+                                product.rentalPriceMax, 
+                                product.priceType
+                              )}
+                            </p>
+                          </div>
+                          <Button size="sm" variant="secondary" onClick={() => addToCart(product)} className="w-full mt-2 h-8">
+                            <Plus className="h-3 w-3 mr-1" /> {t("add")}
+                          </Button>
+                        </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               ))}
@@ -474,7 +493,7 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
                     <Label className="font-semibold">{t("extraServices") || "Dịch vụ đi kèm"}</Label>
                     <div className="flex flex-wrap gap-3 mt-1">
                       <Button type="button" variant={extraInfo.photoService ? "default" : "outline"} onClick={() => setExtraInfo(p => ({...p, photoService: !p.photoService}))} className="rounded-full shadow-sm transition-all">📸 Chụp ảnh</Button>
-                      <Button type="button" variant={extraInfo.makeupService ? "default" : "outline"} onClick={() => setExtraInfo(p => ({...p, makeupService: !p.makeupService}))} className="rounded-full shadow-sm transition-all">💄 Makeup</Button>
+                      <Button type="button" variant={extraInfo.makeupService ? "default" : "outline"} onClick={() => setExtraInfo(p => ({...p, makeupService: !p.makeupService}))} className="rounded-full shadow-sm transition-all">💇‍♀️ {t('makeupService')}</Button>
                     </div>
                   </div>
 

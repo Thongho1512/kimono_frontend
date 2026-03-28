@@ -2,13 +2,13 @@
 
 import { useState, useEffect } from 'react';
 import { format } from 'date-fns';
-import { 
-    Calendar as CalendarIcon, 
-    Filter, 
-    Search, 
-    MoreHorizontal, 
-    CheckCircle2, 
-    XCircle, 
+import {
+    Calendar as CalendarIcon,
+    Filter,
+    Search,
+    MoreHorizontal,
+    CheckCircle2,
+    XCircle,
     Clock,
     User,
     Phone,
@@ -75,7 +75,7 @@ export default function BookingsPage() {
             setLoading(true);
             const dateStr = date ? format(date, 'yyyy-MM-dd') : '';
             const response = await api.get(`/api/Admin/bookings?date=${dateStr}`);
-            
+
             // Sort by Status (Confirmed first, then Completed, then Cancelled), then by arrival time (ascending)
             const sortedData = response.data.map((booking: any) => {
                 // Normalize status from integer to string
@@ -90,17 +90,17 @@ export default function BookingsPage() {
                     if (status === 'Completed') return 1;
                     return 2; // Cancelled
                 };
-                
+
                 const weightA = getStatusWeight(a.status);
                 const weightB = getStatusWeight(b.status);
-                
+
                 if (weightA !== weightB) {
                     return weightA - weightB;
                 }
-                
+
                 return a.arrivalTime.localeCompare(b.arrivalTime);
             });
-            
+
             setBookings(sortedData);
         } catch (error) {
             console.error('Error fetching bookings:', error);
@@ -141,7 +141,7 @@ export default function BookingsPage() {
             let statusInt = 0; // Confirmed
             if (statusStr === 'Cancelled') statusInt = 1;
             if (statusStr === 'Completed') statusInt = 2;
-            
+
             await api.put(`/api/Admin/bookings/${id}/status?status=${statusInt}`);
             toast.success('Cập nhật trạng thái thành công');
             fetchBookings();
@@ -163,31 +163,41 @@ export default function BookingsPage() {
         }
     };
 
-    const filteredBookings = bookings.filter(booking => 
+    const filteredBookings = bookings.filter(booking =>
         booking.customerName.toLowerCase().includes(searchQuery.toLowerCase()) ||
         booking.customerPhone.includes(searchQuery) ||
         booking.customerEmail.toLowerCase().includes(searchQuery.toLowerCase())
     );
 
-    const arrivalTimeGroups = filteredBookings.reduce((acc, booking) => {
-        acc[booking.arrivalTime] = (acc[booking.arrivalTime] || 0) + 1;
+    const getBlock = (timeStr: string) => {
+        if (!timeStr || !timeStr.includes(':')) return timeStr;
+        const [h, m] = timeStr.split(':').map(Number);
+        if (isNaN(h) || isNaN(m)) return timeStr;
+        const minBlock = m < 30 ? '00' : '30';
+        return `${h.toString().padStart(2, '0')}:${minBlock}`;
+    };
+
+    const blockGroups = filteredBookings.reduce((acc, booking) => {
+        if (booking.status !== 'Confirmed') return acc;
+        const block = getBlock(booking.arrivalTime);
+        acc[block] = (acc[block] || 0) + 1;
         return acc;
     }, {} as Record<string, number>);
 
     const colors = [
-        'bg-[#fff7ed] dark:bg-orange-950/20 border-l-[4px] border-l-orange-400', 
-        'bg-[#f0fdfa] dark:bg-teal-950/20 border-l-[4px] border-l-teal-400', 
-        'bg-[#eff6ff] dark:bg-blue-950/20 border-l-[4px] border-l-blue-400', 
-        'bg-[#fdf4ff] dark:bg-fuchsia-950/20 border-l-[4px] border-l-fuchsia-400', 
+        'bg-[#fff7ed] dark:bg-orange-950/20 border-l-[4px] border-l-orange-400',
+        'bg-[#f0fdfa] dark:bg-teal-950/20 border-l-[4px] border-l-teal-400',
+        'bg-[#eff6ff] dark:bg-blue-950/20 border-l-[4px] border-l-blue-400',
+        'bg-[#fdf4ff] dark:bg-fuchsia-950/20 border-l-[4px] border-l-fuchsia-400',
         'bg-[#fefce8] dark:bg-yellow-950/20 border-l-[4px] border-l-yellow-400'
     ];
-    
-    const arrivalTimeColors: Record<string, string> = {};
+
+    const blockColors: Record<string, string> = {};
     let colorIndex = 0;
 
-    Object.entries(arrivalTimeGroups).forEach(([time, count]) => {
-        if (count > 1) { 
-            arrivalTimeColors[time] = colors[colorIndex % colors.length];
+    Object.entries(blockGroups).sort().forEach(([block, count]) => {
+        if (count > 1) {
+            blockColors[block] = colors[colorIndex % colors.length];
             colorIndex++;
         }
     });
@@ -209,14 +219,14 @@ export default function BookingsPage() {
                 <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
                     <div className="relative w-full sm:w-64">
                         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-                        <Input 
-                            placeholder="Tìm tên, SĐT, email..." 
+                        <Input
+                            placeholder="Tìm tên, SĐT, email..."
                             className="pl-9"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                         />
                     </div>
-                    
+
                     <Popover>
                         <PopoverTrigger asChild>
                             <Button
@@ -239,12 +249,12 @@ export default function BookingsPage() {
                             />
                         </PopoverContent>
                     </Popover>
-                    
+
                     <Button variant="ghost" size="icon" onClick={() => setDate(undefined)} title="Xóa lọc ngày">
                         <Filter className="h-4 w-4" />
                     </Button>
                 </div>
-                
+
                 <div className="text-sm font-medium text-slate-500">
                     Tổng số: <span className="text-slate-900 dark:text-slate-100">{filteredBookings.length}</span> đơn
                 </div>
@@ -280,7 +290,7 @@ export default function BookingsPage() {
                             </TableRow>
                         ) : (
                             filteredBookings.map((booking) => (
-                                <TableRow key={booking.id} className={cn("hover:bg-slate-50/50 dark:hover:bg-slate-800/50 cursor-pointer group transition-colors duration-200", arrivalTimeColors[booking.arrivalTime] || "")} onClick={() => {
+                                <TableRow key={booking.id} className={cn("hover:bg-slate-50/50 dark:hover:bg-slate-800/50 cursor-pointer group transition-colors duration-200", booking.status === 'Confirmed' && blockColors[getBlock(booking.arrivalTime)] || "")} onClick={() => {
                                     setSelectedBookingId(booking.id);
                                     setIsDetailsOpen(true);
                                 }}>
@@ -355,8 +365,8 @@ export default function BookingsPage() {
                                                         Đánh dấu Hoàn thành
                                                     </DropdownMenuItem>
                                                 )}
-                                                <DropdownMenuItem 
-                                                    className="text-red-600 focus:text-red-600" 
+                                                <DropdownMenuItem
+                                                    className="text-red-600 focus:text-red-600"
                                                     onClick={(e) => {
                                                         e.stopPropagation();
                                                         handleDelete(booking.id);
@@ -375,9 +385,9 @@ export default function BookingsPage() {
             </div>
 
             {selectedBookingId && (
-                <BookingDetails 
-                    id={selectedBookingId} 
-                    isOpen={isDetailsOpen} 
+                <BookingDetails
+                    id={selectedBookingId}
+                    isOpen={isDetailsOpen}
                     onClose={() => {
                         setIsDetailsOpen(false);
                         setSelectedBookingId(null);
@@ -386,10 +396,10 @@ export default function BookingsPage() {
                 />
             )}
 
-            <CreateBookingDialog 
-                isOpen={isCreateOpen} 
-                onClose={() => setIsCreateOpen(false)} 
-                onSuccess={fetchBookings} 
+            <CreateBookingDialog
+                isOpen={isCreateOpen}
+                onClose={() => setIsCreateOpen(false)}
+                onSuccess={fetchBookings}
             />
         </div>
     );

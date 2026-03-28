@@ -574,8 +574,8 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                             {/* Show current services as tags with X */}
                                             {(booking.extraServices || '').split(', ').filter((s: string) => s).map((service: string) => (
                                                 <Badge key={service} variant="secondary" className="gap-1 py-1 px-3 bg-primary/10 text-primary border-primary/20">
-                                                    {service === 'Chụp ảnh' ? '📸 ' : (service === 'Makeup' ? '💄 ' : '')}
-                                                    {service === 'Chụp ảnh' ? t('photoService') : (service === 'Makeup' ? t('makeupService') : service)}
+                                                    {service === 'Chụp ảnh' ? '📸 ' : (service === 'Makeup' || service === 'Làm tóc' ? '💇‍♀️ ' : '')}
+                                                    {service === 'Chụp ảnh' ? t('photoService') : (service === 'Makeup' || service === 'Làm tóc' ? t('makeupService') : service)}
                                                     <button 
                                                         onClick={() => {
                                                             const services = (booking.extraServices || '').split(', ').filter((s: string) => s !== service);
@@ -604,7 +604,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                                     <Plus className="h-3 w-3 mr-1" /> {t('photoService')}
                                                 </Button>
                                             )}
-                                            {!(booking.extraServices || '').includes('Makeup') && (
+                                            {!((booking.extraServices || '').includes('Makeup') || (booking.extraServices || '').includes('Làm tóc')) && (
                                                 <Button 
                                                     type="button" 
                                                     variant="outline" 
@@ -612,7 +612,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                                     className="rounded-full text-[10px] h-7 dashed border-dashed bg-slate-50/50"
                                                     onClick={() => {
                                                         const services = (booking.extraServices || '').split(', ').filter((s: string) => s);
-                                                        services.push('Makeup');
+                                                        services.push('Làm tóc');
                                                         setBooking({...booking, extraServices: services.join(', ')});
                                                     }}
                                                 >

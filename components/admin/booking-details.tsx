@@ -2,15 +2,15 @@
 
 import { useState, useEffect } from 'react';
 import { format, isValid } from 'date-fns';
-import { 
-    X, 
-    User, 
-    Phone, 
-    Mail, 
-    Calendar as CalendarIcon, 
-    Clock, 
-    Users, 
-    FileText, 
+import {
+    X,
+    User,
+    Phone,
+    Mail,
+    Calendar as CalendarIcon,
+    Clock,
+    Users,
+    FileText,
     CreditCard,
     CheckCircle2,
     XCircle,
@@ -70,7 +70,7 @@ export function BookingDetails({ id, isOpen, onClose, onUpdate }: BookingDetails
             let statusInt = 0; // Confirmed
             if (statusStr === 'Cancelled') statusInt = 1;
             if (statusStr === 'Completed') statusInt = 2;
-            
+
             await api.put(`/api/Admin/bookings/${id}/status?status=${statusInt}`);
             toast.success('Cập nhật trạng thái thành công');
             fetchDetail();
@@ -232,7 +232,7 @@ export function BookingDetails({ id, isOpen, onClose, onUpdate }: BookingDetails
                                             <span className="bg-slate-50 px-3 py-1 rounded-full border">👧 Bé gái: {booking.childFemale}</span>
                                         </div>
                                         <p className="text-xs text-muted-foreground mt-3 font-medium">Tổng cộng: {booking.numberOfPeople} người</p>
-                                        
+
                                         {(booking.childMale > 0 || booking.childFemale > 0) && (
                                             <div className="mt-3 p-2 bg-amber-50 border border-amber-200 rounded-lg text-amber-800 text-sm font-medium">
                                                 🍼 Tuổi các bé: {booking.childAges ? booking.childAges : "Khách không ghi số tuổi"}
@@ -265,7 +265,7 @@ export function BookingDetails({ id, isOpen, onClose, onUpdate }: BookingDetails
                                         {booking.extraServices ? booking.extraServices : "Không có"}
                                     </p>
                                 </div>
-                                
+
                                 <div>
                                     <p className="text-xs text-slate-500 font-medium uppercase mb-1">Ghi chú từ khách</p>
                                     <p className="text-sm italic p-2 bg-white dark:bg-slate-900 rounded border text-slate-700 dark:text-slate-300">
@@ -291,7 +291,11 @@ export function BookingDetails({ id, isOpen, onClose, onUpdate }: BookingDetails
                                             </div>
                                             <div className="flex items-center gap-4">
                                                 <span className="text-xs bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded text-slate-500 font-bold">x{item.quantity}</span>
-                                                <span className="text-sm font-bold">{item.price?.toLocaleString()} ¥</span>
+                                                <span className="text-sm font-bold">
+                                                    {item.priceMax && item.priceMax > item.price
+                                                        ? `${item.price.toLocaleString()} - ${item.priceMax.toLocaleString()}`
+                                                        : item.price?.toLocaleString()} ¥
+                                                </span>
                                             </div>
                                         </div>
                                     ))
@@ -309,16 +313,16 @@ export function BookingDetails({ id, isOpen, onClose, onUpdate }: BookingDetails
                         <div className="pt-10 space-y-4">
                             {currentStatus === 'Confirmed' ? (
                                 <div className="grid grid-cols-2 gap-4">
-                                    <Button 
-                                        variant="default" 
+                                    <Button
+                                        variant="default"
                                         className="h-14 w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold text-base gap-2.5 rounded-xl shadow-lg shadow-blue-500/25 transition-all duration-200 hover:scale-[1.02] active:scale-95 border-none"
                                         onClick={() => handleUpdateStatus('Completed')}
                                     >
                                         <CheckCircle2 className="h-5 w-5" />
                                         Hoàn thành đơn
                                     </Button>
-                                    <Button 
-                                        variant="outline" 
+                                    <Button
+                                        variant="outline"
                                         className="h-14 w-full border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 hover:border-red-300 font-medium text-base gap-2 rounded-xl transition-all duration-200 active:scale-95"
                                         onClick={handleDelete}
                                     >
@@ -327,8 +331,8 @@ export function BookingDetails({ id, isOpen, onClose, onUpdate }: BookingDetails
                                     </Button>
                                 </div>
                             ) : (
-                                <Button 
-                                    variant="destructive" 
+                                <Button
+                                    variant="destructive"
                                     className="h-14 w-full bg-red-600 hover:bg-red-700 text-white font-bold text-base gap-2.5 rounded-xl shadow-lg shadow-red-500/25 transition-all duration-200 hover:scale-[1.01] active:scale-95"
                                     onClick={handleDelete}
                                 >
