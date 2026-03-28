@@ -72,29 +72,29 @@ export default function ContactPage() {
     {
       icon: MapPin,
       label: t("address"),
-      value: storeInfo?.address || t("addressValue"),
+      value: t("addressValue"),
       href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan")}`,
     },
     {
       icon: Phone,
       label: t("phone"),
-      value: storeInfo?.sdt || t("phoneValue"),
-      href: `tel:${storeInfo?.sdt || "070-9150-0677"}`,
+      value: t("phoneValue"),
+      href: `tel:${t("phoneValue")}`,
     },
     {
       icon: Mail,
       label: t("email"),
-      value: storeInfo?.email || t("emailValue"),
-      href: `mailto:${storeInfo?.email || "kyokimononail.gc@gmail.com"}`,
+      value: t("emailValue"),
+      href: `mailto:${t("emailValue")}`,
     },
     {
       icon: Clock,
       label: t("hours"),
-      value: storeInfo ? `${storeInfo.openTime} - ${storeInfo.closeTime}, ${storeInfo.dayOfWeek}` : t("hoursValue"),
+      value: `${t("hoursValue")} (${t("japanTime")})`,
     },
   ];
 
-  const nearbyPlaces = (storeInfo !== null ? storeInfo.nearbyPlaces : t("nearbyPlaces")).split(",").map((s) => s.trim()).filter(Boolean);
+  const nearbyPlaces = (storeInfo?.nearbyPlaces || t("nearbyPlaces")).split(",").map((s) => s.trim()).filter(Boolean);
 
   return (
     <main className="min-h-screen">

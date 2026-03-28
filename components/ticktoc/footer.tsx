@@ -63,7 +63,7 @@ export function Footer() {
                 />
               </div>
               <span className="font-serif text-lg font-semibold uppercase">
-                {storeInfo?.name || "Kyo Kimono Rental"}
+                Kyo Kimono Rental
               </span>
             </Link>
             <p className="text-sm leading-relaxed opacity-70">
@@ -189,16 +189,16 @@ export function Footer() {
                   rel="noopener noreferrer"
                   className="hover:text-primary transition-colors"
                 >
-                  {storeInfo?.address || t("contact.addressValue")}
+                  {t("contact.addressValue")}
                 </a>
               </li>
               <li className="flex items-center gap-2.5 text-sm opacity-70">
                 <Phone className="h-4 w-4 shrink-0 text-primary" />
-                <span>{storeInfo?.sdt || t("contact.phoneValue")}</span>
+                <span>{t("contact.phoneValue")}</span>
               </li>
               <li className="flex items-center gap-2.5 text-sm opacity-70">
                 <Mail className="h-4 w-4 shrink-0 text-primary" />
-                <span>{storeInfo?.email || t("contact.emailValue")}</span>
+                <span>{t("contact.emailValue")}</span>
               </li>
             </ul>
             <div className="mt-5">
@@ -210,7 +210,7 @@ export function Footer() {
                   return (
                     <a
                       key={idx}
-                      href={`https://www.google.com/maps/search/${encodeURIComponent(cleanedPlace + " " + (storeInfo?.address || ""))}`}
+                      href={`https://www.google.com/maps/search/${encodeURIComponent(cleanedPlace + " " + t("contact.addressValue"))}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-[10px] bg-background/5 border border-background/10 px-2.5 py-1.5 rounded-md hover:bg-primary/20 hover:border-primary/30 transition-all duration-300 hover:scale-105"
@@ -226,7 +226,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 className="mt-4 text-[11px] opacity-60 leading-relaxed italic border-l-2 border-primary/20 pl-3 block hover:text-primary transition-colors"
               >
-                {storeInfo?.address || t("contact.addressValue")}
+                {t("contact.addressValue")}
               </a>
             </div>
           </div>
