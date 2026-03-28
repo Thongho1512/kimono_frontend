@@ -14,7 +14,7 @@ export default async function HairstylePage({ params }: Props) {
   let styles = [];
   try {
     const res = await fetch(`${baseUrl}/api/public/hair-styles?culture=${locale}`, {
-      next: { revalidate: 1800 }
+      cache: "no-store"
     });
     if (res.ok) styles = await res.json();
   } catch (error) {

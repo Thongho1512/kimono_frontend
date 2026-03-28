@@ -13,7 +13,7 @@ async function getPlan(slug: string, locale: string) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5090";
   try {
     const res = await fetch(`${apiUrl}/api/public/products/${slug}?culture=${locale}`, {
-      next: { revalidate: 1800 },
+      cache: "no-store",
     });
     if (!res.ok) return null;
     return res.json();
@@ -27,7 +27,7 @@ async function getRelatedPlans(locale: string) {
   const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5090";
   try {
     const res = await fetch(`${apiUrl}/api/public/products?culture=${locale}`, {
-      next: { revalidate: 1800 },
+      cache: "no-store",
     });
     if (!res.ok) return [];
     const data = await res.json();

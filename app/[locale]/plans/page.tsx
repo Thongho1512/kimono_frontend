@@ -17,10 +17,10 @@ export default async function PlansPage({ params }: Props) {
   try {
     const [catsRes, prodsRes] = await Promise.all([
       fetch(`${baseUrl}/api/public/products/categories?culture=${locale}`, {
-        next: { revalidate: 1800 }
+        cache: "no-store"
       }),
       fetch(`${baseUrl}/api/public/products?culture=${locale}`, {
-        next: { revalidate: 1800 }
+        cache: "no-store"
       })
     ]);
 

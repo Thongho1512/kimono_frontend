@@ -14,7 +14,7 @@ export default async function GalleryPage({ params }: Props) {
   let initialData = { items: [], totalCount: 0, page: 1, pageSize: 12 };
   try {
     const res = await fetch(`${baseUrl}/api/public/albums?page=1&pageSize=12`, {
-      next: { revalidate: 1800 }
+      cache: "no-store"
     });
     if (res.ok) initialData = await res.json();
   } catch (error) {

@@ -14,7 +14,7 @@ export default async function BookingPage({ params }: Props) {
   let products = [];
   try {
     const res = await fetch(`${baseUrl}/api/public/products?culture=${locale}`, {
-      next: { revalidate: 1800 }
+      cache: "no-store"
     });
     if (res.ok) products = await res.json();
   } catch (error) {

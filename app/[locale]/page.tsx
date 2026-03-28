@@ -34,7 +34,7 @@ export default async function HomePage({ params }: Props) {
   let initialPlans = [];
   try {
     const res = await fetch(`${baseUrl}/api/public/products?culture=${locale}`, {
-      next: { revalidate: 1800 }
+      cache: "no-store"
     });
     if (res.ok) {
       const allProducts = await res.json();
