@@ -44,6 +44,7 @@ import { toast } from 'sonner';
 import { BookingDetails } from '@/components/admin/booking-details';
 import { CreateBookingDialog } from '@/components/admin/create-booking-dialog';
 import * as signalR from '@microsoft/signalr';
+import api from '@/lib/api';
 
 interface Booking {
     id: string;
@@ -53,7 +54,7 @@ interface Booking {
     rentalDate: string;
     arrivalTime: string;
     numberOfPeople: number;
-    status: 'Confirmed' | 'Cancelled';
+    status: 'Confirmed' | 'Cancelled' | 'Completed';
     note?: string;
     totalPrice: number;
     createdAt: string;
@@ -73,12 +74,30 @@ export default function BookingsPage() {
         try {
             setLoading(true);
             const dateStr = date ? format(date, 'yyyy-MM-dd') : '';
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Admin/bookings?date=${dateStr}`);
-            if (!response.ok) throw new Error('Failed to fetch bookings');
-            const data = await response.json();
+            const response = await api.get(`/api/Admin/bookings?date=${dateStr}`);
             
-            // Sorting by arrival time (ascending)
-            const sortedData = data.sort((a: Booking, b: Booking) => {
+            // Sort by Status (Confirmed first, then Completed, then Cancelled), then by arrival time (ascending)
+            const sortedData = response.data.map((booking: any) => {
+                // Normalize status from integer to string
+                let statusStr = booking.status;
+                if (statusStr === 0) statusStr = 'Confirmed';
+                else if (statusStr === 1) statusStr = 'Cancelled';
+                else if (statusStr === 2) statusStr = 'Completed';
+                return { ...booking, status: statusStr };
+            }).sort((a: Booking, b: Booking) => {
+                const getStatusWeight = (status: string) => {
+                    if (status === 'Confirmed') return 0;
+                    if (status === 'Completed') return 1;
+                    return 2; // Cancelled
+                };
+                
+                const weightA = getStatusWeight(a.status);
+                const weightB = getStatusWeight(b.status);
+                
+                if (weightA !== weightB) {
+                    return weightA - weightB;
+                }
+                
                 return a.arrivalTime.localeCompare(b.arrivalTime);
             });
             
@@ -96,7 +115,9 @@ export default function BookingsPage() {
 
         // SignalR Connection
         const connection = new signalR.HubConnectionBuilder()
-            .withUrl(`${process.env.NEXT_PUBLIC_API_URL}/hubs/booking`)
+            .withUrl(`${process.env.NEXT_PUBLIC_API_URL}/hubs/booking`, {
+                withCredentials: true
+            })
             .withAutomaticReconnect()
             .build();
 
@@ -115,12 +136,13 @@ export default function BookingsPage() {
         };
     }, [date]);
 
-    const handleUpdateStatus = async (id: string, status: string) => {
+    const handleUpdateStatus = async (id: string, statusStr: string) => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Admin/bookings/${id}/status?status=${status}`, {
-                method: 'PUT',
-            });
-            if (!response.ok) throw new Error('Failed to update status');
+            let statusInt = 0; // Confirmed
+            if (statusStr === 'Cancelled') statusInt = 1;
+            if (statusStr === 'Completed') statusInt = 2;
+            
+            await api.put(`/api/Admin/bookings/${id}/status?status=${statusInt}`);
             toast.success('Cập nhật trạng thái thành công');
             fetchBookings();
         } catch (error) {
@@ -132,10 +154,7 @@ export default function BookingsPage() {
     const handleDelete = async (id: string) => {
         if (!confirm('Bạn có chắc chắn muốn xóa đơn đặt lịch này?')) return;
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/Admin/bookings/${id}`, {
-                method: 'DELETE',
-            });
-            if (!response.ok) throw new Error('Failed to delete booking');
+            await api.delete(`/api/Admin/bookings/${id}`);
             toast.success('Xóa đơn đặt lịch thành công');
             fetchBookings();
         } catch (error) {
@@ -149,6 +168,29 @@ export default function BookingsPage() {
         booking.customerPhone.includes(searchQuery) ||
         booking.customerEmail.toLowerCase().includes(searchQuery.toLowerCase())
     );
+
+    const arrivalTimeGroups = filteredBookings.reduce((acc, booking) => {
+        acc[booking.arrivalTime] = (acc[booking.arrivalTime] || 0) + 1;
+        return acc;
+    }, {} as Record<string, number>);
+
+    const colors = [
+        'bg-[#fff7ed] dark:bg-orange-950/20 border-l-[4px] border-l-orange-400', 
+        'bg-[#f0fdfa] dark:bg-teal-950/20 border-l-[4px] border-l-teal-400', 
+        'bg-[#eff6ff] dark:bg-blue-950/20 border-l-[4px] border-l-blue-400', 
+        'bg-[#fdf4ff] dark:bg-fuchsia-950/20 border-l-[4px] border-l-fuchsia-400', 
+        'bg-[#fefce8] dark:bg-yellow-950/20 border-l-[4px] border-l-yellow-400'
+    ];
+    
+    const arrivalTimeColors: Record<string, string> = {};
+    let colorIndex = 0;
+
+    Object.entries(arrivalTimeGroups).forEach(([time, count]) => {
+        if (count > 1) { 
+            arrivalTimeColors[time] = colors[colorIndex % colors.length];
+            colorIndex++;
+        }
+    });
 
     return (
         <div className="space-y-6">
@@ -238,19 +280,19 @@ export default function BookingsPage() {
                             </TableRow>
                         ) : (
                             filteredBookings.map((booking) => (
-                                <TableRow key={booking.id} className="hover:bg-slate-50/50 dark:hover:bg-slate-800/50 cursor-pointer group" onClick={() => {
+                                <TableRow key={booking.id} className={cn("hover:bg-slate-50/50 dark:hover:bg-slate-800/50 cursor-pointer group transition-colors duration-200", arrivalTimeColors[booking.arrivalTime] || "")} onClick={() => {
                                     setSelectedBookingId(booking.id);
                                     setIsDetailsOpen(true);
                                 }}>
                                     <TableCell>
-                                        <div className="flex items-center gap-2 font-semibold text-primary">
-                                            <Clock className="h-3 w-3" />
+                                        <div className="flex items-center gap-2 font-semibold text-slate-800 dark:text-slate-200">
+                                            <Clock className="h-3 w-3 text-primary" />
                                             {booking.arrivalTime}
                                         </div>
                                     </TableCell>
                                     <TableCell>
                                         <div className="flex flex-col">
-                                            <span className="font-medium">{booking.customerName}</span>
+                                            <span className="font-medium text-slate-900 dark:text-slate-100">{booking.customerName}</span>
                                             <span className="text-xs text-muted-foreground md:hidden">{booking.customerPhone}</span>
                                         </div>
                                     </TableCell>
@@ -266,17 +308,24 @@ export default function BookingsPage() {
                                             </div>
                                         </div>
                                     </TableCell>
-                                    <TableCell className="text-center font-medium">
+                                    <TableCell className="text-center font-bold text-slate-700 dark:text-slate-300">
                                         {booking.numberOfPeople}
                                     </TableCell>
                                     <TableCell>
-                                        {booking.status === 'Cancelled' ? (
-                                            <Badge variant="destructive" className="gap-1 bg-red-100 text-red-700 hover:bg-red-200 border-none">
+                                        {booking.status === 'Cancelled' && (
+                                            <Badge variant="destructive" className="gap-1 bg-red-100 text-red-700 hover:bg-red-200 border-none shadow-none">
                                                 <XCircle className="h-3 w-3" />
                                                 Đã hủy
                                             </Badge>
-                                        ) : (
-                                            <Badge variant="outline" className="gap-1 bg-green-100 text-green-700 hover:bg-green-200 border-none">
+                                        )}
+                                        {booking.status === 'Completed' && (
+                                            <Badge variant="default" className="gap-1 bg-blue-100 text-blue-700 hover:bg-blue-200 border-none shadow-none">
+                                                <CheckCircle2 className="h-3 w-3" />
+                                                Hoàn thành
+                                            </Badge>
+                                        )}
+                                        {booking.status === 'Confirmed' && (
+                                            <Badge variant="outline" className="gap-1 bg-green-100 text-green-700 hover:bg-green-200 border-none shadow-none">
                                                 <CheckCircle2 className="h-3 w-3" />
                                                 Đã xác nhận
                                             </Badge>
@@ -285,7 +334,7 @@ export default function BookingsPage() {
                                     <TableCell className="text-right">
                                         <DropdownMenu>
                                             <DropdownMenuTrigger asChild onClick={(e) => e.stopPropagation()}>
-                                                <Button variant="ghost" size="icon" className="h-8 w-8">
+                                                <Button variant="ghost" size="icon" className="h-8 w-8 text-slate-400 hover:text-slate-600">
                                                     <MoreHorizontal className="h-4 w-4" />
                                                 </Button>
                                             </DropdownMenuTrigger>
@@ -298,12 +347,14 @@ export default function BookingsPage() {
                                                 }}>
                                                     Xem chi tiết
                                                 </DropdownMenuItem>
-                                                <DropdownMenuItem onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    handleUpdateStatus(booking.id, booking.status === 'Confirmed' ? 'Cancelled' : 'Confirmed');
-                                                }}>
-                                                    {booking.status === 'Confirmed' ? 'Hủy lịch' : 'Khôi phục lịch'}
-                                                </DropdownMenuItem>
+                                                {booking.status === 'Confirmed' && (
+                                                    <DropdownMenuItem onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleUpdateStatus(booking.id, 'Completed');
+                                                    }}>
+                                                        Đánh dấu Hoàn thành
+                                                    </DropdownMenuItem>
+                                                )}
                                                 <DropdownMenuItem 
                                                     className="text-red-600 focus:text-red-600" 
                                                     onClick={(e) => {

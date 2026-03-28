@@ -23,6 +23,7 @@ interface ProductDto {
   rentalPriceMin: number;
   rentalPriceMax: number;
   priceType: string;
+  categoryName?: string;
   images: { url: string }[];
 }
 
@@ -111,7 +112,7 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
       
       return [...prev, {
         productId: product.id,
-        productName: product.name,
+        productName: product.categoryName ? `${product.categoryName} - ${product.name}` : product.name,
         priceMin: isRange ? product.rentalPriceMin : (product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay),
         priceMax: isRange ? product.rentalPriceMax : (product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay),
         priceType: product.priceType,

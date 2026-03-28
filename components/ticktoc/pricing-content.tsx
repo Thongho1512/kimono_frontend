@@ -69,11 +69,11 @@ export function PricingContent({ categories, products }: PricingContentProps) {
         <div className="overflow-x-auto">
           <table className="w-full text-left border-collapse min-w-[300px]">
             <thead>
-              <tr className="border-b border-foreground/10">
-                <th className="px-6 py-3 font-serif font-semibold text-foreground border-r border-foreground/10">
+              <tr className="border-b border-foreground/10 bg-primary/5">
+                <th className="px-4 sm:px-6 py-3 font-serif font-semibold text-foreground border-r border-foreground/10 w-2/3">
                   {t("kimonoType")}
                 </th>
-                <th className="px-6 py-3 font-serif font-semibold text-foreground text-center">
+                <th className="px-4 sm:px-6 py-3 font-serif font-semibold text-foreground text-center w-1/3">
                   {t("rentalPrice")}
                 </th>
               </tr>
@@ -81,10 +81,10 @@ export function PricingContent({ categories, products }: PricingContentProps) {
             <tbody>
               {catProducts.map((p) => (
                 <tr key={p.id} className="border-b border-foreground/5 hover:bg-secondary/30 transition-colors">
-                  <td className="px-6 py-4 text-foreground/90 border-r border-foreground/10 text-sm sm:text-base">
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 text-foreground/90 border-r border-foreground/10 text-sm sm:text-base">
                     {p.name}
                   </td>
-                  <td className="px-6 py-4 text-center font-bold text-primary whitespace-nowrap text-sm sm:text-base">
+                  <td className="px-4 sm:px-6 py-3 sm:py-4 text-center font-bold text-primary whitespace-nowrap text-sm sm:text-base">
                     {formatPrice(p)}
                   </td>
                 </tr>
@@ -117,21 +117,6 @@ export function PricingContent({ categories, products }: PricingContentProps) {
          <div className="lg:col-span-1">
             <FadeIn delay={0.1}>
                {renderTable(womenCat, <Sparkles className="h-6 w-6 text-primary" />)}
-               
-               {/* Footnotes */}
-               <div className="mt-8 space-y-4 text-base sm:text-lg text-foreground font-medium px-2">
-                  <p className="flex items-start gap-3">
-                     <span className="text-primary font-bold text-xl">※</span>
-                     <span>{t("footnote1")}</span>
-                  </p>
-                  <p className="flex items-start gap-3">
-                     <span className="text-primary font-bold text-xl">※</span>
-                     <span>{t("footnote2")}</span>
-                  </p>
-                  <p className="flex items-start gap-3 mt-6 text-sm sm:text-base text-muted-foreground font-normal italic">
-                     <span>{t("footnoteNote")}</span>
-                  </p>
-               </div>
             </FadeIn>
          </div>
 
@@ -145,16 +130,34 @@ export function PricingContent({ categories, products }: PricingContentProps) {
                {renderTable(kidsCat, <Baby className="h-6 w-6 text-primary" />)}
             </FadeIn>
 
-            {/* Booking CTA */}
-            <FadeIn delay={0.4}>
-              <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20 text-center mt-4">
-                 <Button asChild size="lg" className="px-12">
-                    <Link href={`/${locale}/booking`}>{tCommon("bookNow")}</Link>
-                 </Button>
-              </div>
-            </FadeIn>
          </div>
       </div>
+
+      <FadeIn delay={0.4}>
+         <div className="mt-8 pb-16 max-w-4xl mx-auto">
+            {/* Footnotes */}
+            <div className="space-y-4 text-base sm:text-lg text-foreground font-medium px-4 mb-10">
+               <p className="flex items-start gap-3">
+                  <span className="text-primary font-bold text-xl leading-none mt-1">※</span>
+                  <span>{t("footnote1")}</span>
+               </p>
+               <p className="flex items-start gap-3">
+                  <span className="text-primary font-bold text-xl leading-none mt-1">※</span>
+                  <span>{t("footnote2")}</span>
+               </p>
+               <p className="flex items-start gap-3 mt-6 text-sm sm:text-base text-muted-foreground font-normal italic">
+                  <span>{t("footnoteNote")}</span>
+               </p>
+            </div>
+
+            {/* Booking CTA */}
+            <div className="bg-primary/5 rounded-2xl p-8 border border-primary/20 text-center">
+               <Button asChild size="lg" className="px-12">
+                  <Link href={`/${locale}/booking`}>{tCommon("bookNow")}</Link>
+               </Button>
+            </div>
+         </div>
+      </FadeIn>
     </div>
   );
 }

@@ -111,7 +111,7 @@ export function Header() {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="lg:hidden border-t border-border bg-background">
+        <div className="lg:hidden border-t border-border bg-background max-h-[calc(100vh-64px)] overflow-y-auto">
           <nav className="flex flex-col px-4 py-4 gap-1">
             <Link
               href={prefix}

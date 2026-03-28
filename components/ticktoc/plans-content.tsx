@@ -153,24 +153,26 @@ export function PlansContent({ categories, products }: PlansContentProps) {
         })}
       </div>
 
-      <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-bottom-4 duration-500 overflow-x-auto max-w-[95vw] no-scrollbar">
-        <div className="bg-card/95 backdrop-blur-md rounded-full shadow-2xl border border-border px-2 py-2 flex items-center gap-2">
-          {categories
-            .filter(cat => products.some(p => p.categoryId === cat.id))
-            .map(cat => (
-              <button
-                key={cat.id}
-                onClick={() => scrollToSection(cat.id)}
-                className={cn(
-                  "px-6 py-3 rounded-full text-sm font-medium ticktoc-transition flex items-center gap-2 whitespace-nowrap",
-                  activeSection === cat.id
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "text-foreground hover:bg-secondary"
-                )}
-              >
-                <span>{cat.name}</span>
-              </button>
-            ))}
+      <div className="fixed bottom-6 left-0 right-[72px] sm:left-1/2 sm:right-auto sm:-translate-x-1/2 z-40 animate-in fade-in slide-in-from-bottom-4 duration-500 pointer-events-none flex justify-center sm:block">
+        <div className="overflow-x-auto no-scrollbar pointer-events-auto max-w-full px-4 sm:px-0">
+          <div className="bg-card/95 backdrop-blur-md rounded-full shadow-2xl border border-border px-2 py-2 flex items-center gap-2 w-max">
+            {categories
+              .filter(cat => products.some(p => p.categoryId === cat.id))
+              .map(cat => (
+                <button
+                  key={cat.id}
+                  onClick={() => scrollToSection(cat.id)}
+                  className={cn(
+                    "px-6 py-3 rounded-full text-sm font-medium ticktoc-transition flex items-center gap-2 whitespace-nowrap",
+                    activeSection === cat.id
+                      ? "bg-primary text-primary-foreground shadow-md"
+                      : "text-foreground hover:bg-secondary"
+                  )}
+                >
+                  <span>{cat.name}</span>
+                </button>
+              ))}
+          </div>
         </div>
       </div>
     </div>
