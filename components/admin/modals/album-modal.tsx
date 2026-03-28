@@ -70,10 +70,21 @@ export function AlbumUploadModal({ isOpen, onClose, onSuccess }: AlbumUploadModa
 
         setLoading(true);
         try {
-            await api.post('/api/admin/album/upload', formData, {
+            const response = await api.post('/api/admin/album/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });
-            toast.success(`Đã tải lên ${selectedFiles.length} ảnh thành công`);
+            
+            const uploadedCount = response.data?.length || 0;
+            const totalPlanned = selectedFiles.length;
+
+            if (uploadedCount === totalPlanned) {
+                toast.success(`Đã tải lên ${uploadedCount} ảnh thành công`);
+            } else if (uploadedCount > 0) {
+                toast.warning(`Chỉ tải lên được ${uploadedCount}/${totalPlanned} ảnh. Vui lòng thử lại với các ảnh bị lỗi.`);
+            } else {
+                toast.error('Không thể tải ảnh lên. Vui lòng kiểm tra lại định dạng hoặc kích thước ảnh.');
+            }
+            
             onSuccess();
             handleClose();
         } catch (error: any) {
