@@ -73,6 +73,7 @@ export default function ContactPage() {
       icon: MapPin,
       label: t("address"),
       value: t("addressValue"),
+      detail: t("addressDetail"),
       href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("347-25 Gionmachi Kitagawa, Higashiyama Ward, 3F, Kyoto 605-0073, Japan")}`,
     },
     {
@@ -139,6 +140,11 @@ export default function ContactPage() {
                       ) : (
                         <p className="font-medium text-foreground">
                           {item.value}
+                        </p>
+                      )}
+                      {item.detail && (
+                        <p className="text-xs mt-1 text-muted-foreground italic">
+                          {item.detail}
                         </p>
                       )}
                     </div>
