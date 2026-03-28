@@ -176,7 +176,7 @@
     "zaloChat": "Chat Zalo",
     "success": "Đã gửi đặt lịch thành công! Chúng tôi sẽ liên hệ bạn sớm.",
     "arrivalTime": "Giờ đến dự kiến",
-    "arrivalTimeNote": "Lưu ý: Phụ phí sẽ được áp dụng nếu quý khách đến trước 09:00 hoặc sau 17:00. Vui lòng liên hệ với chúng tôi để biết thêm chi tiết.",
+    "arrivalTimeNote": "Lưu ý: Phụ phí sẽ được áp dụng cho các lượt đặt lịch sớm hơn 09:00 hoặc muộn hơn 17:00. Vui lòng liên hệ để được hỗ trợ chi tiết.",
     "selectServices": "Chọn dịch vụ",
     "yourSelection": "Lựa chọn của bạn",
     "noItemsSelected": "Chưa chọn dịch vụ nào.",

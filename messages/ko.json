@@ -160,7 +160,7 @@
     "zaloChat": "Zalo 소통",
     "success": "예약이 접수되었습니다!",
     "arrivalTime": "예상 도착 시간",
-    "arrivalTimeNote": "참고: 09:00 이전 또는 17:00 이후 도착 시 추가 요금이 부과됩니다. 자세한 내용은 문의해 주시기 바랍니다.",
+    "arrivalTimeNote": "참고: 오전 09:00 이전 또는 오후 17:00 이후 예약 시 추가 요금이 부과됩니다. 자세한 내용은 문의해 주시기 바랍니다.",
     "selectServices": "서비스 선택",
     "yourSelection": "선택 항목",
     "noItemsSelected": "선택된 서비스가 없습니다.",

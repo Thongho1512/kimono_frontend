@@ -432,6 +432,10 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
                   <div>
                     <Label htmlFor="time">{t("arrivalTime")} <span className="text-destructive">*</span></Label>
                     <Input id="time" type="time" value={formData.time} onChange={e => setFormData({ ...formData, time: e.target.value })} />
+                    <p className="text-[10px] sm:text-xs text-muted-foreground mt-1.5 flex items-start gap-1.5 leading-relaxed bg-amber-50/50 dark:bg-amber-950/10 p-2 rounded-md border border-amber-100/50 dark:border-amber-900/20">
+                      <AlertCircle className="h-3.5 w-3.5 text-amber-600 dark:text-amber-500 shrink-0 mt-0.5" />
+                      <span>{t("arrivalTimeNote")}</span>
+                    </p>
                   </div>
                   
                   <div className="space-y-4 p-4 bg-secondary/30 rounded-lg border border-border">

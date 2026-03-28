@@ -157,7 +157,7 @@
     "zaloChat": "Zaloでチャット",
     "success": "予約が送信されました！まもなくご連絡いたします。",
     "arrivalTime": "到着予定時刻",
-    "arrivalTimeNote": "注：09:00前または17:00以降の到着には追加料金が適用されます。詳細についてはお問い合わせください。",
+    "arrivalTimeNote": "【ご注意】09:00以前、または17:00以降のご予約には追加料金が発生いたします。詳細は事前にお問い合わせください。",
     "selectServices": "サービスを選択",
     "yourSelection": "選択内容",
     "noItemsSelected": "まだ選択されていません。",
