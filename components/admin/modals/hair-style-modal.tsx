@@ -12,6 +12,8 @@ import { toast } from 'sonner';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
 
+import imageCompression from 'browser-image-compression';
+
 interface HairStyle {
     id?: string;
     name: string;
@@ -80,20 +82,33 @@ export function HairStyleModal({ isOpen, onClose, initialData, onSuccess }: Hair
             return;
         }
 
-        const submitData = new FormData();
-        if (initialData?.id) submitData.append('Id', initialData.id);
-        submitData.append('Name', formData.name);
-        submitData.append('Description', formData.description || '');
-
-        if (selectedFile) {
-            submitData.append('Image', selectedFile);
-        }
-        if (isImageDeleted) {
-            submitData.append('DeleteImage', 'true');
-        }
-
         setLoading(true);
         try {
+            const submitData = new FormData();
+            if (initialData?.id) submitData.append('Id', initialData.id);
+            submitData.append('Name', formData.name);
+            submitData.append('Description', formData.description || '');
+
+            if (selectedFile) {
+                // Client-side compression
+                const options = {
+                    maxSizeMB: 1,
+                    maxWidthOrHeight: 1920,
+                    useWebWorker: true,
+                };
+                
+                try {
+                    const compressedFile = await imageCompression(selectedFile, options);
+                    submitData.append('Image', compressedFile);
+                } catch (err) {
+                    console.error('Compression error:', err);
+                    submitData.append('Image', selectedFile);
+                }
+            }
+            if (isImageDeleted) {
+                submitData.append('DeleteImage', 'true');
+            }
+
             if (initialData?.id) {
                 await api.put('/api/admin/hair-styles', submitData, {
                     headers: { 'Content-Type': 'multipart/form-data' }
@@ -193,7 +208,7 @@ export function HairStyleModal({ isOpen, onClose, initialData, onSuccess }: Hair
                         />
 
                         <p className="text-[10px] text-muted-foreground text-center">
-                            Định dạng hỗ trợ: JPG, PNG, WEBP. Dung lượng tối đa: 5MB.
+                            Định dạng hỗ trợ: JPG, PNG, WEBP. Dung lượng tối đa: 50MB (Tự động nén).
                         </p>
                     </div>
 

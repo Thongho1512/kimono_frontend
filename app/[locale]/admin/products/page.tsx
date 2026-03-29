@@ -19,7 +19,8 @@ interface Product {
     rentalPriceMin: number;
     rentalPriceMax: number;
     priceType: string;
-    images: { id: string; url: string }[];
+    imageUrl?: string;
+    ImageUrl?: string; // Add support for PascalCase
 }
 
 export default function ProductsPage() {
@@ -77,20 +78,18 @@ export default function ProductsPage() {
     const columns = [
         {
             header: 'Ảnh',
-            accessorKey: (row: Product) => row.images && row.images.length > 0 ? (
-                <div className="relative h-12 w-12 rounded border overflow-hidden">
-                    <Image src={row.images[0].url} alt={row.name} fill className="object-cover" />
-                    {row.images.length > 1 && (
-                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-[10px] text-white">
-                            +{row.images.length - 1}
-                        </div>
-                    )}
-                </div>
-            ) : (
-                <div className="h-12 w-12 rounded border bg-neutral-100 flex items-center justify-center text-neutral-400">
-                    <ImageIcon className="h-6 w-6" />
-                </div>
-            )
+            accessorKey: (row: Product) => {
+                const url = row.imageUrl || row.ImageUrl;
+                return url ? (
+                    <div className="relative h-12 w-12 rounded border overflow-hidden">
+                        <Image src={url} alt={row.name} fill className="object-cover" />
+                    </div>
+                ) : (
+                    <div className="h-12 w-12 rounded border bg-neutral-100 flex items-center justify-center text-neutral-400">
+                        <ImageIcon className="h-6 w-6" />
+                    </div>
+                );
+            }
         },
         { header: 'Tên sản phẩm', accessorKey: 'name' as keyof Product },
         {
@@ -143,7 +142,10 @@ export default function ProductsPage() {
             <ProductModal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
-                initialData={selectedProduct}
+                initialData={selectedProduct ? {
+                    ...selectedProduct,
+                    imageUrl: selectedProduct.imageUrl || selectedProduct.ImageUrl
+                } : null}
                 categories={categories}
                 onSuccess={() => { fetchProducts(); refreshCategories(); }}
             />

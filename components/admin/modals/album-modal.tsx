@@ -8,6 +8,8 @@ import api from '@/lib/api';
 import { toast } from 'sonner';
 import Image from 'next/image';
 
+import imageCompression from 'browser-image-compression';
+
 interface AlbumUploadModalProps {
     isOpen: boolean;
     onClose: () => void;
@@ -64,12 +66,24 @@ export function AlbumUploadModal({ isOpen, onClose, onSuccess }: AlbumUploadModa
         }
 
         const formData = new FormData();
-        selectedFiles.forEach(file => {
-            formData.append('images', file);
-        });
-
         setLoading(true);
+
         try {
+            // Compress all selected files in parallel
+            const compressionOptions = {
+                maxSizeMB: 1,
+                maxWidthOrHeight: 1920,
+                useWebWorker: true,
+            };
+
+            const compressedFiles = await Promise.all(
+                selectedFiles.map(file => imageCompression(file, compressionOptions))
+            );
+
+            compressedFiles.forEach(file => {
+                formData.append('images', file);
+            });
+
             const response = await api.post('/api/admin/album/upload', formData, {
                 headers: { 'Content-Type': 'multipart/form-data' }
             });

@@ -11,6 +11,7 @@ import api from '@/lib/api';
 import { toast } from 'sonner';
 import { ImageUpload } from '../image-upload';
 import { formatNumberWithCommas, parseFormattedNumber } from '@/lib/utils';
+import imageCompression from 'browser-image-compression';
 
 interface Product {
     id: string;
@@ -20,7 +21,7 @@ interface Product {
     rentalPriceMin: number | string;
     rentalPriceMax: number | string;
     priceType: string;
-    images: { id: string; url: string }[];
+    imageUrl?: string;
 }
 
 interface Category {
@@ -102,8 +103,26 @@ export function ProductModal({ isOpen, onClose, initialData, categories, onSucce
         submitData.append('RentalPriceMax', priceMax.toString());
         submitData.append('PriceType', formData.priceType);
 
-        newFiles.forEach(file => submitData.append('NewImages', file));
-        deletedImageIds.forEach(id => submitData.append('DeletedImageIds', id));
+        if (newFiles.length > 0) {
+            let fileToUpload = newFiles[0];
+            
+            // Client-side compression
+            const options = {
+                maxSizeMB: 1,
+                maxWidthOrHeight: 1920,
+                useWebWorker: true
+            };
+            
+            try {
+                console.log(`Original size: ${fileToUpload.size / 1024 / 1024} MB`);
+                fileToUpload = await imageCompression(fileToUpload, options);
+                console.log(`Compressed size: ${fileToUpload.size / 1024 / 1024} MB`);
+            } catch (error) {
+                console.error('Compression error:', error);
+            }
+            
+            submitData.append('Image', fileToUpload);
+        }
 
         try {
             if (initialData?.id) {
@@ -240,13 +259,8 @@ export function ProductModal({ isOpen, onClose, initialData, categories, onSucce
                     <div className="space-y-4 pt-2">
                         <Label className="font-semibold">Hình ảnh sản phẩm</Label>
                         <ImageUpload
-                            existingImages={initialData?.images || []}
-                            deletedIds={deletedImageIds}
-                            onToggleDelete={(id) => {
-                                setDeletedImageIds(prev =>
-                                    prev.includes(id) ? prev.filter(i => i !== id) : [...prev, id]
-                                );
-                            }}
+                            existingImages={initialData?.imageUrl ? [{ id: 'current', url: initialData.imageUrl }] : []}
+                            single={true}
                             onImagesChange={(files: File[]) => setNewFiles(files)}
                         />
                     </div>
