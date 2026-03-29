@@ -15,7 +15,8 @@ interface ProductDto {
   rentalPriceMin: number;
   rentalPriceMax: number;
   priceType: string;
-  images: { url: string }[];
+  imageUrl?: string;
+  ImageUrl?: string;
   description?: string;
 }
 
@@ -27,96 +28,58 @@ interface ProductPlanSectionProps {
 }
 
 export function ProductPlanSection({ plan, pIdx, locale, formatPrice }: ProductPlanSectionProps) {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollAmount = clientWidth * 0.8; 
-      scrollRef.current.scrollTo({
-        left: direction === 'left' ? scrollLeft - scrollAmount : scrollLeft + scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-  };
+  const currentImageUrl = plan.imageUrl || plan.ImageUrl;
 
   return (
-    <FadeIn key={plan.id} delay={0.2 + pIdx * 0.1}>
-      <div className="space-y-6">
-        {/* Product Header: Name and Price */}
-        <div className="flex flex-col sm:flex-row sm:items-baseline justify-between gap-2 border-b border-border pb-3">
-          <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground">
-            {plan.name}
-          </h3>
-          <div className="flex items-center gap-2">
-             <span className="text-lg sm:text-xl font-bold text-primary">
-                {formatPrice(plan)}
-             </span>
+    <FadeIn key={plan.id} delay={0.1 + (pIdx % 5) * 0.1}>
+      <Link 
+        href={`/${locale}/plans/${plan.slug || plan.id}`}
+        className="group/card flex flex-col h-full bg-card rounded-2xl overflow-hidden border border-border/50 shadow-sm hover:shadow-xl hover:border-primary/20 transition-all duration-500"
+      >
+        {/* Image Container */}
+        <div className="relative aspect-[3/4] overflow-hidden">
+          {currentImageUrl ? (
+            <>
+              <Image
+                src={currentImageUrl}
+                alt={plan.name}
+                fill
+                priority={pIdx < 5}
+                className="object-cover transition-transform duration-1000 group-hover/card:scale-110"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 20vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 flex items-end justify-center p-4">
+                 <span className="bg-white/90 backdrop-blur-sm text-primary px-4 py-1.5 rounded-full font-bold text-xs shadow-lg transform translate-y-2 group-hover/card:translate-y-0 transition-transform duration-500">
+                   {formatPrice(plan)}
+                 </span>
+              </div>
+            </>
+          ) : (
+            <div className="w-full h-full bg-neutral-50 flex flex-col items-center justify-center text-muted-foreground gap-2 border-b border-dashed border-neutral-100">
+              <ChevronRight className="h-6 w-6 opacity-20" />
+              <p className="text-[10px] italic font-medium px-4 text-center">Đang cập nhật hình ảnh mẫu cho {plan.name}...</p>
+            </div>
+          )}
+          
+          {/* Top-right Tag for Price */}
+          <div className="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm text-primary-foreground px-3 py-1 rounded-full text-xs font-bold shadow-sm group-hover/card:bg-primary transition-colors">
+            {formatPrice(plan)}
           </div>
         </div>
 
-        {/* Product Images Slider */}
-        <div className="relative group/slider">
-          {(plan.images && plan.images.length > 0) ? (
-            <>
-              <div 
-                ref={scrollRef}
-                className="flex overflow-x-auto gap-4 scroll-smooth no-scrollbar pb-4 -mx-1 px-1"
-              >
-                {plan.images.map((img, iIdx) => (
-                  <Link 
-                    key={iIdx} 
-                    href={`/${locale}/plans/${plan.slug || plan.id}`}
-                    className="flex-none w-[260px] sm:w-[300px] relative aspect-[3/4] rounded-lg overflow-hidden border border-border ticktoc-shadow hover:border-primary/50 transition-all"
-                  >
-                    <Image
-                      src={img.url || "/placeholder.svg"}
-                      alt={`${plan.name} - ${iIdx + 1}`}
-                      fill
-                      loading="lazy"
-                      className="object-cover group-hover:scale-105 ticktoc-transition"
-                      sizes="300px"
-                    />
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-all pointer-events-none">
-                      <p className="text-white text-xs font-serif">Xem chi tiết</p>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-              
-              {/* Slider Buttons */}
-              {plan.images.length > 1 && (
-                <>
-                  <button 
-                    onClick={() => scroll('left')}
-                    className="absolute -left-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-card/90 shadow-lg border border-border opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-primary hover:text-primary-foreground hidden md:block"
-                    aria-label="Previous"
-                  >
-                    <ChevronLeft className="h-6 w-6" />
-                  </button>
-                  <button 
-                    onClick={() => scroll('right')}
-                    className="absolute -right-4 top-1/2 -translate-y-1/2 z-10 p-2 rounded-full bg-card/90 shadow-lg border border-border opacity-0 group-hover/slider:opacity-100 transition-all hover:bg-primary hover:text-primary-foreground hidden md:block"
-                    aria-label="Next"
-                  >
-                    <ChevronRight className="h-6 w-6" />
-                  </button>
-                </>
-              )}
-            </>
-          ) : (
-            <div className="py-12 border-2 border-dashed border-border rounded-xl flex items-center justify-center text-muted-foreground italic">
-              Đang cập nhật hình ảnh mẫu...
-            </div>
+        {/* Product Info */}
+        <div className="p-4 flex flex-col flex-grow">
+          <h3 className="font-serif text-xl sm:text-2xl font-bold text-foreground group-hover/card:text-primary transition-colors line-clamp-2 mb-1">
+            {plan.name}
+          </h3>
+          
+          {plan.description && (
+            <p className="text-muted-foreground text-xs leading-relaxed line-clamp-2 mt-auto">
+              {plan.description}
+            </p>
           )}
         </div>
-        
-        {plan.description && (
-           <p className="text-sm text-muted-foreground max-w-3xl leading-relaxed">
-              {plan.description}
-           </p>
-        )}
-      </div>
+      </Link>
     </FadeIn>
   );
 }

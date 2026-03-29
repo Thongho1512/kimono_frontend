@@ -42,8 +42,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const plan = await getPlan(slug, locale);
   if (!plan) return { title: "Plan Not Found - Ticktoc Kimono" };
 
+  const categoryDisplayName = plan.categoryNameTranslated || plan.categoryName;
+  const fullTitle = categoryDisplayName ? `${categoryDisplayName} - ${plan.name}` : plan.name;
+
   const seo = getSeoContent(slug, locale, {
-    title: `${plan.name} | Ticktoc Kimono Rental`,
+    title: `${fullTitle} | Ticktoc Kimono Rental`,
     description: plan.description || `Rent authentic ${plan.name} in Ho Chi Minh City.`
   });
 

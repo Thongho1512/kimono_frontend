@@ -24,7 +24,8 @@ interface ProductDto {
   rentalPriceMin: number;
   rentalPriceMax: number;
   priceType: string;
-  images: { url: string }[];
+  imageUrl?: string;
+  ImageUrl?: string;
   description?: string;
 }
 
@@ -129,15 +130,22 @@ export function PlansContent({ categories, products }: PlansContentProps) {
               className="scroll-mt-24"
             >
               <FadeIn delay={0.1}>
-                <div className="flex flex-col items-center mb-12">
-                  <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground text-center">
-                    {cat.name}
-                  </h2>
-                  <div className="sakura-line mt-4 w-24 mx-auto" />
+                <div className="relative mb-10 text-center">
+                  <div className="absolute inset-0 flex items-center" aria-hidden="true">
+                    <div className="w-full border-t border-border/60"></div>
+                  </div>
+                  <div className="relative flex justify-center">
+                    <div className="bg-background px-8 flex flex-col items-center">
+                      <h2 className="font-serif text-3xl sm:text-4xl font-bold text-foreground">
+                        {cat.name}
+                      </h2>
+                      <div className="sakura-line mt-3 w-20" />
+                    </div>
+                  </div>
                 </div>
               </FadeIn>
 
-              <div className="space-y-16">
+              <div className="grid grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 sm:gap-8">
                 {catProducts.map((plan, pIdx) => (
                   <ProductPlanSection 
                     key={plan.id} 

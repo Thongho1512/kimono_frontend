@@ -13,13 +13,17 @@ import { Check, Clock, Sparkles, ArrowLeft } from "lucide-react";
 interface ProductDto {
     id: string;
     categoryId: string;
+    categoryName?: string;
+    categoryNameTranslated?: string;
     name: string;
     slug: string;
     rentalPricePerDay: number;
     rentalPriceMin: number;
     rentalPriceMax: number;
     priceType: string;
-    images: { url: string }[];
+    imageUrl?: string;
+    ImageUrl?: string;
+    images?: { url: string }[];
     description?: string;
 }
 
@@ -37,8 +41,6 @@ export default function PlanDetailContent({
     const tPricing = useTranslations("pricing");
     const tCommon = useTranslations("common");
 
-    const includesList = (plan.description || "").split(",").map((s) => s.trim());
-
     const formatPrice = (p: ProductDto) => {
         const isRange = p.priceType === "range" || p.priceType === "Khoảng";
         if (isRange) {
@@ -46,6 +48,9 @@ export default function PlanDetailContent({
         }
         return formatJPY(p.rentalPriceMin > 0 ? p.rentalPriceMin : p.rentalPricePerDay);
     };
+
+    const mainImageUrl = plan.imageUrl || plan.ImageUrl || plan.images?.[0]?.url || "/placeholder.svg";
+    const categoryDisplayName = plan.categoryNameTranslated || plan.categoryName;
 
     return (
         <div className="pb-16">
@@ -61,9 +66,9 @@ export default function PlanDetailContent({
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
                 {/* Image */}
                 <FadeIn direction="left">
-                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden ticktoc-shadow">
+                    <div className="relative aspect-[3/4] rounded-2xl overflow-hidden ticktoc-shadow border border-border">
                         <Image
-                            src={plan.images?.[0]?.url || "/placeholder.svg"}
+                            src={mainImageUrl}
                             alt={plan.name}
                             fill
                             className="object-cover"
@@ -76,57 +81,29 @@ export default function PlanDetailContent({
                 {/* Details */}
                 <FadeIn direction="right" delay={0.1}>
                     <div className="flex flex-col justify-center">
-                        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-foreground text-balance">
-                            {plan.name}
+                        <h1 className="font-serif text-4xl sm:text-5xl font-bold text-foreground text-balance">
+                            {categoryDisplayName ? `${categoryDisplayName} - ` : ''}{plan.name}
                         </h1>
 
-                        <div className="mt-6 p-4 bg-secondary rounded-xl">
+                        <div className="mt-8 p-6 bg-secondary rounded-2xl border border-primary/10">
                             <div className="flex items-baseline gap-2">
-                                <span className="text-3xl font-bold text-primary">
+                                <span className="text-4xl font-bold text-primary">
                                     {formatPrice(plan)}
                                 </span>
-                                <span className="text-sm text-muted-foreground">
+                                <span className="text-base text-muted-foreground">
                                     / {tPricing("rentalPlan")}
                                 </span>
                             </div>
                         </div>
 
-                        {/* Includes (Extracted from description for now) */}
-                        <div className="mt-6">
-                            <h3 className="font-serif text-lg font-semibold text-foreground flex items-center gap-2">
-                                <Sparkles className="h-4 w-4 text-accent" />
-                                {t("includes")}
-                            </h3>
-                            <ul className="mt-3 grid gap-2">
-                                {includesList.length > 0 && includesList[0] !== "" ? (
-                                    includesList.map((item, i) => (
-                                        <li key={i} className="flex items-start gap-2.5">
-                                            <Check className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                                            <span className="text-foreground">{item}</span>
-                                        </li>
-                                    ))
-                                ) : (
-                                    <li className="text-muted-foreground italic">Đang cập nhật nội dung...</li>
-                                )}
-                            </ul>
-                        </div>
-
-                        {/* Duration Info */}
-                        <div className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
-                            <Clock className="h-4 w-4" />
-                            <span>
-                                {tPricing("halfDay")} / {tPricing("fullDay")}
-                            </span>
-                        </div>
-
                         {/* CTA */}
-                        <div className="mt-8 flex flex-col sm:flex-row gap-3">
-                            <Button asChild size="lg" className="flex-1">
+                        <div className="mt-10 flex flex-col sm:flex-row gap-4">
+                            <Button asChild size="lg" className="flex-1 text-lg h-14">
                                 <Link href={`/${locale}/booking?plan=${plan.id}`}>
                                     {t("bookNow")}
                                 </Link>
                             </Button>
-                            <Button asChild variant="outline" size="lg" className="flex-1 bg-transparent">
+                            <Button asChild variant="outline" size="lg" className="flex-1 bg-transparent text-lg h-14">
                                 <Link href={`/${locale}/pricing`}>
                                     {tPricing("title")}
                                 </Link>
@@ -145,34 +122,37 @@ export default function PlanDetailContent({
                         </h2>
                     </FadeIn>
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {relatedPlans.map((rp, idx) => (
-                            <FadeIn key={rp.id} delay={idx * 0.05}>
-                                <Link
-                                    href={`/${locale}/plans/${rp.slug || rp.id}`}
-                                    className="group block"
-                                >
-                                    <div className="bg-card rounded-xl overflow-hidden ticktoc-shadow border border-border hover:border-primary/30 ticktoc-transition">
-                                        <div className="relative aspect-[4/3] overflow-hidden">
-                                            <Image
-                                                src={rp.images?.[0]?.url || "/placeholder.svg"}
-                                                alt={rp.name}
-                                                fill
-                                                className="object-cover group-hover:scale-105 ticktoc-transition"
-                                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                            />
+                        {relatedPlans.map((rp, idx) => {
+                            const rpImageUrl = rp.imageUrl || rp.ImageUrl || rp.images?.[0]?.url || "/placeholder.svg";
+                            return (
+                                <FadeIn key={rp.id} delay={idx * 0.05}>
+                                    <Link
+                                        href={`/${locale}/plans/${rp.slug || rp.id}`}
+                                        className="group block"
+                                    >
+                                        <div className="bg-card rounded-xl overflow-hidden ticktoc-shadow border border-border hover:border-primary/30 ticktoc-transition">
+                                            <div className="relative aspect-[4/3] overflow-hidden">
+                                                <Image
+                                                    src={rpImageUrl}
+                                                    alt={rp.name}
+                                                    fill
+                                                    className="object-cover group-hover:scale-105 ticktoc-transition"
+                                                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                />
+                                            </div>
+                                            <div className="p-4">
+                                                <h3 className="font-serif text-base font-semibold text-foreground group-hover:text-primary ticktoc-transition">
+                                                    {rp.name}
+                                                </h3>
+                                                <span className="text-primary font-bold mt-1 block">
+                                                    {formatPrice(rp)}
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div className="p-4">
-                                            <h3 className="font-serif text-base font-semibold text-foreground group-hover:text-primary ticktoc-transition">
-                                                {rp.name}
-                                            </h3>
-                                            <span className="text-primary font-bold mt-1 block">
-                                                {formatPrice(rp)}
-                                            </span>
-                                        </div>
-                                    </div>
-                                </Link>
-                            </FadeIn>
-                        ))}
+                                    </Link>
+                                </FadeIn>
+                            );
+                        })}
                     </div>
                 </section>
             )}
