@@ -25,6 +25,8 @@ interface ProductDto {
   priceType: string;
   categoryName?: string;
   categoryNameTranslated?: string;
+  imageUrl?: string;
+  ImageUrl?: string;
   images: { url: string }[];
 }
 
@@ -120,7 +122,7 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
         priceMax: isRange ? product.rentalPriceMax : (product.rentalPriceMin > 0 ? product.rentalPriceMin : product.rentalPricePerDay),
         priceType: product.priceType,
         quantity: 1,
-        image: product.images?.[0]?.url || ""
+        image: product.imageUrl || product.ImageUrl || product.images?.[0]?.url || ""
       }];
     });
     toast.success(t("addedToCart"));
@@ -324,7 +326,7 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
                       <div key={product.id} className="bg-card border border-border rounded-lg p-4 flex gap-4 hover:border-primary/50 transition-colors">
                         <div className="relative w-20 h-24 shrink-0 rounded-md overflow-hidden bg-secondary">
                           <Image
-                            src={product.images?.[0]?.url || "/placeholder.svg"}
+                            src={product.imageUrl || product.ImageUrl || product.images?.[0]?.url || "/placeholder.svg"}
                             alt={product.name}
                             fill
                             className="object-cover"

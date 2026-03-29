@@ -63,6 +63,8 @@ interface ProductDto {
   rentalPriceMin: number;
   rentalPriceMax: number;
   priceType: string;
+  imageUrl?: string;
+  ImageUrl?: string;
   images: { url: string }[];
 }
 
@@ -321,7 +323,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                                             <div className="flex items-center gap-4">
                                                                 <div className="h-12 w-10 relative rounded-lg overflow-hidden bg-slate-100 shadow-sm">
                                                                     <Image 
-                                                                        src={product.images?.[0]?.url || "/placeholder.svg"} 
+                                                                        src={product.imageUrl || product.ImageUrl || product.images?.[0]?.url || "/placeholder.svg"} 
                                                                         alt={product.name} 
                                                                         fill 
                                                                         className="object-cover group-hover:scale-110 transition-transform duration-300"
@@ -357,7 +359,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                                 <div key={item.productId} className="flex items-center gap-3 p-2 bg-white border border-slate-100 rounded-xl shadow-sm">
                                                     <div className="h-12 w-10 relative rounded overflow-hidden bg-slate-50">
                                                         <Image 
-                                                            src={item.product?.images?.[0]?.url || item.image || "/placeholder.svg"} 
+                                                            src={item.product?.imageUrl || item.product?.ImageUrl || item.product?.images?.[0]?.url || item.image || "/placeholder.svg"} 
                                                             alt={item.productName} 
                                                             fill 
                                                             className="object-cover"
@@ -670,7 +672,7 @@ export function ManageBooking({ booking: initialBooking, onUpdate }: ManageBooki
                                                     <div key={item.productId} className="flex items-center gap-3 bg-white dark:bg-slate-900 p-2 rounded-xl border border-slate-100/50 dark:border-slate-800 shadow-sm transition-all hover:shadow-md">
                                                         <div className="h-10 w-8 relative rounded overflow-hidden bg-slate-50 dark:bg-slate-800">
                                                             <Image 
-                                                                src={item.product?.images?.[0]?.url || item.image || "/placeholder.svg"} 
+                                                                src={item.product?.imageUrl || item.product?.ImageUrl || item.product?.images?.[0]?.url || item.image || "/placeholder.svg"} 
                                                                 alt={item.productName} 
                                                                 fill 
                                                                 className="object-cover"
