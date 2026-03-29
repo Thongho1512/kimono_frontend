@@ -279,9 +279,6 @@ function BookingForm({ initialProducts = [] }: { initialProducts?: ProductDto[] 
           <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground text-balance">
             {t("title")}
           </h1>
-          <p className="mt-3 text-muted-foreground max-w-2xl mx-auto text-pretty">
-            {t("subtitle")}
-          </p>
           <div className="sakura-line mt-6 mx-auto w-32" />
         </div>
       </FadeIn>
